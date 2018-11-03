@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+coverage/
+tscoverage/
+**/coverage.xml
+**/results.xml
+**/wwwroot/dist/
+**/node_modules/
+.sonarqube/
+**/yarn.lock
+**/publish/
+test-report.xml
+src/bxbot/Views/Home/Index.cshtml

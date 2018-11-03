@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component is unchanged. 1`] = `
+<article>
+  <h1 />
+  <section />
+</article>
+`;
