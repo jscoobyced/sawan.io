@@ -11,8 +11,9 @@ export interface AllContent {
 export interface NavigationMenuContent {
     home: string;
     websiteName: string;
+    applications: string;
     cryptoCurrency: string;
-    candleChart: string;
+    healthMonitor: string;
     about: string;
 }
 

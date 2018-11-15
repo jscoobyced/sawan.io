@@ -3,6 +3,12 @@
 exports[`Home component is unchanged. 1`] = `
 <article>
   <h1 />
-  <section />
+  <section
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "",
+      }
+    }
+  />
 </article>
 `;
