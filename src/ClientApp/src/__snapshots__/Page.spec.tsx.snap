@@ -8,13 +8,14 @@ exports[`Page content is preserved 1`] = `
     allContent={
       Object {
         "homeContent": Object {
-          "article": "Grand opening of sawan.io.",
-          "articleTitle": "Latest news - 2018-10-14",
+          "article": "Grand opening of sawan.io.<br />This website is about my personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP headers... It includes a simple (and a bit naive :) ) crypto-currency analyser: it can suggest you to sell or buy. Use at your own risk, it is amateur predictions, you have been warned :)<br />There will be also an application to track health metrics (weight, % body fat, vascualar fat ratio... Or not, this will be my next project :)<br /> This project is open-sourced on <a href='https://github.com/jscoobyced/sawan.io'>Github</a>. Enjoy and have fun.",
+          "articleTitle": "Latest news - 2018-11-15",
         },
         "navigationMenuContent": Object {
           "about": "About",
-          "candleChart": "Candle Chart",
+          "applications": "Applications",
           "cryptoCurrency": "Cryptocurrency",
+          "healthMonitor": "Health Monitor",
           "home": "Home",
           "websiteName": "sawan.io",
         },
@@ -29,6 +30,10 @@ exports[`Page content is preserved 1`] = `
     <Route
       component={[Function]}
       path="/candle"
+    />
+    <Route
+      component={[Function]}
+      path="/health"
     />
   </Layout>
 </BrowserRouter>

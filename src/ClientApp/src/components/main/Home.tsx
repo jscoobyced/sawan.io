@@ -14,7 +14,7 @@ export class Home extends React.Component<HomeProps> {
     public render() {
         return <article>
             <h1>{this.props.homeContent.articleTitle}</h1>
-            <section>{this.props.homeContent.article}</section>
+            <section dangerouslySetInnerHTML={{ __html: this.props.homeContent.article }}></section>
         </article>;
     }
 }

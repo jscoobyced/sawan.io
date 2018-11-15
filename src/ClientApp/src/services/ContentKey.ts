@@ -6,8 +6,9 @@ export class ContentKey {
     // Navigation Menu
     public static Home = 'HOME';
     public static About = 'ABOUT';
-    public static CandleChart = 'CANDLECHART';
+    public static Applications = 'APPLICATIONS';
     public static CryptoCurrency = 'CRYPTOCURRENCY';
+    public static HealthMonitor = 'HEALTHMONITOR';
 
     // Home
     public static MainArticleTitle = 'MAINARTICLETITLE';
