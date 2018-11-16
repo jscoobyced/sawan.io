@@ -6,7 +6,7 @@ skip_branch_with_pr: true
 skip_tags: true
 environment:
   SonarKey:
-    secure: C3z2YiF5LE1389oYsUWS5EEMNCRJDJFqLkgB3xyA6KXvwzIHUAAWjITOeHSFU6kJ
+    secure: 2mQfOEBZCqM3BI8UAAc2wkRkvrTNsWKwRyFiKgk4Khfpl/SUrJSxcGnmB+CJB7OZ
   SonarGithubKey:
     secure: SY6rvHCSxikpJpkcDR/JsnMDc41rD9+L2w0pr370Qd1cUZJJJY4rxVISzdmTf1fG
   SonarOrg: jscoobyced-github
