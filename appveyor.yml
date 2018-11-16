@@ -48,17 +48,6 @@ after_test:
 artifacts:
   - path: publish
     type: Zip
-deploy:
-  - provider: AzureAppServiceZipDeploy
-    name: production
-    on:
-      branch: master
-    appservice_environment: false
-    website: sawan
-    username: sawan
-    password:
-      secure: 7Abb6Ut61PC0yff1dUy1HfYCOLwckof/tWSofCDbvqs/AVUtkbnNIvPzl2bt4fwj
-    artifact: publish.zip
 notifications:
   - provider: GitHubPullRequest
     on_build_success: true
