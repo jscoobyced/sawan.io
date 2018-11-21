@@ -1,5 +1,5 @@
 nav {
-    display: inline-block;
+	display: inline-block;
 }
 
 nav a {
@@ -14,6 +14,7 @@ nav a {
 nav ul {
 	list-style: none;
 	padding: 0;
+	z-index: 1000;
 }
 
 nav ul ul li:first-child a {
@@ -35,11 +36,13 @@ nav ul ul li:last-child a {
 nav li {
 	position: relative;
 	display: inline-block;
+	z-index: 1000;
 }
 
 nav ul ul {
 	display: none;
 	position: absolute;
+	z-index: 1000;
 }
 
 nav li:hover > ul {
@@ -53,6 +56,7 @@ nav ul ul ul {
 
 nav > ul > li > ul > li {
 	min-width: 100%;
+	z-index: 1000;
 }
 
 .menu-space {
