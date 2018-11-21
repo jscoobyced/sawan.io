@@ -53,3 +53,14 @@ notifications:
     on_build_success: true
     on_build_failure: true
     on_build_status_changed: true
+deploy:
+  release: sawan.io-v$(appveyor_build_version)
+  description: 'https://sawan.io website. Latest release is the latest version.'
+  provider: GitHub
+  auth_token:
+    secure: WiUWgpamFs7jnPR5HzUbh1UN3tELVb8fMQR8cXgilTDUe5JjF2voK6b880x1wQiI
+  draft: false
+  prerelease: false
+  on:
+    branch: master
+    appveyor_repo_tag: true
