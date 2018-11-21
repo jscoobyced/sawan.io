@@ -20,6 +20,11 @@ module.exports = {
     "lcov",
     "json"
   ],
+  globals: {
+    "ts-jest": {
+      diagnostics: false
+    }
+  },
   coverageDirectory: "coverage",
   testResultsProcessor: "jest-sonar-reporter",
   setupFiles: [
