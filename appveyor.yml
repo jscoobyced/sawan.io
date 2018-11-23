@@ -3,7 +3,7 @@ image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
 skip_branch_with_pr: true
-skip_tags: false
+skip_tags: true
 environment:
   SonarKey:
     secure: 2mQfOEBZCqM3BI8UAAc2wkRkvrTNsWKwRyFiKgk4Khfpl/SUrJSxcGnmB+CJB7OZ
