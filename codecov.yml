@@ -25,6 +25,10 @@ comment:
   behavior: default
   require_changes: no
 
+ignore:
+  - "**/Program.cs"
+  - "**/Startup.cs"
+  - "**/*.cshtml"
 fixes:
   - "src\/src/::"
   - "src\/ClientApp\/src/::"
