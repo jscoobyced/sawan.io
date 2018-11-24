@@ -38,13 +38,13 @@ install:
   - choco install --no-progress codecov
 build_script:
   - ps: >-
-      & .\scripts\build.ps1
+      & .\scripts\build\build.ps1
 test_script:
   - ps: >-
-      & .\scripts\run_tests.ps1
+      & .\scripts\build\run_tests.ps1
 after_test:
   - ps: >-
-      & .\scripts\after_test.ps1
+      & .\scripts\build\after_test.ps1
 artifacts:
   - path: publish
     type: Zip
