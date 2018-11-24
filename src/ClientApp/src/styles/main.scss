@@ -8,6 +8,7 @@
 
 html, body, main {
     height: 100%;
+    min-width: 380px;
 }
 
 html {
@@ -49,7 +50,8 @@ article {
     width: 80%;
     min-height: 200px;
     margin: 0 auto;
-    padding-top: 20px;
+    padding: 10px;
+    background: $surface;
 }
 
 article h1 {
@@ -58,7 +60,10 @@ article h1 {
 
 section {
     text-align: justify;
-    max-width: 60%;
+    max-width: 70%;
+    border: 1px solid $primary-dark;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 select {
@@ -72,7 +77,7 @@ footer {
     padding: 5px 0;
 }
 
-@media screen and (max-width: 545px) {
+@media screen and (max-width: 526px) {
 
     main {
         padding-top: 30px;
