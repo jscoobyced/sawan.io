@@ -68,10 +68,8 @@ namespace sawan.tests
             actionResult.Should().NotBeNull("because the default response from HomeController is a valid result.");
             actionResult.Should().BeAssignableTo<ActionResult<string>>("because the default response from HomeController is a valid IActionResult.");
 
-            var viewResult = (ActionResult<string>)actionResult;
-
-            viewResult.Value.Should().NotBeNull("because the controller returns empty string.");
-            viewResult.Value.Should().BeEmpty("because the controller returns empty string.");
+            actionResult.Value.Should().NotBeNull("because the controller returns empty string.");
+            actionResult.Value.Should().BeEmpty("because the controller returns empty string.");
         }
     }
 }

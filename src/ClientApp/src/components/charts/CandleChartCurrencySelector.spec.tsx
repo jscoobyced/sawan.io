@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 import { TestUtils } from '../../../tests/TestUtils';
 import { SelectOption } from '../Models';
 import { CandleChartCurrencySelector } from './CandleChartCurrencySelector';
@@ -25,13 +25,13 @@ test('CandleChartCurrencySelector snapshot', () => {
 test('CandleChartCurrencySelector onChangeCurrency', () => {
     window.fetch = TestUtils.mockFetch(
         '[{"timestamp":1,"low":1.0,"high":1.0,"open":1.0,"close":1.0,"current":1.0,"volume":0.0}]');
-    const onChangeCurrency = new CandleChartPageHoc({}, {}).onChangeCurrency;
+    const onChangeCurrency = jest.fn().mockImplementation();
     const candleChartCurrencySelector = shallow(<CandleChartCurrencySelector
         currencyOptions={[]}
         onChangeCurrency={onChangeCurrency} />);
     candleChartCurrencySelector
         .find('#currencySelector')
         .simulate('change', { target: { value: '25' }, preventDefault: () => { return; } });
-    expect(window.fetch).toHaveBeenCalledTimes(1);
+    expect(onChangeCurrency).toHaveBeenCalledTimes(1);
 
 });

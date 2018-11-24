@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { AllContent } from '../../services/Models';
 import { Footer } from './Footer';
 import { Header } from './Header';

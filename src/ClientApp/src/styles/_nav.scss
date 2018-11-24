@@ -7,30 +7,18 @@ nav a {
 	display: block;
 	white-space: nowrap;
     text-decoration: none;
-    color: $primary;
-    background-color: $ternary;
+    color: $on-primary;
+    background-color: $primary-light;
+}
+
+nav a:hover {
+	background-color: $primary-dark;
 }
 
 nav ul {
 	list-style: none;
 	padding: 0;
 	z-index: 1000;
-}
-
-nav ul ul li:first-child a {
-    border-radius: 0;
-}
-
-nav ul li:first-child a {
-    border-radius: 10px 0 0 10px;
-}
-
-nav ul li:last-child a {
-    border-radius: 0 10px 10px 0;
-}
-
-nav ul ul li:last-child a {
-    border-radius: 0 0 10px 10px;
 }
 
 nav li {
@@ -45,8 +33,9 @@ nav ul ul {
 	z-index: 1000;
 }
 
-nav li:hover > ul {
-	display: block;
+nav > ul > li > ul > li {
+	min-width: 100%;
+	z-index: 1000;
 }
 
 nav ul ul ul {
@@ -54,9 +43,8 @@ nav ul ul ul {
 	top: 0;
 }
 
-nav > ul > li > ul > li {
-	min-width: 100%;
-	z-index: 1000;
+nav li:hover > ul {
+	display: block;
 }
 
 .menu-space {

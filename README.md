@@ -1,4 +1,4 @@
-AppVeyor build: [![Build status](https://ci.appveyor.com/api/projects/status/wdaplcea6no84t5d?svg=true)](https://ci.appveyor.com/project/jscoobyced/sawan-io)  
+AppVeyor build: [![Build status](https://ci.appveyor.com/api/projects/status/l1c7qjueue6rxulx?svg=true)](https://ci.appveyor.com/project/jscoobyced/sawan-io)
 Codecov C# code coverage: [![codecov](https://codecov.io/gh/jscoobyced/sawan.io/branch/master/graph/badge.svg)](https://codecov.io/gh/jscoobyced/sawan.io)  
 SonarCloud statuses: [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=sawan&metric=alert_status&v=11)](https://sonarcloud.io/dashboard?id=sawan)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sawan&metric=bugs&v=11)](https://sonarcloud.io/dashboard?id=sawan)

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { DecisionMaker } from './analysis/DecisionMaker';
 import { IAnalyser } from './analysis/Models';
 import { ThreeBlackCrows } from './analysis/ThreeBlackCrows';

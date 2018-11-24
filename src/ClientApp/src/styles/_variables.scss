@@ -1,10 +1,17 @@
 $font-primary: 'Roboto', sans-serif;
 $font-size: 200;
-$primary: #2196F3;
-$secondary: #90CAF9;
-$ternary: #0D47A1;
-$primary-dark: #0D47A1;
-$background: #001133;
-$background-invert: darken($background, 50%);
-
+$primary: #3061aa;
+$primary-dark: #00387a;
+$primary-light: #678edc;
+$secondary: white;
+$secondary-dark: white;
+$secondary-light: white;
+$background: #E1E2E1;
+$surface: #F5F5F6;
+$error: rgb(116, 12, 12);
+$on-primary: #FFF;
+$on-secondary: #000;
+$on-background: #000;
+$on-surface: #000;
+$on-error: #000;
 $navigation-span: 160px;
