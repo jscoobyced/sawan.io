@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { HomeContent } from '../../services/Models';
 
 export interface HomeProps {

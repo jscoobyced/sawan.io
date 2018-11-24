@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { SelectOption } from '../Models';
 import { CandleChartComponent } from './CandleChartComponent';
 import { CandleChartCurrencySelector } from './CandleChartCurrencySelector';

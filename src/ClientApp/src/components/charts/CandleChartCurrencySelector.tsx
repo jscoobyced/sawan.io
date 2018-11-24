@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { CandleChartCurrencyProps } from './Models';
 
 export class CandleChartCurrencySelector extends React.Component<CandleChartCurrencyProps> {

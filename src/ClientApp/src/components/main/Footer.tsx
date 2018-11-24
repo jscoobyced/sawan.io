@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 const version = process.env.VERSION;
 const mode = process.env.mode;

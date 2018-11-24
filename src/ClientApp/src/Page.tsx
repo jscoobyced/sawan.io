@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { CandleChartPageHoc } from './components/charts/CandleChartPageHoc';
 import { Home } from './components/main/Home';
