@@ -9,8 +9,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GitRevisionWebpackPlugin = require('git-revision-webpack-plugin');
 
 const gitRevisionWebpackPlugin = new GitRevisionWebpackPlugin();
-const root = path.join(__dirname, '../sawan/wwwroot');
-const dist = path.join(root, 'dist');
+const root = path.join(__dirname, '../sawan/');
+const dist = path.join(root, 'wwwroot');
 
 module.exports = (env, argv) => ({
   mode: "development",
@@ -68,16 +68,13 @@ module.exports = (env, argv) => ({
         }
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              disable: true
-            },
+        test: /\.(gif|png|jpe?g|svg|ico)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
           },
-        ],
+        },
       }
     ]
   },
@@ -107,7 +104,7 @@ module.exports = (env, argv) => ({
       inject: false,
       hash: true,
       template: './src/Index.tpl.cshtml',
-      filename: '../../Views/Home/Index.cshtml'
+      filename: '../Views/Home/Index.cshtml'
     }),
     new HtmlWebpackPlugin({
       inject: false,

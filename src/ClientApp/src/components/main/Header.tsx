@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Constants } from '../Models';
+import logo from '../../styles/images/wings.png';
 import { HeaderProps } from './Models';
 
 export class Header extends React.Component<HeaderProps> {
@@ -10,9 +10,8 @@ export class Header extends React.Component<HeaderProps> {
     }
 
     public render() {
-        const logoSrc = `${Constants.ImagePath}wings.svg`;
         return <header>
-            <img src={logoSrc} className='logo'
+            <img src={logo} className='logo'
                 alt={this.props.navigationMenuContent.websiteName + ' logo'}
                 title={this.props.navigationMenuContent.websiteName as string} />
             <span>{this.props.navigationMenuContent.websiteName}</span>

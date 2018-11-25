@@ -3,11 +3,13 @@
 }
 
 @section styles {
-    <link rel="stylesheet" href="~/dist<%=htmlWebpackPlugin.files.chunks.main.css %>">
+    <link rel="stylesheet" href="~<%=htmlWebpackPlugin.files.chunks.main.css %>">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
 }
 <div id="app-root">Something awesome is coming...</div>
 
 @section scripts {
-    <script src="~/dist<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
-    <script src="~/dist<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+    <script src="~<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
+    <script src="~<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 }
