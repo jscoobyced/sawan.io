@@ -5,7 +5,7 @@ test('ContentServic can get default content', () => {
     const contentService = new ContentService();
     expect(contentService.defaultContent()).not.toBeNull();
     expect(contentService.defaultContent().homeContent).not.toBeNull();
-    expect(contentService.defaultContent().homeContent.article).toEqual('');
+    expect(contentService.defaultContent().homeContent.article).toEqual(['', '']);
 });
 
 test('ContentService can get english content', () => {

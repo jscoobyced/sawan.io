@@ -1,14 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home component is unchanged. 1`] = `
-<article>
-  <h1 />
-  <section
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "",
-      }
-    }
-  />
-</article>
+Array [
+  <article
+    key="0"
+  >
+    <h1 />
+    <section>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
+      />
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        className="link-article"
+        to="/"
+      >
+        Read more...
+      </NavLink>
+    </section>
+  </article>,
+  <article
+    key="1"
+  >
+    <h1 />
+    <section>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
+      />
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        className="link-article"
+        to="/"
+      >
+        Read more...
+      </NavLink>
+    </section>
+  </article>,
+]
 `;
+
+exports[`Home component with different lengths. 1`] = `<span />`;
+
+exports[`Home component with no article. 1`] = `<span />`;
+
+exports[`Home component with no title. 1`] = `<span />`;
