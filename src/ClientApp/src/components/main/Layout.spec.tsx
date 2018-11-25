@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Layout } from './Layout';
 import { ContentService } from '../../services/ContentService';
+import { Layout } from './Layout';
 
 test('Layout base component is unchanged.', () => {
     const layout = shallow(<Layout />);
