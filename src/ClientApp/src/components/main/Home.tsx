@@ -15,7 +15,7 @@ export class Home extends React.Component<HomeProps> {
     public render() {
         const articles: string[] = this.props.homeContent.article as string[];
         const titles: string[] = this.props.homeContent.articleTitle as string[];
-        if (!articles) {
+        if (!articles || !titles || articles.length !== titles.length) {
             return <span></span>;
         }
 

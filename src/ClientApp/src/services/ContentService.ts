@@ -73,8 +73,8 @@ export class ContentService {
                 websiteName: '',
             },
             homeContent: {
-                article: '',
-                articleTitle: ''
+                article: ['', ''],
+                articleTitle: ['', '']
             }
         };
 
