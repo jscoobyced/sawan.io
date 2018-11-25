@@ -14,7 +14,7 @@ export class Header extends React.Component<HeaderProps> {
         return <header>
             <img src={logoSrc} className='logo'
                 alt={this.props.navigationMenuContent.websiteName + ' logo'}
-                title={this.props.navigationMenuContent.websiteName} />
+                title={this.props.navigationMenuContent.websiteName as string} />
             <span>{this.props.navigationMenuContent.websiteName}</span>
             <nav>
                 <ul>

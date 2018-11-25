@@ -9,15 +9,15 @@ export interface AllContent {
 }
 
 export interface NavigationMenuContent {
-    home: string;
-    websiteName: string;
-    applications: string;
-    cryptoCurrency: string;
-    healthMonitor: string;
-    about: string;
+    home: string | string[];
+    websiteName: string | string[];
+    applications: string | string[];
+    cryptoCurrency: string | string[];
+    healthMonitor: string | string[];
+    about: string | string[];
 }
 
 export interface HomeContent {
-    articleTitle: string;
-    article: string;
+    articleTitle: string | string[];
+    article: string | string[];
 }

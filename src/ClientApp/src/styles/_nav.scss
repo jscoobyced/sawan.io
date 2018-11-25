@@ -27,6 +27,14 @@ nav li {
 	z-index: 1000;
 }
 
+nav ul li:first-child a {
+    border-radius: 2px 0 0 2px;
+}
+
+nav ul li:last-child a {
+    border-radius: 0 2px 2px 0;
+}
+
 nav ul ul {
 	display: none;
 	position: absolute;
@@ -36,6 +44,14 @@ nav ul ul {
 nav > ul > li > ul > li {
 	min-width: 100%;
 	z-index: 1000;
+}
+
+nav ul ul li:first-child a {
+    border-radius: 0 0 0 0;
+}
+
+nav ul ul li:last-child a {
+    border-radius: 0 0 2px 2px;
 }
 
 nav ul ul ul {
@@ -52,9 +68,9 @@ nav li:hover > ul {
     width: 80px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 440px) {
 
 	.menu-space {
-		width: 20px;
+		width: 5px;
 	}	
 }
