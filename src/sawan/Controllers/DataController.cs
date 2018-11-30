@@ -15,9 +15,9 @@ namespace sawan.Controllers
     public class DataController : Controller
     {
         private readonly IPairingService pairingService;
-        private readonly IGithubService gitHubService;
+        private readonly IGitHubService gitHubService;
 
-        public DataController(IPairingService pairingService, IGithubService gitHubService)
+        public DataController(IPairingService pairingService, IGitHubService gitHubService)
         {
             this.pairingService = pairingService;
             this.gitHubService = gitHubService;

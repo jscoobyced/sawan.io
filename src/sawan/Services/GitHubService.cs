@@ -6,11 +6,11 @@ namespace sawan.Services
     using System.Text;
     using Microsoft.Extensions.Options;
 
-    public class GithubService : IGithubService
+    public class GitHubService : IGitHubService
     {
         private readonly IOptions<AppSettings> options;
 
-        public GithubService(IOptions<AppSettings> options)
+        public GitHubService(IOptions<AppSettings> options)
         {
             this.options = options;
         }
