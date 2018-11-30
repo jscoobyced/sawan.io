@@ -14,7 +14,7 @@ namespace sawan.tests
 
         public DataController Build()
         {
-            return new DataController(this.pairingService);
+            return new DataController(this.pairingService, null);
         }
     }
 }

@@ -1,0 +1,20 @@
+[Unit]
+Description=sawan.io netcore application
+After=network.target nginx.service
+
+[Service]
+ExecStart=/bin/sh -c '/home/cedric/www/sawan.io/start.sh'
+ExecStop=/bin/sh -c '/home/cedric/www/sawan.io/stop.sh'
+PIDFile=/home/cedric/www/sawan.io/sawan-io.pid
+User=cedric
+Group=cedric
+Type=forking
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+# Update your GitHub token here
+Environment=GitHub__WebHookToken=1234-5678-90
+
+[Install]
+WantedBy=multi-user.target
