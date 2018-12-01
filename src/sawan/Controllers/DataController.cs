@@ -52,13 +52,18 @@ namespace sawan.Controllers
         }
 
         [HttpPost("github")]
-        public async Task<IActionResult> Receive()
+        public async Task<IActionResult> Update()
         {
-            Request.Headers.TryGetValue("X-GitHub-Event", out StringValues eventName);
-            Request.Headers.TryGetValue("X-Hub-Signature", out StringValues signature);
-            Request.Headers.TryGetValue("X-GitHub-Delivery", out StringValues delivery);
+            if (this.gitHubService == null)
+            {
+                return NotFound();
+            }
 
-            using (var reader = new StreamReader(Request.Body))
+            Request?.Headers?.TryGetValue(GitHubHeader.XGitHubEvent, out StringValues eventName);
+            Request?.Headers?.TryGetValue(GitHubHeader.XHubSignature, out StringValues signature);
+            Request?.Headers?.TryGetValue(GitHubHeader.XGitHubDelivery, out StringValues delivery);
+
+            using (var reader = new StreamReader(Request?.Body))
             {
                 var payload = await reader.ReadToEndAsync();
 
