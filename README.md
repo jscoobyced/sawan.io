@@ -48,3 +48,8 @@ cd src/sawan-tests
 dotnet test
 popd
 ```
+
+## News - 2018-12-02
+
+Now this application can auto-deploy it's new version when a tag is created and a GitHub webhook is set
+ to `<server>/api/Data/github` and the webhook token set in `appsettings.json`
