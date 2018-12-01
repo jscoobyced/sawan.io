@@ -2,13 +2,17 @@
 namespace sawan.Services
 {
     using System;
+    using System.Diagnostics;
     using System.Security.Cryptography;
     using System.Text;
     using Microsoft.Extensions.Options;
+    using Newtonsoft.Json;
 
     public class GitHubService : IGitHubService
     {
         private readonly IOptions<AppSettings> options;
+        private readonly string Release = "release";
+        private readonly string Sha1Prefix = "sha1=";
 
         public GitHubService(IOptions<AppSettings> options)
         {
@@ -17,42 +21,36 @@ namespace sawan.Services
 
         public bool IsGithubPushAllowed(string payload, string eventName, string signatureWithPrefix)
         {
-            if (string.IsNullOrWhiteSpace(payload))
+            if (string.IsNullOrWhiteSpace(payload)
+            || string.IsNullOrWhiteSpace(eventName)
+            || !Release.Equals(eventName)
+            || string.IsNullOrWhiteSpace(signatureWithPrefix)
+            || !signatureWithPrefix.StartsWith(Sha1Prefix, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentNullException(nameof(payload));
-            }
-            if (string.IsNullOrWhiteSpace(eventName))
-            {
-                throw new ArgumentNullException(nameof(eventName));
-            }
-            if (string.IsNullOrWhiteSpace(signatureWithPrefix))
-            {
-                throw new ArgumentNullException(nameof(signatureWithPrefix));
+                return false;
             }
 
-            var Sha1Prefix = "sha1=";
+            var signature = signatureWithPrefix.Substring(Sha1Prefix.Length);
+            var secret = Encoding.ASCII.GetBytes(this.options.Value.GitHub.WebHookToken);
+            var payloadBytes = Encoding.ASCII.GetBytes(payload);
 
-            if (signatureWithPrefix.StartsWith(Sha1Prefix, StringComparison.OrdinalIgnoreCase))
+            using (var hmSha1 = new HMACSHA1(secret))
             {
-                var signature = signatureWithPrefix.Substring(Sha1Prefix.Length);
-                var secret = Encoding.ASCII.GetBytes(this.options.Value.GitHub.WebHookToken);
-                var payloadBytes = Encoding.ASCII.GetBytes(payload);
+                var hash = hmSha1.ComputeHash(payloadBytes);
 
-                using (var hmSha1 = new HMACSHA1(secret))
+                var hashString = ToHexString(hash);
+
+                if (hashString.Equals(signature))
                 {
-                    var hash = hmSha1.ComputeHash(payloadBytes);
+                    var payloadObject = JsonConvert.DeserializeObject<Payload>(payload);
 
-                    var hashString = ToHexString(hash);
-
-                    if (hashString.Equals(signature))
-                    {
-                        return true;
-                    }
+                    var version = payloadObject.Release.TagName;
+                    Update(this.options.Value.GitHub.UpdateScript, version);
+                    return true;
                 }
             }
 
             return false;
-
         }
 
         private static string ToHexString(byte[] bytes)
@@ -66,5 +64,16 @@ namespace sawan.Services
             return builder.ToString();
         }
 
+        private static void Update(string script, string version)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = script;
+            psi.UseShellExecute = false;
+            psi.RedirectStandardOutput = true;
+
+            psi.Arguments = version;
+            Process p = Process.Start(psi);
+            p.WaitForExit();
+        }
     }
 }
