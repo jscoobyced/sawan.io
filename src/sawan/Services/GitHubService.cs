@@ -22,10 +22,10 @@ namespace sawan.Services
         public bool IsGithubPushAllowed(string payload, string eventName, string signatureWithPrefix)
         {
             if (string.IsNullOrWhiteSpace(payload)
-            || string.IsNullOrWhiteSpace(eventName)
-            || !Release.Equals(eventName)
-            || string.IsNullOrWhiteSpace(signatureWithPrefix)
-            || !signatureWithPrefix.StartsWith(Sha1Prefix, StringComparison.OrdinalIgnoreCase))
+                || string.IsNullOrWhiteSpace(eventName)
+                || !Release.Equals(eventName)
+                || string.IsNullOrWhiteSpace(signatureWithPrefix)
+                || !signatureWithPrefix.StartsWith(Sha1Prefix, StringComparison.OrdinalIgnoreCase))
             {
                 return false;
             }
@@ -42,10 +42,19 @@ namespace sawan.Services
 
                 if (hashString.Equals(signature))
                 {
-                    var payloadObject = JsonConvert.DeserializeObject<Payload>(payload);
+                    var payloadObject = default(Payload);
 
-                    var version = payloadObject.Release.TagName;
-                    Update(this.options.Value.GitHub.UpdateScript, version);
+                    try
+                    {
+                        payloadObject = JsonConvert.DeserializeObject<Payload>(payload);
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+
+                    var version = payloadObject?.Release?.TagName;
+                    new ProcessRunner().RunScript(this.options.Value.GitHub.UpdateScript, version);
                     return true;
                 }
             }
@@ -62,18 +71,6 @@ namespace sawan.Services
             }
 
             return builder.ToString();
-        }
-
-        private static void Update(string script, string version)
-        {
-            ProcessStartInfo psi = new ProcessStartInfo();
-            psi.FileName = script;
-            psi.UseShellExecute = false;
-            psi.RedirectStandardOutput = true;
-
-            psi.Arguments = version;
-            Process p = Process.Start(psi);
-            p.WaitForExit();
         }
     }
 }

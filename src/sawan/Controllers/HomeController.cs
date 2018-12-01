@@ -20,7 +20,6 @@ namespace sawan.Controllers
         [HttpPost]
         public ActionResult<string> CspReport([FromBody] CspReportRequest request)
         {
-            Console.WriteLine($"Blocked URL -------------------> {request.CspReport.BlockedUri}");
             return string.Empty;
         }
     }
