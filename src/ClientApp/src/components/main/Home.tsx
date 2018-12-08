@@ -21,10 +21,10 @@ export class Home extends React.Component<HomeProps> {
 
         return articles.map((article, key) => <article key={key}>
             <h1>{titles[key]}</h1>
-            <section>
+            <div>
                 <span dangerouslySetInnerHTML={{ __html: article }}></span>
                 <NavLink to='/' className='link-article'>Read more...</NavLink>
-            </section>
+            </div>
         </article>);
     }
 }

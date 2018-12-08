@@ -1,11 +1,21 @@
+import { Url } from "url";
+
 export enum Language {
     English,
     French
 }
 
+export interface Link {
+    text: string;
+    url: string;
+    target?: string;
+    title?: string;
+}
+
 export interface AllContent {
     navigationMenuContent: NavigationMenuContent;
     homeContent: HomeContent;
+    menuContent: MenuContent;
 }
 
 export interface NavigationMenuContent {
@@ -20,4 +30,8 @@ export interface NavigationMenuContent {
 export interface HomeContent {
     articleTitle: string | string[];
     article: string | string[];
+}
+
+export interface MenuContent {
+    links: Link[];
 }

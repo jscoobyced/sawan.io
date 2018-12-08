@@ -62,7 +62,7 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
     }
 
     public render() {
-        return <article>
+        return <div>
             <CandleChartCurrencySelector
                 onChangeCurrency={this.onChangeCurrency}
                 currencyOptions={this.state.currencyOptions} />
@@ -70,7 +70,7 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
                 pairings={this.state.pairings}
                 loading={this.state.loadingCurrencyData}
                 currency={this.state.currency} />
-        </article>;
+        </div>;
     }
 
     public readonly onChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {

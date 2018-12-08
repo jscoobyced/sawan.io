@@ -6,7 +6,7 @@ Array [
     key="0"
   >
     <h1 />
-    <section>
+    <div>
       <span
         dangerouslySetInnerHTML={
           Object {
@@ -22,13 +22,13 @@ Array [
       >
         Read more...
       </NavLink>
-    </section>
+    </div>
   </article>,
   <article
     key="1"
   >
     <h1 />
-    <section>
+    <div>
       <span
         dangerouslySetInnerHTML={
           Object {
@@ -44,7 +44,7 @@ Array [
       >
         Read more...
       </NavLink>
-    </section>
+    </div>
   </article>,
 ]
 `;

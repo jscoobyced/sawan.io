@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component with content is unchanged. 1`] = `
+<aside>
+  <ul>
+    <li
+      key="0"
+    >
+      <a
+        href=""
+        target=""
+        title=""
+      />
+    </li>
+  </ul>
+  <ul>
+    <li>
+      Source Code hosted in 
+      <a
+        href="https://github.com/jscoobyced/sawan.io"
+        target="_blank"
+      >
+        <img
+          alt="GitHub"
+          src="github.png"
+          title="Source code hosted in GitHub"
+        />
+      </a>
+    </li>
+    <li>
+      Website built with 
+      <a
+        href="https://ci.appveyor.com/project/jscoobyced/sawan-io"
+        target="_blank"
+      >
+        <img
+          alt="AppVeyor"
+          src="appveyor.png"
+          title="Webiste built with AppVeyor"
+        />
+      </a>
+    </li>
+    <li>
+      Code quality by 
+      <a
+        href="https://codecov.io/gh/jscoobyced/sawan.io"
+        target="_blank"
+      >
+        <img
+          alt="CodeCov"
+          src="codecov.png"
+          title="Code quality with CodeCov"
+        />
+      </a>
+       and 
+      <a
+        href="https://sonarcloud.io/dashboard?id=sawan"
+        target="_blank"
+      >
+        <img
+          alt="SonarQube"
+          src="sonarqube.png"
+          title="Code quality with SonarQube"
+        />
+      </a>
+    </li>
+  </ul>
+</aside>
+`;
+
+exports[`SideBar base component is unchanged. 1`] = `
+<aside>
+  <ul />
+  <ul>
+    <li>
+      Source Code hosted in 
+      <a
+        href="https://github.com/jscoobyced/sawan.io"
+        target="_blank"
+      >
+        <img
+          alt="GitHub"
+          src="github.png"
+          title="Source code hosted in GitHub"
+        />
+      </a>
+    </li>
+    <li>
+      Website built with 
+      <a
+        href="https://ci.appveyor.com/project/jscoobyced/sawan-io"
+        target="_blank"
+      >
+        <img
+          alt="AppVeyor"
+          src="appveyor.png"
+          title="Webiste built with AppVeyor"
+        />
+      </a>
+    </li>
+    <li>
+      Code quality by 
+      <a
+        href="https://codecov.io/gh/jscoobyced/sawan.io"
+        target="_blank"
+      >
+        <img
+          alt="CodeCov"
+          src="codecov.png"
+          title="Code quality with CodeCov"
+        />
+      </a>
+       and 
+      <a
+        href="https://sonarcloud.io/dashboard?id=sawan"
+        target="_blank"
+      >
+        <img
+          alt="SonarQube"
+          src="sonarqube.png"
+          title="Code quality with SonarQube"
+        />
+      </a>
+    </li>
+  </ul>
+</aside>
+`;

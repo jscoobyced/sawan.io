@@ -19,6 +19,22 @@ exports[`Page content is preserved 1`] = `
             "Some other news",
           ],
         },
+        "menuContent": Object {
+          "links": Array [
+            Object {
+              "text": "Latest news - 2018-11-15",
+              "url": "#",
+            },
+            Object {
+              "text": "Lorem Ipsum",
+              "url": "#",
+            },
+            Object {
+              "text": "Some other news",
+              "url": "#",
+            },
+          ],
+        },
         "navigationMenuContent": Object {
           "about": "About",
           "applications": "Applications",
