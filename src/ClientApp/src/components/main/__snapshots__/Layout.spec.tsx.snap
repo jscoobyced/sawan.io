@@ -3,9 +3,7 @@
 exports[`Layout base component is unchanged. 1`] = `<div />`;
 
 exports[`Layout component with content is unchanged. 1`] = `
-<div
-  className="content"
->
+<main>
   <Header
     navigationMenuContent={
       Object {
@@ -18,7 +16,21 @@ exports[`Layout component with content is unchanged. 1`] = `
       }
     }
   />
-  <main />
+  <section />
+  <SideBar
+    menuContent={
+      Object {
+        "links": Array [
+          Object {
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "",
+          },
+        ],
+      }
+    }
+  />
   <Footer />
-</div>
+</main>
 `;

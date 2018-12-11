@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './import';
 import { Page } from './Page';
-import './styles/images/favicon.ico';
-import './styles/images/wings.png';
-import './styles/main.scss';
 
 export class Index {
 

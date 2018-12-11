@@ -2,6 +2,7 @@ import React from 'react';
 import { AllContent } from '../../services/Models';
 import { Footer } from './Footer';
 import { Header } from './Header';
+import { SideBar } from './SideBar';
 
 export interface LayoutProps {
     children?: React.ReactNode;
@@ -19,12 +20,13 @@ export class Layout extends React.Component<LayoutProps> {
             return <div></div>;
         }
 
-        return <div className='content'>
+        return <main>
             <Header navigationMenuContent={this.props.allContent.navigationMenuContent} />
-            <main>
+            <section>
                 {this.props.children}
-            </main>
+            </section>
+            <SideBar menuContent={this.props.allContent.menuContent} />
             <Footer />
-        </div>;
+        </main>;
     }
 }

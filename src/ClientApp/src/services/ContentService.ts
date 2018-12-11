@@ -75,6 +75,14 @@ export class ContentService {
             homeContent: {
                 article: ['', ''],
                 articleTitle: ['', '']
+            },
+            menuContent: {
+                links: [{
+                    text: '',
+                    url: '',
+                    target: '',
+                    title: ''
+                }]
             }
         };
 
@@ -93,6 +101,18 @@ export class ContentService {
             homeContent: {
                 article: this.content[language][ContentKey.MainArticle],
                 articleTitle: this.content[language][ContentKey.MainArticleTitle]
+            },
+            menuContent: {
+                links: [{
+                    text: this.content[language][ContentKey.MainArticleTitle][0],
+                    url: '#'
+                }, {
+                    text: this.content[language][ContentKey.MainArticleTitle][1],
+                    url: '#'
+                }, {
+                    text: this.content[language][ContentKey.MainArticleTitle][2],
+                    url: '#'
+                }]
             }
         };
     }
