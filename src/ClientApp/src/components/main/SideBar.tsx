@@ -25,6 +25,15 @@ export class SideBar extends React.Component<SideBarProps> {
 
         return <aside>
             {linkContent}
+            <article>
+                <h1>About C&eacute;dric</h1>
+                <div>
+                    I am a passionated software engineer that enjoys web development, web security, 
+                    Android development... and a bunch of other stuff.
+                    <br />I live in The Land Of Smile (Thailand) and currently work 
+                    at <a href='https://www.agoda.com' target='_blank'>Agoda</a> as a Software Development Manager.
+                </div>
+            </article>
             <ul>
                 <li>Source Code hosted in <a href='https://github.com/jscoobyced/sawan.io' target='_blank'>
                     <img src='github.png' title='Source code hosted in GitHub' alt='GitHub' />

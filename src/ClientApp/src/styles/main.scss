@@ -14,7 +14,7 @@ html, body {
 html {
     font-family: $font-primary;
     font-size: 16px;
-    background: $background url('images/cloud-background.png') fixed;
+    background: $background;
     color: $primary;
 }
 
@@ -62,13 +62,22 @@ aside ul {
     text-align: left;
 }
 
+aside ul:first-of-type {
+    padding-bottom: 100px;
+}
+
 aside ul:last-of-type {
     vertical-align: bottom;
 }
 
+aside article {
+    width: 80%;
+    padding-bottom: 100px;
+}
+
 article {
     margin: 0 auto;
-    padding: 10px 10px;
+    padding: 10px;
 }
 
 article h1 {
@@ -153,5 +162,13 @@ footer {
         display: block;
         width: 80%;
         min-height: unset;
+    }
+
+    aside ul:first-of-type {
+        padding-bottom: 0px;
+    }
+    
+    aside article {
+        padding-bottom: 10px;
     }
 }

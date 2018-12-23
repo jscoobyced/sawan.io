@@ -13,4 +13,9 @@ export class ContentKey {
     // Home
     public static MainArticleTitle = 'MAINARTICLETITLE';
     public static MainArticle = 'MAINARTICLE';
+
+    // Footer
+    public static FooterCopyright = 'FOOTERCOPYRIGHT';
+    public static FooterCredits = 'FOOTERCREDITS';
+    public static FooterYear = 'FOOTERYEAR';
 }
