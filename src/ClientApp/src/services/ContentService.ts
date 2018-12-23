@@ -19,10 +19,10 @@ export class ContentService {
             'Lorem Ipsum', 'Some other news'];
         this.content[language][ContentKey.MainArticle] = ['Grand opening of sawan.io.<br />This website is about my'
             + ' personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP headers...'
-            + ' It includes a simple (and a bit naive :) ) crypto-currency analyser: it can suggest you to sell'
-            + ' or buy. Use at your own risk, it is amateur predictions, you have been warned :)'
+            + ' It includes a simple (and a bit naive) crypto-currency analyser: it can suggest you to sell'
+            + ' or buy. Use at your own risk, it is amateur predictions, you have been warned.'
             + '<br />There will be also an application to track health metrics (weight, % body fat, vascular'
-            + ' fat ratio... Or not, this will be my next project :)<br /> This project is open-sourced on <a'
+            + ' fat ratio...). Or maybe not, this might be my next project.<br /> This project is open-sourced on <a'
             + ' target=\'_blank\' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
         + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut'
@@ -58,6 +58,9 @@ export class ContentService {
         + ' porta lorem mollis aliquam. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque'
         + ' fermentum. Morbi tristique senectus et netus et malesuada fames. Nisi vitae suscipit tellus'
         + ' mauris a diam maecenas. Sed risus ultricies tristique nulla aliquet.'];
+        this.content[language][ContentKey.FooterCopyright] = 'Copyright';
+        this.content[language][ContentKey.FooterCredits] = 'sawan.io';
+        this.content[language][ContentKey.FooterYear] = '2018';
 
         return this.updateAllContent(language);
     }
@@ -73,8 +76,8 @@ export class ContentService {
                 websiteName: '',
             },
             homeContent: {
-                article: ['', ''],
-                articleTitle: ['', '']
+                article: [''],
+                articleTitle: ['']
             },
             menuContent: {
                 links: [{
@@ -83,6 +86,11 @@ export class ContentService {
                     target: '',
                     title: ''
                 }]
+            },
+            footerContent: {
+                credits: '',
+                copyright: '',
+                year: ''
             }
         };
 
@@ -113,6 +121,11 @@ export class ContentService {
                     text: this.content[language][ContentKey.MainArticleTitle][2],
                     url: '#'
                 }]
+            },
+            footerContent: {
+                credits: this.content[language][ContentKey.FooterCredits],
+                copyright: this.content[language][ContentKey.FooterCopyright],
+                year: this.content[language][ContentKey.FooterYear]
             }
         };
     }

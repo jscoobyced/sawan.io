@@ -31,6 +31,18 @@ exports[`Layout component with content is unchanged. 1`] = `
       }
     }
   />
+<<<<<<< HEAD
   <Footer />
+=======
+  <Footer
+    footerContent={
+      Object {
+        "copyright": "",
+        "credits": "",
+        "year": "",
+      }
+    }
+  />
+>>>>>>> feature/content
 </main>
 `;
