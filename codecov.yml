@@ -11,6 +11,10 @@ coverage:
     project: yes
     patch: yes
     changes: no
+    status:
+      patch:
+        default:
+          threshold: 0.1%
 
 parsers:
   gcov:
