@@ -82,15 +82,5 @@ exports[`Layout component with content is unchanged. 1`] = `
       </a>
     </li>
   </ul>
-  <Footer
-    footerContent={
-      Object {
-        "copyright": "",
-        "credits": "",
-        "year": "",
-      }
-    }
-    id="footer2"
-  />
 </aside>
 `;

@@ -6,9 +6,8 @@
     margin: 0 0;
 }
 
-html, body, #app-root {
+body {
     min-width: 375px;
-    height: 100%;
 }
 
 html {
@@ -38,26 +37,23 @@ header span {
 }
 
 main {
-    height: 100%;
     width: 100%;
-    text-align: center;
 }
 
 section, aside {
+    min-height: 97vh;
     display: inline-block;
 }
 
 section {
-    height: 100%;
     width: 75%;
     margin: 0 auto;
+    background: $secondary;
 }
 
 aside {
     vertical-align: top;
-    height: 100%;
     width: 25%;
-    background: $secondary;
 }
 
 aside ul {
@@ -66,7 +62,8 @@ aside ul {
 }
 
 aside ul:first-of-type {
-    padding-bottom: 100px;
+    padding-top: 100px;
+    padding-bottom: 20px;
 }
 
 aside ul:last-of-type {
@@ -94,10 +91,9 @@ article h1 {
 
 article div {
     text-align: justify;
-    border: 1px solid $primary-dark;
-    border-radius: 10px;
+    border-radius: 2px;
     padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba($primary-dark, 0.2), 0 6px 20px 0 rgba($primary-dark, 0.19);
+    box-shadow: 0 2px 2px 0 rgba($primary-dark, 0.2), 0 2px 2px 0 rgba($primary-dark, 0.19);
     background: $surface;
 }
 
@@ -121,24 +117,25 @@ select {
 }
 
 footer {
-    position: relative;
     text-align: center;
-    height: 20px;
+    height: 3vh;
     width: 100%;
     margin: 0 auto;
     color: $on-primary;
     background: $primary-dark;
+    line-height: 3vh;
 }
 
 @media screen and (max-width: 1260px) {
     aside, section {
         width: 100%;
         margin: 0 auto;
-        max-width: 80%;
         height: unset;
+        min-height: unset;
     }
 
     aside ul:first-of-type {
+        padding-top: 10px;
         padding-bottom: 0px;
     }
     
@@ -160,9 +157,7 @@ footer {
     }
 
     aside, section {
-        width: 80%;
         margin: 0 auto;
-        max-width: 80%;
     }
 
     article {

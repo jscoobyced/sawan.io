@@ -8,7 +8,6 @@ const year = 2018;
 
 export interface FooterProps {
     footerContent: FooterContent;
-    id: string;
 }
 
 export class Footer extends React.Component<FooterProps> {
@@ -19,7 +18,7 @@ export class Footer extends React.Component<FooterProps> {
 
     public render() {
         const content = this.props.footerContent;
-        return <footer id={this.props.id}>
+        return <footer>
             &copy; {content.copyright} {content.year} {content.credits} - {version}
             </footer>;
     }

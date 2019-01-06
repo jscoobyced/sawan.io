@@ -26,6 +26,7 @@ export class Layout extends React.Component<LayoutProps> {
                 {this.props.children}
             </section>
             <SideBar allContent={this.props.allContent} />
+            <Footer footerContent={this.props.allContent.footerContent} />
         </main>;
     }
 }

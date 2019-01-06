@@ -1,6 +1,5 @@
 import React from 'react';
 import { AllContent, Link } from '../../services/Models';
-import { Footer } from './Footer';
 
 export interface SideBarProps {
     allContent: AllContent;
@@ -51,7 +50,6 @@ export class SideBar extends React.Component<SideBarProps> {
                     </a>
                 </li>
             </ul>
-            <Footer id='footer2' footerContent={this.props.allContent.footerContent} />
         </aside>;
     }
 }
