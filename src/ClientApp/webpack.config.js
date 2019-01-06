@@ -117,6 +117,7 @@ module.exports = (env, argv) => ({
   devServer: {
     contentBase: dist,
     compress: true,
-    port: 9000
+    port: 9000,
+    disableHostCheck: true
   }
 });

@@ -21,11 +21,11 @@ export class Layout extends React.Component<LayoutProps> {
         }
 
         return <main>
-            <Header navigationMenuContent={this.props.allContent.navigationMenuContent} />
             <section>
+                <Header navigationMenuContent={this.props.allContent.navigationMenuContent} />
                 {this.props.children}
             </section>
-            <SideBar menuContent={this.props.allContent.menuContent} />
+            <SideBar allContent={this.props.allContent} />
             <Footer footerContent={this.props.allContent.footerContent} />
         </main>;
     }

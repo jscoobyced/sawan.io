@@ -4,30 +4,54 @@ exports[`Layout base component is unchanged. 1`] = `<div />`;
 
 exports[`Layout component with content is unchanged. 1`] = `
 <main>
-  <Header
-    navigationMenuContent={
-      Object {
-        "about": "",
-        "applications": "",
-        "cryptoCurrency": "",
-        "healthMonitor": "",
-        "home": "",
-        "websiteName": "",
+  <section>
+    <Header
+      navigationMenuContent={
+        Object {
+          "about": "",
+          "applications": "",
+          "cryptoCurrency": "",
+          "healthMonitor": "",
+          "home": "",
+          "websiteName": "",
+        }
       }
-    }
-  />
-  <section />
+    />
+  </section>
   <SideBar
-    menuContent={
+    allContent={
       Object {
-        "links": Array [
-          Object {
-            "target": "",
-            "text": "",
-            "title": "",
-            "url": "",
-          },
-        ],
+        "footerContent": Object {
+          "copyright": "",
+          "credits": "",
+          "year": "",
+        },
+        "homeContent": Object {
+          "article": Array [
+            "",
+          ],
+          "articleTitle": Array [
+            "",
+          ],
+        },
+        "menuContent": Object {
+          "links": Array [
+            Object {
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "",
+            },
+          ],
+        },
+        "navigationMenuContent": Object {
+          "about": "",
+          "applications": "",
+          "cryptoCurrency": "",
+          "healthMonitor": "",
+          "home": "",
+          "websiteName": "",
+        },
       }
     }
   />
