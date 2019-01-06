@@ -9,13 +9,13 @@ export interface HomeProps {
 
 export class Home extends React.Component<HomeProps> {
 
-    private options = {
+    private readonly options = {
         whiteList: {
             a: ['href', 'title', 'target'],
             br: []
         }
     };
-    private xssFilter = new xss.FilterXSS(this.options);
+    private readonly xssFilter = new xss.FilterXSS(this.options);
 
     public constructor(props: HomeProps) {
         super(props);

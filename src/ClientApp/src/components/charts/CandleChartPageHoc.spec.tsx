@@ -20,7 +20,9 @@ test('CandleChartPageHoc can parse currency change event', () => {
     const candleChartPageHoc = new CandleChartPageHoc({}, {});
     candleChartPageHoc.fetchCurrencyData = fetchCurrencyData;
     const event = {
-        preventDefault: () => { },
+        preventDefault: () => {
+            // Do nothing
+        },
         target: {
             value: currencyChosen
         }

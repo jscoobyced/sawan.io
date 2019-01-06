@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Footer } from './Footer';
 import { ContentService } from '../../services/ContentService';
+import { Footer } from './Footer';
 
 test('Footer component is unchanged.', () => {
     const footerContent = new ContentService().defaultContent().footerContent;
