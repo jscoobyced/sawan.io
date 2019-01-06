@@ -10,3 +10,22 @@ test('CandleChartPageHoc snapshot.', () => {
     expect(candleChartPageHoc).toMatchSnapshot();
     expect(window.fetch).toHaveBeenCalledTimes(2);
 });
+
+test('CandleChartPageHoc can parse currency change event', () => {
+    let currencyId = 0;
+    const currencyChosen = '10';
+    const fetchCurrencyData = (newCurrencyId: number) => {
+        currencyId = newCurrencyId;
+    };
+    const candleChartPageHoc = new CandleChartPageHoc({}, {});
+    candleChartPageHoc.fetchCurrencyData = fetchCurrencyData;
+    const event = {
+        preventDefault: () => { },
+        target: {
+            value: currencyChosen
+        }
+    } as React.ChangeEvent<HTMLSelectElement>;
+    candleChartPageHoc.onChangeCurrency(event);
+
+    expect(currencyId.toString()).toBe(currencyChosen);
+});

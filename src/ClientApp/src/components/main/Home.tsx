@@ -42,7 +42,7 @@ export class Home extends React.Component<HomeProps> {
         let safeSummary = safeContent.substring(0, 1000);
         if (safeContent !== safeSummary) {
             safeSummary = safeSummary.substring(0, safeSummary.lastIndexOf(" "));
-            safeSummary += '...';
+            safeSummary += '&#8230;';
         }
         return safeSummary;
     }

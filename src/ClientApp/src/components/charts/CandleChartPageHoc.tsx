@@ -24,7 +24,7 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
         };
     }
 
-    public readonly fetchCurrencyData = (currencyId: number) => {
+    public fetchCurrencyData = (currencyId: number) => {
         if (this.state.loadingCurrencyData) {
             return;
         }

@@ -33,3 +33,12 @@ test('Home component with different lengths.', () => {
 
     expect(home).toMatchSnapshot();
 });
+
+test('Home component with long article.', () => {
+    const homeContent = new ContentService().defaultContent().homeContent;
+    const longContent = 'x'.repeat(1024);
+    homeContent.article = [longContent];
+    const home = shallow(<Home homeContent={homeContent} />);
+
+    expect(home).toMatchSnapshot();
+});
