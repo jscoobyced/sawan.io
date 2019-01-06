@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, MenuContent } from '../../services/Models';
+import { AllContent, Link } from '../../services/Models';
+import { Footer } from './Footer';
 
 export interface SideBarProps {
-    menuContent?: MenuContent;
+    allContent: AllContent;
 }
 
 export class SideBar extends React.Component<SideBarProps> {
@@ -12,7 +13,7 @@ export class SideBar extends React.Component<SideBarProps> {
     }
 
     public render() {
-        const links: Link[] = this.props.menuContent ? this.props.menuContent.links : [];
+        const links: Link[] = this.props.allContent.menuContent ? this.props.allContent.menuContent.links : [];
         let linkContent;
         if (links) {
             const contentList = links.map((link, key) => <li key={key}>
@@ -28,9 +29,9 @@ export class SideBar extends React.Component<SideBarProps> {
             <article>
                 <h1>About C&eacute;dric</h1>
                 <div>
-                    I am a passionated software engineer that enjoys web development, web security, 
+                    I am a passionated software engineer that enjoys web development, web security,
                     Android development... and a bunch of other stuff.
-                    <br />I live in The Land Of Smile (Thailand) and currently work 
+                    <br />I live in The Land Of Smile (Thailand) and currently work
                     at <a href='https://www.agoda.com' target='_blank'>Agoda</a> as a Software Development Manager.
                 </div>
             </article>
@@ -50,6 +51,7 @@ export class SideBar extends React.Component<SideBarProps> {
                     </a>
                 </li>
             </ul>
+            <Footer id='footer2' footerContent={this.props.allContent.footerContent} />
         </aside>;
     }
 }

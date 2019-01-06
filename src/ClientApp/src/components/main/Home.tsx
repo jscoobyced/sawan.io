@@ -39,7 +39,7 @@ export class Home extends React.Component<HomeProps> {
 
     private getSafeContent(content: string): string {
         const safeContent = this.xssFilter.process(content);
-        let safeSummary = safeContent.substring(0, 1000);
+        let safeSummary = safeContent.substring(0, 2000);
         if (safeContent !== safeSummary) {
             safeSummary = safeSummary.substring(0, safeSummary.lastIndexOf(" "));
             safeSummary += '&#8230;';

@@ -6,9 +6,9 @@
     margin: 0 0;
 }
 
-html, body {
-    height: 100%;
+html, body, #app-root {
     min-width: 375px;
+    height: 100%;
 }
 
 html {
@@ -38,6 +38,7 @@ header span {
 }
 
 main {
+    height: 100%;
     width: 100%;
     text-align: center;
 }
@@ -47,14 +48,16 @@ section, aside {
 }
 
 section {
-    width: 60%;
+    height: 100%;
+    width: 75%;
     margin: 0 auto;
 }
 
 aside {
     vertical-align: top;
-    min-height: 90vh;
-    width: 20%;
+    height: 100%;
+    width: 25%;
+    background: $secondary;
 }
 
 aside ul {
@@ -76,8 +79,12 @@ aside article {
 }
 
 article {
-    margin: 0 auto;
     padding: 10px;
+}
+
+section article h1, section article div {
+    margin: 0 auto;
+    max-width: 80%;
 }
 
 article h1 {
@@ -87,7 +94,6 @@ article h1 {
 
 article div {
     text-align: justify;
-    max-width: 100%;
     border: 1px solid $primary-dark;
     border-radius: 10px;
     padding: 10px;
@@ -117,26 +123,33 @@ select {
 footer {
     position: relative;
     text-align: center;
-    height: 3vh;
-    width: 80%;
+    height: 20px;
+    width: 100%;
     margin: 0 auto;
-}
-
-@media screen and (max-width: 1570px) {
-    aside {
-        width: 25%;
-    }
+    color: $on-primary;
+    background: $primary-dark;
 }
 
 @media screen and (max-width: 1260px) {
-    aside {
-        width: 30%;
+    aside, section {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 80%;
+        height: unset;
     }
-}
 
-@media screen and (max-width: 1060px) {
-    aside {
-        width: 40%;
+    aside ul:first-of-type {
+        padding-bottom: 0px;
+    }
+    
+    aside article {
+        padding-bottom: 10px;
+        margin: 0 auto;
+    }
+
+    article h1, article div {
+        margin: 0 auto;
+        max-width: 80%;
     }
 }
 
@@ -146,8 +159,10 @@ footer {
         padding-bottom: 30px;
     }
 
-    section {
+    aside, section {
         width: 80%;
+        margin: 0 auto;
+        max-width: 80%;
     }
 
     article {
@@ -160,8 +175,8 @@ footer {
 
     aside {
         display: block;
-        width: 80%;
         min-height: unset;
+        padding-top: 5px;
     }
 
     aside ul:first-of-type {
