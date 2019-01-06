@@ -1,54 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home component is unchanged. 1`] = `
-<<<<<<< HEAD
-Array [
-  <article
-    key="0"
-  >
-    <h1 />
-    <div>
-      <span
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "",
-          }
-        }
-      />
-      <NavLink
-        activeClassName="active"
-        aria-current="page"
-        className="link-article"
-        to="/"
-      >
-        Read more...
-      </NavLink>
-    </div>
-  </article>,
-  <article
-    key="1"
-  >
-    <h1 />
-    <div>
-      <span
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "",
-          }
-        }
-      />
-      <NavLink
-        activeClassName="active"
-        aria-current="page"
-        className="link-article"
-        to="/"
-      >
-        Read more...
-      </NavLink>
-    </div>
-  </article>,
-]
-=======
 <article
   key="0"
 >
@@ -71,7 +23,6 @@ Array [
     </NavLink>
   </div>
 </article>
->>>>>>> feature/content
 `;
 
 exports[`Home component with different lengths. 1`] = `

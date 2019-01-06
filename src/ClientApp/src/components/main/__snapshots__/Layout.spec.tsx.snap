@@ -31,9 +31,6 @@ exports[`Layout component with content is unchanged. 1`] = `
       }
     }
   />
-<<<<<<< HEAD
-  <Footer />
-=======
   <Footer
     footerContent={
       Object {
@@ -43,6 +40,5 @@ exports[`Layout component with content is unchanged. 1`] = `
       }
     }
   />
->>>>>>> feature/content
 </main>
 `;
