@@ -1,55 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home component is unchanged. 1`] = `
-Array [
-  <article
-    key="0"
-  >
-    <h1 />
-    <div>
-      <span
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "",
-          }
+<article
+  key="0"
+>
+  <h1 />
+  <div>
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
         }
-      />
-      <NavLink
-        activeClassName="active"
-        aria-current="page"
-        className="link-article"
-        to="/"
-      >
-        Read more...
-      </NavLink>
-    </div>
-  </article>,
-  <article
-    key="1"
-  >
-    <h1 />
-    <div>
-      <span
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "",
-          }
-        }
-      />
-      <NavLink
-        activeClassName="active"
-        aria-current="page"
-        className="link-article"
-        to="/"
-      >
-        Read more...
-      </NavLink>
-    </div>
-  </article>,
-]
+      }
+    />
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      className="link-article"
+      to="/"
+    >
+      Read more...
+    </NavLink>
+  </div>
+</article>
 `;
 
-exports[`Home component with different lengths. 1`] = `<span />`;
+exports[`Home component with different lengths. 1`] = `
+<article
+  key="0"
+>
+  <h1 />
+  <div>
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      className="link-article"
+      to="/"
+    >
+      Read more...
+    </NavLink>
+  </div>
+</article>
+`;
+
+exports[`Home component with long article. 1`] = `
+<article
+  key="0"
+>
+  <h1 />
+  <div>
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "&#8230;",
+        }
+      }
+    />
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      className="link-article"
+      to="/"
+    >
+      Read more...
+    </NavLink>
+  </div>
+</article>
+`;
 
 exports[`Home component with no article. 1`] = `<span />`;
 

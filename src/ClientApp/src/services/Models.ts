@@ -16,6 +16,7 @@ export interface AllContent {
     navigationMenuContent: NavigationMenuContent;
     homeContent: HomeContent;
     menuContent: MenuContent;
+    footerContent: FooterContent;
 }
 
 export interface NavigationMenuContent {
@@ -34,4 +35,10 @@ export interface HomeContent {
 
 export interface MenuContent {
     links: Link[];
+}
+
+export interface FooterContent {
+    copyright: string | string[];
+    credits: string | string[];
+    year: string | string[];
 }

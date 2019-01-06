@@ -51,6 +51,7 @@
     "webpack": "4.26.0",
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.10",
-    "webpack-md5-hash": "0.0.6"
+    "webpack-md5-hash": "0.0.6",
+    "xss": "1.0.3"
   }
 }

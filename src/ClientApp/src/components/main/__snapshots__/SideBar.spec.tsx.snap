@@ -13,6 +13,23 @@ exports[`Layout component with content is unchanged. 1`] = `
       />
     </li>
   </ul>
+  <article>
+    <h1>
+      About Cédric
+    </h1>
+    <div>
+      I am a passionated software engineer that enjoys web development, web security, Android development... and a bunch of other stuff.
+      <br />
+      I live in The Land Of Smile (Thailand) and currently work at 
+      <a
+        href="https://www.agoda.com"
+        target="_blank"
+      >
+        Agoda
+      </a>
+       as a Software Development Manager.
+    </div>
+  </article>
   <ul>
     <li>
       Source Code hosted in 
@@ -71,6 +88,23 @@ exports[`Layout component with content is unchanged. 1`] = `
 exports[`SideBar base component is unchanged. 1`] = `
 <aside>
   <ul />
+  <article>
+    <h1>
+      About Cédric
+    </h1>
+    <div>
+      I am a passionated software engineer that enjoys web development, web security, Android development... and a bunch of other stuff.
+      <br />
+      I live in The Land Of Smile (Thailand) and currently work at 
+      <a
+        href="https://www.agoda.com"
+        target="_blank"
+      >
+        Agoda
+      </a>
+       as a Software Development Manager.
+    </div>
+  </article>
   <ul>
     <li>
       Source Code hosted in 
