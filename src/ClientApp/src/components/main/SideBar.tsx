@@ -1,8 +1,8 @@
 import React from 'react';
-import { AllContent, Link } from '../../services/Models';
+import { MainContent } from '../../services/Models';
 
 export interface SideBarProps {
-    allContent: AllContent;
+    allContent: MainContent;
 }
 
 export class SideBar extends React.Component<SideBarProps> {

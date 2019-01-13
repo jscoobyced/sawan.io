@@ -1,12 +1,12 @@
 import React from 'react';
-import { AllContent } from '../../services/Models';
+import { MainContent } from '../../services/Models';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { SideBar } from './SideBar';
 
 export interface LayoutProps {
     children?: React.ReactNode;
-    allContent?: AllContent;
+    allContent?: MainContent;
 }
 
 export class Layout extends React.Component<LayoutProps> {

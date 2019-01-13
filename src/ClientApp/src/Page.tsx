@@ -3,31 +3,33 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { CandleChartPageHoc } from './components/charts/CandleChartPageHoc';
 import { Home } from './components/main/Home';
 import { Layout } from './components/main/Layout';
-import { ContentService } from './services/ContentService';
-import { AllContent, BlogPage, Language } from './services/Models';
+import { ContentServiceFactory } from './services/ContentServiceFactory';
+import { IContentService } from './services/IContentService';
+import { BlogPage, Language, MainContent } from './services/Models';
 import { HtmlUtils } from './utils/HtmlUtils';
 
 export interface PageState {
-    allContent: AllContent;
+    allContent: MainContent;
     blogPage: BlogPage;
 }
 
 export class Page extends React.Component<{}, PageState> {
 
-    private readonly contentService: ContentService;
+    private readonly contentService: IContentService;
 
     public constructor(props: any) {
         super(props);
-        this.contentService = new ContentService();
+        const mode = process.env.mode as string;
+        this.contentService = ContentServiceFactory.GetContentService(mode);
         this.state = {
-            allContent: this.contentService.defaultContent(),
-            blogPage: this.contentService.defaultBlogContent()
+            allContent: this.contentService.getDefaultMainContent(),
+            blogPage: this.contentService.getDefaultBlogPage()
         };
     }
 
     public componentDidMount() {
         const allContent = this.updateContent(Language.English);
-        const blogPage = this.contentService.blogPage(4); 
+        const blogPage = this.contentService.getBlogPage(4);
         this.setState({ allContent, blogPage });
     }
 
@@ -40,7 +42,7 @@ export class Page extends React.Component<{}, PageState> {
         return <BrowserRouter children={routes} basename={HtmlUtils.baseUrl()} />;
     }
 
-    private updateContent(language: Language): AllContent {
-        return this.contentService.updateContent(language);
+    private updateContent(language: Language): MainContent {
+        return this.contentService.getMainContent(language);
     }
 }

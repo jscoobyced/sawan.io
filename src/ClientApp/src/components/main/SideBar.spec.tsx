@@ -4,7 +4,7 @@ import { ContentService } from '../../services/ContentService';
 import { SideBar } from './SideBar';
 
 test('Layout component with content is unchanged.', () => {
-    const allContent = new ContentService().defaultContent();
+    const allContent = new ContentService().getDefaultMainContent();
     const sideBar = shallow(<SideBar allContent={allContent} />);
     expect(sideBar).toMatchSnapshot();
 });

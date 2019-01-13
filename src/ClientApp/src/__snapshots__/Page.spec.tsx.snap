@@ -13,20 +13,7 @@ exports[`Page content is preserved 1`] = `
           "year": "2018 - 2019",
         },
         "menuContent": Object {
-          "links": Array [
-            Object {
-              "text": "Grand opening",
-              "url": "#",
-            },
-            Object {
-              "text": "Interesting stuff",
-              "url": "#",
-            },
-            Object {
-              "text": "Some other link",
-              "url": "#",
-            },
-          ],
+          "links": Array [],
         },
         "navigationMenuContent": Object {
           "about": "About",

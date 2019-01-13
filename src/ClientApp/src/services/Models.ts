@@ -10,7 +10,7 @@ export interface Link {
     title?: string;
 }
 
-export interface AllContent {
+export interface MainContent {
     navigationMenuContent: NavigationMenuContent;
     menuContent: MenuContent;
     footerContent: FooterContent;
