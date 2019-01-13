@@ -1,3 +1,4 @@
+import { ApiUtils } from '../utils/ApiUtils';
 import { ContentKey } from './ContentKey';
 import { IContentService } from './IContentService';
 import { BlogElement, BlogPage, Language, MainContent } from './Models';
@@ -14,7 +15,7 @@ export class ContentService implements IContentService {
         return this.mapMainContent(content, Language.English);
     }
 
-    public getBlogPage(maxResult: number): BlogPage {
+    public getBlogPage(maxResult: number): Promise<BlogPage> {
         return this.updateBlogPage(maxResult);
     }
 
@@ -50,12 +51,18 @@ export class ContentService implements IContentService {
         return content;
     }
 
-    protected updateBlogPage(maxResult: number): BlogPage {
-        const articles: BlogElement[] = [];
-        // TODO: Fetch blog content from API
-        return {
-            articles
-        };
+    protected updateBlogPage(maxResult: number): Promise<BlogPage> {
+        return ApiUtils.fetchData<BlogElement[]>('/api/Data/blog')
+            .then(data => {
+                if (!data) {
+                    return {
+                        articles: []
+                    };
+                }
+                return {
+                    articles: data.slice(0, Math.min(maxResult, data.length))
+                };
+            });
     }
 
     private mapMainContent(content: Array<{ [key: string]: string; }>, language: Language): MainContent {

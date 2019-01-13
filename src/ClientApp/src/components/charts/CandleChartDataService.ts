@@ -1,3 +1,4 @@
+import { ApiUtils } from '../../utils/ApiUtils';
 import { SelectOption } from '../Models';
 import { Pairing } from './Models';
 
@@ -8,25 +9,11 @@ export class CandleChartDataService implements ICandleChartDataService {
             return Promise.resolve([]);
         }
 
-        return this.fetchData<Pairing[]>(`/api/Data/pairing/${currency}/5`);
+        return ApiUtils.fetchData<Pairing[]>(`/api/Data/pairing/${currency}/5`);
     }
 
     public fetchCurrencies(): Promise<SelectOption[]> {
-        return this.fetchData<SelectOption[]>(`/api/Data/currencies`);
-    }
-
-    protected fetchData<T>(url: string): Promise<T> {
-
-        return fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                }
-                return response.json() as Promise<T>;
-            })
-            .catch((error: Error) => {
-                throw error;
-            });
+        return ApiUtils.fetchData<SelectOption[]>(`/api/Data/currencies`);
     }
 }
 

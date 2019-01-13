@@ -29,8 +29,10 @@ export class Page extends React.Component<{}, PageState> {
 
     public componentDidMount() {
         const allContent = this.updateContent(Language.English);
-        const blogPage = this.contentService.getBlogPage(4);
-        this.setState({ allContent, blogPage });
+        this.contentService.getBlogPage(4)
+            .then(blogPage => {
+                this.setState({ allContent, blogPage });
+            });
     }
 
     public render() {

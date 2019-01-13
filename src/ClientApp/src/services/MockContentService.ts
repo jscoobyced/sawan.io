@@ -18,7 +18,7 @@ export class MockContentService extends ContentService {
         return content;
     }
 
-    protected updateBlogPage(maxResult: number): BlogPage {
+    protected updateBlogPage(maxResult: number): Promise<BlogPage> {
         const date = '2018-11-15';
         const displayDate = (new Date(date).toISOString().substring(0, 10));
         const articles: BlogElement[] = [
@@ -74,8 +74,8 @@ export class MockContentService extends ContentService {
                     + ' mauris a diam maecenas. Sed risus ultricies tristique nulla aliquet.'
             }
         ];
-        return {
-            articles
-        };
+        return new Promise<BlogPage>(resolve => {
+            resolve({ articles });
+        });
     }
 }
