@@ -2,9 +2,6 @@ import React from 'react';
 import { FooterContent } from '../../services/Models';
 
 const version = process.env.VERSION;
-const copyright = 'Copyright';
-const credits = 'sawan.io';
-const year = 2018;
 
 export interface FooterProps {
     footerContent: FooterContent;

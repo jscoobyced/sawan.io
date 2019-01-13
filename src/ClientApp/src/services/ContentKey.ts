@@ -10,10 +10,6 @@ export class ContentKey {
     public static CryptoCurrency = 'CRYPTOCURRENCY';
     public static HealthMonitor = 'HEALTHMONITOR';
 
-    // Home
-    public static MainArticleTitle = 'MAINARTICLETITLE';
-    public static MainArticle = 'MAINARTICLE';
-
     // Footer
     public static FooterCopyright = 'FOOTERCOPYRIGHT';
     public static FooterCredits = 'FOOTERCREDITS';

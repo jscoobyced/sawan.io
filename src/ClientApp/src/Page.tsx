@@ -4,11 +4,12 @@ import { CandleChartPageHoc } from './components/charts/CandleChartPageHoc';
 import { Home } from './components/main/Home';
 import { Layout } from './components/main/Layout';
 import { ContentService } from './services/ContentService';
-import { AllContent, Language } from './services/Models';
+import { AllContent, BlogPage, Language } from './services/Models';
 import { HtmlUtils } from './utils/HtmlUtils';
 
 export interface PageState {
     allContent: AllContent;
+    blogPage: BlogPage;
 }
 
 export class Page extends React.Component<{}, PageState> {
@@ -18,17 +19,21 @@ export class Page extends React.Component<{}, PageState> {
     public constructor(props: any) {
         super(props);
         this.contentService = new ContentService();
-        this.state = { allContent: this.contentService.defaultContent() };
+        this.state = {
+            allContent: this.contentService.defaultContent(),
+            blogPage: this.contentService.defaultBlogContent()
+        };
     }
 
     public componentDidMount() {
         const allContent = this.updateContent(Language.English);
-        this.setState({ allContent });
+        const blogPage = this.contentService.blogPage(4); 
+        this.setState({ allContent, blogPage });
     }
 
     public render() {
         const routes = <Layout allContent={this.state.allContent} >
-            <Route exact path='/' component={() => <Home homeContent={this.state.allContent.homeContent} />} />
+            <Route exact path='/' component={() => <Home blogPage={this.state.blogPage} />} />
             <Route path='/candle' component={CandleChartPageHoc} />
             <Route path='/health' component={CandleChartPageHoc} />
         </Layout>;

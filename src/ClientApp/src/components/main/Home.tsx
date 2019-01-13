@@ -1,49 +1,34 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import xss from 'xss';
-import { HomeContent } from '../../services/Models';
+import { BlogElement, BlogPage } from '../../services/Models';
+import { HtmlUtils } from '../../utils/HtmlUtils';
 
 export interface HomeProps {
-    homeContent: HomeContent;
+    blogPage: BlogPage;
 }
 
 export class Home extends React.Component<HomeProps> {
-
-    private readonly options = {
-        whiteList: {
-            a: ['href', 'title', 'target'],
-            br: []
-        }
-    };
-    private readonly xssFilter = new xss.FilterXSS(this.options);
 
     public constructor(props: HomeProps) {
         super(props);
     }
 
     public render() {
-        const articles: string[] = this.props.homeContent.article as string[];
-        const titles: string[] = this.props.homeContent.articleTitle as string[];
-        if (!articles || !titles || articles.length !== titles.length) {
+        const articles: BlogElement[] = this.props.blogPage.articles;
+        if (!articles || articles.length === 0) {
             return <span></span>;
         }
 
-        return articles.map((article, key) => <article key={key}>
-            <h1>{titles[key]}</h1>
-            <div>
-                <span dangerouslySetInnerHTML={{ __html: this.getSafeContent(article) }}></span>
-                <NavLink to='/' className='link-article'>Read more...</NavLink>
-            </div>
-        </article>);
-    }
-
-    private getSafeContent(content: string): string {
-        const safeContent = this.xssFilter.process(content);
-        let safeSummary = safeContent.substring(0, 1000);
-        if (safeContent !== safeSummary) {
-            safeSummary = safeSummary.substring(0, safeSummary.lastIndexOf(" "));
-            safeSummary += '&#8230;';
-        }
-        return safeSummary;
+        return articles.map((article, key) => {
+            const content = HtmlUtils.getEllipsis(HtmlUtils.getSafeContent(article.article), 1000);
+            return (
+                <article key={key}>
+                    <h1>{article.articleTitle}</h1>
+                    <div>
+                        <span dangerouslySetInnerHTML={{ __html: content }}></span>
+                        <NavLink to='/' className='link-article'>Read more...</NavLink>
+                    </div>
+                </article>);
+        });
     }
 }

@@ -4,8 +4,8 @@ import { Language } from "./Models";
 test('ContentService can get default content', () => {
     const contentService = new ContentService();
     expect(contentService.defaultContent()).not.toBeNull();
-    expect(contentService.defaultContent().homeContent).not.toBeNull();
-    expect(contentService.defaultContent().homeContent.article).toEqual(['']);
+    expect(contentService.defaultContent().menuContent).not.toBeNull();
+    expect(contentService.defaultContent().menuContent.links).toEqual([]);
 });
 
 test('ContentService can get english content', () => {
