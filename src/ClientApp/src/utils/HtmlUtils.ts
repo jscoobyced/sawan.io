@@ -45,7 +45,7 @@ export class HtmlUtils {
         return safeSummary;
     }
 
-    public static getSafeContent(content: string, length: number = -1): string {
+    public static getSafeContent(content: string, length = -1): string {
         return HtmlUtils.xssFilter.process(content);
     }
 

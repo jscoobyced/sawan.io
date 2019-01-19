@@ -5,7 +5,7 @@ import { BlogElement, BlogPage, Language, MainContent } from './Models';
 export class ContentService implements IContentService {
 
     public async getMainContent(language: Language): Promise<MainContent> {
-        return await this.updateMainContent(language);
+        return this.updateMainContent(language);
     }
 
     public getDefaultMainContent(): MainContent {
@@ -13,7 +13,7 @@ export class ContentService implements IContentService {
     }
 
     public async getBlogPage(from: number, maxResult: number): Promise<BlogPage> {
-        return await this.updateBlogPage(from, maxResult);
+        return this.updateBlogPage(from, maxResult);
     }
 
     public getDefaultBlogPage(): BlogPage {
@@ -23,7 +23,7 @@ export class ContentService implements IContentService {
     }
 
     protected async updateMainContent(language: Language): Promise<MainContent> {
-        return await ApiUtils.fetchData<MainContent>(`/api/Data/main/${language}`);
+        return ApiUtils.fetchData<MainContent>(`/api/Data/main/${language}`);
     }
 
     protected defaultMainContent(): MainContent {
