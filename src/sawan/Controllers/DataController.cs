@@ -87,7 +87,7 @@ namespace sawan.Controllers
         }
 
         [HttpGet("main/{language}")]
-        public async Task<MainContent> GetMainContent(long from, int maxResult)
+        public async Task<MainContent> GetMainContent(Language language)
         {
             await Task.Run(() =>
             {
