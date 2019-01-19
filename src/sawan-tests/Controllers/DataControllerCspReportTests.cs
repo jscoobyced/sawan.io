@@ -11,7 +11,7 @@ namespace sawan.tests
     public class DataControllerCspReportTests
     {
         [Fact]
-        public async void CspReport()
+        public async Task CspReport()
         {
             var dataController = new DataControllerBuilder()
                 .Build();
