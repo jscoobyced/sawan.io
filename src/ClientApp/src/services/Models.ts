@@ -1,8 +1,6 @@
-import { Url } from "url";
-
 export enum Language {
-    English,
-    French
+    English = 0,
+    French = 1
 }
 
 export interface Link {
@@ -12,25 +10,28 @@ export interface Link {
     title?: string;
 }
 
-export interface AllContent {
+export interface MainContent {
     navigationMenuContent: NavigationMenuContent;
-    homeContent: HomeContent;
     menuContent: MenuContent;
     footerContent: FooterContent;
 }
 
 export interface NavigationMenuContent {
-    home: string | string[];
-    websiteName: string | string[];
-    applications: string | string[];
-    cryptoCurrency: string | string[];
-    healthMonitor: string | string[];
-    about: string | string[];
+    home: string;
+    websiteName: string;
+    applications: string;
+    cryptoCurrency: string;
+    healthMonitor: string;
+    about: string;
 }
 
-export interface HomeContent {
-    articleTitle: string | string[];
-    article: string | string[];
+export interface BlogElement {
+    article: string;
+    articleTitle: string;
+}
+
+export interface BlogPage {
+    articles: BlogElement[];
 }
 
 export interface MenuContent {
@@ -38,7 +39,7 @@ export interface MenuContent {
 }
 
 export interface FooterContent {
-    copyright: string | string[];
-    credits: string | string[];
-    year: string | string[];
+    copyright: string;
+    credits: string;
+    year: string;
 }

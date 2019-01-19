@@ -1,80 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home component is unchanged. 1`] = `
-<article
-  key="0"
->
-  <h1 />
-  <div>
-    <span
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "",
+Array [
+  <article
+    key="0"
+  >
+    <h1>
+      Grand opening of sawan.io.&lt;br /&gt;This website is about my personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP  headers... It includes a simple (and a bit naive) crypto-currency analyser: it can suggest you to sell or buy. Use at your own risk, it is amateur predictions, you have been warned.&lt;br /&gt;There will be also an application to track health metrics (weight, % body fat, vascular fat ratio...). Or maybe not, this might be my next project.&lt;br /&gt; This project is open-sourced on &lt;atarget='_blank' href='https://github.com/jscoobyced/sawan.io'&gt;Github&lt;/a&gt;. Enjoy and have fun.
+    </h1>
+    <div>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Latest news - 2018-11-15",
+          }
         }
-      }
-    />
-    <NavLink
-      activeClassName="active"
-      aria-current="page"
-      className="link-article"
-      to="/"
-    >
-      Read more...
-    </NavLink>
-  </div>
-</article>
-`;
-
-exports[`Home component with different lengths. 1`] = `
-<article
-  key="0"
->
-  <h1 />
-  <div>
-    <span
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "",
+      />
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        className="link-article"
+        to="/"
+      >
+        Read more...
+      </NavLink>
+    </div>
+  </article>,
+  <article
+    key="1"
+  >
+    <h1>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit  cillum dolore eu fugiat nulla pariatur.&lt;br /&gt;Excepteur sint occaecat cupidatat non proident,  culpa qui officia deserunt mollit anim id est laborum. Commodo qui imperdiet massa tincidunt. Non enim praesent elementum facilisis leo. Adipiscing diam donec adipiscing tristique. Velit euismod in pellentesque massa placerat. Interdum velit euismod in pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Egestas erat imperdiet sed euismod nisi porta lorem mollis aliquam. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Morbi tristique senectus et netus et malesuada fames.&lt;br /&gt;Vitae suscipit tellus mauris a diam maecenas. Sed risus ultricies tristique nulla aliquet. Sagittis eu volutpat odio facilisis mauris sit amet. Tempor orci eu lobortis elementum nibh tellus molestie nunc non. Turpis nunc eget lorem dolor.
+    </h1>
+    <div>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Lorem Ipsum",
+          }
         }
-      }
-    />
-    <NavLink
-      activeClassName="active"
-      aria-current="page"
-      className="link-article"
-      to="/"
-    >
-      Read more...
-    </NavLink>
-  </div>
-</article>
-`;
-
-exports[`Home component with long article. 1`] = `
-<article
-  key="0"
->
-  <h1 />
-  <div>
-    <span
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "&#8230;",
+      />
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        className="link-article"
+        to="/"
+      >
+        Read more...
+      </NavLink>
+    </div>
+  </article>,
+  <article
+    key="2"
+  >
+    <h1>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt culpa qui officia deserunt mollit anim id est laborum. Commodo quis imperdiet massa tincidunt. Non enim praesent elementum facilisis leo. Adipiscing diam donec adipiscing tristique. Velit euismod in pellentesque massa placerat. Interdum velit euismod in pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Egestas erat imperdiet sed euismod nisi porta lorem mollis aliquam. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Morbi tristique senectus et netus et malesuada fames.&lt;br /&gt;Nisi vitae suscipit mauris a diam maecenas. Sed risus ultricies tristique nulla aliquet. Sagittis eu volutpat odio facilisis mauris sit amet. Tempor orci eu lobortis elementum nibh tellus molestie nunc non. Turpis nunc eget lorem dolor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt  culpa qui officia deserunt mollit anim id est laborum. Commodo quis imperdiet massa tincidunt. Non enim praesent elementum facilisis leo. Adipiscing diam donec adipiscing tristique. Velit euismod in pellentesque massa placerat. Interdum velit euismod in pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla.&lt;br /&gt;Egestas erat imperdiet sed euismod porta lorem mollis aliquam. Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Morbi tristique senectus et netus et malesuada fames. Nisi vitae suscipit tellus mauris a diam maecenas. Sed risus ultricies tristique nulla aliquet.
+    </h1>
+    <div>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Some other news",
+          }
         }
-      }
-    />
-    <NavLink
-      activeClassName="active"
-      aria-current="page"
-      className="link-article"
-      to="/"
-    >
-      Read more...
-    </NavLink>
-  </div>
-</article>
+      />
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        className="link-article"
+        to="/"
+      >
+        Read more...
+      </NavLink>
+    </div>
+  </article>,
+]
 `;
 
 exports[`Home component with no article. 1`] = `<span />`;
-
-exports[`Home component with no title. 1`] = `<span />`;

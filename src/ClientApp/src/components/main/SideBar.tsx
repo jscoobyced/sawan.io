@@ -1,8 +1,8 @@
 import React from 'react';
-import { AllContent, Link } from '../../services/Models';
+import { MainContent } from '../../services/Models';
 
 export interface SideBarProps {
-    allContent: AllContent;
+    allContent: MainContent;
 }
 
 export class SideBar extends React.Component<SideBarProps> {
@@ -12,16 +12,12 @@ export class SideBar extends React.Component<SideBarProps> {
     }
 
     public render() {
-        const links: Link[] = this.props.allContent.menuContent ? this.props.allContent.menuContent.links : [];
-        let linkContent;
-        if (links) {
-            const contentList = links.map((link, key) => <li key={key}>
-                <a href={link.url} target={link.target} title={link.title} >{link.text}</a>
-            </li>);
-            linkContent = <ul>
-                {contentList}
-            </ul>;
-        }
+        const contentList = this.props.allContent.menuContent.links.map((link, key) => <li key={key}>
+            <a href={link.url} target={link.target} title={link.title} >{link.text}</a>
+        </li>);
+        const linkContent = <ul>
+            {contentList}
+        </ul>;
 
         return <aside>
             {linkContent}

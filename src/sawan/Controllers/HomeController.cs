@@ -17,10 +17,5 @@ namespace sawan.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult<string> CspReport([FromBody] CspReportRequest request)
-        {
-            return string.Empty;
-        }
     }
 }

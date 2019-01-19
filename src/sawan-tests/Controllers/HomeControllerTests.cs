@@ -43,33 +43,5 @@ namespace sawan.tests
             viewResult.ViewName.Should().BeNull("because the default view name from the HomeController is not set.");
             viewResult.ViewData.Should().NotBeNull("because there data have been set.");
         }
-
-        [Fact]
-        public void CspReport()
-        {
-            var homeController = new HomeControllerBuilder()
-                .Build();
-            var cspReportRequest = new CspReportRequest()
-            {
-                CspReport = new CspReport()
-                {
-                    BlockedUri = "/CspReport",
-                    DocumentUri = "self",
-                    OriginalPolicy = "self",
-                    EffectiveDirective = "self",
-                    Referrer = "self",
-                    ViolatedDirective = "script-src",
-                    StatusCode = 200
-                }
-            };
-
-            var actionResult = homeController.CspReport(cspReportRequest);
-
-            actionResult.Should().NotBeNull("because the default response from HomeController is a valid result.");
-            actionResult.Should().BeAssignableTo<ActionResult<string>>("because the default response from HomeController is a valid IActionResult.");
-
-            actionResult.Value.Should().NotBeNull("because the controller returns empty string.");
-            actionResult.Value.Should().BeEmpty("because the controller returns empty string.");
-        }
     }
 }

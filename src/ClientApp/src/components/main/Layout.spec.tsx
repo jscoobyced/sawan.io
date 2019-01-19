@@ -9,7 +9,7 @@ test('Layout base component is unchanged.', () => {
 });
 
 test('Layout component with content is unchanged.', () => {
-    const allContent = new ContentService().defaultContent();
+    const allContent = new ContentService().getDefaultMainContent();
     const layout = shallow(<Layout allContent={allContent} />);
     expect(layout).toMatchSnapshot();
 });

@@ -26,23 +26,8 @@ exports[`Layout component with content is unchanged. 1`] = `
           "credits": "",
           "year": "",
         },
-        "homeContent": Object {
-          "article": Array [
-            "",
-          ],
-          "articleTitle": Array [
-            "",
-          ],
-        },
         "menuContent": Object {
-          "links": Array [
-            Object {
-              "target": "",
-              "text": "",
-              "title": "",
-              "url": "",
-            },
-          ],
+          "links": Array [],
         },
         "navigationMenuContent": Object {
           "about": "",

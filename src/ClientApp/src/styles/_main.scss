@@ -1,0 +1,145 @@
+* {
+    margin: 0 0;
+}
+
+body {
+    min-width: 375px;
+}
+
+html {
+    font-family: $font-primary;
+    font-size: 16px;
+    background: $background;
+    color: $primary;
+}
+
+.logo {
+    width: 120px;
+    height: 49px;
+    border: 0;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+header {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    height: 6vh;
+}
+
+header span {
+    padding: 5px 10px 5px 5px;
+}
+
+main {
+    width: 100%;
+}
+
+section, aside {
+    min-height: 97vh;
+    display: inline-block;
+}
+
+section {
+    width: 75%;
+    margin: 0 auto;
+    background: $secondary;
+}
+
+aside {
+    vertical-align: top;
+    width: 25%;
+}
+
+aside ul {
+    list-style: none;
+    text-align: left;
+}
+
+aside ul:first-of-type {
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+aside ul:last-of-type {
+    vertical-align: bottom;
+}
+
+aside article {
+    width: 80%;
+    padding-bottom: 100px;
+    margin: 0 auto;
+}
+
+article {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: $link;
+}
+
+ul li a img {
+    vertical-align: middle;
+}
+
+select {
+    background: white;
+    padding: 5px;
+}
+
+footer {
+    text-align: center;
+    height: 3vh;
+    width: 100%;
+    margin: 0 auto;
+    color: $on-primary;
+    background: $primary-dark;
+    line-height: 3vh;
+}
+
+@media screen and (max-width: $media-width-large) {
+    aside, section {
+        width: 100%;
+        margin: 0 auto;
+        height: unset;
+        min-height: unset;
+    }
+
+    aside ul:first-of-type {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
+    
+    aside article {
+        padding-bottom: 10px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: $media-width-small) {
+
+    header {
+        padding-bottom: 30px;
+    }
+
+    aside, section {
+        margin: 0 auto;
+    }
+
+    aside {
+        display: block;
+        min-height: unset;
+        padding-top: 5px;
+    }
+
+    aside ul:first-of-type {
+        padding-bottom: 0px;
+    }
+    
+    aside article {
+        padding-bottom: 10px;
+    }
+}

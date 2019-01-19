@@ -2,17 +2,7 @@
 
 exports[`Layout component with content is unchanged. 1`] = `
 <aside>
-  <ul>
-    <li
-      key="0"
-    >
-      <a
-        href=""
-        target=""
-        title=""
-      />
-    </li>
-  </ul>
+  <ul />
   <article>
     <h1>
       About Cédric
