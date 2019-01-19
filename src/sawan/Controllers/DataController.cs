@@ -113,6 +113,15 @@ namespace sawan.Controllers
                 MenuContent = new MenuContent()
                 {
                     Links = new List<Link>()
+                    {
+                        new Link()
+                        {
+                            Target = "_blank",
+                            Text = "Home",
+                            Title = "Home",
+                            Url = "#"
+                        }
+                    }
                 }
             };
 
