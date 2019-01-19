@@ -8,20 +8,20 @@ exports[`Page content is preserved 1`] = `
     allContent={
       Object {
         "footerContent": Object {
-          "copyright": "Copyright",
-          "credits": "sawan.io",
-          "year": "2018 - 2019",
+          "copyright": "",
+          "credits": "",
+          "year": "",
         },
         "menuContent": Object {
           "links": Array [],
         },
         "navigationMenuContent": Object {
-          "about": "About",
-          "applications": "Applications",
-          "cryptoCurrency": "Cryptocurrency",
-          "healthMonitor": "Health Monitor",
-          "home": "Home",
-          "websiteName": "sawan.io",
+          "about": "",
+          "applications": "",
+          "cryptoCurrency": "",
+          "healthMonitor": "",
+          "home": "",
+          "websiteName": "",
         },
       }
     }

@@ -1,6 +1,6 @@
 export enum Language {
-    English,
-    French
+    English = 0,
+    French = 1
 }
 
 export interface Link {
@@ -26,8 +26,8 @@ export interface NavigationMenuContent {
 }
 
 export interface BlogElement {
-    articleTitle: string;
     article: string;
+    articleTitle: string;
 }
 
 export interface BlogPage {

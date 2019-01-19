@@ -1,21 +1,29 @@
-import { ContentKey } from './ContentKey';
 import { ContentService } from './ContentService';
-import { BlogElement, BlogPage, Language } from './Models';
+import { BlogElement, BlogPage, Language, MainContent } from './Models';
 
 export class MockContentService extends ContentService {
-    protected updateMainContent(language: Language): Array<{ [key: string]: string; }> {
-        const content: Array<{ [key: string]: string; }> = [];
-        content[language] = {};
-        content[language][ContentKey.WebsiteName] = 'sawan.io';
-        content[language][ContentKey.Home] = 'Home';
-        content[language][ContentKey.About] = 'About';
-        content[language][ContentKey.Applications] = 'Applications';
-        content[language][ContentKey.CryptoCurrency] = 'Cryptocurrency';
-        content[language][ContentKey.HealthMonitor] = 'Health Monitor';
-        content[language][ContentKey.FooterCopyright] = 'Copyright';
-        content[language][ContentKey.FooterCredits] = 'sawan.io';
-        content[language][ContentKey.FooterYear] = '2018 - ' + new Date().getFullYear();
-        return content;
+    protected updateMainContent(language: Language): Promise<MainContent> {
+        const content: MainContent = {
+            menuContent: {
+                links: []
+            },
+            navigationMenuContent: {
+                about: 'About',
+                applications: 'Applications',
+                cryptoCurrency: 'Crypto-Currency',
+                healthMonitor: 'Health Monitor',
+                home: 'Home',
+                websiteName: 'sawan.io'
+            },
+            footerContent: {
+                copyright: 'Copyright',
+                credits: 'sawan.io',
+                year: '2018 - ' + new Date().getFullYear()
+            }
+        };
+        return new Promise<MainContent>(resolve => {
+            resolve(content);
+        });
     }
 
     protected updateBlogPage(maxResult: number): Promise<BlogPage> {
@@ -23,8 +31,8 @@ export class MockContentService extends ContentService {
         const displayDate = (new Date(date).toISOString().substring(0, 10));
         const articles: BlogElement[] = [
             {
-                articleTitle: `Latest news - ${displayDate}`,
-                article: 'Grand opening of sawan.io.<br />This website is about my'
+                article: `Latest news - ${displayDate}`,
+                articleTitle: 'Grand opening of sawan.io.<br />This website is about my'
                     + ' personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP'
                     + '  headers... It includes a simple (and a bit naive) crypto-currency analyser: it can'
                     + ' suggest you to sell or buy. Use at your own risk, it is amateur predictions, you have'
@@ -34,8 +42,8 @@ export class MockContentService extends ContentService {
                     + ' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.'
             },
             {
-                articleTitle: 'Lorem Ipsum',
-                article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
+                article: 'Lorem Ipsum',
+                articleTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
                     + ' ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
                     + ' aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit '
                     + ' cillum dolore eu fugiat nulla pariatur.<br />Excepteur sint occaecat cupidatat non proident, '
@@ -50,8 +58,8 @@ export class MockContentService extends ContentService {
                     + ' Turpis nunc eget lorem dolor.'
             },
             {
-                articleTitle: 'Some other news',
-                article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
+                article: 'Some other news',
+                articleTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
                     + ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ut'
                     + ' aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit'
                     + ' cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt'

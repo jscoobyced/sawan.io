@@ -1,88 +1,65 @@
 import { ApiUtils } from '../utils/ApiUtils';
-import { ContentKey } from './ContentKey';
 import { IContentService } from './IContentService';
 import { BlogElement, BlogPage, Language, MainContent } from './Models';
 
 export class ContentService implements IContentService {
 
-    public getMainContent(language: Language): MainContent {
-        const content = this.updateMainContent(language);
-        return this.mapMainContent(content, language);
+    public async getMainContent(language: Language): Promise<MainContent> {
+        return await this.updateMainContent(language);
     }
 
     public getDefaultMainContent(): MainContent {
-        const content = this.defaultMainContent(Language.English);
-        return this.mapMainContent(content, Language.English);
+        return this.defaultMainContent();
     }
 
-    public getBlogPage(maxResult: number): Promise<BlogPage> {
-        return this.updateBlogPage(maxResult);
+    public async getBlogPage(from: number, maxResult: number): Promise<BlogPage> {
+        return await this.updateBlogPage(from, maxResult);
     }
 
     public getDefaultBlogPage(): BlogPage {
-        return this.defaultBlogContent();
-    }
-
-    public defaultBlogContent(): BlogPage {
         return {
             articles: []
         };
     }
 
-    protected updateMainContent(language: Language): Array<{ [key: string]: string; }> {
-        const content: Array<{ [key: string]: string; }> = [];
-        content[language] = {};
-        // TODO: Fetch main content from API
-        return content;
+    protected async updateMainContent(language: Language): Promise<MainContent> {
+        return await ApiUtils.fetchData<MainContent>(`/api/Data/main/${language}`);
     }
 
-    protected defaultMainContent(language: Language): Array<{ [key: string]: string; }> {
-        const content: Array<{ [key: string]: string; }> = [];
-        content[language] = {};
-        content[language][ContentKey.WebsiteName] = '';
-        content[language][ContentKey.Home] = '';
-        content[language][ContentKey.About] = '';
-        content[language][ContentKey.Applications] = '';
-        content[language][ContentKey.CryptoCurrency] = '';
-        content[language][ContentKey.HealthMonitor] = '';
-        content[language][ContentKey.FooterCopyright] = '';
-        content[language][ContentKey.FooterCredits] = '';
-        content[language][ContentKey.FooterYear] = '';
-        return content;
-    }
-
-    protected updateBlogPage(maxResult: number): Promise<BlogPage> {
-        return ApiUtils.fetchData<BlogElement[]>('/api/Data/blog')
-            .then(data => {
-                if (!data) {
-                    return {
-                        articles: []
-                    };
-                }
-                return {
-                    articles: data.slice(0, Math.min(maxResult, data.length))
-                };
-            });
-    }
-
-    private mapMainContent(content: Array<{ [key: string]: string; }>, language: Language): MainContent {
+    protected defaultMainContent(): MainContent {
         return {
-            navigationMenuContent: {
-                about: content[language][ContentKey.About],
-                applications: content[language][ContentKey.Applications],
-                cryptoCurrency: content[language][ContentKey.CryptoCurrency],
-                healthMonitor: content[language][ContentKey.HealthMonitor],
-                home: content[language][ContentKey.Home],
-                websiteName: content[language][ContentKey.WebsiteName],
-            },
             menuContent: {
                 links: []
             },
+            navigationMenuContent: {
+                about: '',
+                applications: '',
+                cryptoCurrency: '',
+                healthMonitor: '',
+                home: '',
+                websiteName: ''
+            },
             footerContent: {
-                credits: content[language][ContentKey.FooterCredits],
-                copyright: content[language][ContentKey.FooterCopyright],
-                year: content[language][ContentKey.FooterYear]
+                copyright: '',
+                credits: '',
+                year: ''
             }
+        };
+    }
+
+    protected async updateBlogPage(from: number, maxResult: number): Promise<BlogPage> {
+        const empty = {
+            articles: []
+        };
+        if (maxResult <= 0) {
+            return empty;
+        }
+        const data = await ApiUtils.fetchData<BlogElement[]>(`/api/Data/blog/${from}/${maxResult}`);
+        if (!data || data.length === 0) {
+            return empty;
+        }
+        return {
+            articles: data.slice(0, Math.min(maxResult, data.length))
         };
     }
 }

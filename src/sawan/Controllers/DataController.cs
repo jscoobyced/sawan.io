@@ -86,8 +86,41 @@ namespace sawan.Controllers
             return Ok();
         }
 
-        [HttpGet("blog")]
-        public async Task<IEnumerable<BlogElement>> GetBlogPage()
+        [HttpGet("main/{language}")]
+        public async Task<MainContent> GetMainContent(long from, int maxResult)
+        {
+            await Task.Run(() =>
+            {
+                // Process report
+            });
+            var content = new MainContent()
+            {
+                NavigationMenuContent = new NavigationMenuContent()
+                {
+                    About = "About",
+                    Applications = "Applications",
+                    CryptoCurrency = "Crypto-Currency",
+                    HealthMonitor = "Health Monitor",
+                    Home = "Home",
+                    WebsiteName = "sawan.io"
+                },
+                FooterContent = new FooterContent()
+                {
+                    Copyright = "Copyright",
+                    Credits = "sawan.io",
+                    Year = "2018 - " + DateTime.Now.Year
+                },
+                MenuContent = new MenuContent()
+                {
+                    Links = new List<Link>()
+                }
+            };
+
+            return content;
+        }
+
+        [HttpGet("blog/{from}/{maxResult}")]
+        public async Task<IEnumerable<BlogElement>> GetBlogPage(long from, int maxResult)
         {
             await Task.Run(() =>
             {

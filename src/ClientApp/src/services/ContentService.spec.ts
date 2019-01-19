@@ -1,5 +1,6 @@
+import { TestUtils } from "../../tests/TestUtils";
 import { ContentService } from "./ContentService";
-import { Language } from "./Models";
+import { BlogElement, Language, MainContent } from "./Models";
 
 test('ContentService can get default content', () => {
     const contentService = new ContentService();
@@ -8,18 +9,65 @@ test('ContentService can get default content', () => {
     expect(contentService.getDefaultMainContent().menuContent.links).toEqual([]);
 });
 
-test('ContentService can get english content', () => {
+const mainContent: MainContent = {
+    menuContent: {
+        links: []
+    },
+    navigationMenuContent: {
+        about: 'About',
+        applications: 'Applications',
+        cryptoCurrency: 'Crypto-Currency',
+        healthMonitor: 'Health Monitor',
+        home: 'Home',
+        websiteName: 'sawan.io'
+    },
+    footerContent: {
+        copyright: 'Copyright',
+        credits: 'sawan.io',
+        year: '2018 - ' + new Date().getFullYear()
+    }
+};
+
+const blogElements: BlogElement[] = [
+    {
+        articleTitle: 'Article content',
+        article: 'Title'
+    }
+];
+
+test('ContentService can get english content', async () => {
     const contentService = new ContentService();
-    const englishContent = contentService.getMainContent(Language.English);
+    window.fetch = TestUtils.mockFetch(mainContent);
+    const englishContent = await contentService.getMainContent(Language.English);
     expect(englishContent).not.toBeNull();
-    // TODO: mock 'fetch' when API is created
-    expect(englishContent.navigationMenuContent.about).toBeUndefined();
+    expect(englishContent.navigationMenuContent.about)
+        .toEqual(mainContent.navigationMenuContent.about);
 });
 
-test('ContentService can get blog content', () => {
+const maxResults = [0, -1];
+test('ContentService check maxResult for blog', async () => {
     const contentService = new ContentService();
-    const blogPage = contentService.getBlogPage(4);
-    expect(blogPage).not.toBeNull();
-    // TODO: mock 'fetch' when API is created
-    expect(blogPage.articles).toEqual([]);
+    window.fetch = TestUtils.mockFetch(blogElements);
+    maxResults.map(async value => {
+        const data = await contentService.getBlogPage(0, value);
+        expect(data).not.toBeNull();
+        expect(data.articles.length).toBe(0);
+    });
+});
+
+test('ContentService can get empty blog content', async () => {
+    const contentService = new ContentService();
+    window.fetch = TestUtils.mockFetch([]);
+    const data = await contentService.getBlogPage(0, 4);
+    expect(data).not.toBeNull();
+    expect(data.articles.length).toBe(0);
+});
+
+test('ContentService can get blog content', async () => {
+    const contentService = new ContentService();
+    window.fetch = TestUtils.mockFetch(blogElements);
+    const data = await contentService.getBlogPage(1, 4);
+    expect(data).not.toBeNull();
+    expect(data.articles.length).toBe(1);
+    expect(data.articles[0].articleTitle).toBe(blogElements[0].articleTitle);
 });

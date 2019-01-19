@@ -28,10 +28,12 @@ export class Page extends React.Component<{}, PageState> {
     }
 
     public componentDidMount() {
-        const allContent = this.updateContent(Language.English);
-        this.contentService.getBlogPage(4)
-            .then(blogPage => {
-                this.setState({ allContent, blogPage });
+        this.contentService.getMainContent(Language.English)
+            .then(allContent => {
+                this.contentService.getBlogPage(0, 4)
+                    .then(blogPage => {
+                        this.setState({ allContent, blogPage });
+                    });
             });
     }
 
@@ -42,9 +44,5 @@ export class Page extends React.Component<{}, PageState> {
             <Route path='/health' component={CandleChartPageHoc} />
         </Layout>;
         return <BrowserRouter children={routes} basename={HtmlUtils.baseUrl()} />;
-    }
-
-    private updateContent(language: Language): MainContent {
-        return this.contentService.getMainContent(language);
     }
 }
