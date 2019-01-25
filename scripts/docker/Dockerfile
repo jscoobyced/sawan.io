@@ -30,4 +30,3 @@ COPY entrypoint.sh /usr/local/bin/
 RUN chmod u+x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 27017
-CMD ["mongod", "--bind_ip_all"]
