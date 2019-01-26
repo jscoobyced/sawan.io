@@ -24,18 +24,11 @@ namespace sawan.tests
         [Fact]
         public void WithUnknownLanguageMainContentService()
         {
-            var mainContent = new MainContent()
-            {
-                NavigationMenuContent = new NavigationMenuContent()
-                {
-                    Home = "Home"
-                }
-            };
 
             var controller = new DataControllerBuilder()
                 .WithMainContentService(
                     new MainContentServiceBuilder()
-                    .WithLanguageMainContent(mainContent, Language.English)
+                    .WithLanguageMainContent(this.BuildMainContent(), Language.English)
                     .Build())
                 .Build();
             var reason = "because it should return english data when language is unknown.";
@@ -45,5 +38,46 @@ namespace sawan.tests
             result.Should().NotBeNull(reason);
         }
 
+
+        [Fact]
+        public void WithValidLanguageMainContentService()
+        {
+
+            var controller = new DataControllerBuilder()
+                .WithMainContentService(
+                    new MainContentServiceBuilder()
+                    .WithLanguageMainContent(this.BuildMainContent(), Language.English)
+                    .Build())
+                .Build();
+            var reason = "because it should return english data when language is unknown.";
+            MainContent result = null;
+            Func<Task> blogPage = async () => result = await controller.GetMainContent(Language.English);
+            blogPage.Should().NotThrow<NullReferenceException>(reason);
+            result.Should().NotBeNull(reason);
+        }
+
+        private MainContent BuildMainContent()
+        {
+            return new MainContent()
+            {
+                NavigationMenuContent = new NavigationMenuContent()
+                {
+                    Home = "Home"
+                },
+                MenuContent = new MenuContent()
+                {
+                    Links = new List<Link>()
+                    {
+                        new Link()
+                        {
+                            Text = "Name",
+                            Target = "_blank",
+                            Title = "Name",
+                            Url = "/"
+                        }
+                    }
+                }
+            };
+        }
     }
 }
