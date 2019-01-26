@@ -14,4 +14,4 @@ if [ -d $SCRIPTS ] && [ -n "$(ls -A $SCRIPTS/*.json 2> /dev/null)" ]; then
 fi
 
 mongod --dbpath /data/db --logpath /var/log/mongodb/mongod.log --bind_ip localhost --fork
-bash
+dotnet sawan.dll

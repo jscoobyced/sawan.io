@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t jscdroiddev/mongodb .
+docker build -t jscdroiddev/sawanio .
