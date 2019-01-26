@@ -7,6 +7,7 @@ namespace sawan.Services
     using System.Linq;
     using System;
     using System.Diagnostics;
+    using sawan.Repositories;
 
     public class PairingService : IPairingService
     {

@@ -2,6 +2,7 @@ namespace sawan
 {
     using sawan.Services;
     using Microsoft.Extensions.DependencyInjection;
+    using sawan.Repositories;
 
     public static class DependencyInjection
     {
@@ -11,6 +12,7 @@ namespace sawan
             services.AddTransient<IPairingService, PairingService>();
             services.AddTransient<IGitHubService, GitHubService>();
             services.AddTransient<IRestConnector, RestConnector>();
+            services.AddTransient<IMongoDbRepository, MongoDbRepository>();
         }
     }
 }

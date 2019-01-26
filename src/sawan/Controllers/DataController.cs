@@ -99,11 +99,6 @@ namespace sawan.Controllers
                 return new MainContent();
             }
 
-            if (!Enum.IsDefined(typeof(Language), language))
-            {
-                language = Language.English;
-            }
-
             return await this.mainContentService.GetMainContent(language);
         }
 

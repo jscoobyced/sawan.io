@@ -23,3 +23,4 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 27017 5000 5001
+
