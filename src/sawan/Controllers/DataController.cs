@@ -94,6 +94,16 @@ namespace sawan.Controllers
         [HttpGet("main/{language}")]
         public async Task<MainContent> GetMainContent(Language language)
         {
+            if (this.mainContentService == null)
+            {
+                return new MainContent();
+            }
+
+            if (!Enum.IsDefined(typeof(Language), language))
+            {
+                language = Language.English;
+            }
+
             return await this.mainContentService.GetMainContent(language);
         }
 
