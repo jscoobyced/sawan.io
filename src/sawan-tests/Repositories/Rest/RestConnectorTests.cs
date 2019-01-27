@@ -3,6 +3,7 @@ namespace sawan.tests
     using System;
     using System.Threading.Tasks;
     using FluentAssertions;
+    using sawan.Repositories;
     using Xunit;
 
     public class RestConnectorTests

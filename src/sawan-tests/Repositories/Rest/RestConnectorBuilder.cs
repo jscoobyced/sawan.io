@@ -3,6 +3,7 @@ namespace sawan.tests
     using System.Collections.Generic;
     using sawan.Services;
     using Moq;
+    using sawan.Repositories;
 
     public class RestConnectorBuilder
     {
