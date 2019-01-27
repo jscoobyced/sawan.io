@@ -15,12 +15,17 @@ namespace sawan.tests
         {
             var dataController = new DataControllerBuilder()
                 .Build();
+            var appSettings = new AppSettings()
+            {
+                Csp = this.BuildCsp()
+            };
+
             var cspReportRequest = new CspReportRequest()
             {
                 CspReport = new CspReport()
                 {
                     BlockedUri = "/CspReport",
-                    DocumentUri = "self",
+                    DocumentUri = appSettings.Csp.Report,
                     OriginalPolicy = "self",
                     EffectiveDirective = "self",
                     Referrer = "self",
@@ -33,6 +38,26 @@ namespace sawan.tests
 
             actionResult.Should().NotBeNull("because the default response from HomeController is a valid result.");
             actionResult.Should().BeAssignableTo<OkResult>("because the default response from HomeController is a valid OkResult.");
+        }
+
+        private Csp BuildCsp()
+        {
+            return new Csp()
+            {
+                Fonts = new List<string>()
+                {
+                    "self"
+                },
+                Report = "self",
+                Scripts = new List<string>()
+                {
+                    "self"
+                },
+                Styles = new List<string>()
+                {
+                    "self"
+                }
+            };
         }
     }
 }

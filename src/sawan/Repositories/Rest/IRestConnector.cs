@@ -1,4 +1,4 @@
-namespace sawan
+namespace sawan.Repositories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

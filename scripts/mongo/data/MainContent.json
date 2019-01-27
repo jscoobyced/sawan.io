@@ -1,0 +1,26 @@
+{
+    "Language" : 0,
+    "MenuContent": {
+        "Links": [
+            {
+                "Text": "Home",
+                "Url": "#",
+                "Target": "_blank",
+                "Title": "Home"
+            }
+        ]
+    },
+    "NavigationMenuContent": {
+        "About": "About",
+        "Applications": "Applications",
+        "CryptoCurrency": "Crypto-Currency",
+        "HealthMonitor": "Health Monitor",
+        "Home": "Home",
+        "WebsiteName": "sawan.io"
+    },
+    "FooterContent": {
+        "Copyright": "Copyright",
+        "Credits": "sawan.io",
+        "Year": "2018 - 2019"
+    }
+}

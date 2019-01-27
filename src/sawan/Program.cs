@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +22,10 @@ namespace sawan
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel(s => s.AddServerHeader = false)
                 .UseStartup<Startup>()
+                .ConfigureKestrel((context, options) =>
+                {
+                    options.Listen(IPAddress.Any, 5000);
+                })
                 .Build();
     }
 }

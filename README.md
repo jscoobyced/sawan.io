@@ -49,7 +49,24 @@ dotnet test
 popd
 ```
 
-## News - 2018-12-02
+## Update - 2018-12-02
 
 Now this application can auto-deploy it's new version when a tag is created and a GitHub webhook is set
  to `<server>/api/Data/github` and the webhook token set in `appsettings.json`
+
+## Update - 2019-01-27
+
+Move to a docker environment. To run this website on production without downloading the whole repo:
+```
+rm -Rf ~/data/mongo/sawanio/
+mkdir -p ~/data/mongo/sawanio/db ~/data/mongo/sawanio/configdb ~/data/mongo/sawanio/scripts
+wget https://raw.githubusercontent.com/jscoobyced/sawan.io/master/scripts/mongo/data/MainContent.json -O /tmp/MainContent.json
+cp /tmp/MainContent.json ~/data/mongo/sawanio/scripts
+chown -Rf $(logname):$(id -gn $(logname)) ~/data/mongo/sawanio
+sudo docker run --rm -d --name sawan \
+    -p 8080:5000 \
+    -v ~/data/mongo/sawanio/db:/data/db \
+    -v ~/data/mongo/sawanio/configdb:/data/configdb \
+    -v ~/data/mongo/sawanio/scripts:/data/scripts \
+    jscdroiddev/sawanio:latest
+```

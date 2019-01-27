@@ -16,11 +16,16 @@ namespace sawan.Controllers
     {
         private readonly IPairingService pairingService;
         private readonly IGitHubService gitHubService;
+        private readonly IMainContentService mainContentService;
 
-        public DataController(IPairingService pairingService, IGitHubService gitHubService)
+        public DataController(
+            IPairingService pairingService,
+             IGitHubService gitHubService,
+             IMainContentService mainContentService)
         {
             this.pairingService = pairingService;
             this.gitHubService = gitHubService;
+            this.mainContentService = mainContentService;
         }
 
         [HttpGet("pairing/{id}/{interval}")]
@@ -89,43 +94,12 @@ namespace sawan.Controllers
         [HttpGet("main/{language}")]
         public async Task<MainContent> GetMainContent(Language language)
         {
-            await Task.Run(() =>
+            if (this.mainContentService == null)
             {
-                // Process report
-            });
-            var content = new MainContent()
-            {
-                NavigationMenuContent = new NavigationMenuContent()
-                {
-                    About = "About",
-                    Applications = "Applications",
-                    CryptoCurrency = "Crypto-Currency",
-                    HealthMonitor = "Health Monitor",
-                    Home = "Home",
-                    WebsiteName = "sawan.io"
-                },
-                FooterContent = new FooterContent()
-                {
-                    Copyright = "Copyright",
-                    Credits = "sawan.io",
-                    Year = "2018 - " + DateTime.Now.Year
-                },
-                MenuContent = new MenuContent()
-                {
-                    Links = new List<Link>()
-                    {
-                        new Link()
-                        {
-                            Target = "_blank",
-                            Text = "Home",
-                            Title = "Home",
-                            Url = "#"
-                        }
-                    }
-                }
-            };
+                return new MainContent();
+            }
 
-            return content;
+            return await this.mainContentService.GetMainContent(language);
         }
 
         [HttpGet("blog/{from}/{maxResult}")]
