@@ -20,7 +20,7 @@ namespace sawan.Repositories
 
         public async Task<MainContent> GetMainContent(Language language)
         {
-            var result = await this.mainContent.FindAsync(x => true);
+            var result = await this.mainContent.FindAsync(x => x.Language == language);
             var list = await result.ToListAsync();
             return list.FirstOrDefault();
         }
