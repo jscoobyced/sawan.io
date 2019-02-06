@@ -23,6 +23,8 @@ export interface NavigationMenuContent {
     cryptoCurrency: string;
     healthMonitor: string;
     about: string;
+    information: string;
+    resume: string;
 }
 
 export interface BlogElement {

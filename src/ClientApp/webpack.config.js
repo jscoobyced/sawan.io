@@ -117,6 +117,7 @@ module.exports = (env, argv) => ({
   devServer: {
     contentBase: dist,
     compress: true,
+    historyApiFallback: true,
     port: 9000,
     disableHostCheck: true
   }

@@ -49,11 +49,26 @@ exports[`Header component is unchanged. 1`] = `
         </ul>
       </li>
       <li>
-        <NavLink
-          activeClassName="active"
-          aria-current="page"
-          to="/"
+        <a
+          className="dropdown"
+          href="#"
         />
+        <ul>
+          <li>
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              to="/about"
+            />
+          </li>
+          <li>
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              to="/resume"
+            />
+          </li>
+        </ul>
       </li>
     </ul>
   </nav>

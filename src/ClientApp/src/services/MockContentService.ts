@@ -28,7 +28,9 @@ export class MockContentService extends ContentService {
                 cryptoCurrency: 'Crypto-Currency',
                 healthMonitor: 'Health Monitor',
                 home: 'Home',
-                websiteName: 'sawan.io'
+                websiteName: 'sawan.io',
+                information: 'Information',
+                resume: 'Resume'
             },
             footerContent: {
                 copyright: 'Copyright',
@@ -44,8 +46,8 @@ export class MockContentService extends ContentService {
         const displayDate = (new Date(date).toISOString().substring(0, 10));
         const articles: BlogElement[] = [
             {
-                article: `Latest news - ${displayDate}`,
-                articleTitle: 'Grand opening of sawan.io.<br />This website is about my'
+                articleTitle: `Latest news - ${displayDate}`,
+                article: 'Grand opening of sawan.io.<br />This website is about my'
                     + ' personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP'
                     + '  headers... It includes a simple (and a bit naive) crypto-currency analyser: it can'
                     + ' suggest you to sell or buy. Use at your own risk, it is amateur predictions, you have'
@@ -55,12 +57,12 @@ export class MockContentService extends ContentService {
                     + ' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.'
             },
             {
-                article: 'Lorem Ipsum',
-                articleTitle: this.data
+                articleTitle: 'Lorem Ipsum',
+                article: this.data
             },
             {
-                article: 'Some other news',
-                articleTitle: this.data
+                articleTitle: 'Some other news',
+                article: this.data
             }
         ];
         return Promise.resolve({ articles });
