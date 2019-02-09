@@ -1,5 +1,5 @@
 .regular {
-    width: 85%;
+  width: 85%;
 }
 
 .resume {
@@ -74,5 +74,24 @@
     .name {
       font-size: 2.5em;
     }
+  }
+}
+
+@media screen and (max-width: $media-width-xlarge) {
+  .resume div div {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: $media-width-medium) {
+  .resume div .left,
+  .resume div .right {
+    display: block;
+    float: none;
+    width: 95%;
+  }
+
+  .txtright {
+    text-align: left;
   }
 }

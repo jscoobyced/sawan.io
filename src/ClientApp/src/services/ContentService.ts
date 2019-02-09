@@ -37,7 +37,9 @@ export class ContentService implements IContentService {
                 cryptoCurrency: '',
                 healthMonitor: '',
                 home: '',
-                websiteName: ''
+                websiteName: '',
+                information: '',
+                resume: ''
             },
             footerContent: {
                 copyright: '',

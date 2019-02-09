@@ -1,32 +1,10 @@
 import React from 'react';
 import { HtmlUtils } from '../../utils/HtmlUtils';
 
-export interface ResumeState {
-    print?: boolean;
-}
-
-export class Resume extends React.Component<{}, ResumeState> {
-
-    public constructor(props: {}, state: ResumeState) {
-        super(props, state);
-        this.state = {
-            print: true
-        };
-    }
+export class Resume extends React.Component {
 
     public render() {
         return this.component();
-    }
-
-    public componentDidMount() {
-        if (HtmlUtils.queryString().indexOf('full') > 0 && this.state.print) {
-            this.setState({
-                print: false
-            });
-            setTimeout(() => {
-                window.print();
-            }, 500);
-        }
     }
 
     private component() {
@@ -65,26 +43,27 @@ export class Resume extends React.Component<{}, ResumeState> {
             <div>
                 <div className='left'>
                     <span className='title'>WORK EXPERIENCE</span>
-                    <span className='subtitle'>Development Manager - Agoda Services Co., Ltd.&nbsp;
-                        <span className='grey period inline far fa-calendar'>&nbsp;2014 - To date</span>
-                    </span>
-                    <span>Promoted Development Manager. Relevant duties performed:</span>
+                    <span className='subtitle'>Development Manager - Agoda Services Co., Ltd.</span>
+                    <span className='grey period far fa-calendar'>&nbsp;Jul 2015 - To date</span>
+                    <span>Manager duties:</span>
                     <ul>
-                        <li>Complete the project I started as developer with my team. After completion
-                            the <span className='highlight inline'>web-application was 75% faster&nbsp;</span>
-                            on server-side performance</li>
-                        <li>Was given another team for cross-functional features</li>
                         <li><span className='highlight inline'>Managed a team</span> of up to
                         <span className='highlight inline'>&nbsp;13 software engineers</span></li>
-                        <li>Recruiting, on-boarding program for new joiners</li>
+                        <li>Recruited for Front-End department</li>
+                        <li>Trained new joiners in on-boarding programs</li>
+                        <li>Collected <span className='highlight inline'>product/business data</span> and utilized it
+                         to make strategic decisions</li>
+                        <li>Collected scrum data to improve velocity</li>
+                    </ul>
+                    <span>Tech lead duties:</span>
+                    <ul>
+                        <li>Improved web-application <span className='highlight inline'>server-side
+                        performance by 75%&nbsp;</span></li>
                         <li>Contributed to the constant evolution of the website:</li>
                         <ul>
                             <li>Migration to use the back-end <span className='highlight inline'>micro-services</span></li>
-                            <li>Collecting product/business data and utilize it to make strategic decisions</li>
                             <li>Migration from KnockoutJS to <span className='highlight inline'>ReactJS</span></li>
                         </ul>
-                        <li>Collected team/scrum data and utilize it to transform a team relying on their manager
-                            to a self-organizing team (work currently in progress as of February 2019)</li>
                         <li>Various contributions to company and Bangkok tech community:</li>
                         <ul>
                             <li><span className='highlight inline'>Presenter of 2 Meetups</span> in Bangkok: <a
@@ -94,62 +73,75 @@ export class Resume extends React.Component<{}, ResumeState> {
                                 target='_blank'
                                 href='https://www.youtube.com/watch?v=kvxb6qxWLpM'>CI/CD for a
                                 netcore+reactjs application</a></li>
-                            <li>Online training material (available within company learning system)</li>
+                            <li>Online training material</li>
                         </ul>
                     </ul>
-                    <span className='subtitle'>Senior Software Engineer - Agoda Services Co., Ltd.&nbsp;
-                    <span className='grey period inline far fa-calendar'>&nbsp;2013 - 2014</span>
-                    </span>
+                    <span className='subtitle'>Senior Software Engineer - Agoda Services Co., Ltd.</span>
+                    <span className='grey period far fa-calendar'>&nbsp;Dec 2013 - Jun 2015</span>
                     <ul>
                         <li>Development of Agoda website, operation support: ASP.NET, JQuery</li>
-                        <li>Re-write a part of the main funnel of the website:</li>
+                        <li>Re-wrote a part of the main funnel of the website:</li>
                         <ul>
                             <li>ASP.NET MVC 5 and WebAPI</li>
-                            <li>KnockOutJS (we needed support for legacy browsers)</li>
-                            <li>Introduced better <span className='highlight inline'>Dependency Injection</span> via
-                            <span className='highlight inline'>SimpleInjector</span> (legacy was MS Unity)</li>
-                            <li>Introduced automated code coverage (with maintained KPI of > 70%) and static code analysis with
-                                <span className='highlight inline'>&nbsp;SonarQube</span></li>
+                            <li>KnockOutJS</li>
+                        </ul>
+                        <li>Introduced better software development practices:</li>
+                        <ul>
+                            <li>Benchmarked <span className='highlight inline'>Dependency Injection&nbsp;</span>
+                                libraries and identified best fit</li>
+                            <li>Automated code coverage, with a maintained KPI > 70%</li>
+                            <li>Added static code analysis with<span className='highlight inline'>&nbsp;SonarQube</span></li>
                         </ul>
                     </ul>
-                    <span className='subtitle'>Technical Director - Yesijoin Co., Ltd.&nbsp;
-                    <span className='grey period inline far fa-calendar'>&nbsp;2011 - 2013</span>
-                    </span>
+                    <span className='subtitle'>Technical Director - Yesijoin Co., Ltd.</span>
+                    <span className='grey period inline far fa-calendar'>&nbsp;Jul 2011 - Nov 2013</span>
                     <ul>
                         <li>Designed and implemented <a
                             href='https://www.yesijoin.com'
                             target='_blank'>www.yesijoin.com</a> from scratch using J2EE technology:</li>
                         <ul>
                             <li>web-application architecture, EJB 3.0 and JSF (Primefaces)</li>
-                            <li>MySQL database</li>
                             <li><span
-                                className='highlight inline'>Integration with payment gateways</span>
-                                (123 service, 2c2p, Paysbuy, KBank)</li>
+                                className='highlight inline'>Integration with payment gateways</span></li>
                             <li>Email marketing via Amazon Email</li>
                             <li>Deployment on AWS instance</li>
                             <li>Automated testing with selenium</li>
                         </ul>
-                        <li>Built a 3 developers team to bring more features to the website and implement
-                            2 other websites (only one went live: <a
-                                target='_blank'
-                                href='https://allthaicoupons.com'>allthaicoupons.com</a> )</li>
-                        <li>Introduced Sonarqube and coding practice</li>
-                        <li>Created the electronics to support a live advertising system for a flash-mob event:
-                            a big box with a screen, a push button and an embedded printer was placed in a
-                            public area, we monitored with an IP camera and remote control to print free
-                            vouchers to people pressing the button until a count-down reached 0</li>
+                        <li>Built a 3 developers team</li>
+                        <li>Created a flash-mob interactive device</li>
                         <li>Created a web-crawler to collect condos/apartments for sale/rent information</li>
+                    </ul>
+                    <span className='subtitle'>Technical Director - Entiera Co., Ltd.</span>
+                    <span className='grey period far fa-calendar'>&nbsp;Jun 2008 - Mar 2011</span>
+                    <ul>
+                        <li>Software architecture and design of a J2EE intranet:</li>
+                        <ul>
+                            <li>Converted development environment from Windows to Ubuntu
+                                <span className='highlight inline'>&nbsp;increased team velocity by 15%</span></li>
+                            <li>Customized data visualization tool for Verizon (NY office)</li>
+                        </ul>
+                        <li>Performed demos and customized JasperServer Professional</li>
+                        <li>Recruited software engineers</li>
+                    </ul>
+                    <span className='subtitle'>And before that...</span>
+                    <span className='grey period far fa-calendar'>&nbsp;2001 - May 2008</span>
+                    <span>Various software engineer positions in:</span>
+                    <ul>
+                        <li>Property Management Systems in hospitality industry</li>
+                        <li>Biometric and security industry</li>
+                        <li>Electronics and Jewelry ERP</li>
+                        <li>System engineer in telecommunication company</li>
                     </ul>
                 </div>
                 <div className='right'>
                     <span className='title'>TECHNICAL SKILLS</span>
+                    <span className='subtitle'>Management</span>
+                    <span>Team Manager, Educator / Trainer, Scrum / Agile, Team Transformer</span>
                     <span className='subtitle'>Software Engineering</span>
                     <span>Application at scale, Design Review / Code Review,
                         Coding Standard / Static Code Analysis, Web-Security / OWASP</span>
                     <span className='subtitle'>Software Development</span>
                     <span>ASP.NET, Netcore, Java (J2SE, J2EE), ReactJS, KnockoutJS, TypeScript, HTML/CSS</span>
-                    <span className='subtitle'>Team Management</span>
-                    <span>Team Manager, Educator / Trainer, Scrum / Agile, Team Transformer</span>
                     <span className='title'>PERSONAL PROJECTS</span>
                     <ol>
                         <li>Develop <a href='https://sawan.io'>sawan.io</a> website as a medium to keep learning
@@ -173,31 +165,6 @@ export class Resume extends React.Component<{}, ResumeState> {
                         <li>French (native)</li>
                         <li>English</li>
                         <li>Thai</li>
-                    </ul>
-                    <span className='title'>WORK EXPERIENCE - Continued</span>
-                    <span className='subtitle'>Technical Director - Entiera Co., Ltd.&nbsp;
-                    <span className='grey period inline far fa-calendar'>&nbsp;2008 - 2011</span>
-                    </span>
-                    <ul>
-                        <li>Software architecture and design of a J2EE intranet:</li>
-                        <ul>
-                            <li>Convert development environment from Windows to Ubuntu
-                                <span className='highlight inline'>&nbsp;(increased team velocity by 15%)</span></li>
-                            <li>Customize data visualization tool for Verizon (NY office)</li>
-                        </ul>
-                        <li>Perform demos and customize JasperServer Professional</li>
-                        <li>Assist the Management and Executive team from the US headquarter in managing the Bangkok office</li>
-                        <li>Recruiting</li>
-                    </ul>
-                    <span className='subtitle'>And before that...&nbsp;
-                    <span className='grey period inline far fa-calendar'>&nbsp;2001 - 2008</span>
-                    </span>
-                    <span>Various software engineer positions in:</span>
-                    <ul>
-                        <li>Property Management Systems in hospitality industry</li>
-                        <li>Biometric and security industry</li>
-                        <li>Electronics and Jewelry ERP</li>
-                        <li>System engineer in telecommunication company</li>
                     </ul>
                 </div>
             </div>

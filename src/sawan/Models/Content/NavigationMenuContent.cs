@@ -8,6 +8,8 @@ namespace sawan
         public string CryptoCurrency { get; set; }
         public string HealthMonitor { get; set; }
         public string About { get; set; }
+        public string Information { get; set; }
+        public string Resume { get; set; }
 
     }
 }

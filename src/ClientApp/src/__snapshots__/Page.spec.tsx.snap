@@ -39,6 +39,14 @@ exports[`Page content is preserved 1`] = `
       component={[Function]}
       path="/health"
     />
+    <Route
+      component={[Function]}
+      path="/about"
+    />
+    <Route
+      component={[Function]}
+      path="/resume"
+    />
   </Layout>
 </BrowserRouter>
 `;

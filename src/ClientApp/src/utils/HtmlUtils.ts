@@ -60,7 +60,8 @@ export class HtmlUtils {
     private static readonly options = {
         whiteList: {
             a: ['href', 'title', 'target'],
-            br: []
+            br: [],
+            i: ['class']
         }
     };
 
