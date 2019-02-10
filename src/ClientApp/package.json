@@ -53,5 +53,8 @@
     "webpack-dev-server": "3.1.11",
     "webpack-md5-hash": "0.0.6",
     "xss": "1.0.3"
+  },
+  "resolutions": {
+    "ajv": "6.8.1"
   }
 }

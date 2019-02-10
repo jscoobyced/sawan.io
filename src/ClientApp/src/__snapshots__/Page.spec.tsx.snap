@@ -21,6 +21,8 @@ exports[`Page content is preserved 1`] = `
           "cryptoCurrency": "",
           "healthMonitor": "",
           "home": "",
+          "information": "",
+          "resume": "",
           "websiteName": "",
         },
       }
@@ -38,6 +40,14 @@ exports[`Page content is preserved 1`] = `
     <Route
       component={[Function]}
       path="/health"
+    />
+    <Route
+      component={[Function]}
+      path="/about"
+    />
+    <Route
+      component={[Function]}
+      path="/resume"
     />
   </Layout>
 </BrowserRouter>

@@ -63,6 +63,10 @@ test('getEllispis with valid input', () => {
     expect(HtmlUtils.getEllipsis(input, 23)).toBe(expected23);
 });
 
+test('query string is empty', () => {
+    expect(HtmlUtils.queryString()).toBe('');
+});
+
 function mockGetElementByTagName(value: any, noBase = false, noLength = false) {
     return jest.fn().mockImplementation(() => {
         if (noBase) {

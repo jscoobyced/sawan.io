@@ -16,7 +16,9 @@
         "CryptoCurrency": "Crypto-Currency",
         "HealthMonitor": "Health Monitor",
         "Home": "Home",
-        "WebsiteName": "sawan.io"
+        "WebsiteName": "sawan.io",
+        "Information": "Information",
+        "Resume": "Resume"
     },
     "FooterContent": {
         "Copyright": "Copyright",

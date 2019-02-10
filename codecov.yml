@@ -33,6 +33,3 @@ ignore:
   - "**/Program.cs"
   - "**/Startup.cs"
   - "**/*.cshtml"
-fixes:
-  - "src\/src/::"
-  - "src\/ClientApp\/src/::"

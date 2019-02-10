@@ -39,9 +39,29 @@ export class Header extends React.Component<HeaderProps> {
                         </ul>
                     </li>
                     <li>
-                        <NavLink to={'/'}>
-                            {this.props.navigationMenuContent.about}
-                        </NavLink>
+                        <a href='#' className='dropdown'>{this.props.navigationMenuContent.information}</a>
+                        <ul>
+                            <li>
+                                <NavLink to={'/about'}>
+                                    {this.props.navigationMenuContent.about}
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={'/resume'}>
+                                    {this.props.navigationMenuContent.resume}
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={'/resume/?full'} target='_blank'>
+                                    {this.props.navigationMenuContent.resume} <i className='fas fa-print'></i>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={'/Cedric Rochefolle - Resume 2019.pdf'} target='_blank'>
+                                {this.props.navigationMenuContent.resume} <i className='fas fa-download'></i>
+                                </NavLink>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

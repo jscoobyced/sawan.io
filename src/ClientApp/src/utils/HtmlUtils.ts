@@ -2,6 +2,14 @@ import xss from 'xss';
 
 export class HtmlUtils {
 
+    public static readonly queryString = (): string => {
+        if (!document) {
+            return '';
+        }
+
+        return document.location.search;
+    }
+
     public static readonly baseUrl = (): string => {
 
         const base = HtmlUtils.getFirstElementsByTagName('base');
@@ -52,7 +60,8 @@ export class HtmlUtils {
     private static readonly options = {
         whiteList: {
             a: ['href', 'title', 'target'],
-            br: []
+            br: [],
+            i: ['class']
         }
     };
 

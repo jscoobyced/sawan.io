@@ -1,0 +1,97 @@
+.regular {
+  width: 85%;
+}
+
+.resume {
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #000;
+  display: block;
+  overflow: auto;
+  background: $secondary-light url(images/waves-blue.png) no-repeat;
+
+  div {
+    display: block;
+    overflow: auto;
+
+    div {
+      width: 47%;
+      padding: 0 15px;
+    }
+
+    span {
+      display: block;
+    }
+
+    .regular {
+      color: $on-background;
+    }
+
+    .highlight {
+      color: $on-surface;
+    }
+
+    .period {
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .title {
+      font-size: 20px;
+      margin: 18px 0 5px 0;
+      padding: 2px 0;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+      display: inline-block;
+    }
+
+    .subtitle {
+      font-weight: 900;
+      font-size: 16px;
+      padding: 5px 0;
+      color: $on-background;
+    }
+
+    .grey {
+      color: $subtitle;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+
+      span {
+        i {
+          width: 20px;
+          text-align: center;
+        }
+      }
+    }
+
+    .name {
+      font-size: 2.5em;
+    }
+  }
+}
+
+@media screen and (max-width: $media-width-xlarge) {
+  .resume div div {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: $media-width-medium) {
+  .resume div .left,
+  .resume div .right {
+    display: block;
+    float: none;
+    width: 95%;
+  }
+
+  .txtright {
+    text-align: left;
+  }
+}

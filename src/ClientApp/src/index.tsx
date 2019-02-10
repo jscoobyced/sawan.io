@@ -13,4 +13,5 @@ export class Index {
   }
 
 }
+
 new Index().renderApp();

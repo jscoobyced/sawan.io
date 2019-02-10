@@ -49,11 +49,52 @@ exports[`Header component is unchanged. 1`] = `
         </ul>
       </li>
       <li>
-        <NavLink
-          activeClassName="active"
-          aria-current="page"
-          to="/"
+        <a
+          className="dropdown"
+          href="#"
         />
+        <ul>
+          <li>
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              to="/about"
+            />
+          </li>
+          <li>
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              to="/resume"
+            />
+          </li>
+          <li>
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              target="_blank"
+              to="/resume/?full"
+            >
+               
+              <i
+                className="fas fa-print"
+              />
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              target="_blank"
+              to="/Cedric Rochefolle - Resume 2019.pdf"
+            >
+               
+              <i
+                className="fas fa-download"
+              />
+            </NavLink>
+          </li>
+        </ul>
       </li>
     </ul>
   </nav>
