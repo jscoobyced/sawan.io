@@ -13,6 +13,8 @@ exports[`Layout component with content is unchanged. 1`] = `
           "cryptoCurrency": "",
           "healthMonitor": "",
           "home": "",
+          "information": "",
+          "resume": "",
           "websiteName": "",
         }
       }
@@ -35,6 +37,8 @@ exports[`Layout component with content is unchanged. 1`] = `
           "cryptoCurrency": "",
           "healthMonitor": "",
           "home": "",
+          "information": "",
+          "resume": "",
           "websiteName": "",
         },
       }
