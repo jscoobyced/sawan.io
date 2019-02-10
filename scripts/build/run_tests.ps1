@@ -26,7 +26,6 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
-    /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.login=$env:SonarKey `
@@ -46,7 +45,6 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
-    /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.login=$env:SonarKey `
