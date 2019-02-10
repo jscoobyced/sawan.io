@@ -22,7 +22,7 @@ environment:
   TsConfig: tsconfig.json
   CsTarget: test src\sawan-tests\sawan-tests.csproj
   CsFilter: +[sawan*]* -[sawan*]*Program -[sawan*]*Startup +[tests*]*
-  CsCoverage: src\coverage.xml
+  CsCoverage: coverage.xml
   TsCoverage: coverage\coverage-final.json
   TsReportPath: test-report.xml
 dotnet_csproj:
