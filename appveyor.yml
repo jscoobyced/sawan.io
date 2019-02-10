@@ -48,6 +48,7 @@ after_test:
 artifacts:
   - path: publish
     type: Zip
+  - path: src\coverage.xml
 notifications:
   - provider: GitHubPullRequest
     on_build_success: true
