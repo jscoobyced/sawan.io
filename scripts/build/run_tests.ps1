@@ -17,9 +17,11 @@ Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 -filter:"$env:CsFilter" `
 -output:"$env:CsCoverage"
 Set-Location $env:APPVEYOR_BUILD_FOLDER
-codecov -f $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath/$env:CsCoverage
+codecov -v -f $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath/$env:CsCoverage
 
 Write-Host -------------------------------------- SQ Analysis start ---------------------
+
+Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
