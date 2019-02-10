@@ -1,12 +1,14 @@
 Write-Host -------------------------------------- Run test ------------------------------
 
 Write-Host --------------------------------- ClientApp Tests-----------------------------
+Set-Location $env:APPVEYOR_BUILD_FOLDER
 yarn --cwd $env:ClientApp --silent run test:coverage
 codecov -f $env:ClientApp\$env:TsCoverage
 
 Write-Host -------------------------------- ClientApp Tests done ------------------------
 Write-Host -------------------------------- Netcore Tests -------------------------------
 
+Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 & $env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
 -register:user `
 -oldStyle `
