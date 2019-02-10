@@ -5,11 +5,11 @@ namespace sawan.Services
     using System.Threading.Tasks;
     using sawan.Repositories;
 
-    public class MainContentService : IMainContentService
+    public class ContentService : IContentService
     {
         private IMongoDbRepository mongoDbRepository;
 
-        public MainContentService(IMongoDbRepository mongoDbRepository)
+        public ContentService(IMongoDbRepository mongoDbRepository)
         {
             this.mongoDbRepository = mongoDbRepository;
         }
@@ -22,6 +22,11 @@ namespace sawan.Services
             }
 
             return await this.mongoDbRepository.GetMainContent(language);
+        }
+
+        public async Task<IEnumerable<BlogElement>> GetBlogPage(long from, int maxResult)
+        {
+            return await this.mongoDbRepository.GetBlogPage(DateTime.Now.AddMonths(-10), maxResult);
         }
     }
 }

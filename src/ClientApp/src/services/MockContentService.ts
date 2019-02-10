@@ -43,10 +43,11 @@ export class MockContentService extends ContentService {
 
     protected updateBlogPage(maxResult: number): Promise<BlogPage> {
         const date = '2019-02-09';
-        const displayDate = (new Date(date).toISOString().substring(0, 10));
+        const displayDate = new Date(date);
         const articles: BlogElement[] = [
             {
-                articleTitle: `${displayDate}`,
+                blogDate: displayDate,
+                articleTitle: 'Starting again',
                 article: 'A new begining this year for me. After 5 years at Agoda it is time for me to move on to'
                     + ' new challenges. I am going to do something I haven\'t done for a while: writing a '
                     + 'resume that reflects my skills and experience without showing off. Not too much at least '
@@ -60,7 +61,8 @@ export class MockContentService extends ContentService {
                     + 'here</a>.'
             },
             {
-                articleTitle: '2018-10-18',
+                blogDate: displayDate,
+                articleTitle: 'Grand opening of sawan.io',
                 article: 'Grand opening of sawan.io.<br />This website is about my'
                     + ' personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP'
                     + '  headers... It includes a simple (and a bit naive) crypto-currency analyser: it can'
@@ -71,6 +73,7 @@ export class MockContentService extends ContentService {
                     + ' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.'
             },
             {
+                blogDate: displayDate,
                 articleTitle: 'Some other news',
                 article: this.data
             }

@@ -3,6 +3,11 @@ export class DateUtil {
         return `${this.toDigits(date.getHours(), 2)}:${this.toDigits(date.getMinutes(), 2)}`;
     }
 
+    public static dateToString(date: Date): string {
+        const lDate = new Date(date);
+        return lDate.toISOString().substring(0, 10);
+    }
+
     private static toDigits(value: number, length: number): string {
         let result: string = value.toString();
         while (result.length < length) {
