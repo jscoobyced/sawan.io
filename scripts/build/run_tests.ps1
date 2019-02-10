@@ -1,10 +1,8 @@
 Write-Host -------------------------------------- Run test ------------------------------
 
 Write-Host --------------------------------- ClientApp Tests-----------------------------
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
-yarn --silent run test:coverage
-codecov -f $env:TsCoverage
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
+yarn --cwd $env:ClientApp --silent run test:coverage
+codecov -f $env:ClientApp\$env:TsCoverage
 
 Write-Host -------------------------------- ClientApp Tests done ------------------------
 Write-Host -------------------------------- Netcore Tests -------------------------------
