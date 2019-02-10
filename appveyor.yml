@@ -20,7 +20,7 @@ environment:
   SonarScanner: sonar-scanner-3.2.0.1227\bin
   LcovInfo: coverage\lcov.info
   TsConfig: tsconfig.json
-  CsTarget: test src\sawan-tests\sawan-tests.csproj
+  CsTarget: test sawan-tests\sawan-tests.csproj
   CsFilter: +[sawan*]* -[sawan*]*Program -[sawan*]*Startup +[tests*]*
   CsCoverage: coverage.xml
   TsCoverage: coverage\coverage-final.json
