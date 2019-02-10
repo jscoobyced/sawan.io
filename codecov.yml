@@ -34,4 +34,4 @@ ignore:
   - "**/Startup.cs"
   - "**/*.cshtml"
 fixes:
-  - "src/src/::src/"
+  - "src\/src/::src/"
