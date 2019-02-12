@@ -28,7 +28,7 @@ export class Home extends React.Component<HomeProps> {
                     <h1>{article.articleTitle} - {blogDate}</h1>
                     <div>
                         <span dangerouslySetInnerHTML={{ __html: content }}></span>
-                        <NavLink to='/' className='link-article'>Read more...</NavLink>
+                        <NavLink to={'/blog/' + article.id} className='link-article'>Read more...</NavLink>
                     </div>
                 </article>);
         });

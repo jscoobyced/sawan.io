@@ -28,6 +28,7 @@ export interface NavigationMenuContent {
 }
 
 export interface BlogElement {
+    id: number;
     blogDate: Date;
     article: string;
     articleTitle: string;

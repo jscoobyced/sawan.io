@@ -46,6 +46,7 @@ export class MockContentService extends ContentService {
         const displayDate = new Date(date);
         const articles: BlogElement[] = [
             {
+                id: 1,
                 blogDate: displayDate,
                 articleTitle: 'Starting again',
                 article: 'A new begining this year for me. After 5 years at Agoda it is time for me to move on to'
@@ -61,6 +62,7 @@ export class MockContentService extends ContentService {
                     + 'here</a>.'
             },
             {
+                id: 2,
                 blogDate: displayDate,
                 articleTitle: 'Grand opening of sawan.io',
                 article: 'Grand opening of sawan.io.<br />This website is about my'
@@ -73,6 +75,7 @@ export class MockContentService extends ContentService {
                     + ' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.'
             },
             {
+                id: 3,
                 blogDate: displayDate,
                 articleTitle: 'Some other news',
                 article: this.data
