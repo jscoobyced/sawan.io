@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Blog is rendered empty when no blogElement 1`] = `
+<Blog
+  blogElement={
+    Object {
+      "article": "",
+      "articleTitle": "",
+      "blogDate": 2019-02-13T02:33:00.029Z,
+      "id": 0,
+    }
+  }
+/>
+`;

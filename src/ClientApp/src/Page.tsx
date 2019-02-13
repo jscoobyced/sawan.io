@@ -2,18 +2,17 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { CandleChartPageHoc } from './components/charts/CandleChartPageHoc';
 import { About } from './components/main/About';
-import { Blog } from './components/main/Blog';
-import { Home } from './components/main/Home';
-import { Layout, LayoutProps } from './components/main/Layout';
+import { BlogHoc } from './components/main/BlogHoc';
+import { HomeHoc } from './components/main/HomeHoc';
+import { Layout } from './components/main/Layout';
 import { Resume } from './components/main/Resume';
 import { ContentServiceFactory } from './services/ContentServiceFactory';
 import { IContentService } from './services/IContentService';
-import { BlogPage, Language, MainContent } from './services/Models';
+import { Language, MainContent } from './services/Models';
 import { HtmlUtils } from './utils/HtmlUtils';
 
 export interface PageState {
     allContent: MainContent;
-    blogPage: BlogPage;
 }
 
 export class Page extends React.Component<{}, PageState> {
@@ -22,21 +21,16 @@ export class Page extends React.Component<{}, PageState> {
 
     public constructor(props: {}) {
         super(props);
-        const mode = process.env.mode as string;
-        this.contentService = ContentServiceFactory.GetContentService(mode);
+        this.contentService = ContentServiceFactory.GetContentService();
         this.state = {
-            allContent: this.contentService.getDefaultMainContent(),
-            blogPage: this.contentService.getDefaultBlogPage()
+            allContent: this.contentService.getDefaultMainContent()
         };
     }
 
     public componentDidMount() {
         this.contentService.getMainContent(Language.English)
             .then(allContent => {
-                this.contentService.getBlogPage(0, 4)
-                    .then(blogPage => {
-                        this.setState({ allContent, blogPage });
-                    });
+                this.setState({ allContent });
             });
     }
 
@@ -50,10 +44,10 @@ export class Page extends React.Component<{}, PageState> {
 
     private routes() {
         return <Layout allContent={this.state.allContent} >
-            <Route exact path='/' component={() => <Home blogPage={this.state.blogPage} />} />
+            <Route exact path='/' component={HomeHoc} />
             <Route path='/candle' component={CandleChartPageHoc} />
             <Route path='/health' component={About} />
-            <Route path='/blog/:id' component={Blog} />
+            <Route path='/blog/:id' component={BlogHoc} />
             <Route path='/about' component={About} />
             <Route path='/resume' component={Resume} />
         </Layout>;

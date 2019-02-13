@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article component with article. 1`] = `
+<div>
+  <article>
+    <h1>
+      Title
+       - 
+      2019-01-31
+    </h1>
+    <div>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "bla bla bla",
+          }
+        }
+      />
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        className="link-article"
+        to="/blog/1"
+      >
+        Read more...
+      </NavLink>
+    </div>
+  </article>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="link-article"
+    to="/"
+  >
+    Back
+  </NavLink>
+</div>
+`;
+
+exports[`Article component with article. 2`] = `
+<div>
+  <article>
+    <h1>
+      Title
+       - 
+      2019-01-31
+    </h1>
+    <div>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "bla bla bla",
+          }
+        }
+      />
+    </div>
+  </article>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="link-article"
+    to="/"
+  >
+    Back
+  </NavLink>
+</div>
+`;
+
+exports[`Article component with article. 3`] = `
+<div>
+  <article>
+    <h1>
+      Title
+       - 
+      2019-01-31
+    </h1>
+    <div>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "bla bla bla",
+          }
+        }
+      />
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        className="link-article"
+        to="/blog/1"
+      >
+        Read more...
+      </NavLink>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`Article component with article. 4`] = `
+<div>
+  <article>
+    <h1>
+      Title
+       - 
+      2019-01-31
+    </h1>
+    <div>
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "bla bla bla",
+          }
+        }
+      />
+    </div>
+  </article>
+</div>
+`;
+
+exports[`Article component with empty article. 1`] = `""`;

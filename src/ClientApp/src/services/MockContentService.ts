@@ -17,6 +17,21 @@ export class MockContentService extends ContentService {
         + ' facilisis mauris sit amet. Tempor orci eu lobortis elementum nibh tellus molestie nunc non.'
         + ' Turpis nunc eget lorem dolor.';
 
+    public async getBlogElement(id: number): Promise<BlogElement> {
+        return this.updateBlogPage(3).then(blogPage => {
+            let article = null as unknown as BlogElement;
+            blogPage.articles.some(a => {
+                if (a.id === id) {
+                    article = a;
+                    return true;
+                }
+                return false;
+            });
+
+            return article;
+        });
+    }
+
     protected updateMainContent(language: Language): Promise<MainContent> {
         const content: MainContent = {
             menuContent: {

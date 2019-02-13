@@ -1,9 +1,9 @@
 import React from 'react';
-import { match, NavLink } from 'react-router-dom';
-import { IdParam } from '../Models';
+import { BlogElement } from '../../services/Models';
+import { Article } from './Article';
 
 export interface BlogProps {
-    match: match<IdParam>;
+    blogElement: BlogElement;
 }
 
 export class Blog extends React.Component<BlogProps> {
@@ -13,15 +13,8 @@ export class Blog extends React.Component<BlogProps> {
     }
 
     public render() {
-        const id = this.props.match.params.id;
-        return <div>
-            <article>
-                <h1>Something</h1>
-                <div>
-                    <span dangerouslySetInnerHTML={{ __html: id }}></span>
-                </div>
-            </article>
-            <NavLink to='/' className='link-article'>Back</NavLink>
-        </div>;
+        return <Article blogElement={this.props.blogElement}
+            backLink={true}
+            ellipsis={false} />;
     }
 }

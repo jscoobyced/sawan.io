@@ -1,8 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { BlogElement, BlogPage } from '../../services/Models';
-import { DateUtil } from '../../utils/DateUtils';
-import { HtmlUtils } from '../../utils/HtmlUtils';
+import { Article } from './Article';
 
 export interface HomeProps {
     blogPage: BlogPage;
@@ -17,20 +15,13 @@ export class Home extends React.Component<HomeProps> {
     public render() {
         const articles: BlogElement[] = this.props.blogPage.articles;
         if (!articles || articles.length === 0) {
-            return <span></span>;
+            return null;
         }
 
         return articles.map((article, key) => {
-            const content = HtmlUtils.getEllipsis(HtmlUtils.getSafeContent(article.article), 1000);
-            const blogDate = DateUtil.dateToString(article.blogDate);
-            return (
-                <article key={key}>
-                    <h1>{article.articleTitle} - {blogDate}</h1>
-                    <div>
-                        <span dangerouslySetInnerHTML={{ __html: content }}></span>
-                        <NavLink to={'/blog/' + article.id} className='link-article'>Read more...</NavLink>
-                    </div>
-                </article>);
+            return <Article key={key} blogElement={article}
+                backLink={false}
+                ellipsis={true} />;
         });
     }
 }

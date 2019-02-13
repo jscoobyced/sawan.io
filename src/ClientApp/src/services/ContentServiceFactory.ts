@@ -4,7 +4,8 @@ import { MockContentService } from './MockContentService';
 
 export class ContentServiceFactory {
 
-    public static GetContentService(mode: string): IContentService {
+    public static GetContentService(): IContentService {
+        const mode = process.env.mode as string;
         if (mode === 'production') {
             return new ContentService();
         }

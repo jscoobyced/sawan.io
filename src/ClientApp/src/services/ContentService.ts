@@ -16,6 +16,10 @@ export class ContentService implements IContentService {
         return this.updateBlogPage(from, maxResult);
     }
 
+    public async getBlogElement(id: number): Promise<BlogElement> {
+        return ApiUtils.fetchData<BlogElement>(`/api/Data/blog/${id}`);
+    }
+
     public getDefaultBlogPage(): BlogPage {
         return {
             articles: []
