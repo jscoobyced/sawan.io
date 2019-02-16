@@ -22,13 +22,7 @@ namespace sawan.tests
         [Fact]
         public async void GetBlogPageTest()
         {
-            var blogElement = new BlogElement()
-            {
-                Article = "",
-                ArticleTitle = "",
-                BlogDate = DateTime.Now,
-                Id = "1"
-            };
+            var blogElement = new BlogElementBuilder().Build();
             var contentService = new ContentServiceBuilder()
                 .WithBlogElements(new List<BlogElement>() { blogElement })
                 .Build();
@@ -42,5 +36,24 @@ namespace sawan.tests
             Assert.NotEmpty(blogElements);
             Assert.Equal(blogElement, blogElements.First());
         }
+
+
+        [Fact]
+        public async void GetBlogContentTest()
+        {
+            var blogElement = new BlogElementBuilder().Build();
+            var contentService = new ContentServiceBuilder()
+                .WithBlogElement(blogElement)
+                .Build();
+            var controller = new DataControllerBuilder()
+                .WithContentService(contentService)
+                .Build();
+
+            var result = await controller.GetBlogContent("0");
+
+            Assert.NotNull(result);
+            Assert.Equal(blogElement, result);
+        }
+
     }
 }
