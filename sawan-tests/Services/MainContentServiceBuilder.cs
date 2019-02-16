@@ -16,9 +16,9 @@ namespace sawan.tests
             return this;
         }
 
-        public IMainContentService Build()
+        public IContentService Build()
         {
-            var mockMainContentService = new Mock<IMainContentService>();
+            var mockMainContentService = new Mock<IContentService>();
             mockMainContentService.Setup(x => x.GetMainContent(this.language)).ReturnsAsync(this.mainContent);
             return mockMainContentService.Object;
         }

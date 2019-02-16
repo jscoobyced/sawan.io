@@ -7,7 +7,7 @@ namespace sawan.Repositories
     using Microsoft.Extensions.Options;
     using MongoDB.Driver;
 
-    public class MongoDbRepository : IMongoDbRepository
+    public class MongoDbRepository : IDbRepository
     {
         private IMongoCollection<MainContent> mainContentCollection;
         private IMongoCollection<BlogElement> blogCollection;

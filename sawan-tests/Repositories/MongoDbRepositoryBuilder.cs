@@ -21,9 +21,9 @@ namespace sawan.tests
             return this;
         }
 
-        public IMongoDbRepository Build()
+        public IDbRepository Build()
         {
-            var repository = new Mock<IMongoDbRepository>();
+            var repository = new Mock<IDbRepository>();
             repository.Setup(x => x.GetMainContent(this.language)).ReturnsAsync(this.mainContent);
             return repository.Object;
         }

@@ -7,9 +7,9 @@ namespace sawan.Services
 
     public class ContentService : IContentService
     {
-        private IMongoDbRepository mongoDbRepository;
+        private IDbRepository mongoDbRepository;
 
-        public ContentService(IMongoDbRepository mongoDbRepository)
+        public ContentService(IDbRepository mongoDbRepository)
         {
             this.mongoDbRepository = mongoDbRepository;
         }

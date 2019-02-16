@@ -17,7 +17,7 @@ namespace sawan.tests
 
         private IGitHubService gitHubService;
 
-        private IMainContentService mainContentService;
+        private IContentService contentService;
 
         private readonly IDictionary<string, string> headers = new Dictionary<string, string>();
 
@@ -35,9 +35,9 @@ namespace sawan.tests
             return this;
         }
 
-        public DataControllerBuilder WithMainContentService(IMainContentService mainContentService)
+        public DataControllerBuilder WithMainContentService(IContentService contentService)
         {
-            this.mainContentService = mainContentService;
+            this.contentService = contentService;
             return this;
         }
 
@@ -79,7 +79,7 @@ namespace sawan.tests
                 HttpContext = httpContext,
             };
 
-            return new DataController(this.pairingService, this.gitHubService, this.mainContentService)
+            return new DataController(this.pairingService, this.gitHubService, this.contentService)
             {
                 ControllerContext = controllerContext
             };

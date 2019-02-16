@@ -105,6 +105,11 @@ namespace sawan.Controllers
         [HttpGet("blog/{from}/{maxResult}")]
         public async Task<IEnumerable<BlogElement>> GetBlogPage(long from, int maxResult)
         {
+            if (this.contentService == null)
+            {
+                return new List<BlogElement>();
+            }
+
             return await this.contentService.GetBlogPage(from, maxResult);
         }
     }

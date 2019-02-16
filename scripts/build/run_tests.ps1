@@ -1,14 +1,13 @@
 Write-Host -------------------------------------- Run test ------------------------------
 
 Write-Host --------------------------------- ClientApp Tests-----------------------------
-Set-Location $env:APPVEYOR_BUILD_FOLDER
+
 yarn --cwd $env:ClientApp --silent run test:coverage
 codecov -f $env:ClientApp\$env:TsCoverage
 
 Write-Host -------------------------------- ClientApp Tests done ------------------------
 Write-Host -------------------------------- Netcore Tests -------------------------------
 
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 & $env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
 -register:user `
 -oldStyle `
@@ -16,12 +15,10 @@ Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 -targetargs:"$env:CsTarget" `
 -filter:"$env:CsFilter" `
 -output:"$env:CsCoverage"
-Set-Location $env:APPVEYOR_BUILD_FOLDER
-codecov -v -f $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath/$env:CsCoverage
+
+codecov -v -f $env:APPVEYOR_BUILD_FOLDER/$env:CsCoverage
 
 Write-Host -------------------------------------- SQ Analysis start ---------------------
-
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
@@ -66,8 +63,5 @@ if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_N
 }
 
 Write-Host -------------------------------------- SQ Analysis done- ---------------------
-
-Set-Location $env:APPVEYOR_BUILD_FOLDER
-
 Write-Host -------------------------------------- Netcore done --------------------------
 Write-Host -------------------------------------- Run test complete ---------------------

@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/sawan-tests.csproj"
+                "${workspaceFolder}/sawan.sln"
             ],
             "problemMatcher": "$msCompile"
         },

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using sawan.Services;
 
 namespace sawan
 {
@@ -45,7 +46,7 @@ namespace sawan
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMigrationService migrationService)
         {
             if (env.IsDevelopment())
             {
@@ -91,6 +92,8 @@ namespace sawan
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+            migrationService.CheckInitialData();
         }
     }
 }

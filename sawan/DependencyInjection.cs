@@ -8,11 +8,15 @@ namespace sawan
     {
         public static void Inject(IServiceCollection services)
         {
+            // Services
             services.AddTransient<IContentService, ContentService>();
             services.AddTransient<IPairingService, PairingService>();
             services.AddTransient<IGitHubService, GitHubService>();
+            services.AddTransient<IMigrationService, MigrationService>();
+
+            // Repositories
             services.AddTransient<IRestConnector, RestConnector>();
-            services.AddTransient<IMongoDbRepository, MongoDbRepository>();
+            services.AddTransient<IDbRepository, MongoDbRepository>();
         }
     }
 }
