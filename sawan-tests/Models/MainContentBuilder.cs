@@ -10,7 +10,14 @@ namespace sawan.tests
             {
                 NavigationMenuContent = new NavigationMenuContent()
                 {
-                    Home = "Home"
+                    Home = "Home",
+                    About = "About",
+                    Applications = "Applications",
+                    CryptoCurrency = "CryptoCurrency",
+                    HealthMonitor = "HealthMonitor",
+                    Information = "Information",
+                    Resume = "Resume",
+                    WebsiteName = "Website Name"
                 },
                 MenuContent = new MenuContent()
                 {
@@ -24,7 +31,14 @@ namespace sawan.tests
                             Url = "/"
                         }
                     }
-                }
+                },
+                FooterContent = new FooterContent()
+                {
+                    Copyright = "Copyright",
+                    Credits = "Credits",
+                    Year = "2019"
+                },
+                Id = "123"
             };
         }
 

@@ -14,7 +14,7 @@ namespace sawan.tests
         public void WithNullMainContentService()
         {
             var controller = new DataControllerBuilder()
-                .WithMainContentService(null)
+                .WithContentService(null)
                 .Build();
             var reason = "because it should return default empty MainContent data.";
             MainContent result = null;
@@ -28,8 +28,8 @@ namespace sawan.tests
         {
 
             var controller = new DataControllerBuilder()
-                .WithMainContentService(
-                    new MainContentServiceBuilder()
+                .WithContentService(
+                    new ContentServiceBuilder()
                     .WithLanguageMainContent(this.mainContentBuilder.Build(), Language.English)
                     .Build())
                 .Build();

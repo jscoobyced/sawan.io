@@ -35,7 +35,7 @@ namespace sawan.tests
             return this;
         }
 
-        public DataControllerBuilder WithMainContentService(IContentService contentService)
+        public DataControllerBuilder WithContentService(IContentService contentService)
         {
             this.contentService = contentService;
             return this;

@@ -6,7 +6,7 @@ namespace sawan.tests
     using sawan.Services;
     using Xunit;
 
-    public class MainContentServiceTests
+    public class ContentServiceTests
     {
 
         [Fact]

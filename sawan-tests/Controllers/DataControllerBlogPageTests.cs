@@ -14,7 +14,7 @@ namespace sawan.tests
         public void WithNullMainContentService()
         {
             var controller = new DataControllerBuilder()
-                .WithMainContentService(null)
+                .WithContentService(null)
                 .Build();
 
             IEnumerable<BlogElement> result = null;
