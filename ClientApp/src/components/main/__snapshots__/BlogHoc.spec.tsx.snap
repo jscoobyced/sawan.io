@@ -6,7 +6,7 @@ exports[`Blog is rendered empty when no blogElement 1`] = `
     Object {
       "article": "",
       "articleTitle": "",
-      "blogDate": 2019-02-13T02:33:00.029Z,
+      "blogDate": 2019-02-16T08:35:07.416Z,
       "id": 0,
     }
   }
