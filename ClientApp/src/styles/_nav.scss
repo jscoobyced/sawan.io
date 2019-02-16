@@ -1,0 +1,76 @@
+nav {
+	display: inline-block;
+}
+
+nav a {
+	padding: 0.5em;
+	display: block;
+	white-space: nowrap;
+    text-decoration: none;
+    color: $on-primary;
+    background-color: $primary-light;
+}
+
+nav a:hover {
+	background-color: $primary-dark;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+	z-index: 1000;
+}
+
+nav li {
+	position: relative;
+	display: inline-block;
+	z-index: 1000;
+}
+
+nav ul li:first-child a {
+    border-radius: 2px 0 0 2px;
+}
+
+nav ul li:last-child a {
+    border-radius: 0 2px 2px 0;
+}
+
+nav ul ul {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+}
+
+nav > ul > li > ul > li {
+	min-width: 100%;
+	z-index: 1000;
+}
+
+nav ul ul li:first-child a {
+    border-radius: 0 0 0 0;
+}
+
+nav ul ul li:last-child a {
+    border-radius: 0 0 2px 2px;
+}
+
+nav ul ul ul {
+	left: 100%;
+	top: 0;
+}
+
+nav li:hover > ul {
+	display: block;
+}
+
+.menu-space {
+    display: inline-block;
+    width: 80px;
+}
+
+@media screen and (max-width: $media-width-xsmall) {
+
+	.menu-space {
+		width: 5px;
+	}	
+}

@@ -1,10 +1,9 @@
 Write-Host -------------------------------------- Run test ------------------------------
 
 Write-Host --------------------------------- ClientApp Tests-----------------------------
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
-yarn --silent run test:coverage
-codecov -f $env:TsCoverage
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
+
+yarn --cwd $env:ClientApp --silent run test:coverage
+codecov -f $env:ClientApp\$env:TsCoverage
 
 Write-Host -------------------------------- ClientApp Tests done ------------------------
 Write-Host -------------------------------- Netcore Tests -------------------------------
@@ -17,7 +16,7 @@ Write-Host -------------------------------- Netcore Tests ----------------------
 -filter:"$env:CsFilter" `
 -output:"$env:CsCoverage"
 
-codecov -f $env:CsCoverage
+codecov -v -f $env:APPVEYOR_BUILD_FOLDER/$env:CsCoverage
 
 Write-Host -------------------------------------- SQ Analysis start ---------------------
 
@@ -26,7 +25,6 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
-    /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.login=$env:SonarKey `
@@ -46,7 +44,6 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
-    /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.login=$env:SonarKey `
@@ -66,8 +63,5 @@ if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_N
 }
 
 Write-Host -------------------------------------- SQ Analysis done- ---------------------
-
-Set-Location $env:APPVEYOR_BUILD_FOLDER
-
 Write-Host -------------------------------------- Netcore done --------------------------
 Write-Host -------------------------------------- Run test complete ---------------------

@@ -10,12 +10,18 @@ Home of the https://sawan.io website.
 
 # Setup
 
+## Dependencies
+
+You will need the following to be pre-installed on your machine:
+- dotnet core with SDK 2.2.x
+- docker
+
 ## Application
 
 In a CMD or TERMINAL window, follow those steps:
 - To prepare the client-side assets:
 ```
-pushd src/ClientApp
+pushd ClientApp
 yarn install
 yarn webpack
 popd
@@ -23,7 +29,7 @@ popd
 
 - To run a mock version (and hot-reload)
 ```
-pushd src/ClientApp
+pushd ClientApp
 yarn dev-server
 ```
 
@@ -31,11 +37,14 @@ Then you can open a browser on http://localhost:9000 to browse the mocked applic
 
 - To build the dotnet core application
 ```
-pushd src
 dotnet restore
 dotnet build
+```
+
+- Then to run it locally:
+```
+sudo ./scripts/docker/start-local.sh
 dotnet run --project sawan
-popd
 ```
 
 Then you can open your browser on http://localhost:5000 to browse the application.
@@ -44,29 +53,21 @@ Then you can open your browser on http://localhost:5000 to browse the applicatio
 
 - To run the unit tests
 ```
-cd src/sawan-tests
 dotnet test
-popd
 ```
 
-## Update - 2018-12-02
+## Update - 2019-02-16
 
-Now this application can auto-deploy it's new version when a tag is created and a GitHub webhook is set
- to `<server>/api/Data/github` and the webhook token set in `appsettings.json`
-
-## Update - 2019-01-27
-
-Move to a docker environment. To run this website on production without downloading the whole repo:
+Moved to a docker environment. To run this website on production without downloading the whole repo:
 ```
-rm -Rf ~/data/mongo/sawanio/
-mkdir -p ~/data/mongo/sawanio/db ~/data/mongo/sawanio/configdb ~/data/mongo/sawanio/scripts
-wget https://raw.githubusercontent.com/jscoobyced/sawan.io/master/scripts/mongo/data/MainContent.json -O /tmp/MainContent.json
-cp /tmp/MainContent.json ~/data/mongo/sawanio/scripts
-chown -Rf $(logname):$(id -gn $(logname)) ~/data/mongo/sawanio
-sudo docker run --rm -d --name sawan \
-    -p 8080:5000 \
-    -v ~/data/mongo/sawanio/db:/data/db \
-    -v ~/data/mongo/sawanio/configdb:/data/configdb \
-    -v ~/data/mongo/sawanio/scripts:/data/scripts \
-    jscdroiddev/sawanio:latest
+wget -O - https://raw.githubusercontent.com/jscoobyced/sawan.io/master/scripts/docker/start.sh | sudo sh
 ```
+
+You can do it in several steps:
+```
+wget https://raw.githubusercontent.com/jscoobyced/sawan.io/master/scripts/docker/start.sh -O start.sh
+chmod u+x start.sh
+sudo ./start.sh
+```
+
+IMPORTANT NOTES: have a look at the above script and make sure you're happy with what it does.
