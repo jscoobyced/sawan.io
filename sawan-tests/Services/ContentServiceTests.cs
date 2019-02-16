@@ -10,7 +10,7 @@ namespace sawan.tests
     {
 
         [Fact]
-        public void WithUnknownLanguageMainContentService()
+        public async Task WithUnknownLanguageMainContentService()
         {
 
             var mainContentService = new ContentService(
@@ -19,20 +19,18 @@ namespace sawan.tests
                 .WithLanguage(Language.English)
                 .Build());
             var reason = "because it should return english data when language is unknown.";
-            MainContent result = null;
-            Func<Task> blogPage = async () => result = await mainContentService.GetMainContent((Language)20);
-            blogPage.Should().NotThrow<NullReferenceException>(reason);
+            var result = await mainContentService.GetMainContentAsync((Language)20);
             result.Should().NotBeNull(reason);
         }
 
         [Fact]
-        public async void GetMainContentWithLanguage()
+        public async Task GetMainContentWithLanguage()
         {
             var mainContentService = new ContentService(
                 new MongoDbRepositoryBuilder()
                 .WithMainContent(new MainContentBuilder().Build())
                 .Build());
-            var result = await mainContentService.GetMainContent(Language.English);
+            var result = await mainContentService.GetMainContentAsync(Language.English);
             result.Should().NotBeNull();
         }
     }

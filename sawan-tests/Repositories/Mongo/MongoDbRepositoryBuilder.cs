@@ -24,7 +24,7 @@ namespace sawan.tests
         public IDbRepository Build()
         {
             var repository = new Mock<IDbRepository>();
-            repository.Setup(x => x.GetMainContent(this.language)).ReturnsAsync(this.mainContent);
+            repository.Setup(x => x.GetMainContentAsync(this.language)).ReturnsAsync(this.mainContent);
             return repository.Object;
         }
     }

@@ -34,7 +34,7 @@ namespace sawan.Services
 
         private bool CheckMainContent()
         {
-            var mainContentResult = this.dbRepository.GetMainContent(Language.English);
+            var mainContentResult = this.dbRepository.GetMainContentAsync(Language.English);
             if (mainContentResult != null)
             {
                 var mainContent = mainContentResult.Result;
@@ -50,12 +50,12 @@ namespace sawan.Services
 
         private void InsertMainContent()
         {
-            this.dbRepository.InsertMainContent("MainContent.json");
+            this.dbRepository.InsertMainContentAsync("MainContent.json");
         }
 
         private bool CheckDefaultBlog()
         {
-            var blog = this.dbRepository.GetBlogPage(3);
+            var blog = this.dbRepository.GetBlogPageAsync(3);
             if (blog != null)
             {
                 var blogResult = blog.Result;
@@ -70,7 +70,7 @@ namespace sawan.Services
 
         private void InsertDefaultBlog()
         {
-            this.dbRepository.InsertBlogElement("Blog.json");
+            this.dbRepository.InsertBlogElementAsync("Blog.json");
         }
     }
 }

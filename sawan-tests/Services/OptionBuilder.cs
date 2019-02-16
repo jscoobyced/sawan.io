@@ -68,5 +68,11 @@ namespace sawan.tests
             this.appSettings.GitHub.UpdateScript = script;
             return this;
         }
+
+        public OptionBuilder WithMongo(Mongo mongo)
+        {
+            this.appSettings.Mongo = mongo;
+            return this;
+        }
     }
 }

@@ -5,10 +5,10 @@ namespace sawan.Services
 
     public interface IContentService
     {
-        Task<MainContent> GetMainContent(Language language);
+        Task<MainContent> GetMainContentAsync(Language language);
 
-        Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult);
+        Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult);
 
-        Task<BlogElement> GetBlogElement(string blogId);
+        Task<BlogElement> GetBlogElementAsync(string blogId);
     }
 }

@@ -11,24 +11,40 @@ namespace sawan.Repositories
 
     public class MongoDbRepository : IDbRepository
     {
+        private readonly IMongoDatabase mongoDatabase;
         private IMongoCollection<MainContent> mainContentCollection;
         private IMongoCollection<BlogElement> blogCollection;
-        private IMongoDatabase database;
-        private IOptions<AppSettings> appSettings;
 
-        public MongoDbRepository(IOptions<AppSettings> appSettings)
+        public MongoDbRepository(IMDatabase database)
         {
-            this.appSettings = appSettings;
+            this.mongoDatabase = database.GetDatabase();
         }
 
-        public async Task<MainContent> GetMainContent(Language language)
+        public async Task<MainContent> GetMainContentAsync(Language language)
         {
+            if (this.MainContentCollection == null)
+            {
+                return null;
+            }
+
             var result = await this.MainContentCollection.FindAsync(x => x.Language == language);
+
+            if (result == null)
+            {
+                return null;
+            }
+
             var list = await result.ToListAsync();
+
+            if (!list.Any())
+            {
+                return null;
+            }
+
             return list.FirstOrDefault();
         }
 
-        public async Task<bool> InsertMainContent(string mainContent)
+        public async Task<bool> InsertMainContentAsync(string mainContent)
         {
             string mainContentText = null;
             try
@@ -41,10 +57,10 @@ namespace sawan.Repositories
             }
 
             var mainContentObject = BsonSerializer.Deserialize<MainContent>(mainContentText);
-            return await this.InsertMainContent(mainContentObject);
+            return await this.InsertMainContentAsync(mainContentObject);
         }
 
-        public async Task<bool> InsertMainContent(MainContent mainContent)
+        public async Task<bool> InsertMainContentAsync(MainContent mainContent)
         {
             try
             {
@@ -58,14 +74,25 @@ namespace sawan.Repositories
             return true;
         }
 
-        public async Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult)
+        public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
         {
-            var result = this.BlogCollection.Find(x => true).SortByDescending(x => x.BlogDate).Limit(maxResult);
+            if (this.BlogCollection == null)
+            {
+                return null;
+            }
+            // Need to SortByDescending(x => x.BlogDate).Limit(maxResult);
+            var result = await this.BlogCollection.FindAsync(x => true);
+
+            if (result == null)
+            {
+                return null;
+            }
+
             var list = await result.ToListAsync();
             return list.Take(maxResult);
         }
 
-        public async Task<bool> InsertBlogElement(string blogElement)
+        public async Task<bool> InsertBlogElementAsync(string blogElement)
         {
             string blogElementText = null;
             try
@@ -78,10 +105,10 @@ namespace sawan.Repositories
             }
 
             var blogElementObject = BsonSerializer.Deserialize<IEnumerable<BlogElement>>(blogElementText);
-            return await this.InsertBlogElement(blogElementObject);
+            return await this.InsertBlogElementAsync(blogElementObject);
         }
 
-        public async Task<bool> InsertBlogElement(IEnumerable<BlogElement> blogElements)
+        public async Task<bool> InsertBlogElementAsync(IEnumerable<BlogElement> blogElements)
         {
             try
             {
@@ -95,27 +122,24 @@ namespace sawan.Repositories
             return true;
         }
 
-        public async Task<BlogElement> GetBlogElement(string blogId)
+        public async Task<BlogElement> GetBlogElementAsync(string blogId)
         {
+            if (this.BlogCollection == null)
+            {
+                return null;
+            }
+
             var result = await this.BlogCollection.FindAsync(x => x.Id == blogId);
+
+            if (result == null)
+            {
+                return null;
+            }
+
             return await result.FirstOrDefaultAsync();
         }
 
         private string DataFolder => "Data/mongo/";
-
-        private IMongoDatabase Database
-        {
-            get
-            {
-                if (this.database == null)
-                {
-                    var client = new MongoClient(this.appSettings.Value.Mongo.ConnectionString);
-                    this.database = client.GetDatabase(this.appSettings.Value.Mongo.Database);
-                }
-
-                return this.database;
-            }
-        }
 
         private IMongoCollection<MainContent> MainContentCollection
         {
@@ -123,7 +147,7 @@ namespace sawan.Repositories
             {
                 if (this.mainContentCollection == null)
                 {
-                    this.mainContentCollection = this.Database.GetCollection<MainContent>("MainContent");
+                    this.mainContentCollection = this.mongoDatabase.GetCollection<MainContent>("MainContent");
                 }
 
                 return this.mainContentCollection;
@@ -136,7 +160,7 @@ namespace sawan.Repositories
             {
                 if (this.blogCollection == null)
                 {
-                    this.blogCollection = this.Database.GetCollection<BlogElement>("Blog");
+                    this.blogCollection = this.mongoDatabase.GetCollection<BlogElement>("Blog");
                 }
 
                 return this.blogCollection;

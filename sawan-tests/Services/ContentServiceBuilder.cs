@@ -35,9 +35,9 @@ namespace sawan.tests
         public IContentService Build()
         {
             var mockMainContentService = new Mock<IContentService>();
-            mockMainContentService.Setup(x => x.GetMainContent(this.language)).ReturnsAsync(this.mainContent);
-            mockMainContentService.Setup(x => x.GetBlogPage(It.IsAny<int>())).ReturnsAsync(this.blogElements);
-            mockMainContentService.Setup(x => x.GetBlogElement(It.IsAny<string>())).ReturnsAsync(this.blogElement);
+            mockMainContentService.Setup(x => x.GetMainContentAsync(this.language)).ReturnsAsync(this.mainContent);
+            mockMainContentService.Setup(x => x.GetBlogPageAsync(It.IsAny<int>())).ReturnsAsync(this.blogElements);
+            mockMainContentService.Setup(x => x.GetBlogElementAsync(It.IsAny<string>())).ReturnsAsync(this.blogElement);
             return mockMainContentService.Object;
         }
     }
