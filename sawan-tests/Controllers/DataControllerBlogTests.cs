@@ -8,18 +8,18 @@ namespace sawan.tests
     public class DataControllerBlogTests
     {
         [Theory]
-        [InlineData(0, 0)]
-        [InlineData(0, 1)]
-        [InlineData(1, 0)]
-        public async void GetDefaultBlogPageTest(long from, int maxResults)
+        [InlineData(0)]
+        [InlineData(1)]
+        public async void GetDefaultBlogPageTest(int maxResults)
         {
             var controller = new DataControllerBuilder().Build();
 
-            var blogElements = await controller.GetBlogPage(from, maxResults);
+            var blogElements = await controller.GetBlogPage(maxResults);
 
             Assert.NotNull(blogElements);
         }
 
+        [Fact]
         public async void GetBlogPageTest()
         {
             var blogElement = new BlogElement()
@@ -36,7 +36,7 @@ namespace sawan.tests
                 .WithContentService(contentService)
                 .Build();
 
-            var blogElements = await controller.GetBlogPage(0, 0);
+            var blogElements = await controller.GetBlogPage(0);
 
             Assert.NotNull(blogElements);
             Assert.NotEmpty(blogElements);

@@ -29,7 +29,7 @@ namespace sawan.tests
         {
             var mockMainContentService = new Mock<IContentService>();
             mockMainContentService.Setup(x => x.GetMainContent(this.language)).ReturnsAsync(this.mainContent);
-            mockMainContentService.Setup(x => x.GetBlogPage(It.IsAny<long>(), It.IsAny<int>())).ReturnsAsync(this.blogElements);
+            mockMainContentService.Setup(x => x.GetBlogPage(It.IsAny<int>())).ReturnsAsync(this.blogElements);
             return mockMainContentService.Object;
         }
     }

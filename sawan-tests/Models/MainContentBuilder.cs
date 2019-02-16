@@ -38,7 +38,8 @@ namespace sawan.tests
                     Credits = "Credits",
                     Year = "2019"
                 },
-                Id = "123"
+                Id = "123",
+                Language = Language.English
             };
         }
 

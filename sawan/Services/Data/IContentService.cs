@@ -7,6 +7,8 @@ namespace sawan.Services
     {
         Task<MainContent> GetMainContent(Language language);
 
-        Task<IEnumerable<BlogElement>> GetBlogPage(long from, int maxResult);
+        Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult);
+
+        Task<BlogElement> GetBlogElement(string blogId);
     }
 }

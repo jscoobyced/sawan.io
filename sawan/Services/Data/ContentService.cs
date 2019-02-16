@@ -24,9 +24,14 @@ namespace sawan.Services
             return await this.mongoDbRepository.GetMainContent(language);
         }
 
-        public async Task<IEnumerable<BlogElement>> GetBlogPage(long from, int maxResult)
+        public async Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult)
         {
-            return await this.mongoDbRepository.GetBlogPage(DateTime.Now.AddMonths(-10), maxResult);
+            return await this.mongoDbRepository.GetBlogPage(maxResult);
+        }
+
+        public async Task<BlogElement> GetBlogElement(string blogId)
+        {
+            return await this.mongoDbRepository.GetBlogElement(blogId);
         }
     }
 }

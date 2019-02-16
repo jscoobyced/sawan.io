@@ -18,7 +18,7 @@ namespace sawan.tests
                 .Build();
 
             IEnumerable<BlogElement> result = null;
-            Func<Task> blogPage = async () => result = await controller.GetBlogPage(1, 1);
+            Func<Task> blogPage = async () => result = await controller.GetBlogPage(1);
             blogPage.Should().NotThrow<NullReferenceException>("because it should return default empty BlogElement data.");
             result.Should().NotBeNull(ResultEmptyList);
         }

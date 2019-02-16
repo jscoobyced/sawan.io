@@ -12,8 +12,8 @@ export class ContentService implements IContentService {
         return this.defaultMainContent();
     }
 
-    public async getBlogPage(from: number, maxResult: number): Promise<BlogPage> {
-        return this.updateBlogPage(from, maxResult);
+    public async getBlogPage(maxResult: number): Promise<BlogPage> {
+        return this.updateBlogPage(maxResult);
     }
 
     public async getBlogElement(id: number): Promise<BlogElement> {
@@ -53,14 +53,14 @@ export class ContentService implements IContentService {
         };
     }
 
-    protected async updateBlogPage(from: number, maxResult: number): Promise<BlogPage> {
+    protected async updateBlogPage(maxResult: number): Promise<BlogPage> {
         const empty = {
             articles: []
         };
         if (maxResult <= 0) {
             return empty;
         }
-        const data = await ApiUtils.fetchData<BlogElement[]>(`/api/Data/blog/${from}/${maxResult}`);
+        const data = await ApiUtils.fetchData<BlogElement[]>(`/api/Data/blogpage/${maxResult}`);
         if (!data || data.length === 0) {
             return empty;
         }
