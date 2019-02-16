@@ -11,7 +11,7 @@ test('Article component with empty article.', async () => {
 const blogElement: BlogElement = {
     article: 'bla bla bla',
     articleTitle: 'Title',
-    blogDate: new Date(2019, 1, 1, 0, 0, 0, 0),
+    blogDate: new Date("2019-01-31T10:00:00+07:00"),
     id: 1
 };
 const data: ArticleProps[] = [

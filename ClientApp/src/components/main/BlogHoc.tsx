@@ -24,7 +24,7 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
             blogElement: {
                 article: '',
                 articleTitle: '',
-                blogDate: new Date(),
+                blogDate: new Date("2019-01-01T00:00:00+07:00"),
                 id: 0
             }
         };
