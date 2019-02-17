@@ -4,8 +4,8 @@ WORKDIR /app
 # Build application
 ## Build client-side
 COPY .git ./
-COPY src/ClientApp ./ClientApp
-COPY src/sawan ./sawan
+COPY ClientApp ./ClientApp
+COPY sawan ./sawan
 RUN yarn --cwd ClientApp install
 RUN yarn --cwd ClientApp build
 
