@@ -29,5 +29,4 @@ export class HomeHoc extends React.Component<{}, HomeState> {
     public render() {
         return <Home blogPage={this.state.blogPage} />;
     }
-
 }

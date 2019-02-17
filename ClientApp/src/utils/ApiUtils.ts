@@ -8,7 +8,7 @@ export class ApiUtils {
             return response.json() as Promise<T>;
         }
         catch (error) {
-            throw error;
+            return Promise.resolve(null as unknown as T);
         }
     }
 }

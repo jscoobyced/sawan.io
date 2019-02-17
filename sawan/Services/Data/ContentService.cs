@@ -7,7 +7,7 @@ namespace sawan.Services
 
     public class ContentService : IContentService
     {
-        private IDbRepository mongoDbRepository;
+        private readonly IDbRepository mongoDbRepository;
 
         public ContentService(IDbRepository mongoDbRepository)
         {
