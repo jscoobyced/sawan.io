@@ -31,6 +31,11 @@ namespace sawan.Services
 
         public async Task<BlogElement> GetBlogElementAsync(string blogId)
         {
+            if (string.IsNullOrWhiteSpace(blogId))
+            {
+                return null;
+            }
+
             return await this.mongoDbRepository.GetBlogElementAsync(blogId);
         }
     }
