@@ -31,8 +31,7 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
     }
 
     public componentDidMount() {
-        const id = parseInt(this.props.match.params.id, 10);
-        this.contentService.getBlogElement(id)
+        this.contentService.getBlogElement(this.props.match.params.id)
             .then(blogElement => {
                 if (blogElement) {
                     this.setState({ blogElement });
