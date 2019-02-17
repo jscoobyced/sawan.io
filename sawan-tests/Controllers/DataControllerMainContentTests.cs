@@ -17,7 +17,7 @@ namespace sawan.tests
                 .WithContentService(null)
                 .Build();
             var reason = "because it should return default empty MainContent data.";
-            MainContent result = result = await controller.GetMainContent(Language.English);
+            var result = await controller.GetMainContent(Language.English);
             result.Should().NotBeNull(reason);
         }
 
@@ -32,7 +32,7 @@ namespace sawan.tests
                     .Build())
                 .Build();
             var reason = "because it should return english data when language is unknown.";
-            MainContent result = result = await controller.GetMainContent(Language.English);
+            var result = await controller.GetMainContent(Language.English);
             result.Should().NotBeNull(reason);
         }
     }

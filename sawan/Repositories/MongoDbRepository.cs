@@ -6,6 +6,7 @@ namespace sawan.Repositories
     using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
+    using MongoDB.Bson;
     using MongoDB.Bson.Serialization;
     using MongoDB.Driver;
 
@@ -80,8 +81,14 @@ namespace sawan.Repositories
             {
                 return null;
             }
-            // Need to SortByDescending(x => x.BlogDate).Limit(maxResult);
-            var result = await this.BlogCollection.FindAsync(x => true);
+            var filter = new BsonDocument();
+            var sort = Builders<BlogElement>.Sort.Descending("blogdate");
+            var options = new FindOptions<BlogElement>
+            {
+                Sort = sort
+            };
+
+            var result = await this.BlogCollection.FindAsync(filter, options);
 
             if (result == null)
             {

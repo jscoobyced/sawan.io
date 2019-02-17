@@ -61,12 +61,6 @@ namespace sawan.tests
         {
             var asyncCursor = new MockAsyncCursor<T>(new List<T>[] { dataList });
             var mongoCollection = new Mock<IMongoCollection<T>>();
-            var options = new OptionBuilder()
-                .WithMongo(new Mongo()
-                {
-                    ConnectionString = string.Empty,
-                    Database = string.Empty
-                });
             mongoCollection.Setup(
                 x => x.FindAsync(
                     It.IsAny<FilterDefinition<T>>(),

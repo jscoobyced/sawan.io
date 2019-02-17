@@ -1,5 +1,6 @@
 namespace sawan.tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
@@ -19,6 +20,12 @@ namespace sawan.tests
         public IEnumerable<T> Current => this.dataArray[index];
 
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
         {
             this.dataArray = null;
         }
