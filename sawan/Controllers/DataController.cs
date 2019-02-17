@@ -99,7 +99,7 @@ namespace sawan.Controllers
                 return new MainContent();
             }
 
-            return await this.contentService.GetMainContent(language);
+            return await this.contentService.GetMainContentAsync(language);
         }
 
         [HttpGet("blogpage/{maxResult}")]
@@ -110,7 +110,7 @@ namespace sawan.Controllers
                 return new List<BlogElement>();
             }
 
-            return await this.contentService.GetBlogPage(maxResult);
+            return await this.contentService.GetBlogPageAsync(maxResult);
         }
 
         [HttpGet("blog/{blogId}")]
@@ -121,7 +121,7 @@ namespace sawan.Controllers
                 return new BlogElement();
             }
 
-            return await this.contentService.GetBlogElement(blogId);
+            return await this.contentService.GetBlogElementAsync(blogId);
         }
     }
 }

@@ -7,31 +7,36 @@ namespace sawan.Services
 
     public class ContentService : IContentService
     {
-        private IDbRepository mongoDbRepository;
+        private readonly IDbRepository mongoDbRepository;
 
         public ContentService(IDbRepository mongoDbRepository)
         {
             this.mongoDbRepository = mongoDbRepository;
         }
 
-        public async Task<MainContent> GetMainContent(Language language)
+        public async Task<MainContent> GetMainContentAsync(Language language)
         {
             if (!Enum.IsDefined(typeof(Language), language))
             {
                 language = Language.English;
             }
 
-            return await this.mongoDbRepository.GetMainContent(language);
+            return await this.mongoDbRepository.GetMainContentAsync(language);
         }
 
-        public async Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult)
+        public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
         {
-            return await this.mongoDbRepository.GetBlogPage(maxResult);
+            return await this.mongoDbRepository.GetBlogPageAsync(maxResult);
         }
 
-        public async Task<BlogElement> GetBlogElement(string blogId)
+        public async Task<BlogElement> GetBlogElementAsync(string blogId)
         {
-            return await this.mongoDbRepository.GetBlogElement(blogId);
+            if (string.IsNullOrWhiteSpace(blogId))
+            {
+                return null;
+            }
+
+            return await this.mongoDbRepository.GetBlogElementAsync(blogId);
         }
     }
 }

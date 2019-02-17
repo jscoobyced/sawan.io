@@ -17,6 +17,7 @@ namespace sawan
             // Repositories
             services.AddTransient<IRestConnector, RestConnector>();
             services.AddTransient<IDbRepository, MongoDbRepository>();
+            services.AddTransient<IMDatabase, MDatabase>();
         }
     }
 }

@@ -3,6 +3,7 @@ namespace sawan.tests
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class DataControllerBlogTests
@@ -10,7 +11,7 @@ namespace sawan.tests
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
-        public async void GetDefaultBlogPageTest(int maxResults)
+        public async Task GetDefaultBlogPageTest(int maxResults)
         {
             var controller = new DataControllerBuilder().Build();
 
@@ -20,7 +21,7 @@ namespace sawan.tests
         }
 
         [Fact]
-        public async void GetBlogPageTest()
+        public async Task GetBlogPageTest()
         {
             var blogElement = new BlogElementBuilder().Build();
             var contentService = new ContentServiceBuilder()
@@ -39,7 +40,7 @@ namespace sawan.tests
 
 
         [Fact]
-        public async void GetBlogContentTest()
+        public async Task GetBlogContentTest()
         {
             var blogElement = new BlogElementBuilder().Build();
             var contentService = new ContentServiceBuilder()

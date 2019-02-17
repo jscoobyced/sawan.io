@@ -11,15 +11,13 @@ namespace sawan.tests
         private const string ResultEmptyList = "because the default result should be an empty list.";
 
         [Fact]
-        public void WithNullMainContentService()
+        public async Task WithNullMainContentService()
         {
             var controller = new DataControllerBuilder()
                 .WithContentService(null)
                 .Build();
 
-            IEnumerable<BlogElement> result = null;
-            Func<Task> blogPage = async () => result = await controller.GetBlogPage(1);
-            blogPage.Should().NotThrow<NullReferenceException>("because it should return default empty BlogElement data.");
+            var result = await controller.GetBlogPage(1);
             result.Should().NotBeNull(ResultEmptyList);
         }
     }

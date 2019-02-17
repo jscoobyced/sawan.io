@@ -20,13 +20,12 @@ export class MockContentService extends ContentService {
     public async getBlogElement(id: number): Promise<BlogElement> {
         return this.updateBlogPage(3).then(blogPage => {
             let article = null as unknown as BlogElement;
-            blogPage.articles.some(a => {
+            for (const a of blogPage.articles) {
                 if (a.id === id) {
                     article = a;
-                    return true;
+                    break;
                 }
-                return false;
-            });
+            }
 
             return article;
         });

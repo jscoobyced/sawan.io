@@ -6,12 +6,12 @@ namespace sawan.Repositories
 
     public interface IDbRepository
     {
-        Task<MainContent> GetMainContent(Language language);
-        Task<bool> InsertMainContent(string mainContent);
-        Task<bool> InsertMainContent(MainContent mainContent);
-        Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult);
-        Task<BlogElement> GetBlogElement(string blogId);
-        Task<bool> InsertBlogElement(string blogElement);
-        Task<bool> InsertBlogElement(IEnumerable<BlogElement> blogElement);
+        Task<MainContent> GetMainContentAsync(Language language);
+        Task<bool> InsertMainContentAsync(string mainContent);
+        Task<bool> InsertMainContentAsync(MainContent mainContent);
+        Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult);
+        Task<BlogElement> GetBlogElementAsync(string blogId);
+        Task<bool> InsertBlogElementAsync(string blogElement);
+        Task<bool> InsertBlogElementAsync(IEnumerable<BlogElement> blogElements);
     }
 }
