@@ -123,5 +123,16 @@ namespace sawan.Controllers
 
             return await this.contentService.GetBlogElementAsync(blogId);
         }
+
+        [HttpPost("blog/post")]
+        public async Task<bool> PostBlog([FromBody] BlogElementRequest blogElementRequest)
+        {
+            if (this.contentService == null || blogElementRequest?.BlogElement == null)
+            {
+                return false;
+            }
+
+            return await this.contentService.SaveBlogElementAsync(blogElementRequest.BlogElement);
+        }
     }
 }

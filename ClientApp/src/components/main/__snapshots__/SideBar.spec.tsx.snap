@@ -7,7 +7,9 @@ exports[`Layout component with content is unchanged. 1`] = `
     <h1>
       About Cédric
     </h1>
-    <div>
+    <div
+      className="article-content"
+    >
       I am a passionated software engineer that enjoys web development, web security, Android development... and a bunch of other stuff.
       <br />
       I live in The Land Of Smile (Thailand) and currently work at 

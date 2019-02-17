@@ -38,5 +38,38 @@ namespace sawan.Services
 
             return await this.mongoDbRepository.GetBlogElementAsync(blogId);
         }
+
+        public async Task<bool> SaveBlogElementAsync(BlogElement blogElement)
+        {
+            if (blogElement?.Article == null
+                || blogElement?.ArticleTitle == null)
+            {
+                return false;
+            }
+
+            // TODO: Allow only specific HTML tags
+            var safeArticle = blogElement.Article;
+            var safeArticleTitle = blogElement.ArticleTitle;
+            var safeBlogElement = new BlogElement()
+            {
+                Article = safeArticle,
+                ArticleTitle = safeArticleTitle,
+                BlogDate = blogElement.BlogDate,
+                Id = blogElement.Id
+            };
+
+            if (string.IsNullOrWhiteSpace(blogElement.Id))
+            {
+                var blogElements = new List<BlogElement>() { safeBlogElement };
+                // Add support to create new blog entry when user authentication is done
+                // return await this.mongoDbRepository.InsertBlogElementAsync(blogElements);
+                return true;
+            }
+
+            // Remove this after user authentication is done
+            await Task.Run(() => { });
+            // return await this.mongoDbRepository.UpdateBlogElementAsync(safeBlogElement);
+            return true;
+        }
     }
 }

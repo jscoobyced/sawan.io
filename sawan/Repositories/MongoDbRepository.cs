@@ -146,6 +146,21 @@ namespace sawan.Repositories
             return await result.FirstOrDefaultAsync();
         }
 
+        public async Task<bool> UpdateBlogElementAsync(BlogElement blogElement)
+        {
+            try
+            {
+                var result = await this.BlogCollection.ReplaceOneAsync(
+                    _ => _.Id.Equals(blogElement.Id),
+                    blogElement);
+                return result.ModifiedCount == 1;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private string DataFolder => "Data/mongo/";
 
         private IMongoCollection<MainContent> MainContentCollection

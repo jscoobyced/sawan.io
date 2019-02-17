@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { BlogElement } from '../../services/Models';
+import { DateUtil } from '../../utils/DateUtils';
 import { Article, ArticleProps } from './Article';
 
 test('Article component with empty article.', async () => {
@@ -11,8 +12,8 @@ test('Article component with empty article.', async () => {
 const blogElement: BlogElement = {
     article: 'bla bla bla',
     articleTitle: 'Title',
-    blogDate: new Date("2019-01-31T10:00:00+07:00"),
-    id: 1
+    blogDate: DateUtil.defaultDate(),
+    id: '1'
 };
 const data: ArticleProps[] = [
     { blogElement, ellipsis: true, backLink: true },

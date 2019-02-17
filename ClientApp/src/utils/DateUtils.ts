@@ -5,7 +5,14 @@ export class DateUtil {
 
     public static dateToString(date: Date): string {
         const lDate = new Date(date);
-        return lDate.toISOString().substring(0, 10);
+        const year = lDate.getFullYear();
+        const month = DateUtil.toDigits(lDate.getMonth() + 1, 2);
+        const day = DateUtil.toDigits(lDate.getDate(), 2);
+        return `${year}-${month}-${day}`;
+    }
+
+    public static defaultDate(): Date {
+        return new Date('2019-01-01T00:00:00Z');
     }
 
     private static toDigits(value: number, length: number): string {

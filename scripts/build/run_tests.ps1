@@ -34,10 +34,11 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /d:sonar.typescript.tsconfigPath=$env:TsConfig `
     /d:sonar.exclusions="$env:SonarExclusions" `
     /d:sonar.coverage.exclusions="$env:SonarCoverageExclusions" `
-    /d:sonar.analysis.mode=preview `
-    /d:sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
-    /d:sonar.github.repository=$env:APPVEYOR_REPO_NAME `
-    /d:sonar.github.oauth=$env:SonarGithubKey
+    /d:sonar.pullrequest.base=master `
+    /d:sonar.pullrequest.branch=$env:APPVEYOR_REPO_BRANCH `
+    /d:sonar.pullrequest.key=$env:APPVEYOR_PULL_REQUEST_NUMBER `
+    /d:sonar.pullrequest.provider=GitHub `
+    /d:sonar.pullrequest.github.repository=$env:APPVEYOR_REPO_NAME
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {

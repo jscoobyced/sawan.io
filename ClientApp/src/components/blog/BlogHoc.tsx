@@ -3,8 +3,10 @@ import { match } from 'react-router-dom';
 import { ContentServiceFactory } from '../../services/ContentServiceFactory';
 import { IContentService } from '../../services/IContentService';
 import { BlogElement } from '../../services/Models';
+import { DateUtil } from '../../utils/DateUtils';
 import { IdParam } from '../Models';
-import { Blog } from './Blog';
+import { Article } from './Article';
+import { EditableArticle } from './EditableArticle';
 
 export interface BlogHocProps {
     match: match<IdParam>;
@@ -24,8 +26,8 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
             blogElement: {
                 article: '',
                 articleTitle: '',
-                blogDate: new Date("2019-01-01T00:00:00+07:00"),
-                id: 0
+                blogDate: DateUtil.defaultDate(),
+                id: '0'
             }
         };
     }
@@ -39,7 +41,27 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
             });
     }
 
+    public updateBlog = (article: string, articleTitle: string, id: string): Promise<boolean> => {
+        const blogElement: BlogElement = {
+            article,
+            articleTitle,
+            blogDate: new Date(),
+            id
+        };
+        return this.contentService.saveBlogElement(blogElement);
+    }
+
     public render() {
-        return <Blog blogElement={this.state.blogElement} />;
+        const edit = this.props.match.params.edit === "edit";
+        if (edit) {
+            return <EditableArticle
+                blogElement={this.state.blogElement}
+                update={this.updateBlog} />;
+        } else {
+            return <Article blogElement={this.state.blogElement}
+                backLink={true}
+                editLink={true}
+                ellipsis={false} />;
+        }
     }
 }

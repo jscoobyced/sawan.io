@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Blog is rendered empty when no blogElement 1`] = `
+<Article
+  backLink={true}
+  blogElement={
+    Object {
+      "article": "",
+      "articleTitle": "",
+      "blogDate": 2019-01-01T00:00:00.000Z,
+      "id": "0",
+    }
+  }
+  editLink={true}
+  ellipsis={false}
+/>
+`;
+
+exports[`Blog is rendered with blogElement 1`] = `
+<Article
+  backLink={true}
+  blogElement={
+    Object {
+      "article": "",
+      "articleTitle": "",
+      "blogDate": 2019-01-01T00:00:00.000Z,
+      "id": "0",
+    }
+  }
+  editLink={true}
+  ellipsis={false}
+/>
+`;
+
+exports[`Blog is rendered writable 1`] = `
+<EditableArticle
+  blogElement={
+    Object {
+      "article": "",
+      "articleTitle": "",
+      "blogDate": 2019-01-01T00:00:00.000Z,
+      "id": "0",
+    }
+  }
+  update={[Function]}
+/>
+`;

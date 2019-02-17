@@ -4,6 +4,7 @@ namespace sawan.tests
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using FluentAssertions;
     using Xunit;
 
     public class DataControllerBlogTests
@@ -56,5 +57,59 @@ namespace sawan.tests
             Assert.Equal(blogElement, result);
         }
 
+        [Fact]
+        public async Task PostNullBlogElementTest()
+        {
+            var blogElement = new BlogElementBuilder().Build();
+            var contentService = new ContentServiceBuilder()
+                .Build();
+            var controller = new DataControllerBuilder()
+                .WithContentService(contentService)
+                .Build();
+
+            var result = await controller.PostBlog(new BlogElementRequest()
+            {
+                BlogElement = null
+            });
+
+            result.Should().BeFalse();
+        }
+
+        [Fact]
+        public async Task PostBlogElementNoServiceTest()
+        {
+            var blogElement = new BlogElementBuilder().Build();
+            var controller = new DataControllerBuilder()
+                .WithContentService(null)
+                .Build();
+
+            var result = await controller.PostBlog(new BlogElementRequest()
+            {
+                BlogElement = blogElement
+            });
+
+            result.Should().BeFalse();
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public async Task PostBlogElementTest(bool saveStatus)
+        {
+            var blogElement = new BlogElementBuilder().Build();
+            var contentService = new ContentServiceBuilder()
+                .WithSaveStatus(saveStatus)
+                .Build();
+            var controller = new DataControllerBuilder()
+                .WithContentService(contentService)
+                .Build();
+
+            var result = await controller.PostBlog(new BlogElementRequest()
+            {
+                BlogElement = blogElement
+            });
+
+            result.Should().Be(saveStatus);
+        }
     }
 }

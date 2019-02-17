@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { BlogEditHoc } from './components/blog/BlogEditHoc';
+import { BlogHoc } from './components/blog/BlogHoc';
 import { CandleChartPageHoc } from './components/charts/CandleChartPageHoc';
 import { About } from './components/main/About';
-import { BlogHoc } from './components/main/BlogHoc';
 import { HomeHoc } from './components/main/HomeHoc';
 import { Layout } from './components/main/Layout';
 import { Resume } from './components/main/Resume';
@@ -47,7 +48,8 @@ export class Page extends React.Component<{}, PageState> {
             <Route exact path='/' component={HomeHoc} />
             <Route path='/candle' component={CandleChartPageHoc} />
             <Route path='/health' component={About} />
-            <Route path='/blog/:id' component={BlogHoc} />
+            <Route path='/blog/view/:id/' component={BlogHoc} />
+            <Route path='/blog/edit/:id/' component={BlogEditHoc} />
             <Route path='/about' component={About} />
             <Route path='/resume' component={Resume} />
         </Layout>;

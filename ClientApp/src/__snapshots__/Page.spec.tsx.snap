@@ -43,7 +43,11 @@ exports[`Page content is preserved 1`] = `
     />
     <Route
       component={[Function]}
-      path="/blog/:id"
+      path="/blog/view/:id/"
+    />
+    <Route
+      component={[Function]}
+      path="/blog/edit/:id/"
     />
     <Route
       component={[Function]}

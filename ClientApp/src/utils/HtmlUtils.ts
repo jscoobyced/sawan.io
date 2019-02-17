@@ -53,15 +53,16 @@ export class HtmlUtils {
         return safeSummary;
     }
 
-    public static getSafeContent(content: string, length = -1): string {
+    public static getSafeContent(content: string): string {
         return HtmlUtils.xssFilter.process(content);
     }
 
     private static readonly options = {
         whiteList: {
-            a: ['href', 'title', 'target'],
+            a: ['href', 'title', 'target', 'class'],
             br: [],
-            i: ['class']
+            i: ['class'],
+            img: ['src', 'width', 'height', 'class']
         }
     };
 

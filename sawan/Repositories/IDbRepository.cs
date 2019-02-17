@@ -13,5 +13,6 @@ namespace sawan.Repositories
         Task<BlogElement> GetBlogElementAsync(string blogId);
         Task<bool> InsertBlogElementAsync(string blogElement);
         Task<bool> InsertBlogElementAsync(IEnumerable<BlogElement> blogElements);
+        Task<bool> UpdateBlogElementAsync(BlogElement blogElement);
     }
 }

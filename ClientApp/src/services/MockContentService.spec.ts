@@ -1,3 +1,5 @@
+import { TestUtils } from "../../tests/TestUtils";
+import { DateUtil } from "../utils/DateUtils";
 import { MockContentService } from "./MockContentService";
 import { Language } from "./Models";
 
@@ -24,10 +26,24 @@ test('MockContentService can get default blogpage', () => {
 
 test('MockContentService can get blogpage', async () => {
     const contentService = new MockContentService();
-    const blogPage = await contentService.getBlogPage(3, 0);
+    const blogPage = await contentService.getBlogPage(3);
     expect(blogPage).not.toBeNull();
     expect(blogPage.articles).not.toBeNull();
     expect(blogPage.articles.length).toBeGreaterThan(0);
     expect(blogPage.articles[0].articleTitle).not.toBeNull();
     expect(blogPage.articles[0].article).not.toBeNull();
+});
+
+test('ContentService can save blog content', async () => {
+    const contentService = new MockContentService();
+    window.fetch = TestUtils.mockFetch(true);
+    const blogElement = {
+        articleTitle: 'Article content bla bla',
+        article: 'Title bla bla',
+        id: '1',
+        blogDate: DateUtil.defaultDate()
+    };
+    const data = await contentService.saveBlogElement(blogElement);
+    expect(data).not.toBeNull();
+    expect(data).toBeTruthy();
 });

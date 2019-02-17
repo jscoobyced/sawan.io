@@ -2,7 +2,7 @@
 **/obj/
 coverage/
 tscoverage/
-**/coverage.xml
+**/coverage.*
 **/results.xml
 **/wwwroot/
 **/node_modules/
@@ -11,3 +11,4 @@ tscoverage/
 **/publish/
 test-report.xml
 sawan/Views/Home/Index.cshtml
+.codecov

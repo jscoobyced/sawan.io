@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component is unchanged. 1`] = `
-<header>
+<header
+  className="main"
+>
   <img
     alt=" logo"
     className="logo"

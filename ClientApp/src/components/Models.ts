@@ -7,4 +7,5 @@ export interface SelectOption {
 
 export interface IdParam {
     id: string;
+    edit?: string;
 }

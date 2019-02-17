@@ -20,7 +20,7 @@ export class HomeHoc extends React.Component<{}, HomeState> {
     }
 
     public componentDidMount() {
-        this.contentService.getBlogPage(4)
+        this.contentService.getBlogPage(50)
             .then(blogPage => {
                 this.setState({ blogPage });
             });
