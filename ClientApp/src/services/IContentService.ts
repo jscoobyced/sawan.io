@@ -5,5 +5,5 @@ export interface IContentService {
     getDefaultMainContent(): MainContent;
     getBlogPage(maxResult: number): Promise<BlogPage>;
     getDefaultBlogPage(): BlogPage;
-    getBlogElement(id: number): Promise<BlogElement>;
+    getBlogElement(id: string): Promise<BlogElement>;
 }
