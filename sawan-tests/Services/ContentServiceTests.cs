@@ -111,7 +111,9 @@ namespace sawan.tests
                 null,
                 new MongoDbBlogRepositoryBuilder()
                 .Build());
-            var result = await contentService.SaveBlogElementAsync(blogElement);
+            var result = await contentService.SaveBlogElementAsync(null);
+            result.Should().BeFalse();
+            result = await contentService.SaveBlogElementAsync(blogElement);
             result.Should().BeFalse();
             blogElement = new BlogElementBuilder().Build();
             blogElement.ArticleTitle = null;
