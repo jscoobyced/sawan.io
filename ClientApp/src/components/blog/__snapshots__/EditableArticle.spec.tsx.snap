@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render EditableArticle 1`] = `
+<div>
+  <article
+    className="blog-article"
+  >
+    <input
+      id="article-title"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <textarea
+      id="article-text"
+      onChange={[Function]}
+      rows={24}
+      value=""
+    />
+    <button
+      className="btn-article"
+      disabled={false}
+      id="article-save"
+      onClick={[Function]}
+    >
+      Save
+    </button>
+  </article>
+  <Article
+    backLink={true}
+    blogElement={
+      Object {
+        "article": "",
+        "articleTitle": "",
+        "blogDate": 2019-01-01T00:00:00.000Z,
+        "id": "",
+      }
+    }
+    ellipsis={false}
+  />
+</div>
+`;
+
+exports[`Render EditableArticle 2`] = `
+<div>
+  <article
+    className="blog-article"
+  >
+    <input
+      id="article-title"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <textarea
+      id="article-text"
+      onChange={[Function]}
+      rows={24}
+      value=""
+    />
+    <button
+      className="btn-article"
+      disabled={false}
+      id="article-save"
+      onClick={[Function]}
+    >
+      Save
+    </button>
+  </article>
+  <Article
+    backLink={true}
+    blogElement={
+      Object {
+        "article": "",
+        "articleTitle": "",
+        "blogDate": 2019-01-01T00:00:00.000Z,
+        "id": "",
+      }
+    }
+    ellipsis={false}
+  />
+</div>
+`;
+
+exports[`Render EditableArticle 3`] = `
+<div>
+  <article
+    className="blog-article"
+  >
+    <input
+      id="article-title"
+      onChange={[Function]}
+      type="text"
+      value="bla-title"
+    />
+    <textarea
+      id="article-text"
+      onChange={[Function]}
+      rows={24}
+      value="bla-text"
+    />
+    <button
+      className="btn-article"
+      disabled={true}
+      id="article-save"
+      onClick={[Function]}
+    >
+      Saving
+    </button>
+  </article>
+  <Article
+    backLink={true}
+    blogElement={
+      Object {
+        "article": "bla-text",
+        "articleTitle": "bla-title",
+        "blogDate": 2019-01-01T00:00:00.000Z,
+        "id": "",
+      }
+    }
+    ellipsis={false}
+  />
+</div>
+`;

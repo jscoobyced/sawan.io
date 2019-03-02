@@ -25,7 +25,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
-    /d:sonar.organization=$env:SonarOrg `
+    /o:$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `
@@ -34,17 +34,18 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /d:sonar.typescript.tsconfigPath=$env:TsConfig `
     /d:sonar.exclusions="$env:SonarExclusions" `
     /d:sonar.coverage.exclusions="$env:SonarCoverageExclusions" `
-    /d:sonar.analysis.mode=preview `
-    /d:sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
-    /d:sonar.github.repository=$env:APPVEYOR_REPO_NAME `
-    /d:sonar.github.oauth=$env:SonarGithubKey
+    /d:sonar.pullrequest.base=master `
+    /d:sonar.pullrequest.branch=$env:APPVEYOR_REPO_BRANCH `
+    /d:sonar.pullrequest.key=$env:APPVEYOR_PULL_REQUEST_NUMBER `
+    /d:sonar.pullrequest.provider=GitHub `
+    /d:sonar.pullrequest.github.repository=$env:APPVEYOR_REPO_NAME
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {
     dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
-    /d:sonar.organization=$env:SonarOrg `
+    /o:$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `

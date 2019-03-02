@@ -9,7 +9,7 @@ export class Header extends React.Component<HeaderProps> {
     }
 
     public render() {
-        return <header>
+        return <header className='main'>
             <img src='wings.png' className='logo'
                 alt={this.props.navigationMenuContent.websiteName + ' logo'}
                 title={this.props.navigationMenuContent.websiteName} />

@@ -23,7 +23,7 @@ export class SideBar extends React.Component<SideBarProps> {
             {linkContent}
             <article>
                 <h1>About C&eacute;dric</h1>
-                <div>
+                <div className='article-content'>
                     I am a passionated software engineer that enjoys web development, web security,
                     Android development... and a bunch of other stuff.
                     <br />I live in The Land Of Smile (Thailand) and currently work

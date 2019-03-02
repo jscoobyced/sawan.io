@@ -1,3 +1,4 @@
+import { DateUtil } from '../utils/DateUtils';
 import { ContentService } from './ContentService';
 import { BlogElement, BlogPage, Language, MainContent } from './Models';
 
@@ -16,8 +17,46 @@ export class MockContentService extends ContentService {
         + ' mauris a diam maecenas. Sed risus ultricies tristique nulla aliquet. Sagittis eu volutpat odio'
         + ' facilisis mauris sit amet. Tempor orci eu lobortis elementum nibh tellus molestie nunc non.'
         + ' Turpis nunc eget lorem dolor.';
+    private readonly displayDate = DateUtil.defaultDate();
+    private readonly articles: BlogElement[] = [
+        {
+            id: '1',
+            blogDate: this.displayDate,
+            articleTitle: 'Starting again',
+            article: 'A new begining this year for me. After 5 years at Agoda it is time for me to move on to'
+                + ' new challenges. I am going to do something I haven\'t done for a while: writing a '
+                + 'resume that reflects my skills and experience without showing off. Not too much at least '
+                + '<i class=\'far fa-smile\'></i>'
+                + '<br />So I\'m going to take this opportunity to create it using good CSS3 and HTML5 practices.'
+                + ' The first thing I have in mind is to limit the DOM depth. Resumes have simple structures, so'
+                + ' we shouldn\'t need a long list of nested DIVs. Second is to chosing a monospaced font so we can'
+                + ' keep control of the format when printing. Let\'s throw in some '
+                + '<a target=\'_blank\' href=\'https://fontawesome.com/\'>font awesome</a> to have a nice touch on '
+                + 'the contact details.<br /> You can see the current version <a href=\'/resume/?full\' target=\'_blank\'>'
+                + 'here</a>.'
+        },
+        {
+            id: '2',
+            blogDate: this.displayDate,
+            articleTitle: 'Grand opening of sawan.io',
+            article: 'Grand opening of sawan.io.<br />This website is about my'
+                + ' personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP'
+                + '  headers... It includes a simple (and a bit naive) crypto-currency analyser: it can'
+                + ' suggest you to sell or buy. Use at your own risk, it is amateur predictions, you have'
+                + ' been warned.<br />There will be also an application to track health metrics (weight,'
+                + ' % body fat, vascular fat ratio...). Or maybe not, this might be my next project.<br />'
+                + ' This project is open-sourced on <a target=\'_blank\''
+                + ' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.'
+        },
+        {
+            id: '3',
+            blogDate: this.displayDate,
+            articleTitle: 'Some other news',
+            article: this.data
+        }
+    ];
 
-    public async getBlogElement(id: number): Promise<BlogElement> {
+    public async getBlogElement(id: string): Promise<BlogElement> {
         return this.updateBlogPage(3).then(blogPage => {
             let article = null as unknown as BlogElement;
             for (const a of blogPage.articles) {
@@ -55,46 +94,20 @@ export class MockContentService extends ContentService {
         return Promise.resolve(content);
     }
 
-    protected updateBlogPage(maxResult: number): Promise<BlogPage> {
-        const date = '2019-02-09';
-        const displayDate = new Date(date);
-        const articles: BlogElement[] = [
-            {
-                id: 1,
-                blogDate: displayDate,
-                articleTitle: 'Starting again',
-                article: 'A new begining this year for me. After 5 years at Agoda it is time for me to move on to'
-                    + ' new challenges. I am going to do something I haven\'t done for a while: writing a '
-                    + 'resume that reflects my skills and experience without showing off. Not too much at least '
-                    + '<i class=\'far fa-smile\'></i>'
-                    + '<br />So I\'m going to take this opportunity to create it using good CSS3 and HTML5 practices.'
-                    + ' The first thing I have in mind is to limit the DOM depth. Resumes have simple structures, so'
-                    + ' we shouldn\'t need a long list of nested DIVs. Second is to chosing a monospaced font so we can'
-                    + ' keep control of the format when printing. Let\'s throw in some '
-                    + '<a target=\'_blank\' href=\'https://fontawesome.com/\'>font awesome</a> to have a nice touch on '
-                    + 'the contact details.<br /> You can see the current version <a href=\'/resume/?full\' target=\'_blank\'>'
-                    + 'here</a>.'
-            },
-            {
-                id: 2,
-                blogDate: displayDate,
-                articleTitle: 'Grand opening of sawan.io',
-                article: 'Grand opening of sawan.io.<br />This website is about my'
-                    + ' personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP'
-                    + '  headers... It includes a simple (and a bit naive) crypto-currency analyser: it can'
-                    + ' suggest you to sell or buy. Use at your own risk, it is amateur predictions, you have'
-                    + ' been warned.<br />There will be also an application to track health metrics (weight,'
-                    + ' % body fat, vascular fat ratio...). Or maybe not, this might be my next project.<br />'
-                    + ' This project is open-sourced on <a target=\'_blank\''
-                    + ' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.'
-            },
-            {
-                id: 3,
-                blogDate: displayDate,
-                articleTitle: 'Some other news',
-                article: this.data
+    protected async doSaveBlogElement(blogElement: BlogElement): Promise<boolean> {
+        for (const article of this.articles) {
+            if (article.id === blogElement.id) {
+                article.article = blogElement.article;
+                article.articleTitle = blogElement.articleTitle;
             }
-        ];
-        return Promise.resolve({ articles });
+        }
+        return Promise.resolve(true);
+    }
+
+    protected updateBlogPage = (maxResult: number): Promise<BlogPage> => {
+        const blog: BlogPage = {
+            articles: this.articles
+        };
+        return Promise.resolve(blog);
     }
 }

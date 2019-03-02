@@ -1,7 +1,9 @@
 namespace sawan.tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Threading;
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization;
@@ -13,27 +15,16 @@ namespace sawan.tests
     using Moq;
     using sawan.Repositories;
 
-    public class MongoDatabaseBuilder
+    public class MongoMainContentDatabaseBuilder
     {
         private MainContent mainContent;
 
         private bool nullMainContent = true;
 
-        private List<BlogElement> blogElements;
-
-        private bool nullBlogCollection = true;
-
-        public MongoDatabaseBuilder WithMainContent(MainContent mainContent)
+        public MongoMainContentDatabaseBuilder WithMainContent(MainContent mainContent)
         {
             this.mainContent = mainContent;
             this.nullMainContent = false;
-            return this;
-        }
-
-        public MongoDatabaseBuilder WithBlogElements(List<BlogElement> blogElements)
-        {
-            this.blogElements = blogElements;
-            this.nullBlogCollection = false;
             return this;
         }
 
@@ -44,15 +35,9 @@ namespace sawan.tests
             var mainContentCollection = this.nullMainContent
                 ? null
                 : this.CreateCollection<MainContent>(new List<MainContent>() { this.mainContent });
-            var blogCollection = this.nullBlogCollection
-                ? null
-                : this.CreateCollection<BlogElement>(this.blogElements);
             mongoDatabase
                 .Setup(x => x.GetCollection<MainContent>("MainContent", It.IsAny<MongoCollectionSettings>()))
                 .Returns(mainContentCollection);
-            mongoDatabase
-                .Setup(x => x.GetCollection<BlogElement>("Blog", It.IsAny<MongoCollectionSettings>()))
-                .Returns(blogCollection);
             mDatabase.Setup(x => x.GetDatabase()).Returns(mongoDatabase.Object);
             return mDatabase.Object;
         }

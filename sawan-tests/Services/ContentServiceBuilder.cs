@@ -14,6 +14,8 @@ namespace sawan.tests
 
         private BlogElement blogElement;
 
+        private bool saveStatus;
+
         public ContentServiceBuilder WithLanguageMainContent(MainContent mainContent, Language language)
         {
             this.mainContent = mainContent;
@@ -21,14 +23,21 @@ namespace sawan.tests
             return this;
         }
 
-        public ContentServiceBuilder WithBlogElements(IEnumerable<BlogElement> blogELements)
+        public ContentServiceBuilder WithBlogElements(IEnumerable<BlogElement> blogElements)
         {
-            this.blogElements = blogELements;
+            this.blogElements = blogElements;
             return this;
         }
-        public ContentServiceBuilder WithBlogElement(BlogElement blogELement)
+
+        public ContentServiceBuilder WithBlogElement(BlogElement blogElement)
         {
-            this.blogElement = blogELement;
+            this.blogElement = blogElement;
+            return this;
+        }
+
+        public ContentServiceBuilder WithSaveStatus(bool saveStatus)
+        {
+            this.saveStatus = saveStatus;
             return this;
         }
 
@@ -38,6 +47,7 @@ namespace sawan.tests
             mockMainContentService.Setup(x => x.GetMainContentAsync(this.language)).ReturnsAsync(this.mainContent);
             mockMainContentService.Setup(x => x.GetBlogPageAsync(It.IsAny<int>())).ReturnsAsync(this.blogElements);
             mockMainContentService.Setup(x => x.GetBlogElementAsync(It.IsAny<string>())).ReturnsAsync(this.blogElement);
+            mockMainContentService.Setup(x => x.SaveBlogElementAsync(It.IsAny<BlogElement>())).ReturnsAsync(this.saveStatus);
             return mockMainContentService.Object;
         }
     }

@@ -10,13 +10,13 @@ namespace sawan.Repositories
     using MongoDB.Bson.Serialization;
     using MongoDB.Driver;
 
-    public class MongoDbRepository : IDbRepository
+    public class MongoDbMainContentRepository : IDbMainContentRepository
     {
         private readonly IMongoDatabase mongoDatabase;
         private IMongoCollection<MainContent> mainContentCollection;
         private IMongoCollection<BlogElement> blogCollection;
 
-        public MongoDbRepository(IMDatabase database)
+        public MongoDbMainContentRepository(IMDatabase database)
         {
             this.mongoDatabase = database.GetDatabase();
         }
@@ -144,6 +144,28 @@ namespace sawan.Repositories
             }
 
             return await result.FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> UpdateBlogElementAsync(BlogElement blogElement)
+        {
+            if (blogElement == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                var builder = Builders<BlogElement>.Filter;
+                var filter = builder.Eq("Id", blogElement.Id);
+                var result = await this.BlogCollection.ReplaceOneAsync(
+                    filter,
+                    blogElement);
+                return result.ModifiedCount == 1;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private string DataFolder => "Data/mongo/";

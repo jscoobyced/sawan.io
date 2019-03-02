@@ -26,6 +26,28 @@ export class ContentService implements IContentService {
         };
     }
 
+    public async saveBlogElement(blogElement: BlogElement): Promise<boolean> {
+        return this.doSaveBlogElement(blogElement);
+    }
+
+    protected async doSaveBlogElement(blogElement: BlogElement): Promise<boolean> {
+        return fetch('/api/Data/blog/post/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                blogElement
+            })
+        })
+            .then(response => {
+                return response.json();
+            }).then(response => {
+                return response;
+            });
+    }
+
     protected async updateMainContent(language: Language): Promise<MainContent> {
         return ApiUtils.fetchData<MainContent>(`/api/Data/main/${language}`);
     }

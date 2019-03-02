@@ -7,12 +7,10 @@ skip_tags: true
 environment:
   SONAR_SCANNER_OPTS: -Xmx2048m
   SonarKey:
-    secure: 2mQfOEBZCqM3BI8UAAc2wkRkvrTNsWKwRyFiKgk4Khfpl/SUrJSxcGnmB+CJB7OZ
-  SonarGithubKey:
-    secure: SY6rvHCSxikpJpkcDR/JsnMDc41rD9+L2w0pr370Qd1cUZJJJY4rxVISzdmTf1fG
+    secure: DqB/EHeJaZe6LPmpF7ARC3llBs+zyrN93iDOXjwY44j9bXSdkS/curqUO/d43qWl
   SonarOrg: jscoobyced-github
   SonarUrl: https://sonarcloud.io
-  SonarProjectKey: sawan
+  SonarProjectKey: sawan.io
   ClientApp: ClientApp
   MsBuildScanner: C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools
   SonarExclusions: coverage/**/*,**/*.xml,**/*.spec.t*,**/Program.cs,**/Startup.cs,**/node_modules/**/*,**/wwwroot/dist/**/*,*.cshtml

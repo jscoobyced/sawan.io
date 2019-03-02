@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlogElement, BlogPage } from '../../services/Models';
-import { Article } from './Article';
+import { Article } from '../blog/Article';
 
 export interface HomeProps {
     blogPage: BlogPage;
@@ -21,6 +21,7 @@ export class Home extends React.Component<HomeProps> {
         return articles.map((article, key) => {
             return <Article key={key} blogElement={article}
                 backLink={false}
+                editLink={true}
                 ellipsis={true} />;
         });
     }

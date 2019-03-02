@@ -1,4 +1,5 @@
 import { TestUtils } from "../../tests/TestUtils";
+import { DateUtil } from "../utils/DateUtils";
 import { ContentService } from "./ContentService";
 import { BlogElement, Language, MainContent } from "./Models";
 
@@ -19,19 +20,23 @@ const mainContent: MainContent = {
         cryptoCurrency: 'Crypto-Currency',
         healthMonitor: 'Health Monitor',
         home: 'Home',
-        websiteName: 'sawan.io'
+        websiteName: 'sawan.io',
+        information: 'Information',
+        resume: 'Resume'
     },
     footerContent: {
         copyright: 'Copyright',
         credits: 'sawan.io',
-        year: '2018 - ' + new Date().getFullYear()
+        year: '2018 - ' + DateUtil.defaultDate().getFullYear()
     }
 };
 
 const blogElements: BlogElement[] = [
     {
         articleTitle: 'Article content',
-        article: 'Title'
+        article: 'Title',
+        id: '1',
+        blogDate: DateUtil.defaultDate()
     }
 ];
 
@@ -49,7 +54,7 @@ test('ContentService check maxResult for blog', async () => {
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch(blogElements);
     maxResults.map(async value => {
-        const data = await contentService.getBlogPage(0, value);
+        const data = await contentService.getBlogPage(value);
         expect(data).not.toBeNull();
         expect(data.articles.length).toBe(0);
     });
@@ -58,7 +63,15 @@ test('ContentService check maxResult for blog', async () => {
 test('ContentService can get empty blog content', async () => {
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch([]);
-    const data = await contentService.getBlogPage(0, 4);
+    const data = await contentService.getBlogPage(4);
+    expect(data).not.toBeNull();
+    expect(data.articles.length).toBe(0);
+});
+
+test('ContentService can get null blog content', async () => {
+    const contentService = new ContentService();
+    window.fetch = TestUtils.mockFetch(null);
+    const data = await contentService.getBlogPage(4);
     expect(data).not.toBeNull();
     expect(data.articles.length).toBe(0);
 });
@@ -66,8 +79,16 @@ test('ContentService can get empty blog content', async () => {
 test('ContentService can get blog content', async () => {
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch(blogElements);
-    const data = await contentService.getBlogPage(1, 4);
+    const data = await contentService.getBlogPage(4);
     expect(data).not.toBeNull();
     expect(data.articles.length).toBe(1);
     expect(data.articles[0].articleTitle).toBe(blogElements[0].articleTitle);
+});
+
+test('ContentService can save blog content', async () => {
+    const contentService = new ContentService();
+    window.fetch = TestUtils.mockFetch(true);
+    const data = await contentService.saveBlogElement(blogElements[0]);
+    expect(data).not.toBeNull();
+    expect(data).toBeTruthy();
 });
