@@ -7,11 +7,13 @@ namespace sawan.Services
 
     public class ContentService : IContentService
     {
-        private readonly IDbRepository mongoDbRepository;
+        private readonly IDbMainContentRepository mongoDbMainContentRepository;
+        private readonly IDbBlogRepository dbBlogRepository;
 
-        public ContentService(IDbRepository mongoDbRepository)
+        public ContentService(IDbMainContentRepository mongoDbMainContentRepository, IDbBlogRepository dbBlogRepository)
         {
-            this.mongoDbRepository = mongoDbRepository;
+            this.mongoDbMainContentRepository = mongoDbMainContentRepository;
+            this.dbBlogRepository = dbBlogRepository;
         }
 
         public async Task<MainContent> GetMainContentAsync(Language language)
@@ -21,12 +23,12 @@ namespace sawan.Services
                 language = Language.English;
             }
 
-            return await this.mongoDbRepository.GetMainContentAsync(language);
+            return await this.mongoDbMainContentRepository.GetMainContentAsync(language);
         }
 
         public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
         {
-            return await this.mongoDbRepository.GetBlogPageAsync(maxResult);
+            return await this.dbBlogRepository.GetBlogPageAsync(maxResult);
         }
 
         public async Task<BlogElement> GetBlogElementAsync(string blogId)
@@ -36,7 +38,7 @@ namespace sawan.Services
                 return null;
             }
 
-            return await this.mongoDbRepository.GetBlogElementAsync(blogId);
+            return await this.dbBlogRepository.GetBlogElementAsync(blogId);
         }
 
         public async Task<bool> SaveBlogElementAsync(BlogElement blogElement)

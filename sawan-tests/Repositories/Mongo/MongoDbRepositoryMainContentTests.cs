@@ -10,8 +10,8 @@ namespace sawan.tests
         [Fact]
         public async Task GetMainContentNullTest()
         {
-            var mDatabase = new MongoDatabaseBuilder().Build();
-            var mongoDbRepository = new MongoDbRepository(mDatabase);
+            var mDatabase = new MongoMainContentDatabaseBuilder().Build();
+            var mongoDbRepository = new MongoDbMainContentRepository(mDatabase);
             var result = await mongoDbRepository.GetMainContentAsync(Language.English);
 
             result.Should().BeNull();
@@ -20,10 +20,10 @@ namespace sawan.tests
         [Fact]
         public async Task GetMainContentNullContentTest()
         {
-            var mDatabase = new MongoDatabaseBuilder()
+            var mDatabase = new MongoMainContentDatabaseBuilder()
                 .WithMainContent(null)
                 .Build();
-            var mongoDbRepository = new MongoDbRepository(mDatabase);
+            var mongoDbRepository = new MongoDbMainContentRepository(mDatabase);
             var result = await mongoDbRepository.GetMainContentAsync(Language.English);
 
             result.Should().BeNull();

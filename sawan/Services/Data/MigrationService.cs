@@ -7,16 +7,18 @@ namespace sawan.Services
 {
     public class MigrationService : IMigrationService
     {
-        private readonly IDbRepository dbRepository;
+        private readonly IDbMainContentRepository dbMainContentRepository;
+        private readonly IDbBlogRepository dbBlogRepository;
 
-        public MigrationService(IDbRepository dbRepository)
+        public MigrationService(IDbMainContentRepository dbMainContentRepository, IDbBlogRepository dbBlogRepository)
         {
-            this.dbRepository = dbRepository;
+            this.dbMainContentRepository = dbMainContentRepository;
+            this.dbBlogRepository = dbBlogRepository;
         }
 
         public void CheckInitialData()
         {
-            if (this.dbRepository == null)
+            if (this.dbMainContentRepository == null)
             {
                 return;
             }
@@ -34,7 +36,7 @@ namespace sawan.Services
 
         private bool CheckMainContent()
         {
-            var mainContentResult = this.dbRepository.GetMainContentAsync(Language.English);
+            var mainContentResult = this.dbMainContentRepository.GetMainContentAsync(Language.English);
             if (mainContentResult != null)
             {
                 var mainContent = mainContentResult.Result;
@@ -50,12 +52,12 @@ namespace sawan.Services
 
         private void InsertMainContent()
         {
-            this.dbRepository.InsertMainContentAsync("MainContent.json");
+            this.dbMainContentRepository.InsertMainContentAsync("MainContent.json");
         }
 
         private bool CheckDefaultBlog()
         {
-            var blog = this.dbRepository.GetBlogPageAsync(3);
+            var blog = this.dbBlogRepository.GetBlogPageAsync(3);
             if (blog != null)
             {
                 var blogResult = blog.Result;
@@ -70,7 +72,7 @@ namespace sawan.Services
 
         private void InsertDefaultBlog()
         {
-            this.dbRepository.InsertBlogElementAsync("Blog.json");
+            this.dbBlogRepository.InsertBlogElementAsync("Blog.json");
         }
     }
 }
