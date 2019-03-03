@@ -21,6 +21,8 @@ namespace sawan.tests
 
         private IBlogContentService blogContentService;
 
+        private IAuthentication authentication;
+
         private readonly IDictionary<string, string> headers = new Dictionary<string, string>();
 
         private string body = string.Empty;
@@ -69,6 +71,12 @@ namespace sawan.tests
             return this;
         }
 
+        public DataControllerBuilder WithAuthentication(IAuthentication authentication)
+        {
+            this.authentication = authentication;
+            return this;
+        }
+
         public DataController Build()
         {
             var httpContext = new DefaultHttpContext();
@@ -91,7 +99,8 @@ namespace sawan.tests
                 this.pairingService,
                 this.gitHubService,
                 this.mainContentService,
-                this.blogContentService)
+                this.blogContentService,
+                this.authentication)
             {
                 ControllerContext = controllerContext
             };

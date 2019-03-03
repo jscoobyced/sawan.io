@@ -10,6 +10,8 @@ namespace sawan.tests
 
         private BlogElement blogElement;
 
+        private bool isSavedStatus;
+
         public MongoDbBlogRepositoryBuilder WithBlogElements(List<BlogElement> blogElements)
         {
             this.blogElements = blogElements;
@@ -22,11 +24,19 @@ namespace sawan.tests
             return this;
         }
 
+        public MongoDbBlogRepositoryBuilder WithSaveStatus(bool isSavedStatus)
+        {
+            this.isSavedStatus = isSavedStatus;
+            return this;
+        }
+
         public IDbBlogRepository Build()
         {
             var repository = new Mock<IDbBlogRepository>();
             repository.Setup(x => x.GetBlogElementAsync(It.IsAny<string>())).ReturnsAsync(this.blogElement);
             repository.Setup(x => x.GetBlogPageAsync(It.IsAny<int>())).ReturnsAsync(this.blogElements);
+            repository.Setup(x => x.InsertBlogElementAsync(It.IsAny<List<BlogElement>>())).ReturnsAsync(this.isSavedStatus);
+            repository.Setup(x => x.UpdateBlogElementAsync(It.IsAny<BlogElement>())).ReturnsAsync(this.isSavedStatus);
             return repository.Object;
         }
     }

@@ -29,7 +29,7 @@ export class SignButton extends React.Component<{}, SignButtonState> {
             : <div id='g-signin2'></div>;
     }
 
-    private onSignIn = (googleUser: gapi.auth2.GoogleUser) => {
+    private readonly onSignIn = (googleUser: gapi.auth2.GoogleUser) => {
         if (AuthenticationFactory.getAuthentication().isAuthSupported()) {
             this.setState({
                 isSignedIn: true
@@ -37,7 +37,7 @@ export class SignButton extends React.Component<{}, SignButtonState> {
         }
     }
 
-    private signOut = () => {
+    private readonly signOut = () => {
         AuthenticationFactory.getAuthentication().signOut().then(() => {
             this.setState({
                 isSignedIn: false
@@ -46,7 +46,7 @@ export class SignButton extends React.Component<{}, SignButtonState> {
         });
     }
 
-    private waitForAuthentication = () => {
+    private readonly waitForAuthentication = () => {
         const numberOfAttemtps = this.state.numberOfAttemtps + 1;
         if (numberOfAttemtps > this.maxNumberOfAttempts) {
             console.log("Attempted ", numberOfAttemtps - 1, "times to get authentication system ready and failed.");

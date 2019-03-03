@@ -11,6 +11,7 @@ namespace sawan.Controllers
     using System.IO;
     using Microsoft.Extensions.Options;
     using sawan.Repositories;
+    using Newtonsoft.Json;
 
     [Route("api/[controller]")]
     public class DataController : Controller
@@ -20,16 +21,20 @@ namespace sawan.Controllers
         private readonly IMainContentService mainContentService;
         private readonly IBlogContentService blogContentService;
 
+        private readonly IAuthentication authentication;
+
         public DataController(
             IPairingService pairingService,
-             IGitHubService gitHubService,
-             IMainContentService mainContentService,
-             IBlogContentService blogContentService)
+            IGitHubService gitHubService,
+            IMainContentService mainContentService,
+            IBlogContentService blogContentService,
+            IAuthentication authentication)
         {
             this.pairingService = pairingService;
             this.gitHubService = gitHubService;
             this.mainContentService = mainContentService;
             this.blogContentService = blogContentService;
+            this.authentication = authentication;
         }
 
         [HttpGet("pairing/{id}/{interval}")]
@@ -136,14 +141,14 @@ namespace sawan.Controllers
                 return false;
             }
 
-/*
-            var rest = new RestConnector();
-            var headers = new Dictionary<string, string>()
+            // TODO: super ugly way to check security. Will be improved to intercept
+            // request at a middleware level. This is just short term to enable editing
+            var isAdmin = await this.authentication.IsAdministrator(blogElementRequest.Token);
+            if (!isAdmin)
             {
-                {"Authorization", "Bearer " + blogElementRequest.Token}
-            };
-            var result = await rest.GetAsync("https://www.googleapis.com/userinfo/v2/me", headers);
-*/
+                return false;
+            }
+
             return await this.blogContentService.SaveBlogElementAsync(blogElementRequest.BlogElement);
         }
     }

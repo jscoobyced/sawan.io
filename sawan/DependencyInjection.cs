@@ -14,6 +14,7 @@ namespace sawan
             services.AddTransient<IPairingService, PairingService>();
             services.AddTransient<IGitHubService, GitHubService>();
             services.AddTransient<IMigrationService, MigrationService>();
+            services.AddTransient<IAuthentication, GoogleAuthentication>();
 
             // Repositories
             services.AddTransient<IRestConnector, RestConnector>();

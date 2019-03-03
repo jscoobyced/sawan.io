@@ -120,9 +120,11 @@ namespace sawan.tests
         }
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public async Task PostBlogElementTest(bool saveStatus)
+        [InlineData(true, true, true)]
+        [InlineData(true, false, false)]
+        [InlineData(false, true, false)]
+        [InlineData(false, false, false)]
+        public async Task PostBlogElementTest(bool saveStatus, bool isAdmin, bool expected)
         {
             var blogElement = new BlogElementBuilder().Build();
             var contentService = new BlogContentServiceBuilder()
@@ -130,6 +132,10 @@ namespace sawan.tests
                 .Build();
             var controller = new DataControllerBuilder()
                 .WithBlogContentService(contentService)
+                .WithAuthentication(
+                    new AuthenticationBuilder()
+                    .WithAdmin(isAdmin)
+                    .Build())
                 .Build();
 
             var result = await controller.PostBlog(new BlogElementRequest()
@@ -137,7 +143,7 @@ namespace sawan.tests
                 BlogElement = blogElement
             });
 
-            result.Should().Be(saveStatus);
+            result.Should().Be(expected);
         }
     }
 }

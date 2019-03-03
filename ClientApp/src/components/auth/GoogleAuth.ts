@@ -32,8 +32,7 @@ export class GoogleAuth implements IAuthentication {
         if (!this.isAuthSupported()) {
             return false;
         }
-        const isSignedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
-        return isSignedIn;
+        return gapi.auth2.getAuthInstance().isSignedIn.get();
     }
 
     public getTokenId(): string {
@@ -53,7 +52,7 @@ export class GoogleAuth implements IAuthentication {
         return Promise.reject();
     }
 
-    private loadPlatformWhenGapiReady = (script: any) => {
+    private readonly loadPlatformWhenGapiReady = (script: any) => {
         script.getAttribute('gapi_processed');
     }
 }

@@ -94,6 +94,7 @@ namespace sawan.tests
             var blogElement = new BlogElementBuilder().Build();
             var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
+                .WithSaveStatus(true)
                 .Build());
             var result = await contentService.SaveBlogElementAsync(blogElement);
             result.Should().BeTrue();
@@ -106,6 +107,7 @@ namespace sawan.tests
             blogElement.Id = null;
             var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
+                .WithSaveStatus(true)
                 .Build());
             var result = await contentService.SaveBlogElementAsync(blogElement);
             result.Should().BeTrue();

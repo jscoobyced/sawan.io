@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { AuthenticationFactory } from '../../utils/AuthenticationFactory';
-import { SignButton } from './SignButton';
 import { MockAuthentication } from './MockAuthentication';
+import { SignButton } from './SignButton';
 
 test('SignButton default component is unchanged.', () => {
     AuthenticationFactory.registerAuthentication(new MockAuthentication());
@@ -31,7 +31,7 @@ test('SignButton with authentication not ready.', () => {
     AuthenticationFactory.registerAuthentication(mockAuthentication, true);
     window.setTimeout = jest.fn().mockImplementation((f, n) => {
         f();
-    })
+    });
     const signButton = shallow(<SignButton />);
     expect(signButton).toMatchSnapshot();
     expect(mockAuthentication.isReady).toBeCalledTimes(50);
