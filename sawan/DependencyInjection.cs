@@ -9,10 +9,12 @@ namespace sawan
         public static void Inject(IServiceCollection services)
         {
             // Services
-            services.AddTransient<IContentService, ContentService>();
+            services.AddTransient<IMainContentService, MainContentService>();
+            services.AddTransient<IBlogContentService, BlogContentService>();
             services.AddTransient<IPairingService, PairingService>();
             services.AddTransient<IGitHubService, GitHubService>();
             services.AddTransient<IMigrationService, MigrationService>();
+            services.AddTransient<IAuthentication, GoogleAuthentication>();
 
             // Repositories
             services.AddTransient<IRestConnector, RestConnector>();

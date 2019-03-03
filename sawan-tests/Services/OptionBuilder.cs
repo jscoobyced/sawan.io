@@ -74,5 +74,11 @@ namespace sawan.tests
             this.appSettings.Mongo = mongo;
             return this;
         }
+
+        public OptionBuilder WithAuthentication(string authentication)
+        {
+            this.appSettings.Authentication = authentication;
+            return this;
+        }
     }
 }

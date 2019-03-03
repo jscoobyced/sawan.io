@@ -14,7 +14,7 @@ namespace sawan.tests
         public async Task WithNullMainContentService()
         {
             var controller = new DataControllerBuilder()
-                .WithContentService(null)
+                .WithMainContentService(null)
                 .Build();
             var reason = "because it should return default empty MainContent data.";
             var result = await controller.GetMainContent(Language.English);
@@ -26,8 +26,8 @@ namespace sawan.tests
         {
 
             var controller = new DataControllerBuilder()
-                .WithContentService(
-                    new ContentServiceBuilder()
+                .WithMainContentService(
+                    new MainContentServiceBuilder()
                     .WithLanguageMainContent(this.mainContentBuilder.Build(), Language.English)
                     .Build())
                 .Build();

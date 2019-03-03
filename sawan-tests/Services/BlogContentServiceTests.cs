@@ -7,41 +7,13 @@ namespace sawan.tests
     using sawan.Services;
     using Xunit;
 
-    public class ContentServiceTests
+    public class BlogContentServiceTests
     {
-
-        [Fact]
-        public async Task WithUnknownLanguageMainContentService()
-        {
-
-            var mainContentService = new ContentService(
-                new MongoDbMainContentRepositoryBuilder()
-                .WithMainContent(new MainContentBuilder().Build())
-                .WithLanguage(Language.English)
-                .Build(),
-                null);
-            var reason = "because it should return english data when language is unknown.";
-            var result = await mainContentService.GetMainContentAsync((Language)20);
-            result.Should().NotBeNull(reason);
-        }
-
-        [Fact]
-        public async Task GetMainContentWithLanguage()
-        {
-            var mainContentService = new ContentService(
-                new MongoDbMainContentRepositoryBuilder()
-                .WithMainContent(new MainContentBuilder().Build())
-                .Build(),
-                null);
-            var result = await mainContentService.GetMainContentAsync(Language.English);
-            result.Should().NotBeNull();
-        }
 
         [Fact]
         public async Task GetBlogPageAsyncNullTest()
         {
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
                 .WithBlogElements(null)
                 .Build());
@@ -53,8 +25,7 @@ namespace sawan.tests
         public async Task GetBlogPageAsyncTest()
         {
             var blogElements = new List<BlogElement>() { new BlogElementBuilder().Build() };
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
                 .WithBlogElements(blogElements)
                 .Build());
@@ -66,8 +37,7 @@ namespace sawan.tests
         [Fact]
         public async Task GetBlogElementAsyncNullTest()
         {
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
                 .WithBlogElement(null)
                 .Build());
@@ -79,8 +49,7 @@ namespace sawan.tests
         public async Task GetBlogElementAsyncEmptyIdTest()
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
                 .WithBlogElement(blogElement)
                 .Build());
@@ -92,8 +61,7 @@ namespace sawan.tests
         public async Task GetBlogElementAsyncTest()
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
                 .WithBlogElement(blogElement)
                 .Build());
@@ -107,8 +75,7 @@ namespace sawan.tests
         {
             var blogElement = new BlogElementBuilder().Build();
             blogElement.Article = null;
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
                 .Build());
             var result = await contentService.SaveBlogElementAsync(null);
@@ -125,9 +92,9 @@ namespace sawan.tests
         public async Task SaveBlogElementAsync()
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
+                .WithSaveStatus(true)
                 .Build());
             var result = await contentService.SaveBlogElementAsync(blogElement);
             result.Should().BeTrue();
@@ -138,9 +105,9 @@ namespace sawan.tests
         {
             var blogElement = new BlogElementBuilder().Build();
             blogElement.Id = null;
-            var contentService = new ContentService(
-                null,
+            var contentService = new BlogContentService(
                 new MongoDbBlogRepositoryBuilder()
+                .WithSaveStatus(true)
                 .Build());
             var result = await contentService.SaveBlogElementAsync(blogElement);
             result.Should().BeTrue();

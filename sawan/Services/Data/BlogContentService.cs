@@ -5,25 +5,13 @@ namespace sawan.Services
     using System.Threading.Tasks;
     using sawan.Repositories;
 
-    public class ContentService : IContentService
+    public class BlogContentService : IBlogContentService
     {
-        private readonly IDbMainContentRepository mongoDbMainContentRepository;
         private readonly IDbBlogRepository dbBlogRepository;
 
-        public ContentService(IDbMainContentRepository mongoDbMainContentRepository, IDbBlogRepository dbBlogRepository)
+        public BlogContentService(IDbBlogRepository dbBlogRepository)
         {
-            this.mongoDbMainContentRepository = mongoDbMainContentRepository;
             this.dbBlogRepository = dbBlogRepository;
-        }
-
-        public async Task<MainContent> GetMainContentAsync(Language language)
-        {
-            if (!Enum.IsDefined(typeof(Language), language))
-            {
-                language = Language.English;
-            }
-
-            return await this.mongoDbMainContentRepository.GetMainContentAsync(language);
         }
 
         public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
@@ -63,15 +51,10 @@ namespace sawan.Services
             if (string.IsNullOrWhiteSpace(blogElement.Id))
             {
                 var blogElements = new List<BlogElement>() { safeBlogElement };
-                // Add support to create new blog entry when user authentication is done
-                // return await this.mongoDbRepository.InsertBlogElementAsync(blogElements);
-                return true;
+                return await this.dbBlogRepository.InsertBlogElementAsync(blogElements);
             }
 
-            // Remove this after user authentication is done
-            await Task.Run(() => { });
-            // return await this.mongoDbRepository.UpdateBlogElementAsync(safeBlogElement);
-            return true;
+            return await this.dbBlogRepository.UpdateBlogElementAsync(safeBlogElement);
         }
     }
 }

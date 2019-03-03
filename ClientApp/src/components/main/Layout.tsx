@@ -1,5 +1,4 @@
 import React from 'react';
-import { match } from 'react-router-dom';
 import { MainContent } from '../../services/Models';
 import { Footer } from './Footer';
 import { Header } from './Header';
@@ -14,12 +13,6 @@ export class Layout extends React.Component<LayoutProps> {
 
     public constructor(props: LayoutProps) {
         super(props);
-    }
-
-    public setFullPage(full: boolean) {
-        this.setState({
-            full
-        });
     }
 
     public render() {

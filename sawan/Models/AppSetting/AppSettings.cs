@@ -9,5 +9,7 @@ namespace sawan
         public GitHub GitHub { get; set; }
 
         public Mongo Mongo { get; set; }
+
+        public string Authentication { get; set; }
     }
 }

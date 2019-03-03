@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { SignButton } from '../auth/SignButton';
 import { HeaderProps } from './Models';
 
 export class Header extends React.Component<HeaderProps> {
@@ -58,10 +59,13 @@ export class Header extends React.Component<HeaderProps> {
                             </li>
                             <li>
                                 <NavLink to={'/Cedric Rochefolle - Resume 2019.pdf'} target='_blank'>
-                                {this.props.navigationMenuContent.resume} <i className='fas fa-download'></i>
+                                    {this.props.navigationMenuContent.resume} <i className='fas fa-download'></i>
                                 </NavLink>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <SignButton />
                     </li>
                 </ul>
             </nav>

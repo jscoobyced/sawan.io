@@ -17,7 +17,11 @@ namespace sawan.tests
 
         private IGitHubService gitHubService;
 
-        private IContentService contentService;
+        private IMainContentService mainContentService;
+
+        private IBlogContentService blogContentService;
+
+        private IAuthentication authentication;
 
         private readonly IDictionary<string, string> headers = new Dictionary<string, string>();
 
@@ -35,9 +39,15 @@ namespace sawan.tests
             return this;
         }
 
-        public DataControllerBuilder WithContentService(IContentService contentService)
+        public DataControllerBuilder WithMainContentService(IMainContentService contentService)
         {
-            this.contentService = contentService;
+            this.mainContentService = contentService;
+            return this;
+        }
+
+        public DataControllerBuilder WithBlogContentService(IBlogContentService contentService)
+        {
+            this.blogContentService = contentService;
             return this;
         }
 
@@ -61,6 +71,12 @@ namespace sawan.tests
             return this;
         }
 
+        public DataControllerBuilder WithAuthentication(IAuthentication authentication)
+        {
+            this.authentication = authentication;
+            return this;
+        }
+
         public DataController Build()
         {
             var httpContext = new DefaultHttpContext();
@@ -79,7 +95,12 @@ namespace sawan.tests
                 HttpContext = httpContext,
             };
 
-            return new DataController(this.pairingService, this.gitHubService, this.contentService)
+            return new DataController(
+                this.pairingService,
+                this.gitHubService,
+                this.mainContentService,
+                this.blogContentService,
+                this.authentication)
             {
                 ControllerContext = controllerContext
             };

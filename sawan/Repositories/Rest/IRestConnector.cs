@@ -5,6 +5,6 @@ namespace sawan.Repositories
 
     public interface IRestConnector
     {
-        Task<string> GetAsync(string url);
+        Task<string> GetAsync(string url, Dictionary<string, string> headers = null);
     }
 }
