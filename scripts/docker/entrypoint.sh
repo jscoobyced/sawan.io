@@ -4,4 +4,4 @@
 chown --dereference mongodb "/proc/$$/fd/1" "/proc/$$/fd/2" || :
 
 mongod --dbpath /data/db --logpath /var/log/mongodb/mongod.log --bind_ip_all --sslMode disabled --fork
-dotnet sawan.dll
+Authentication=$Authentication dotnet sawan.dll
