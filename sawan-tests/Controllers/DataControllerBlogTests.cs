@@ -25,11 +25,11 @@ namespace sawan.tests
         public async Task GetBlogPageTest()
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentServiceBuilder()
+            var contentService = new BlogContentServiceBuilder()
                 .WithBlogElements(new List<BlogElement>() { blogElement })
                 .Build();
             var controller = new DataControllerBuilder()
-                .WithContentService(contentService)
+                .WithBlogContentService(contentService)
                 .Build();
 
             var blogElements = await controller.GetBlogPage(0);
@@ -42,11 +42,11 @@ namespace sawan.tests
         public async Task GetBlogContentTest()
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentServiceBuilder()
+            var contentService = new BlogContentServiceBuilder()
                 .WithBlogElement(blogElement)
                 .Build();
             var controller = new DataControllerBuilder()
-                .WithContentService(contentService)
+                .WithBlogContentService(contentService)
                 .Build();
 
             var result = await controller.GetBlogContent("0");
@@ -59,11 +59,11 @@ namespace sawan.tests
         public async Task GetBlogContentNullTest()
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentServiceBuilder()
+            var contentService = new BlogContentServiceBuilder()
                 .WithBlogElement(blogElement)
                 .Build();
             var controller = new DataControllerBuilder()
-                .WithContentService(null)
+                .WithBlogContentService(null)
                 .Build();
 
             var result = await controller.GetBlogContent("0");
@@ -74,10 +74,10 @@ namespace sawan.tests
         public async Task PostNullBlogElementTest()
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentServiceBuilder()
+            var contentService = new MainContentServiceBuilder()
                 .Build();
             var controller = new DataControllerBuilder()
-                .WithContentService(contentService)
+                .WithMainContentService(contentService)
                 .Build();
 
             var result = await controller.PostBlog(new BlogElementRequest()
@@ -93,7 +93,7 @@ namespace sawan.tests
         {
             var blogElement = new BlogElementBuilder().Build();
             var controller = new DataControllerBuilder()
-                .WithContentService(null)
+                .WithBlogContentService(null)
                 .Build();
 
             var result = await controller.PostBlog(new BlogElementRequest()
@@ -109,7 +109,7 @@ namespace sawan.tests
         {
             var blogElement = new BlogElementBuilder().Build();
             var controller = new DataControllerBuilder()
-                .WithContentService(new ContentServiceBuilder().Build())
+                .WithMainContentService(new MainContentServiceBuilder().Build())
                 .Build();
 
             var result = await controller.PostBlog(null);
@@ -125,11 +125,11 @@ namespace sawan.tests
         public async Task PostBlogElementTest(bool saveStatus)
         {
             var blogElement = new BlogElementBuilder().Build();
-            var contentService = new ContentServiceBuilder()
+            var contentService = new BlogContentServiceBuilder()
                 .WithSaveStatus(saveStatus)
                 .Build();
             var controller = new DataControllerBuilder()
-                .WithContentService(contentService)
+                .WithBlogContentService(contentService)
                 .Build();
 
             var result = await controller.PostBlog(new BlogElementRequest()

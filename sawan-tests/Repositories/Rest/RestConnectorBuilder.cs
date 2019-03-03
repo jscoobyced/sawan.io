@@ -19,7 +19,10 @@ namespace sawan.tests
         {
             var mockRestConnector = new Mock<IRestConnector>();
             mockRestConnector
-                .Setup(m=>m.GetAsync(It.IsAny<string>()))
+                .Setup(
+                    m => m.GetAsync(
+                        It.IsAny<string>(),
+                        It.IsAny<Dictionary<string, string>>()))
                 .ReturnsAsync(this.result);
 
             return mockRestConnector.Object;

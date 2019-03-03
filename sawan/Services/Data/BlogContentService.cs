@@ -5,25 +5,13 @@ namespace sawan.Services
     using System.Threading.Tasks;
     using sawan.Repositories;
 
-    public class ContentService : IContentService
+    public class BlogContentService : IBlogContentService
     {
-        private readonly IDbMainContentRepository mongoDbMainContentRepository;
         private readonly IDbBlogRepository dbBlogRepository;
 
-        public ContentService(IDbMainContentRepository mongoDbMainContentRepository, IDbBlogRepository dbBlogRepository)
+        public BlogContentService(IDbBlogRepository dbBlogRepository)
         {
-            this.mongoDbMainContentRepository = mongoDbMainContentRepository;
             this.dbBlogRepository = dbBlogRepository;
-        }
-
-        public async Task<MainContent> GetMainContentAsync(Language language)
-        {
-            if (!Enum.IsDefined(typeof(Language), language))
-            {
-                language = Language.English;
-            }
-
-            return await this.mongoDbMainContentRepository.GetMainContentAsync(language);
         }
 
         public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)

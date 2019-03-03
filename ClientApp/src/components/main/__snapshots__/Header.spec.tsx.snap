@@ -98,6 +98,9 @@ exports[`Header component is unchanged. 1`] = `
           </li>
         </ul>
       </li>
+      <li>
+        <SignButton />
+      </li>
     </ul>
   </nav>
 </header>

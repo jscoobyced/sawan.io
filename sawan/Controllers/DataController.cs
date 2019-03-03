@@ -10,22 +10,26 @@ namespace sawan.Controllers
     using Microsoft.Extensions.Primitives;
     using System.IO;
     using Microsoft.Extensions.Options;
+    using sawan.Repositories;
 
     [Route("api/[controller]")]
     public class DataController : Controller
     {
         private readonly IPairingService pairingService;
         private readonly IGitHubService gitHubService;
-        private readonly IContentService contentService;
+        private readonly IMainContentService mainContentService;
+        private readonly IBlogContentService blogContentService;
 
         public DataController(
             IPairingService pairingService,
              IGitHubService gitHubService,
-             IContentService mainContentService)
+             IMainContentService mainContentService,
+             IBlogContentService blogContentService)
         {
             this.pairingService = pairingService;
             this.gitHubService = gitHubService;
-            this.contentService = mainContentService;
+            this.mainContentService = mainContentService;
+            this.blogContentService = blogContentService;
         }
 
         [HttpGet("pairing/{id}/{interval}")]
@@ -94,45 +98,53 @@ namespace sawan.Controllers
         [HttpGet("main/{language}")]
         public async Task<MainContent> GetMainContent(Language language)
         {
-            if (this.contentService == null)
+            if (this.mainContentService == null)
             {
                 return new MainContent();
             }
 
-            return await this.contentService.GetMainContentAsync(language);
+            return await this.mainContentService.GetMainContentAsync(language);
         }
 
         [HttpGet("blogpage/{maxResult}")]
         public async Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult)
         {
-            if (this.contentService == null)
+            if (this.blogContentService == null)
             {
                 return new List<BlogElement>();
             }
 
-            return await this.contentService.GetBlogPageAsync(maxResult);
+            return await this.blogContentService.GetBlogPageAsync(maxResult);
         }
 
         [HttpGet("blog/{blogId}")]
         public async Task<BlogElement> GetBlogContent(string blogId)
         {
-            if (this.contentService == null)
+            if (this.blogContentService == null)
             {
                 return new BlogElement();
             }
 
-            return await this.contentService.GetBlogElementAsync(blogId);
+            return await this.blogContentService.GetBlogElementAsync(blogId);
         }
 
         [HttpPost("blog/post")]
         public async Task<bool> PostBlog([FromBody] BlogElementRequest blogElementRequest)
         {
-            if (this.contentService == null || blogElementRequest?.BlogElement == null)
+            if (this.blogContentService == null || blogElementRequest?.BlogElement == null)
             {
                 return false;
             }
 
-            return await this.contentService.SaveBlogElementAsync(blogElementRequest.BlogElement);
+/*
+            var rest = new RestConnector();
+            var headers = new Dictionary<string, string>()
+            {
+                {"Authorization", "Bearer " + blogElementRequest.Token}
+            };
+            var result = await rest.GetAsync("https://www.googleapis.com/userinfo/v2/me", headers);
+*/
+            return await this.blogContentService.SaveBlogElementAsync(blogElementRequest.BlogElement);
         }
     }
 }

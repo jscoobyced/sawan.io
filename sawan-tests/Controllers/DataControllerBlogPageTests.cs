@@ -14,7 +14,7 @@ namespace sawan.tests
         public async Task WithNullMainContentService()
         {
             var controller = new DataControllerBuilder()
-                .WithContentService(null)
+                .WithMainContentService(null)
                 .Build();
 
             var result = await controller.GetBlogPage(1);

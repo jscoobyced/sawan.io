@@ -1,4 +1,6 @@
 import { TestUtils } from "../../tests/TestUtils";
+import { MockAuthentication } from "../components/auth/MockAuthentication";
+import { AuthenticationFactory } from "../utils/AuthenticationFactory";
 import { DateUtil } from "../utils/DateUtils";
 import { ContentService } from "./ContentService";
 import { BlogElement, Language, MainContent } from "./Models";
@@ -86,6 +88,7 @@ test('ContentService can get blog content', async () => {
 });
 
 test('ContentService can save blog content', async () => {
+    AuthenticationFactory.registerAuthentication(new MockAuthentication());
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch(true);
     const data = await contentService.saveBlogElement(blogElements[0]);
