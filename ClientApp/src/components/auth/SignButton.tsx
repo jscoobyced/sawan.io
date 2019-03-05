@@ -8,19 +8,13 @@ export interface SignButtonState {
 
 export class SignButton extends React.Component<{}, SignButtonState> {
 
-    private readonly maxNumberOfAttempts = 50;
-
     public constructor(props: {}, state: SignButtonState) {
         super(props, state);
         this.state = {
             isSignedIn: false,
             numberOfAttemtps: 0
         };
-        AuthenticationFactory.getAuthentication().init();
-    }
-
-    public componentDidMount() {
-        this.waitForAuthentication();
+        AuthenticationFactory.getAuthentication().init(this.onSignIn);
     }
 
     public render() {
@@ -29,7 +23,7 @@ export class SignButton extends React.Component<{}, SignButtonState> {
             : <div id='g-signin2'></div>;
     }
 
-    private readonly onSignIn = (googleUser: gapi.auth2.GoogleUser) => {
+    private readonly onSignIn = () => {
         if (AuthenticationFactory.getAuthentication().isAuthSupported()) {
             this.setState({
                 isSignedIn: true
@@ -44,23 +38,5 @@ export class SignButton extends React.Component<{}, SignButtonState> {
             });
             AuthenticationFactory.getAuthentication().renderButton(this.onSignIn);
         });
-    }
-
-    private readonly waitForAuthentication = () => {
-        const numberOfAttemtps = this.state.numberOfAttemtps + 1;
-        if (numberOfAttemtps > this.maxNumberOfAttempts) {
-            console.log("Attempted ", numberOfAttemtps - 1, "times to get authentication system ready and failed.");
-            return;
-        }
-        this.setState({
-            numberOfAttemtps
-        });
-        if (!AuthenticationFactory.getAuthentication().isReady()) {
-            setTimeout(() => {
-                this.waitForAuthentication();
-            }, 100);
-        } else {
-            AuthenticationFactory.getAuthentication().renderButton(this.onSignIn);
-        }
     }
 }

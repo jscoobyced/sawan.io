@@ -6,12 +6,6 @@ exports[`SignButton default component is unchanged. 1`] = `
 />
 `;
 
-exports[`SignButton with authentication not ready. 1`] = `
-<div
-  id="g-signin2"
-/>
-`;
-
 exports[`SignButton with authentication ready. 1`] = `
 <div
   id="g-signin2"
