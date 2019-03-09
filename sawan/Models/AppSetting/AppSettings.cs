@@ -10,6 +10,6 @@ namespace sawan
 
         public Mongo Mongo { get; set; }
 
-        public string Authentication { get; set; }
+        public Authentication Authentication { get; set; }
     }
 }

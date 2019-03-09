@@ -71,12 +71,6 @@ namespace sawan.tests
             return this;
         }
 
-        public DataControllerBuilder WithAuthentication(IAuthentication authentication)
-        {
-            this.authentication = authentication;
-            return this;
-        }
-
         public DataController Build()
         {
             var httpContext = new DefaultHttpContext();
@@ -99,8 +93,7 @@ namespace sawan.tests
                 this.pairingService,
                 this.gitHubService,
                 this.mainContentService,
-                this.blogContentService,
-                this.authentication)
+                this.blogContentService)
             {
                 ControllerContext = controllerContext
             };

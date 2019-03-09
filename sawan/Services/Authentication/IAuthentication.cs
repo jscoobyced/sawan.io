@@ -4,6 +4,6 @@ namespace sawan.Services
 
     public interface IAuthentication
     {
-        Task<bool> IsAdministrator(string token);
+        Task<GoogleUser> Login(string token);
     }
 }

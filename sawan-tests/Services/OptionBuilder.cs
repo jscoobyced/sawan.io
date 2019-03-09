@@ -75,9 +75,13 @@ namespace sawan.tests
             return this;
         }
 
-        public OptionBuilder WithAuthentication(string authentication)
+        public OptionBuilder WithAuthentication(string googleKey, string jwtKey)
         {
-            this.appSettings.Authentication = authentication;
+            this.appSettings.Authentication = new Authentication()
+            {
+                GoogleKey = googleKey,
+                JwtKey = jwtKey
+            };
             return this;
         }
     }

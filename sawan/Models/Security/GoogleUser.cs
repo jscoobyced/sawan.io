@@ -27,5 +27,9 @@ namespace sawan
 
         [JsonProperty(PropertyName = "locale")]
         public string Locale { get; set; }
+
+        public string Group { get; set; }
+
+        public string Token { get; set; }
     }
 }

@@ -5,19 +5,19 @@ namespace sawan.tests
 
     public class AuthenticationBuilder
     {
-        private bool isAdmin;
+        private GoogleUser googleUser;
 
-        public AuthenticationBuilder WithAdmin(bool isAdmin)
+        public AuthenticationBuilder WithGoogleUser(GoogleUser googleUser)
         {
-            this.isAdmin = isAdmin;
+            this.googleUser = googleUser;
             return this;
         }
 
         public IAuthentication Build()
         {
             var googleAuthentication = new Mock<IAuthentication>();
-            googleAuthentication.Setup(x => x.IsAdministrator(It.IsAny<string>()))
-            .ReturnsAsync(this.isAdmin);
+            googleAuthentication.Setup(x => x.Login(It.IsAny<string>()))
+                .ReturnsAsync(this.googleUser);
             return googleAuthentication.Object;
         }
     }

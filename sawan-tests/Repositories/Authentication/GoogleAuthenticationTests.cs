@@ -27,9 +27,9 @@ namespace sawan.tests
                 .WithResult(googleUserString)
                 .Build(),
                 new OptionBuilder()
-                    .WithAuthentication(adminId)
+                    .WithAuthentication(adminId, "this is a very well kept secret. Bla blabla. I will find you and I will hug you!")
                     .Build());
-            var result = await googleAuthentication.IsAdministrator("token");
+            var result = await googleAuthentication.Login("token");
             result.Should().Be(expected);
         }
     }
