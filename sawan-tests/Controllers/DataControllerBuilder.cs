@@ -21,8 +21,6 @@ namespace sawan.tests
 
         private IBlogContentService blogContentService;
 
-        private IAuthentication authentication;
-
         private readonly IDictionary<string, string> headers = new Dictionary<string, string>();
 
         private string body = string.Empty;
