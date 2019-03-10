@@ -60,7 +60,7 @@ export class Page extends React.Component<{}, PageState> {
         </Layout>;
     }
 
-    private signIn = (isSignedIn: boolean) => {
+    private readonly signIn = (isSignedIn: boolean) => {
         this.setState({
             isSignedIn
         });

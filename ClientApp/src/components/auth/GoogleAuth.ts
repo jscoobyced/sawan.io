@@ -69,7 +69,7 @@ export class GoogleAuth implements IAuthentication {
         return (typeof gapi !== "undefined");
     }
 
-    private onSignIn = (googleUser: gapi.auth2.GoogleUser) => {
+    private readonly onSignIn = (googleUser: gapi.auth2.GoogleUser) => {
         const url = "/api/User/authenticate";
         ApiUtils.postData<{}, AuthenticatedUser>(url, {})
             .then(response => {

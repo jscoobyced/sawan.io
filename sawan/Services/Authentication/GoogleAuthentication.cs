@@ -50,7 +50,7 @@ namespace sawan.Services
             return null;
         }
 
-        private bool CreateJwtToken(GoogleUser googleUser)
+        private void CreateJwtToken(GoogleUser googleUser)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(this.options.Value.Authentication.JwtKey);
@@ -66,7 +66,6 @@ namespace sawan.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             googleUser.Token = tokenHandler.WriteToken(token);
-            return true;
         }
     }
 }
