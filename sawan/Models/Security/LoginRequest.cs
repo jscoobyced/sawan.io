@@ -4,7 +4,7 @@ namespace sawan
 {
     public class LoginRequest
     {
-        [JsonProperty(PropertyName = "access_token")]
+        [JsonProperty(PropertyName = "accessToken")]
         public string AccessToken { get; set; }
     }
 }

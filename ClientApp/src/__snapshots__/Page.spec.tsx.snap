@@ -27,6 +27,8 @@ exports[`Page content is preserved 1`] = `
         },
       }
     }
+    isSignedIn={false}
+    signIn={[Function]}
   >
     <Route
       component={[Function]}

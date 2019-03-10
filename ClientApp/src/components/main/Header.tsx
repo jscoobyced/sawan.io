@@ -65,7 +65,7 @@ export class Header extends React.Component<HeaderProps> {
                         </ul>
                     </li>
                     <li>
-                        <SignButton />
+                        <SignButton signIn={this.props.signIn} isSignedIn={this.props.isSignedIn}/>
                     </li>
                 </ul>
             </nav>

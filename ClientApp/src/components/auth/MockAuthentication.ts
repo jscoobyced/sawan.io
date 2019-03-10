@@ -1,6 +1,21 @@
 import { IAuthentication } from "../../utils/IAuthentication";
 
 export class MockAuthentication implements IAuthentication {
+    public getAuthenticatedUser = () => {
+        return {
+            email: "",
+            family_name: "",
+            given_name: "",
+            group: "",
+            id: "",
+            locale: "",
+            name: "",
+            picture: "",
+            token: "",
+            verified_email: true
+        };
+    }
+
     public getTokenId = (): string => {
         return "";
     }
@@ -22,5 +37,9 @@ export class MockAuthentication implements IAuthentication {
 
     public renderButton = (onSignIn: (user: any) => void): void => {
         return;
+    }
+
+    public isAdmin() {
+        return false;
     }
 }
