@@ -14,6 +14,7 @@ import { HtmlUtils } from './utils/HtmlUtils';
 
 export interface PageState {
     allContent: MainContent;
+    isSignedIn: boolean;
 }
 
 export class Page extends React.Component<{}, PageState> {
@@ -24,7 +25,8 @@ export class Page extends React.Component<{}, PageState> {
         super(props);
         this.contentService = ContentServiceFactory.GetContentService();
         this.state = {
-            allContent: this.contentService.getDefaultMainContent()
+            allContent: this.contentService.getDefaultMainContent(),
+            isSignedIn: false
         };
     }
 
@@ -44,8 +46,11 @@ export class Page extends React.Component<{}, PageState> {
     }
 
     private routes() {
-        return <Layout allContent={this.state.allContent} >
-            <Route exact path='/' component={HomeHoc} />
+        return <Layout
+            allContent={this.state.allContent}
+            signIn={this.signIn}
+            isSignedIn={this.state.isSignedIn} >
+            <Route exact path='/' component={() => <HomeHoc isSignedIn={this.state.isSignedIn} />} />
             <Route path='/candle' component={CandleChartPageHoc} />
             <Route path='/health' component={About} />
             <Route path='/blog/view/:id/' component={BlogHoc} />
@@ -54,4 +59,11 @@ export class Page extends React.Component<{}, PageState> {
             <Route path='/resume' component={Resume} />
         </Layout>;
     }
+
+    private readonly signIn = (isSignedIn: boolean) => {
+        this.setState({
+            isSignedIn
+        });
+    }
+
 }

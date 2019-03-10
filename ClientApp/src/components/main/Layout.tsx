@@ -7,6 +7,8 @@ import { SideBar } from './SideBar';
 export interface LayoutProps {
     children: React.ReactNode;
     allContent?: MainContent;
+    isSignedIn: boolean;
+    signIn: (isSignedIn: boolean) => void;
 }
 
 export class Layout extends React.Component<LayoutProps> {
@@ -22,7 +24,10 @@ export class Layout extends React.Component<LayoutProps> {
 
         return <main>
             <section>
-                <Header navigationMenuContent={this.props.allContent.navigationMenuContent} />
+                <Header
+                    signIn={this.props.signIn}
+                    isSignedIn={this.props.isSignedIn}
+                    navigationMenuContent={this.props.allContent.navigationMenuContent} />
                 {this.props.children}
             </section>
             <SideBar allContent={this.props.allContent} />

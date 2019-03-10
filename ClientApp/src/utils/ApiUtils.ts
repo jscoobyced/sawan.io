@@ -10,15 +10,21 @@ export class ApiUtils {
     }
 
     public static async postData<T, U>(url: string, data: T): Promise<U> {
+        const user = AuthenticationFactory.getAuthentication().getAuthenticatedUser();
+        let token = "";
+        if (user && user.token) {
+            token = user.token;
+        }
         return fetch(url, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({
                 data,
-                token: AuthenticationFactory.getAuthentication().getTokenId()
+                accessToken: AuthenticationFactory.getAuthentication().getTokenId()
             })
         })
             .then(response => {

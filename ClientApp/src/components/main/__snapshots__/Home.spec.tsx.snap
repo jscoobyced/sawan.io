@@ -12,7 +12,6 @@ Array [
         "id": "1",
       }
     }
-    editLink={true}
     ellipsis={true}
     key="0"
   />,
@@ -26,7 +25,6 @@ Array [
         "id": "2",
       }
     }
-    editLink={true}
     ellipsis={true}
     key="1"
   />,
@@ -40,11 +38,12 @@ Array [
         "id": "3",
       }
     }
-    editLink={true}
     ellipsis={true}
     key="2"
   />,
 ]
 `;
+
+exports[`Home component signed-in. 1`] = `""`;
 
 exports[`Home component with no article. 1`] = `""`;

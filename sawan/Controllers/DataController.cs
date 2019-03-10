@@ -12,6 +12,7 @@ namespace sawan.Controllers
     using Microsoft.Extensions.Options;
     using sawan.Repositories;
     using Newtonsoft.Json;
+    using Microsoft.AspNetCore.Authorization;
 
     [Route("api/[controller]")]
     public class DataController : Controller
@@ -21,20 +22,16 @@ namespace sawan.Controllers
         private readonly IMainContentService mainContentService;
         private readonly IBlogContentService blogContentService;
 
-        private readonly IAuthentication authentication;
-
         public DataController(
             IPairingService pairingService,
             IGitHubService gitHubService,
             IMainContentService mainContentService,
-            IBlogContentService blogContentService,
-            IAuthentication authentication)
+            IBlogContentService blogContentService)
         {
             this.pairingService = pairingService;
             this.gitHubService = gitHubService;
             this.mainContentService = mainContentService;
             this.blogContentService = blogContentService;
-            this.authentication = authentication;
         }
 
         [HttpGet("pairing/{id}/{interval}")]
@@ -133,6 +130,7 @@ namespace sawan.Controllers
             return await this.blogContentService.GetBlogElementAsync(blogId);
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpPost("blog/post")]
         public async Task<bool> PostBlog([FromBody] BlogElementRequest blogElementRequest)
         {
@@ -140,15 +138,6 @@ namespace sawan.Controllers
             {
                 return false;
             }
-
-            // TODO: super ugly way to check security. Will be improved to intercept
-            // request at a middleware level. This is just short term to enable editing
-            var isAdmin = await this.authentication.IsAdministrator(blogElementRequest.Token);
-            if (!isAdmin)
-            {
-                return false;
-            }
-
             return await this.blogContentService.SaveBlogElementAsync(blogElementRequest.BlogElement);
         }
     }
