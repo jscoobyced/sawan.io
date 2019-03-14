@@ -9,6 +9,7 @@ exports[`Blog is rendered empty when no blogElement 1`] = `
       "articleTitle": "",
       "blogDate": 2019-01-01T00:00:00.000Z,
       "id": "0",
+      "updateDate": 2019-01-01T00:00:00.000Z,
     }
   }
   editLink={true}
@@ -25,6 +26,7 @@ exports[`Blog is rendered with blogElement 1`] = `
       "articleTitle": "",
       "blogDate": 2019-01-01T00:00:00.000Z,
       "id": "0",
+      "updateDate": 2019-01-01T00:00:00.000Z,
     }
   }
   editLink={true}
@@ -40,6 +42,7 @@ exports[`Blog is rendered writable 1`] = `
       "articleTitle": "",
       "blogDate": 2019-01-01T00:00:00.000Z,
       "id": "0",
+      "updateDate": 2019-01-01T00:00:00.000Z,
     }
   }
   update={[Function]}

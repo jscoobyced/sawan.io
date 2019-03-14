@@ -11,6 +11,7 @@ namespace sawan.tests
                 Article = "",
                 ArticleTitle = "",
                 BlogDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
                 Id = "1"
             };
 
