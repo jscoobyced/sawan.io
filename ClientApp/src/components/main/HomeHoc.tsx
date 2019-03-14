@@ -24,8 +24,6 @@ export class HomeHoc extends React.Component<HomeProps, HomeState> {
     }
 
     public componentDidMount() {
-        console.log("Updating...", this.props.isSignedIn);
-
         this.contentService.getBlogPage(50)
             .then(blogPage => {
                 this.setState({ blogPage });

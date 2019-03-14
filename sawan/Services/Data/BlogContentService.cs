@@ -45,6 +45,7 @@ namespace sawan.Services
                 Article = safeArticle,
                 ArticleTitle = safeArticleTitle,
                 BlogDate = blogElement.BlogDate,
+                UpdateDate = blogElement.UpdateDate,
                 Id = blogElement.Id
             };
 

@@ -34,6 +34,7 @@ exports[`Render EditableArticle 1`] = `
         "articleTitle": "",
         "blogDate": 2019-01-01T00:00:00.000Z,
         "id": "",
+        "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
     ellipsis={false}
@@ -75,6 +76,7 @@ exports[`Render EditableArticle 2`] = `
         "articleTitle": "",
         "blogDate": 2019-01-01T00:00:00.000Z,
         "id": "",
+        "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
     ellipsis={false}
@@ -116,6 +118,7 @@ exports[`Render EditableArticle 3`] = `
         "articleTitle": "bla-title",
         "blogDate": 2019-01-01T00:00:00.000Z,
         "id": "",
+        "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
     ellipsis={false}

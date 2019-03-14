@@ -27,6 +27,7 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
                 article: '',
                 articleTitle: '',
                 blogDate: DateUtil.defaultDate(),
+                updateDate: DateUtil.defaultDate(),
                 id: '0'
             }
         };
@@ -45,7 +46,8 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
         const blogElement: BlogElement = {
             article,
             articleTitle,
-            blogDate: new Date(),
+            blogDate: this.state.blogElement.blogDate,
+            updateDate: new Date(),
             id
         };
         return this.contentService.saveBlogElement(blogElement);

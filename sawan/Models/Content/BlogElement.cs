@@ -10,6 +10,7 @@ namespace sawan
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public DateTime BlogDate { get; set; }
+        public DateTime UpdateDate { get; set; }
         public string Article { get; set; }
         public string ArticleTitle { get; set; }
     }
