@@ -27,7 +27,7 @@ namespace sawan.Repositories
                 return null;
             }
             var filter = new BsonDocument();
-            var sort = Builders<BlogElement>.Sort.Descending("blogdate");
+            var sort = Builders<BlogElement>.Sort.Descending("BlogDate");
             var options = new FindOptions<BlogElement>
             {
                 Sort = sort
