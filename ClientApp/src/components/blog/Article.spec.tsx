@@ -13,6 +13,7 @@ const blogElement: BlogElement = {
     article: 'bla bla bla',
     articleTitle: 'Title',
     blogDate: DateUtil.defaultDate(),
+    updateDate: DateUtil.defaultDate(),
     id: '1'
 };
 const data: ArticleProps[] = [

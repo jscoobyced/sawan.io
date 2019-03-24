@@ -15,8 +15,6 @@ exports[`Header component is unchanged. 1`] = `
     <ul>
       <li>
         <NavLink
-          activeClassName="active"
-          aria-current="page"
           to="/"
         />
       </li>
@@ -36,15 +34,11 @@ exports[`Header component is unchanged. 1`] = `
         <ul>
           <li>
             <NavLink
-              activeClassName="active"
-              aria-current="page"
               to="/candle"
             />
           </li>
           <li>
             <NavLink
-              activeClassName="active"
-              aria-current="page"
               to="/health"
             />
           </li>
@@ -58,22 +52,16 @@ exports[`Header component is unchanged. 1`] = `
         <ul>
           <li>
             <NavLink
-              activeClassName="active"
-              aria-current="page"
               to="/about"
             />
           </li>
           <li>
             <NavLink
-              activeClassName="active"
-              aria-current="page"
               to="/resume"
             />
           </li>
           <li>
             <NavLink
-              activeClassName="active"
-              aria-current="page"
               target="_blank"
               to="/resume/?full"
             >
@@ -85,8 +73,6 @@ exports[`Header component is unchanged. 1`] = `
           </li>
           <li>
             <NavLink
-              activeClassName="active"
-              aria-current="page"
               target="_blank"
               to="/Cedric Rochefolle - Resume 2019.pdf"
             >

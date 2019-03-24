@@ -27,8 +27,6 @@ exports[`Article component with article. 1`] = `
         className="article-links"
       >
         <NavLink
-          activeClassName="active"
-          aria-current="page"
           className="link-article"
           to="/blog/view/1"
         >
@@ -37,8 +35,6 @@ exports[`Article component with article. 1`] = `
       </div>
     </div>
     <NavLink
-      activeClassName="active"
-      aria-current="page"
       className="btn-article"
       to="/"
     >
@@ -76,8 +72,6 @@ exports[`Article component with article. 2`] = `
       />
     </div>
     <NavLink
-      activeClassName="active"
-      aria-current="page"
       className="btn-article"
       to="/"
     >
@@ -114,8 +108,6 @@ exports[`Article component with article. 3`] = `
         className="article-links"
       >
         <NavLink
-          activeClassName="active"
-          aria-current="page"
           className="link-article"
           to="/blog/view/1"
         >
