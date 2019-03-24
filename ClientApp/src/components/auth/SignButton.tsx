@@ -23,7 +23,7 @@ export class SignButton extends React.Component<SignButtonProps, SignButtonState
     public render() {
         return this.props.isSignedIn
             ? <a href='#' onClick={this.signOut} >Sign-Out</a>
-            : <div id='g-signin2'></div>;
+            : <div id='g-signin2' />;
     }
 
     private readonly onSignIn = () => {

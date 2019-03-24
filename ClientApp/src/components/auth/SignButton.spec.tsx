@@ -6,7 +6,8 @@ import { SignButton } from './SignButton';
 
 test('SignButton default component is unchanged.', () => {
     AuthenticationFactory.registerAuthentication(new MockAuthentication());
-    const signButton = shallow(<SignButton signIn={() => jest.fn().mockImplementation()} isSignedIn={false}/>);
+    const signIn = () => jest.fn().mockImplementation();
+    const signButton = shallow(<SignButton signIn={signIn} isSignedIn={false}/>);
     expect(signButton).toMatchSnapshot();
 });
 
@@ -14,7 +15,8 @@ test('SignButton with authentication ready.', () => {
     const mockAuthentication = new MockAuthentication();
     mockAuthentication.init = jest.fn().mockImplementation();
     AuthenticationFactory.registerAuthentication(mockAuthentication, true);
-    const signButton = shallow(<SignButton signIn={() => jest.fn().mockImplementation()}  isSignedIn={false}/>);
+    const signIn = () => jest.fn().mockImplementation();
+    const signButton = shallow(<SignButton signIn={signIn} isSignedIn={false}/>);
     expect(signButton).toMatchSnapshot();
     expect(mockAuthentication.init).toBeCalledTimes(1);
 });

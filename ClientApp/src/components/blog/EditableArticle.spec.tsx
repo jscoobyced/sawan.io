@@ -6,9 +6,11 @@ import { EditableArticle } from './EditableArticle';
 
 test('Render EditableArticle', () => {
     const update = jest.fn().mockImplementation();
-    const editableArticle = shallow(<EditableArticle
-        blogElement={null as unknown as BlogElement}
-        update={update} />);
+    const editableArticle = shallow((
+        <EditableArticle
+            blogElement={null as unknown as BlogElement}
+            update={update}
+        />));
     expect(editableArticle).toMatchSnapshot();
 });
 
@@ -20,9 +22,11 @@ test('Render EditableArticle', () => {
         id: '123',
         blogDate: DateUtil.defaultDate()
     };
-    const editableArticle = shallow(<EditableArticle
-        blogElement={blogElement}
-        update={update} />);
+    const editableArticle = shallow((
+        <EditableArticle
+            blogElement={blogElement}
+            update={update}
+        />));
     expect(editableArticle).toMatchSnapshot();
 });
 
@@ -36,9 +40,11 @@ test('Render EditableArticle', () => {
         id: '123',
         blogDate: DateUtil.defaultDate()
     };
-    const editableArticle = shallow(<EditableArticle
-        blogElement={blogElement}
-        update={update} />);
+    const editableArticle = shallow((
+        <EditableArticle
+            blogElement={blogElement}
+            update={update}
+        />));
     editableArticle
         .find('#article-title')
         .simulate('change', { target: { value: 'bla-title' }, preventDefault: () => { return; } });

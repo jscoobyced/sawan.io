@@ -45,22 +45,38 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
 
     public render() {
         const { article, articleTitle } = this.state.blogElement;
-        return <div>
-            <article className='blog-article'>
-                <input type='text' id='article-title'
-                    value={articleTitle}
-                    onChange={this.onChangeArticleTitle} />
-                <textarea rows={24} id='article-text'
-                    value={article}
-                    onChange={this.onChangeArticle}></textarea>
-                <button className='btn-article' id='article-save'
-                    onClick={this.update}
-                    disabled={this.state.saveDisabled}>{this.state.saveText}</button>
-            </article>
-            <Article blogElement={this.state.blogElement}
-                backLink={true}
-                ellipsis={false} />
-        </div>;
+        return (
+            <div>
+                <article
+                    className='blog-article'
+                >
+                    <input
+                        type='text'
+                        id='article-title'
+                        value={articleTitle}
+                        onChange={this.onChangeArticleTitle}
+                    />
+                    <textarea
+                        rows={24}
+                        id='article-text'
+                        value={article}
+                        onChange={this.onChangeArticle}
+                    />
+                    <button
+                        className='btn-article'
+                        id='article-save'
+                        onClick={this.update}
+                        disabled={this.state.saveDisabled}
+                    >
+                        {this.state.saveText}
+                    </button>
+                </article>
+                <Article
+                    blogElement={this.state.blogElement}
+                    backLink={true}
+                    ellipsis={false}
+                />
+            </div>);
     }
 
     private readonly onChangeArticle = (event: React.ChangeEvent<HTMLTextAreaElement>) => {

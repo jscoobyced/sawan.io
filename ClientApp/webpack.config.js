@@ -15,7 +15,7 @@ const dist = path.join(root, 'wwwroot');
 module.exports = (env, argv) => {
   const config = {
     entry: {
-      'vendor': ['react', 'react-dom', 'react-router-dom'],
+      'vendor': ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux'],
       'main': './src/index.tsx'
     },
     output: {

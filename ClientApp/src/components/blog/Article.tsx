@@ -39,21 +39,22 @@ export class Article extends React.Component<ArticleProps> {
             editLink = <NavLink to={'/blog/edit/' + article.id}>Edit</NavLink>;
         }
 
-        return <div>
-            <article className='blog-article'>
-                <header>
-                    <h1>{this.props.blogElement.articleTitle}</h1>
-                    <span>{blogDate}</span>
-                </header>
-                <div className='article-content'>
-                    <span dangerouslySetInnerHTML={{ __html: content }}></span>
-                    <div className='article-links'>
-                        {editLink}
-                        {readMoreLink}
+        return (
+            <div>
+                <article className='blog-article'>
+                    <header>
+                        <h1>{this.props.blogElement.articleTitle}</h1>
+                        <span>{blogDate}</span>
+                    </header>
+                    <div className='article-content'>
+                        <span dangerouslySetInnerHTML={{ __html: content }} />
+                        <div className='article-links'>
+                            {editLink}
+                            {readMoreLink}
+                        </div>
                     </div>
-                </div>
-                {backLink}
-            </article>
-        </div>;
+                    {backLink}
+                </article>
+            </div>);
     }
 }

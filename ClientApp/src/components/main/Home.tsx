@@ -30,10 +30,14 @@ export class Home extends React.Component<HomeProps, HomeState> {
         }
 
         return articles.map((article, key) => {
-            return <Article key={key} blogElement={article}
-                backLink={false}
-                editLink={isAdmin}
-                ellipsis={true} />;
+            return (
+                <Article
+                    key={key}
+                    blogElement={article}
+                    backLink={false}
+                    editLink={isAdmin}
+                    ellipsis={true}
+                />);
         });
     }
 }
