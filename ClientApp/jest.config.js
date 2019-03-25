@@ -15,7 +15,7 @@ module.exports = {
     "node"
   ],
   snapshotSerializers: ["enzyme-to-json/serializer"],
-  setupTestFrameworkScriptFile: "<rootDir>/tests/setupEnzyme.ts",
+  setupFilesAfterEnv: ["<rootDir>/tests/setupEnzyme.ts"],
   coverageReporters: [
     "lcov",
     "json"

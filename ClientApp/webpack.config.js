@@ -12,113 +12,119 @@ const gitRevisionWebpackPlugin = new GitRevisionWebpackPlugin();
 const root = path.join(__dirname, '../sawan/');
 const dist = path.join(root, 'wwwroot');
 
-module.exports = (env, argv) => ({
-  mode: "development",
-  devtool: 'source-map',
-  entry: {
-    'vendor': ['react', 'react-dom', 'react-router-dom'],
-    'main': './src/index.tsx'
-  },
-  output: {
-    pathinfo: false,
-    path: dist,
-    publicPath: '/',
-    filename: '[name].[chunkhash].js'
-  },
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          chunks: 'initial',
-          name: 'vendor',
-          test: 'vendor',
-          enforce: true
-        },
-      }
-    }
-  },
-  resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader',
-          options: {
-            transpileOnly: true,
-            experimentalWatchApi: true,
+module.exports = (env, argv) => {
+  const config = {
+    entry: {
+      'vendor': ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux'],
+      'main': './src/index.tsx'
+    },
+    output: {
+      pathinfo: false,
+      path: dist,
+      publicPath: '/',
+      filename: '[name].[chunkhash].js'
+    },
+    optimization: {
+      removeAvailableModules: false,
+      removeEmptyChunks: false,
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            chunks: 'initial',
+            name: 'vendor',
+            test: 'vendor',
+            enforce: true
           },
         }
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            output: 'fonts/'
+      }
+    },
+    resolve: {
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
+    },
+    module: {
+      rules: [{
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader'
           }
-        }
-      },
-      {
-        test: /\.(gif|png|jpe?g|svg|ico)$/i,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-          },
         },
-      }
-    ]
-  },
-  plugins: [
-    new CleanWebpackPlugin(dist, {
-      root: root
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'VERSION': JSON.stringify(gitRevisionWebpackPlugin.version()),
-        'mode': JSON.stringify(argv.mode)
-      }
-    }),
-    new TSLintPlugin({
-      files: ['./src/**/*.ts', './src/**/*.tsx']
-    }),
-    new CopyWebpackPlugin([
-      {
+        {
+          test: /\.scss$/,
+          use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              output: 'fonts/'
+            }
+          }
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg|ico)$/i,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+        }
+      ]
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'VERSION': JSON.stringify(gitRevisionWebpackPlugin.version()),
+          'mode': JSON.stringify(argv.mode)
+        }
+      }),
+      new TSLintPlugin({
+        files: ['./src/**/*.ts', './src/**/*.tsx']
+      }),
+      new CopyWebpackPlugin([{
         from: './src/assets',
         to: dist
-      },
-    ]),
-    new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
-    }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      hash: true,
-      template: './src/Index.tpl.cshtml',
-      filename: '../Views/Home/Index.cshtml'
-    }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      hash: true,
-      template: './src/index.tpl.html',
-      filename: 'index.html'
-    }),
-    new WebpackMd5Hash()
-  ],
-  devServer: {
-    contentBase: dist,
-    compress: true,
-    historyApiFallback: true,
-    port: 9000,
-    disableHostCheck: true
+      }, ]),
+      new MiniCssExtractPlugin({
+        filename: 'style.[contenthash].css',
+      }),
+      new WebpackMd5Hash()
+    ]
   }
-});
+
+  if(argv.mode === 'development') {
+    config.devtool = 'source-map';
+    config.devServer = {
+      contentBase: dist,
+      compress: true,
+      historyApiFallback: true,
+      port: 9000,
+      disableHostCheck: true
+    };
+    config.plugins.push(
+      new HtmlWebpackPlugin({
+        inject: false,
+        hash: true,
+        template: './src/index.tpl.html',
+        filename: 'index.html'
+      })
+    );
+  }
+
+  if(argv.mode === 'production') {
+    config.plugins.push(
+      new HtmlWebpackPlugin({
+        inject: false,
+        hash: true,
+        template: './src/Index.tpl.cshtml',
+        filename: '../Views/Home/Index.cshtml'
+      })
+    );
+  }
+
+  return config;
+};

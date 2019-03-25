@@ -13,6 +13,7 @@ const blogElement: BlogElement = {
     article: 'bla bla bla',
     articleTitle: 'Title',
     blogDate: DateUtil.defaultDate(),
+    updateDate: DateUtil.defaultDate(),
     id: '1'
 };
 const data: ArticleProps[] = [
@@ -24,10 +25,12 @@ const data: ArticleProps[] = [
 
 test('Article component with article.', async () => {
     data.map(articleProps => {
-        const article = shallow(<Article
-            blogElement={articleProps.blogElement}
-            ellipsis={articleProps.ellipsis}
-            backLink={articleProps.backLink} />);
+        const article = shallow((
+            <Article
+                blogElement={articleProps.blogElement}
+                ellipsis={articleProps.ellipsis}
+                backLink={articleProps.backLink}
+            />));
         expect(article).toMatchSnapshot();
     });
 });

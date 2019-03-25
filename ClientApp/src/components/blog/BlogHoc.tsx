@@ -56,14 +56,19 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
     public render() {
         const edit = this.props.match.params.edit === "edit";
         if (edit) {
-            return <EditableArticle
-                blogElement={this.state.blogElement}
-                update={this.updateBlog} />;
+            return (
+                <EditableArticle
+                    blogElement={this.state.blogElement}
+                    update={this.updateBlog}
+                />);
         } else {
-            return <Article blogElement={this.state.blogElement}
-                backLink={true}
-                editLink={true}
-                ellipsis={false} />;
+            return (
+                <Article
+                    blogElement={this.state.blogElement}
+                    backLink={true}
+                    editLink={true}
+                    ellipsis={false}
+                />);
         }
     }
 }

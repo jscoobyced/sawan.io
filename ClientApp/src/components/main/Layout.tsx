@@ -19,19 +19,21 @@ export class Layout extends React.Component<LayoutProps> {
 
     public render() {
         if (this.props.allContent == null) {
-            return <div></div>;
+            return <div />;
         }
 
-        return <main>
-            <section>
-                <Header
-                    signIn={this.props.signIn}
-                    isSignedIn={this.props.isSignedIn}
-                    navigationMenuContent={this.props.allContent.navigationMenuContent} />
-                {this.props.children}
-            </section>
-            <SideBar allContent={this.props.allContent} />
-            <Footer footerContent={this.props.allContent.footerContent} />
-        </main>;
+        return (
+            <main>
+                <section>
+                    <Header
+                        signIn={this.props.signIn}
+                        isSignedIn={this.props.isSignedIn}
+                        navigationMenuContent={this.props.allContent.navigationMenuContent}
+                    />
+                    {this.props.children}
+                </section>
+                <SideBar allContent={this.props.allContent} />
+                <Footer footerContent={this.props.allContent.footerContent} />
+            </main>);
     }
 }

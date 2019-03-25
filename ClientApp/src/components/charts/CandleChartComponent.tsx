@@ -37,8 +37,11 @@ export class CandleChartComponent extends React.Component<CandleChartComponentSt
     }
 
     public render(): JSX.Element {
-        return <div id={CandleChartComponent.ChartElement}
-            className='chart-area'></div>;
+        return (
+            <div
+                id={CandleChartComponent.ChartElement}
+                className='chart-area'
+            />);
     }
 
     private readonly drawChart = () => {

@@ -1,6 +1,8 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { GoogleAuth } from './components/auth/GoogleAuth';
+import { MockAuthentication } from './components/auth/MockAuthentication';
 import './import';
 import { Page } from './Page';
 import { AuthenticationFactory } from './utils/AuthenticationFactory';
@@ -16,5 +18,10 @@ export class Index {
 
 }
 
-AuthenticationFactory.registerAuthentication(new GoogleAuth());
+const mode = process.env.mode as string;
+if (mode === 'production') {
+  AuthenticationFactory.registerAuthentication(new GoogleAuth());
+} else {
+  AuthenticationFactory.registerAuthentication(new MockAuthentication());
+}
 new Index().renderApp();

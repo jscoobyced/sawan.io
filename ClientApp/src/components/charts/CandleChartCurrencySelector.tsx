@@ -8,13 +8,15 @@ export class CandleChartCurrencySelector extends React.Component<CandleChartCurr
     }
 
     public render() {
-        return <select id='currencySelector'
-                        onChange={this.props.onChangeCurrency}>
-            {
-                this.props.currencyOptions && this.props.currencyOptions.map((selectOption, key) => {
-                    return <option key={key} value={selectOption.value}>{selectOption.text}</option>;
-                })
-            }
-        </select>;
+        const currencyOptions = this.props.currencyOptions && this.props.currencyOptions.map((selectOption, key) => {
+            return <option key={key} value={selectOption.value}>{selectOption.text}</option>;
+        });
+        return (
+            <select
+                id='currencySelector'
+                onChange={this.props.onChangeCurrency}
+            >
+                {currencyOptions}
+            </select>);
     }
 }

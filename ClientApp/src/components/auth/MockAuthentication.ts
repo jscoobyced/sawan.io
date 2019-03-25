@@ -3,13 +3,13 @@ import { IAuthentication } from "../../utils/IAuthentication";
 export class MockAuthentication implements IAuthentication {
     public getAuthenticatedUser = () => {
         return {
-            email: "",
-            family_name: "",
-            given_name: "",
-            group: "",
-            id: "",
-            locale: "",
-            name: "",
+            email: "user@example.org",
+            family_name: "Smith",
+            given_name: "Kevin",
+            group: "Admin",
+            id: "123456789",
+            locale: "en_US",
+            name: "Kevin Smith",
             picture: "",
             token: "",
             verified_email: true
@@ -17,29 +17,33 @@ export class MockAuthentication implements IAuthentication {
     }
 
     public getTokenId = (): string => {
-        return "";
+        return "123456789";
     }
     public init = () => {
         return;
     }
 
     public isReady = (): boolean => {
-        return false;
+        return true;
     }
 
     public isAuthSupported = (): boolean => {
-        return false;
+        return true;
     }
 
     public signOut = (): Promise<any> => {
         return Promise.resolve();
     }
 
-    public renderButton = (onSignIn: (user: any) => void): void => {
-        return;
+    public renderButton = (onSignIn: () => void) => {
+        gapi.signin2.render('g-signin2', {
+            scope: 'profile email',
+            longtitle: false,
+            theme: 'dark',
+            onsuccess: onSignIn,
+        });
     }
-
     public isAdmin() {
-        return false;
+        return true;
     }
 }

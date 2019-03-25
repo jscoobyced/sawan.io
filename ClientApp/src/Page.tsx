@@ -46,18 +46,21 @@ export class Page extends React.Component<{}, PageState> {
     }
 
     private routes() {
-        return <Layout
-            allContent={this.state.allContent}
-            signIn={this.signIn}
-            isSignedIn={this.state.isSignedIn} >
-            <Route exact path='/' component={() => <HomeHoc isSignedIn={this.state.isSignedIn} />} />
-            <Route path='/candle' component={CandleChartPageHoc} />
-            <Route path='/health' component={About} />
-            <Route path='/blog/view/:id/' component={BlogHoc} />
-            <Route path='/blog/edit/:id/' component={BlogEditHoc} />
-            <Route path='/about' component={About} />
-            <Route path='/resume' component={Resume} />
-        </Layout>;
+        const home = () => <HomeHoc isSignedIn={this.state.isSignedIn} />;
+        return (
+            <Layout
+                allContent={this.state.allContent}
+                signIn={this.signIn}
+                isSignedIn={this.state.isSignedIn}
+            >
+                <Route exact={true} path='/' component={home} />
+                <Route path='/candle' component={CandleChartPageHoc} />
+                <Route path='/health' component={About} />
+                <Route path='/blog/view/:id/' component={BlogHoc} />
+                <Route path='/blog/edit/:id/' component={BlogEditHoc} />
+                <Route path='/about' component={About} />
+                <Route path='/resume' component={Resume} />
+            </Layout>);
     }
 
     private readonly signIn = (isSignedIn: boolean) => {

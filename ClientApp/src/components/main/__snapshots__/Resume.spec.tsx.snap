@@ -183,14 +183,14 @@ exports[`Resume component is unchanged. 1`] = `
             >
               Presenter of 2 Meetups
             </span>
-             in Bangkok: 
+             in Bangkok:
             <a
               href="https://www.youtube.com/watch?v=6NM-vMHVqeU&list=PLN6GB29N6NmHgVznqf-AUGUVsy8DLRo0v"
               target="_blank"
             >
               TypeScript training
             </a>
-             and Full Open-Source 
+             and Full Open-Source 
             <a
               href="https://www.youtube.com/watch?v=kvxb6qxWLpM"
               target="_blank"
@@ -266,7 +266,7 @@ exports[`Resume component is unchanged. 1`] = `
       </span>
       <ul>
         <li>
-          Designed and implemented 
+          Designed and implemented 
           <a
             href="https://www.yesijoin.com"
             target="_blank"
@@ -407,7 +407,7 @@ exports[`Resume component is unchanged. 1`] = `
       </span>
       <ol>
         <li>
-          Develop 
+          Develop 
           <a
             href="https://sawan.io"
           >
@@ -430,7 +430,7 @@ exports[`Resume component is unchanged. 1`] = `
           Home CCTV connected to Raspberry Pi 3 and SSH tunnel to VPS for remote monitoring
         </li>
         <li>
-          Various base 
+          Various base 
           <a
             href="https://hub.docker.com/u/jscdroiddev"
             target="_blank"
