@@ -24,11 +24,8 @@ export class Resume extends React.Component {
                     </div>
                     <div className='right'>
                         <span className='pt10 txtright'>
-                            <a
-                                href='mailto:jssirode@gmail.com'
-                            >
-                                jssirode@gmail.com
-                            </a> <i className='far fa-envelope' /></span>
+                            <a href='mailto:jssirode@gmail.com'>jssirode@gmail.com</a> <i className='far fa-envelope' />
+                        </span>
                         <span className='pt10 txtright'>+66 (0)81 807 3420 <i className='fas fa-mobile' /></span>
                         <span className='pt10 txtright'>Bangkok, Thailand <i className='fas fa-pin' /></span>
                         <span className='pt10 txtright'>
@@ -38,7 +35,8 @@ export class Resume extends React.Component {
                             >
                                 https://github.com/jscoobyced
                             </a>
-                            <i className="fab fa-github" /></span>
+                            <i className="fab fa-github" />
+                        </span>
                         <span className='pt10 txtright'>
                             <a
                                 href='https://www.linkedin.com/in/cedricrochefolle'
@@ -67,7 +65,8 @@ export class Resume extends React.Component {
                         <span>Tech lead duties:</span>
                         <ul>
                             <li>Improved web-application <span className='highlight inline'>server-side
-                        performance by 75%&nbsp;</span></li>
+                        performance by 75%&nbsp;</span>
+                            </li>
                             <li>Contributed to the constant evolution of the website:</li>
                             <ul>
                                 <li>Migration to use the back-end <span className='highlight inline'>micro-services</span></li>
@@ -108,10 +107,7 @@ export class Resume extends React.Component {
                                     libraries and identified best fit</li>
                                 <li>Automated code coverage, with a maintained KPI > 70%</li>
                                 <li>Added static code analysis with
-                                    <span
-                                        className='highlight inline'
-                                    >&nbsp;SonarQube
-                                    </span>
+                                    <span className='highlight inline'>&nbsp;SonarQube</span>
                                 </li>
                             </ul>
                         </ul>
@@ -122,16 +118,13 @@ export class Resume extends React.Component {
                                 <a
                                     href='https://www.yesijoin.com'
                                     target='_blank'
-                                >
-                                    www.yesijoin.com
-                                </a> from scratch using J2EE technology:</li>
+                                >www.yesijoin.com
+                                </a> from scratch using J2EE technology:
+                                </li>
                             <ul>
                                 <li>web-application architecture, EJB 3.0 and JSF (Primefaces)</li>
                                 <li>
-                                    <span
-                                        className='highlight inline'
-                                    >Integration with payment gateways
-                                    </span>
+                                    <span className='highlight inline'>Integration with payment gateways</span>
                                 </li>
                                 <li>Email marketing via Amazon Email</li>
                                 <li>Deployment on AWS instance</li>
@@ -147,7 +140,8 @@ export class Resume extends React.Component {
                             <li>Software architecture and design of a J2EE intranet:</li>
                             <ul>
                                 <li>Converted development environment from Windows to Ubuntu
-                                <span className='highlight inline'>&nbsp;increased team velocity by 15%</span></li>
+                                <span className='highlight inline'>&nbsp;increased team velocity by 15%</span>
+                                </li>
                                 <li>Customized data visualization tool for Verizon (NY office)</li>
                             </ul>
                             <li>Performed demos and customized JasperServer Professional</li>
@@ -175,11 +169,7 @@ export class Resume extends React.Component {
                         <span className='title'>PERSONAL PROJECTS</span>
                         <ol>
                             <li>Develop&nbsp;
-                                <a
-                                    href='https://sawan.io'
-                                >
-                                    sawan.io
-                                </a> website as a medium to keep learning
+                                <a href='https://sawan.io'>sawan.io</a> website as a medium to keep learning
                             on software development (
                             <span className='highlight inline'>ReactJS, netcore 2.2, AppVeyor build, Codecov, SonarQube</span>
                                 <span className='highlight inline'>&nbsp;and docker</span>)</li>
@@ -188,8 +178,7 @@ export class Resume extends React.Component {
                                 <a
                                     href='https://hub.docker.com/u/jscdroiddev'
                                     target='_blank'
-                                >
-                                    docker images
+                                >docker images
                                 </a> to facilitate build and hosting of web-application</li>
                         </ol>
                         <span className='title'>SOFT SKILLS</span>

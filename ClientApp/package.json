@@ -11,7 +11,7 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "tslint": "tslint src/**/*.{ts,tsx} -p tsconfig.json",
-    "test": "tsc & jest",
+    "test": "jest",
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {
