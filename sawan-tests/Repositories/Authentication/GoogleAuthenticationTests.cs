@@ -12,6 +12,8 @@ namespace sawan.tests
         [InlineData("", "123")]
         [InlineData("123", "")]
         [InlineData("", "")]
+        [InlineData(null, "")]
+        [InlineData("", null)]
         [InlineData(null, null)]
         [InlineData("123", "1234")]
         public async Task LoginFailTests(string userId, string adminId)
