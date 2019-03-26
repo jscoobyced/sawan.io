@@ -62,7 +62,10 @@ export class HtmlUtils {
             a: ['href', 'title', 'target', 'class'],
             br: [],
             i: ['class'],
-            img: ['src', 'width', 'height', 'class']
+            img: ['src', 'width', 'height', 'class'],
+            ul: ['class'],
+            ol: ['class'],
+            li: ['class']
         }
     };
 
