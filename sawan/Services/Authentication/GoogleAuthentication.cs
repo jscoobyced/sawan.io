@@ -35,7 +35,7 @@ namespace sawan.Services
             {
                 {"Authorization", "Bearer " + token}
             };
-            var result = await this.restConnector.GetAsync("https://www.googleapis.com/userinfo/v2/me", headers);
+            var result = await this.restConnector.GetAsync(this.options.Value.Authentication.ProfileUrl, headers);
             if (result != null)
             {
                 var googleUser = JsonConvert.DeserializeObject<GoogleUser>(result);

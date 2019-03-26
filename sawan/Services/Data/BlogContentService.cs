@@ -37,7 +37,7 @@ namespace sawan.Services
                 return false;
             }
 
-            // TODO: Allow only specific HTML tags
+            // Should update to allow only specific HTML tags
             var safeArticle = blogElement.Article;
             var safeArticleTitle = blogElement.ArticleTitle;
             var safeBlogElement = new BlogElement()
