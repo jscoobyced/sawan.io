@@ -7,7 +7,8 @@ export class TestUtils {
         return jest.fn().mockImplementation(() =>
             Promise.resolve({
                 ok: true,
-                json: () => data
+                json: () => data,
+                status: 200
             })
         );
     }
@@ -16,6 +17,7 @@ export class TestUtils {
         return jest.fn().mockImplementation(() =>
             Promise.resolve({
                 ok: false,
+                status: 500,
                 statusText: error
             })
         );

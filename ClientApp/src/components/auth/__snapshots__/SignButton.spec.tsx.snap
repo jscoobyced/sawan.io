@@ -1,13 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignButton default component is unchanged. 1`] = `
-<div
-  id="g-signin2"
-/>
+<a
+  href="#"
+  onClick={[Function]}
+>
+  Sign-In
+</a>
 `;
 
 exports[`SignButton with authentication ready. 1`] = `
-<div
-  id="g-signin2"
-/>
+<a
+  href="#"
+  onClick={[Function]}
+>
+  Sign-In
+</a>
 `;

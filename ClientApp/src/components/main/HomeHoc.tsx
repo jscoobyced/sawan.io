@@ -14,6 +14,7 @@ export interface HomeState {
 
 export class HomeHoc extends React.Component<HomeProps, HomeState> {
     private readonly contentService: IContentService;
+    private readonly numberOfElements = 3;
 
     public constructor(props: HomeProps, state: HomeState) {
         super(props, state);
@@ -24,9 +25,14 @@ export class HomeHoc extends React.Component<HomeProps, HomeState> {
     }
 
     public componentDidMount() {
-        this.contentService.getBlogPage(50)
+        this.contentService.getBlogPage(this.numberOfElements)
             .then(blogPage => {
-                this.setState({ blogPage });
+                const articles = blogPage.articles.slice(0, this.numberOfElements);
+                this.setState({
+                    blogPage: {
+                        articles
+                    }
+                });
             });
     }
 

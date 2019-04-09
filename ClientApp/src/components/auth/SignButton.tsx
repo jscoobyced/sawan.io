@@ -1,41 +1,55 @@
-import React from 'react';
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { SessionState, updateSession } from '../../state/actions';
 import { AuthenticationFactory } from '../../utils/AuthenticationFactory';
 
 export interface SignButtonProps {
-    isSignedIn: boolean;
-    signIn: (isSignedIn: boolean) => void;
+    session: SessionState;
 }
 
-export interface SignButtonState {
-    numberOfAttemtps: number;
-}
+export class SignButton extends React.Component<SignButtonProps, SessionState> {
+    private readonly buttonId = 'g-signin2';
 
-export class SignButton extends React.Component<SignButtonProps, SignButtonState> {
-
-    public constructor(props: SignButtonProps, state: SignButtonState) {
-        super(props, state);
+    public constructor(props: SignButtonProps) {
+        super(props);
         this.state = {
-            numberOfAttemtps: 0
+            isSignedIn: false,
+            username: ''
         };
-        AuthenticationFactory.getAuthentication().init(this.onSignIn);
+        AuthenticationFactory.getAuthentication().init(() => { 
+            return;
+        }, this.buttonId);
     }
 
     public render() {
-        return this.props.isSignedIn
+        return this.props.session.isSignedIn
             ? <a href='#' onClick={this.signOut} >Sign-Out</a>
-            : <div id='g-signin2' />;
+            : <a href='#' onClick={this.onSignIn} >Sign-In</a>;
+        // : <div onClick={this.onSignIn} id={this.buttonId} >Sign-In</div>;
     }
 
-    private readonly onSignIn = () => {
-        if (AuthenticationFactory.getAuthentication().isAuthSupported()) {
-            this.props.signIn(true);
-        }
+    private onSignIn = (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        const newSession: SessionState = { ...this.state, isSignedIn: true };
+        this.props.dispatch(updateSession(newSession));
     }
 
-    private readonly signOut = () => {
-        AuthenticationFactory.getAuthentication().signOut().then(() => {
-            AuthenticationFactory.getAuthentication().renderButton(this.onSignIn);
-        });
-        this.props.signIn(false);
+    private signOut = (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        const newSession: SessionState = { ...this.state, isSignedIn: false };
+        this.props.dispatch(updateSession(newSession));
+        //AuthenticationFactory.getAuthentication().signOut();
     }
 }
+
+
+const mapStateToProps = (session: SessionState) => {
+    console.log('mapStateToProps', session);
+    return { session };
+};
+
+const mapDispatchToProps = (dispatch: any) => bindActionCreators({ updateSession }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignButton);
+

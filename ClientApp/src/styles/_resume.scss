@@ -32,12 +32,12 @@
     }
 
     .period {
-      font-size: 16px;
       font-weight: 400;
+      color: $section;
     }
 
     .title {
-      font-size: 20px;
+      font-size: $font-size-big;
       margin: 18px 0 5px 0;
       padding: 2px 0;
       border-top: 2px solid #000;
@@ -47,13 +47,9 @@
 
     .subtitle {
       font-weight: 900;
-      font-size: 16px;
+      font-size: $font-size;
       padding: 5px 0;
       color: $on-background;
-    }
-
-    .grey {
-      color: $subtitle;
     }
 
     .left {
@@ -84,6 +80,7 @@
 }
 
 @media screen and (max-width: $media-width-medium) {
+
   .resume div .left,
   .resume div .right {
     display: block;
@@ -93,5 +90,28 @@
 
   .txtright {
     text-align: left;
+  }
+}
+
+@media print {
+
+  html {
+    font-size: $print-font-size;
+    background: #FFF;
+  }
+
+  .resume {
+    padding: 0;
+    border: none;
+  }
+
+  .resume div .left,
+  .resume div .right {
+    width: 46%;
+  }
+
+  .resume div .title,
+  .resume div .subtitle {
+    font-size: $print-font-size-big;
   }
 }

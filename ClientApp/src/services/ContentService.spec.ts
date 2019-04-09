@@ -38,7 +38,8 @@ const blogElements: BlogElement[] = [
         articleTitle: 'Article content',
         article: 'Title',
         id: '1',
-        blogDate: DateUtil.defaultDate()
+        blogDate: DateUtil.defaultDate(),
+        updateDate: DateUtil.defaultDate()
     }
 ];
 

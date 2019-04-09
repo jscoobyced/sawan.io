@@ -85,7 +85,14 @@ exports[`Header component is unchanged. 1`] = `
         </ul>
       </li>
       <li>
-        <SignButton />
+        <SignButton
+          session={
+            Object {
+              "isSignedIn": false,
+              "username": "",
+            }
+          }
+        />
       </li>
     </ul>
   </nav>

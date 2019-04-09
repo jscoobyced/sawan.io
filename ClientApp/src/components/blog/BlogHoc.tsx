@@ -3,6 +3,7 @@ import { match } from 'react-router-dom';
 import { ContentServiceFactory } from '../../services/ContentServiceFactory';
 import { IContentService } from '../../services/IContentService';
 import { BlogElement } from '../../services/Models';
+import { AuthenticationFactory } from '../../utils/AuthenticationFactory';
 import { DateUtil } from '../../utils/DateUtils';
 import { IdParam } from '../Models';
 import { Article } from './Article';
@@ -55,6 +56,8 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
 
     public render() {
         const edit = this.props.match.params.edit === "edit";
+        const isAdmin = AuthenticationFactory.getAuthentication() && AuthenticationFactory.getAuthentication().isAdmin();
+
         if (edit) {
             return (
                 <EditableArticle
@@ -66,7 +69,7 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
                 <Article
                     blogElement={this.state.blogElement}
                     backLink={true}
-                    editLink={true}
+                    editLink={isAdmin}
                     ellipsis={false}
                 />);
         }
