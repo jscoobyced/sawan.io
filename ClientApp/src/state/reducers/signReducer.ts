@@ -1,12 +1,11 @@
-import { ACTION_SIGNIN, SessionState, UpdateSessionAction } from "../actions";
+import { ACTION_SIGNIN, SessionState, UpdateSessionNewAction } from "../actions";
 
 const initialState: SessionState = {
     isSignedIn: false,
     username: ''
 };
 
-const signInOutReducer = (state = initialState, action: UpdateSessionAction): SessionState => {
-    console.log('signInOutReducer', action.session);
+const signInOutReducer = (state = initialState, action: UpdateSessionNewAction): SessionState => {
     switch (action.type) {
         case ACTION_SIGNIN: {
             return {

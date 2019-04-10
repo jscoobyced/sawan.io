@@ -1,19 +1,20 @@
+import { Action } from "redux";
+
 export interface SessionState {
     isSignedIn: boolean;
     username: string;
 }
 
+export interface UpdateSessionAction {
+    type: typeof ACTION_SIGNIN;
+    session: SessionState;
+}
+
 export const ACTION_SIGNIN = 'ACTION_SIGNIN';
 
-export const updateSession = (session: SessionState): UpdateSessionAction => {
-    console.log('updateSession Action', session);
+export const doUpdateSession = (session: SessionState): UpdateSessionAction => {
     return {
         type: ACTION_SIGNIN,
         session
     };
 };
-
-export interface UpdateSessionAction {
-    type: typeof ACTION_SIGNIN;
-    session: SessionState;
-}

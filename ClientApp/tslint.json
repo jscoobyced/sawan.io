@@ -17,7 +17,9 @@
         "trailing-comma": false,
         "interface-name": false,
         "object-literal-sort-keys": false,
-        "max-line-length": [true, 130]
+        "max-line-length": [true, 130],
+        "ban-types": false,
+        "no-debugger": false
     },
     "rulesDirectory": []
 }

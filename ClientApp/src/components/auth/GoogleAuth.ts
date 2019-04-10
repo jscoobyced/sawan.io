@@ -4,11 +4,13 @@ import { AuthenticatedUser, IAuthentication } from "../../utils/IAuthentication"
 export class GoogleAuth implements IAuthentication {
 
     private authenticatedUser: AuthenticatedUser = null as unknown as AuthenticatedUser;
+    private buttonId = '';
 
     public init = (callBack: () => void, buttonId: string) => {
         const script = document.createElement("script");
+        this.buttonId = buttonId;
         script.onload = () => {
-            this.renderButton(buttonId);
+            this.renderButton();
             this.callBack = callBack;
         };
         script.src = "https://apis.google.com/js/platform.js";
@@ -19,8 +21,8 @@ export class GoogleAuth implements IAuthentication {
         return this.isReady() && (typeof gapi.auth2 !== "undefined");
     }
 
-    public renderButton = (buttonId: string) => {
-        gapi.signin2.render(buttonId, {
+    public renderButton = () => {
+        gapi.signin2.render(this.buttonId, {
             scope: 'profile email',
             longtitle: false,
             theme: 'dark',
@@ -51,7 +53,9 @@ export class GoogleAuth implements IAuthentication {
         if (this.isAuthSupported()) {
             const auth2 = gapi.auth2.getAuthInstance();
             this.authenticatedUser = null as unknown as AuthenticatedUser;
-            return auth2.signOut();
+            return auth2.signOut().then(() => {
+                return this.renderButton();
+            });
         }
 
         return Promise.reject();
@@ -71,8 +75,28 @@ export class GoogleAuth implements IAuthentication {
         const url = "/api/User/authenticate";
         ApiUtils.postData<{}, AuthenticatedUser>(url, {})
             .then(response => {
-                this.authenticatedUser = response;
+                this.mapUser(response);
                 this.callBack();
             });
+    }
+
+    private readonly mapUser = (user: AuthenticatedUser) => {
+        if (user) {
+            this.authenticatedUser = user;
+        } else {
+            const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+            this.authenticatedUser = {
+                email: profile.getEmail(),
+                family_name: profile.getFamilyName(),
+                given_name: profile.getGivenName(),
+                group: '',
+                id: profile.getId(),
+                locale: '',
+                name: profile.getName(),
+                picture: profile.getImageUrl(),
+                token: '',
+                verified_email: false
+            };
+        }
     }
 }

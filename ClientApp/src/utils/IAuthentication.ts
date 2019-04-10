@@ -3,7 +3,7 @@ export interface IAuthentication {
     init: (callBack: () => void, buttonId: string) => void;
     isAuthSupported: () => boolean;
     signOut: () => Promise<any>;
-    renderButton: (buttonId: string) => void;
+    renderButton: () => void;
     getAuthenticatedUser: () => AuthenticatedUser;
     isAdmin: () => boolean;
 }

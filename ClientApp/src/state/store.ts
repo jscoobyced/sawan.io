@@ -1,8 +1,13 @@
-import { createStore } from "redux";
-import rootReducer from "./reducers";
+import { createStore, Store } from "redux";
+import { SessionState } from "./actions";
+import rootReducer from "./reducers/signReducer";
 
+const initialStateValue: SessionState = {
+    isSignedIn: false,
+    username: ''
+};
 
-export const getStore = (initialState: any = {}) => {
+export const getStore = (initialState = initialStateValue): Store<SessionState> => {
     return createStore(rootReducer, initialState);
 };
 

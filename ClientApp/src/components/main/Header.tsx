@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { NavigationMenuContent } from '../../services/Models';
 import { SessionState } from '../../state/actions';
-import { SignButton } from '../auth/SignButton';
+import SignButton from '../auth/SignButton';
 
 export interface HeaderProps {
     navigationMenuContent: NavigationMenuContent;
@@ -81,7 +81,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
                             </ul>
                         </li>
                         <li>
-                            <SignButton session={this.state.session} />
+                            <SignButton />
                         </li>
                     </ul>
                 </nav>
