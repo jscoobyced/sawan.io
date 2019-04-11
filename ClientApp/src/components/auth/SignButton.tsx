@@ -9,7 +9,7 @@ interface SignButtonProps {
     doUpdateSession: (session: SessionState) => void;
 }
 
-class SignButton extends React.Component<SignButtonProps> {
+export class SignButton extends React.Component<SignButtonProps> {
 
     private readonly buttonId = 'g-signin2';
 

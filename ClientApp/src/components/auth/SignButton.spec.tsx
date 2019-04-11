@@ -12,7 +12,7 @@ const session: SessionState = {
 
 test('SignButton default component is unchanged.', () => {
     AuthenticationFactory.registerAuthentication(new MockAuthentication());
-    const signButton = shallow(<SignButton session={session} />);
+    const signButton = shallow(<SignButton session={session} doUpdateSession={jest.fn().mockImplementation()} />);
     expect(signButton).toMatchSnapshot();
 });
 
@@ -20,7 +20,7 @@ test('SignButton with authentication ready.', () => {
     const mockAuthentication = new MockAuthentication();
     mockAuthentication.init = jest.fn().mockImplementation();
     AuthenticationFactory.registerAuthentication(mockAuthentication, true);
-    const signButton = shallow(<SignButton session={session} />);
+    const signButton = shallow(<SignButton session={session} doUpdateSession={jest.fn().mockImplementation()} />);
     expect(signButton).toMatchSnapshot();
     expect(mockAuthentication.init).toBeCalledTimes(1);
 });

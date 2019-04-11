@@ -21,7 +21,7 @@ export class MockAuthentication implements IAuthentication {
     }
 
     public init = (callBack: () => void, buttonId: string) => {
-        this.renderButton(buttonId);
+        this.renderButton();
         callBack();
     }
 
@@ -37,7 +37,7 @@ export class MockAuthentication implements IAuthentication {
         return Promise.resolve();
     }
 
-    public renderButton = (buttonId: string) => {
+    public renderButton = () => {
         return;
     }
 
