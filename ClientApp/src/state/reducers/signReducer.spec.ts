@@ -1,5 +1,5 @@
-import signInOutReducer from "./signReducer";
 import { ACTION_SIGNIN, SessionState, UpdateSessionAction } from "../actions/sessionActions";
+import signInOutReducer from "./signReducer";
 
 const username = 'john';
 const oldSession: SessionState = {

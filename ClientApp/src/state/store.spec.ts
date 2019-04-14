@@ -1,5 +1,5 @@
-import { getStore } from './store';
 import { SessionState } from './actions/sessionActions';
+import { getStore } from './store';
 
 test('Can create the store', () => {
     const store = getStore();

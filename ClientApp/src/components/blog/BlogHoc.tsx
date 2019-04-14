@@ -27,7 +27,7 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
             blogElement: {
                 article: '',
                 articleTitle: '',
-                blogDate: DateUtil.defaultDate(),
+                blogDate: DateUtil.defaultDate(true),
                 updateDate: DateUtil.defaultDate(),
                 id: '0'
             }
@@ -35,7 +35,12 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
     }
 
     public componentDidMount() {
-        this.contentService.getBlogElement(this.props.match.params.id)
+        const articleId = this.props.match.params.id;
+        if (articleId === '0') {
+            return;
+        }
+
+        this.contentService.getBlogElement(articleId)
             .then(blogElement => {
                 if (blogElement) {
                     this.setState({ blogElement });
