@@ -1,9 +1,9 @@
 export interface IAuthentication {
     getTokenId: () => string;
-    init: (callBack: () => void) => void;
+    init: (callBack: () => void, buttonId: string) => void;
     isAuthSupported: () => boolean;
     signOut: () => Promise<any>;
-    renderButton: (onSignIn: () => void) => void;
+    renderButton: () => void;
     getAuthenticatedUser: () => AuthenticatedUser;
     isAdmin: () => boolean;
 }

@@ -19,8 +19,10 @@ export class MockAuthentication implements IAuthentication {
     public getTokenId = (): string => {
         return "123456789";
     }
-    public init = () => {
-        return;
+
+    public init = (callBack: () => void, buttonId: string) => {
+        this.renderButton();
+        callBack();
     }
 
     public isReady = (): boolean => {
@@ -35,14 +37,10 @@ export class MockAuthentication implements IAuthentication {
         return Promise.resolve();
     }
 
-    public renderButton = (onSignIn: () => void) => {
-        gapi.signin2.render('g-signin2', {
-            scope: 'profile email',
-            longtitle: false,
-            theme: 'dark',
-            onsuccess: onSignIn,
-        });
+    public renderButton = () => {
+        return;
     }
+
     public isAdmin() {
         return true;
     }

@@ -14,7 +14,7 @@ exports[`Resume component is unchanged. 1`] = `
         Cédric Rochefolle
       </span>
       <span
-        className="grey"
+        className="period"
       >
         Development Manager / Senior Software Engineer
       </span>
@@ -46,14 +46,6 @@ exports[`Resume component is unchanged. 1`] = `
         +66 (0)81 807 3420 
         <i
           className="fas fa-mobile"
-        />
-      </span>
-      <span
-        className="pt10 txtright"
-      >
-        Bangkok, Thailand 
-        <i
-          className="fas fa-pin"
         />
       </span>
       <span
@@ -100,7 +92,7 @@ exports[`Resume component is unchanged. 1`] = `
         Development Manager - Agoda Services Co., Ltd.
       </span>
       <span
-        className="grey period far fa-calendar"
+        className="period far fa-calendar"
       >
          Jul 2015 - To date
       </span>
@@ -209,7 +201,7 @@ exports[`Resume component is unchanged. 1`] = `
         Senior Software Engineer - Agoda Services Co., Ltd.
       </span>
       <span
-        className="grey period far fa-calendar"
+        className="period far fa-calendar"
       >
          Dec 2013 - Jun 2015
       </span>
@@ -260,7 +252,7 @@ exports[`Resume component is unchanged. 1`] = `
         Technical Director - Yesijoin Co., Ltd.
       </span>
       <span
-        className="grey period inline far fa-calendar"
+        className="period inline far fa-calendar"
       >
          Jul 2011 - Nov 2013
       </span>
@@ -312,7 +304,7 @@ exports[`Resume component is unchanged. 1`] = `
         Technical Director - Entiera Co., Ltd.
       </span>
       <span
-        className="grey period far fa-calendar"
+        className="period far fa-calendar"
       >
          Jun 2008 - Mar 2011
       </span>
@@ -346,7 +338,7 @@ exports[`Resume component is unchanged. 1`] = `
         And before that...
       </span>
       <span
-        className="grey period far fa-calendar"
+        className="period far fa-calendar"
       >
          2001 - May 2008
       </span>

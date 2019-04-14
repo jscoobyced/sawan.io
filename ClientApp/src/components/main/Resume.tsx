@@ -17,7 +17,7 @@ export class Resume extends React.Component {
                 <div>
                     <div className='left'>
                         <span className='name'>C&eacute;dric Rochefolle</span>
-                        <span className='grey'>Development Manager / Senior Software Engineer</span>
+                        <span className='period'>Development Manager / Senior Software Engineer</span>
                         <span className='regular pt10 j'>A strong and self-motivated Software Engineer, experienced
                             with large scale e-commerce as well as small, fine tuned websites.
                     Development Manager with proven track in a large company using Agile efficiently.</span>
@@ -27,7 +27,6 @@ export class Resume extends React.Component {
                             <a href='mailto:jssirode@gmail.com'>jssirode@gmail.com</a> <i className='far fa-envelope' />
                         </span>
                         <span className='pt10 txtright'>+66 (0)81 807 3420 <i className='fas fa-mobile' /></span>
-                        <span className='pt10 txtright'>Bangkok, Thailand <i className='fas fa-pin' /></span>
                         <span className='pt10 txtright'>
                             <a
                                 href='https://github.com/jscoobyced'
@@ -51,7 +50,7 @@ export class Resume extends React.Component {
                     <div className='left'>
                         <span className='title'>WORK EXPERIENCE</span>
                         <span className='subtitle'>Development Manager - Agoda Services Co., Ltd.</span>
-                        <span className='grey period far fa-calendar'>&nbsp;Jul 2015 - To date</span>
+                        <span className='period far fa-calendar'>&nbsp;Jul 2015 - To date</span>
                         <span>Manager duties:</span>
                         <ul>
                             <li><span className='highlight inline'>Managed a team</span> of up to
@@ -93,7 +92,7 @@ export class Resume extends React.Component {
                             </ul>
                         </ul>
                         <span className='subtitle'>Senior Software Engineer - Agoda Services Co., Ltd.</span>
-                        <span className='grey period far fa-calendar'>&nbsp;Dec 2013 - Jun 2015</span>
+                        <span className='period far fa-calendar'>&nbsp;Dec 2013 - Jun 2015</span>
                         <ul>
                             <li>Development of Agoda website, operation support: ASP.NET, JQuery</li>
                             <li>Re-wrote a part of the main funnel of the website:</li>
@@ -112,7 +111,7 @@ export class Resume extends React.Component {
                             </ul>
                         </ul>
                         <span className='subtitle'>Technical Director - Yesijoin Co., Ltd.</span>
-                        <span className='grey period inline far fa-calendar'>&nbsp;Jul 2011 - Nov 2013</span>
+                        <span className='period inline far fa-calendar'>&nbsp;Jul 2011 - Nov 2013</span>
                         <ul>
                             <li>Designed and implemented&nbsp;
                                 <a
@@ -135,7 +134,7 @@ export class Resume extends React.Component {
                             <li>Created a web-crawler to collect condos/apartments for sale/rent information</li>
                         </ul>
                         <span className='subtitle'>Technical Director - Entiera Co., Ltd.</span>
-                        <span className='grey period far fa-calendar'>&nbsp;Jun 2008 - Mar 2011</span>
+                        <span className='period far fa-calendar'>&nbsp;Jun 2008 - Mar 2011</span>
                         <ul>
                             <li>Software architecture and design of a J2EE intranet:</li>
                             <ul>
@@ -148,7 +147,7 @@ export class Resume extends React.Component {
                             <li>Recruited software engineers</li>
                         </ul>
                         <span className='subtitle'>And before that...</span>
-                        <span className='grey period far fa-calendar'>&nbsp;2001 - May 2008</span>
+                        <span className='period far fa-calendar'>&nbsp;2001 - May 2008</span>
                         <span>Various software engineer positions in:</span>
                         <ul>
                             <li>Property Management Systems in hospitality industry</li>

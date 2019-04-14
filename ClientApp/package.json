@@ -8,11 +8,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "tslint": "tslint src/**/*.{ts,tsx} -p tsconfig.json",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage --coverageReporters=text"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",
@@ -60,17 +60,14 @@
     "webpack": "4.29.6",
     "webpack-cli": "3.3.0",
     "webpack-dev-server": "3.2.1",
-    "webpack-md5-hash": "0.0.6",
-    "xss": "1.0.6"
+    "webpack-md5-hash": "0.0.6"
   },
   "dependencies": {
-    "react": "16.8.5",
-    "react-dom": "16.8.5",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "react-redux": "6.0.1",
     "react-router-dom": "5.0.0",
-    "redux": "4.0.1"
-  },
-  "resolutions": {
-    "ajv": "6.8.1"
+    "redux": "4.0.1",
+    "xss": "1.0.6"
   }
 }

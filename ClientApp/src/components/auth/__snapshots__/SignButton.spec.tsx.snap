@@ -3,11 +3,15 @@
 exports[`SignButton default component is unchanged. 1`] = `
 <div
   id="g-signin2"
-/>
+>
+  Sign-In
+</div>
 `;
 
 exports[`SignButton with authentication ready. 1`] = `
 <div
   id="g-signin2"
-/>
+>
+  Sign-In
+</div>
 `;

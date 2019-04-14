@@ -32,7 +32,7 @@ exports[`Render EditableArticle 1`] = `
       Object {
         "article": "",
         "articleTitle": "",
-        "blogDate": 2019-01-01T00:00:00.000Z,
+        "blogDate": 2019-03-14T00:00:00.000Z,
         "id": "",
         "updateDate": 2019-01-01T00:00:00.000Z,
       }
@@ -74,7 +74,7 @@ exports[`Render EditableArticle 2`] = `
       Object {
         "article": "",
         "articleTitle": "",
-        "blogDate": 2019-01-01T00:00:00.000Z,
+        "blogDate": 2019-03-14T00:00:00.000Z,
         "id": "",
         "updateDate": 2019-01-01T00:00:00.000Z,
       }
@@ -116,7 +116,7 @@ exports[`Render EditableArticle 3`] = `
       Object {
         "article": "bla-text",
         "articleTitle": "bla-title",
-        "blogDate": 2019-01-01T00:00:00.000Z,
+        "blogDate": 2019-03-14T00:00:00.000Z,
         "id": "",
         "updateDate": 2019-01-01T00:00:00.000Z,
       }

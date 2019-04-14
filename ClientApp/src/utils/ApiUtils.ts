@@ -28,9 +28,10 @@ export class ApiUtils {
             })
         })
             .then(response => {
-                return response.json();
-            }).then(response => {
-                return response;
+                if (response.status === 200) {
+                    return response.json();
+                }
+                return null;
             });
     }
 }

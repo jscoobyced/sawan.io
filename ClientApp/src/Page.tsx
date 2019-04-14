@@ -14,7 +14,6 @@ import { HtmlUtils } from './utils/HtmlUtils';
 
 export interface PageState {
     allContent: MainContent;
-    isSignedIn: boolean;
 }
 
 export class Page extends React.Component<{}, PageState> {
@@ -25,8 +24,7 @@ export class Page extends React.Component<{}, PageState> {
         super(props);
         this.contentService = ContentServiceFactory.GetContentService();
         this.state = {
-            allContent: this.contentService.getDefaultMainContent(),
-            isSignedIn: false
+            allContent: this.contentService.getDefaultMainContent()
         };
     }
 
@@ -38,22 +36,24 @@ export class Page extends React.Component<{}, PageState> {
     }
 
     public render() {
+        return (
+            <BrowserRouter
+                children={this.routes()}
+                basename={HtmlUtils.baseUrl()}
+            />
+        );
+    }
+
+    private routes() {
         if (HtmlUtils.queryString().indexOf('full') > 0) {
             // hard-coded resume. Will need something more dynamic
             return <Resume />;
         }
-        return <BrowserRouter children={this.routes()} basename={HtmlUtils.baseUrl()} />;
-    }
-
-    private routes() {
-        const home = () => <HomeHoc isSignedIn={this.state.isSignedIn} />;
         return (
             <Layout
                 allContent={this.state.allContent}
-                signIn={this.signIn}
-                isSignedIn={this.state.isSignedIn}
             >
-                <Route exact={true} path='/' component={home} />
+                <Route exact={true} path='/' component={HomeHoc} />
                 <Route path='/candle' component={CandleChartPageHoc} />
                 <Route path='/health' component={About} />
                 <Route path='/blog/view/:id/' component={BlogHoc} />
@@ -62,11 +62,4 @@ export class Page extends React.Component<{}, PageState> {
                 <Route path='/resume' component={Resume} />
             </Layout>);
     }
-
-    private readonly signIn = (isSignedIn: boolean) => {
-        this.setState({
-            isSignedIn
-        });
-    }
-
 }

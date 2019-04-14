@@ -1,13 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { SignButton } from '../auth/SignButton';
-import { HeaderProps } from './Models';
+import { NavigationMenuContent } from '../../services/Models';
+import { SessionState } from '../../state/actions';
+import SignButton from '../auth/SignButton';
 
-export class Header extends React.Component<HeaderProps> {
+export interface HeaderProps {
+    navigationMenuContent: NavigationMenuContent;
+}
 
-    public constructor(props: HeaderProps) {
-        super(props);
-    }
+interface HeaderState {
+    session: SessionState;
+}
+
+export class Header extends React.Component<HeaderProps, HeaderState> {
+
+    public state = {
+        session: {
+            isSignedIn: false,
+            username: ''
+        }
+    };
 
     public render() {
         return (
@@ -69,7 +81,7 @@ export class Header extends React.Component<HeaderProps> {
                             </ul>
                         </li>
                         <li>
-                            <SignButton signIn={this.props.signIn} isSignedIn={this.props.isSignedIn} />
+                            <SignButton />
                         </li>
                     </ul>
                 </nav>

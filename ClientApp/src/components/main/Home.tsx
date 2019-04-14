@@ -5,20 +5,12 @@ import { Article } from '../blog/Article';
 
 export interface HomeProps {
     blogPage: BlogPage;
-    isSignedIn: boolean;
 }
 
-export interface HomeState {
-    isSignedIn: boolean;
-}
+export class Home extends React.Component<HomeProps> {
 
-export class Home extends React.Component<HomeProps, HomeState> {
-
-    public constructor(props: HomeProps, state: HomeState) {
-        super(props, state);
-        this.state = {
-            isSignedIn: false
-        };
+    public constructor(props: HomeProps) {
+        super(props);
     }
 
     public render() {

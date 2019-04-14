@@ -4,19 +4,16 @@ import { IContentService } from '../../services/IContentService';
 import { BlogPage } from '../../services/Models';
 import { Home } from './Home';
 
-export interface HomeProps {
-    isSignedIn: boolean;
-}
-
 export interface HomeState {
     blogPage: BlogPage;
 }
 
-export class HomeHoc extends React.Component<HomeProps, HomeState> {
+export class HomeHoc extends React.Component<{}, HomeState> {
     private readonly contentService: IContentService;
+    private readonly numberOfElements = 3;
 
-    public constructor(props: HomeProps, state: HomeState) {
-        super(props, state);
+    public constructor(props: {}) {
+        super(props);
         this.contentService = ContentServiceFactory.GetContentService();
         this.state = {
             blogPage: this.contentService.getDefaultBlogPage()
@@ -24,13 +21,18 @@ export class HomeHoc extends React.Component<HomeProps, HomeState> {
     }
 
     public componentDidMount() {
-        this.contentService.getBlogPage(50)
+        this.contentService.getBlogPage(this.numberOfElements)
             .then(blogPage => {
-                this.setState({ blogPage });
+                const articles = blogPage.articles.slice(0, this.numberOfElements);
+                this.setState({
+                    blogPage: {
+                        articles
+                    }
+                });
             });
     }
 
     public render() {
-        return <Home blogPage={this.state.blogPage} isSignedIn={this.props.isSignedIn} />;
+        return <Home blogPage={this.state.blogPage} />;
     }
 }

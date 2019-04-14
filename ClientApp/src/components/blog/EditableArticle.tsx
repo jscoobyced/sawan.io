@@ -26,7 +26,7 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
                 article: '',
                 articleTitle: '',
                 id: '',
-                blogDate: DateUtil.defaultDate(),
+                blogDate: DateUtil.defaultDate(true),
                 updateDate: DateUtil.defaultDate()
             },
             saveText: this.SAVE,
@@ -80,6 +80,7 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
     }
 
     private readonly onChangeArticle = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        event.preventDefault();
         const blogElement = this.state.blogElement;
         blogElement.article = event.target.value;
         this.setState({
@@ -87,10 +88,10 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
             saveText: this.SAVE,
             saveDisabled: false
         });
-        event.preventDefault();
     }
 
     private readonly onChangeArticleTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
         const blogElement = this.state.blogElement;
         blogElement.articleTitle = event.target.value;
         this.setState({
@@ -98,10 +99,10 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
             saveText: this.SAVE,
             saveDisabled: false
         });
-        event.preventDefault();
     }
 
     private readonly update = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
         this.setState({
             saveText: this.SAVING,
             saveDisabled: true
@@ -113,6 +114,5 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
                     saveText: success ? this.SAVED : this.FAILED
                 });
             });
-        event.preventDefault();
     }
 }

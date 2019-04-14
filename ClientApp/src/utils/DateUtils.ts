@@ -11,7 +11,14 @@ export class DateUtil {
         return `${year}-${month}-${day}`;
     }
 
-    public static defaultDate(): Date {
+    public static defaultDate(now = false): Date {
+        if (now) {
+            const nowDate = new Date();
+            const month = DateUtil.toDigits(nowDate.getMonth(), 2);
+            const day = DateUtil.toDigits(nowDate.getDate(), 2);
+            return new Date(`${nowDate.getFullYear()}-${month}-${day}T00:00:00Z`);
+        }
+
         return new Date('2019-01-01T00:00:00Z');
     }
 
