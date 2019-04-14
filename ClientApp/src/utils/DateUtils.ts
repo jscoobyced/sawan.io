@@ -16,8 +16,7 @@ export class DateUtil {
             const nowDate = new Date();
             const month = DateUtil.toDigits(nowDate.getMonth(), 2);
             const day = DateUtil.toDigits(nowDate.getDate(), 2);
-            const date =  new Date(`${nowDate.getFullYear()}-${month}-${day}T00:00:00Z`);
-            return date;
+            return new Date(`${nowDate.getFullYear()}-${month}-${day}T00:00:00Z`);
         }
 
         return new Date('2019-01-01T00:00:00Z');
