@@ -1,5 +1,5 @@
 import { createStore, Store } from "redux";
-import { SessionState } from "./actions";
+import { SessionState } from "./actions/sessionActions";
 import rootReducer from "./reducers/signReducer";
 
 const initialStateValue: SessionState = {

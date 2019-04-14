@@ -1,5 +1,3 @@
-import { Action } from "redux";
-
 export interface SessionState {
     isSignedIn: boolean;
     username: string;

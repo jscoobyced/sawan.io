@@ -1,8 +1,9 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { SessionState } from '../../state/actions';
+import { SessionState } from '../../state/actions/sessionActions';
 import { AuthenticationFactory } from '../../utils/AuthenticationFactory';
 import { MockAuthentication } from './MockAuthentication';
+import * as ReduxSignButton from './SignButton';
 import { SignButton } from './SignButton';
 
 const session: SessionState = {

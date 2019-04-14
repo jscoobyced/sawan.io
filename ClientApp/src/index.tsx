@@ -23,14 +23,12 @@ export class Index {
   }
 
 }
-/*
+
 const mode = process.env.mode as string;
 if (mode === 'production') {
   AuthenticationFactory.registerAuthentication(new GoogleAuth());
 } else {
   AuthenticationFactory.registerAuthentication(new MockAuthentication());
 }
-*/
-AuthenticationFactory.registerAuthentication(new GoogleAuth());
 
 new Index().renderApp();

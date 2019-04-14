@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { doUpdateSession, SessionState } from '../../state/actions';
+import { doUpdateSession, SessionState } from '../../state/actions/sessionActions';
 import { AuthenticationFactory } from '../../utils/AuthenticationFactory';
 
 interface SignButtonProps {
@@ -31,16 +31,16 @@ export class SignButton extends React.Component<SignButtonProps> {
             : <div id={this.buttonId} >Sign-In</div>;
     }
 
-    private onSignIn = () => {
+    private readonly onSignIn = () => {
         this.updateSession(true);
     }
 
-    private onSignOut = (event: React.MouseEvent<HTMLElement>) => {
+    private readonly onSignOut = (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         this.updateSession(false);
     }
 
-    private updateSession = (isSignedIn: boolean) => {
+    private readonly updateSession = (isSignedIn: boolean) => {
         const auth = AuthenticationFactory.getAuthentication();
         if (!auth.isAuthSupported()) {
             return;
