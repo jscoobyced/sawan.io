@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogHistory component is unchanged. 1`] = `
+<Fragment>
+  <h1>
+    History
+  </h1>
+  <ul>
+    <li
+      key="0"
+    >
+      <div
+        className="link"
+        data-test="link-0"
+        onClick={[Function]}
+      >
+        April
+      </div>
+    </li>
+    <li
+      key="1"
+    >
+      <div
+        className="link"
+        data-test="link-1"
+        onClick={[Function]}
+      >
+        March
+      </div>
+    </li>
+    <li
+      key="2"
+    >
+      <div
+        className="link"
+        data-test="link-2"
+        onClick={[Function]}
+      >
+        February
+      </div>
+    </li>
+    <li
+      key="history-ve-1"
+    >
+      <div
+        className="link"
+        data-test="link-ve"
+        onClick={[Function]}
+        title="View earlier"
+      >
+        <i
+          className="far fa-arrow-down"
+        />
+      </div>
+    </li>
+  </ul>
+</Fragment>
+`;
+
+exports[`BlogHistory component is unchanged. 2`] = `<Fragment />`;

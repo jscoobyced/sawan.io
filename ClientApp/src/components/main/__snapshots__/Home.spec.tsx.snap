@@ -10,6 +10,7 @@ Array [
         "articleTitle": "Starting again",
         "blogDate": 2019-01-01T00:00:00.000Z,
         "id": "1",
+        "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
     ellipsis={true}
@@ -23,6 +24,7 @@ Array [
         "articleTitle": "Grand opening of sawan.io",
         "blogDate": 2019-01-01T00:00:00.000Z,
         "id": "2",
+        "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
     ellipsis={true}
@@ -36,6 +38,7 @@ Array [
         "articleTitle": "Some other news",
         "blogDate": 2019-01-01T00:00:00.000Z,
         "id": "3",
+        "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
     ellipsis={true}

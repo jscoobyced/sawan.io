@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SignButton component is unchanged when signed-in but auth not supported. 1`] = `
+<a
+  href="#"
+  onClick={[Function]}
+  title="Sign-Out"
+/>
+`;
+
+exports[`SignButton component is unchanged when signed-in. 1`] = `
+<a
+  href="#"
+  onClick={[Function]}
+  title="Sign-Out"
+/>
+`;
+
 exports[`SignButton default component is unchanged. 1`] = `
 <div
   id="g-signin2"

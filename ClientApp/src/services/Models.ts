@@ -10,6 +10,11 @@ export interface Link {
     title?: string;
 }
 
+export interface HistoryMenu {
+    name: string;
+    entries: Link[];
+}
+
 export interface MainContent {
     navigationMenuContent: NavigationMenuContent;
     menuContent: MenuContent;
@@ -40,7 +45,8 @@ export interface BlogPage {
 }
 
 export interface MenuContent {
-    links: Link[];
+    title: string;
+    links: HistoryMenu[];
 }
 
 export interface FooterContent {
