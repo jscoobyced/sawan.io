@@ -2,25 +2,28 @@
 
 FIXPERM="no"
 
-if [ ! -d ~/data/mongo/sawanio/db ];
+if [ ! -d ~/data/sawanio/mariadb/db ];
 then
-    mkdir -p ~/data/mongo/sawanio/db
+    mkdir -p ~/data/sawanio/mariadb/db
     FIXPERM="yes"
 fi
 
-if [ ! -d ~/data/mongo/sawanio/configdb ];
+if [ ! -d ~/data/sawanio/mariadb/config ];
 then
-    mkdir -p ~/data/mongo/sawanio/configdb
+    mkdir -p ~/data/sawanio/mariadb/config
     FIXPERM="yes"
 fi
 
-if [ "$FIXPERM" = "yes"];
+if [ "$FIXPERM" = "yes" ];
 then
-    chown -Rf $(logname):$(id -gn $(logname)) ~/data/mongo/sawanio
+    chown -Rf $(logname):$(id -gn $(logname)) ~/data/sawanio/mariadb
 fi
 
-docker run --rm -d --name sawan \
-    -p 8080:5000 \
-    -v ~/data/mongo/sawanio/db:/data/db \
-    -v ~/data/mongo/sawanio/configdb:/data/configdb \
+docker run -d --name sawan \
+    -e MYSQL_ROOT_PASSWORD=sawan \
+    -e MYSQL_USER_PASSWORD=sawan \
+    -e MYSQL_USER=sawan \
+    -p 3306:3306 \
+    -v ~/data/sawanio/mariadb/db:/var/lib/mysql \
+    -v ~/data/sawanio/mariadb/config:/etc/mysql/docker.conf.d \
     jscdroiddev/sawanio:latest
