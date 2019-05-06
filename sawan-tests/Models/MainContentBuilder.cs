@@ -30,7 +30,8 @@ namespace sawan.tests
                             Title = "Name",
                             Url = "/"
                         }
-                    }
+                    },
+                    Title = "History"
                 },
                 FooterContent = new FooterContent()
                 {

@@ -30,7 +30,7 @@ test('SignButton component is unchanged when signed-in.', () => {
 test('SignButton component is unchanged when signed-in but auth not supported.', () => {
     const mockAuthentication = new MockAuthentication();
     mockAuthentication.init = jest.fn().mockImplementation();
-    mockAuthentication.isAuthSupported = jest.fn().mockImplementation(() => { return false; });
+    mockAuthentication.isAuthSupported = jest.fn().mockImplementation(() => false);
     AuthenticationFactory.registerAuthentication(mockAuthentication, true);
     const signedInSesssion = { ...session, isSignedIn: true };
     const signButton = shallow(<SignButton session={signedInSesssion} doUpdateSession={jest.fn().mockImplementation()} />);

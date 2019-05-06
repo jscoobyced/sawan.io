@@ -44,6 +44,30 @@ namespace sawan.Repositories
             return list.Take(maxResult);
         }
 
+        public async Task<IEnumerable<BlogLink>> GetBlogListAsync(int maxResult)
+        {
+            if (this.BlogCollection == null)
+            {
+                return null;
+            }
+            var filter = new BsonDocument();
+            var sort = Builders<BlogElement>.Sort.Descending("BlogDate");
+            var options = new FindOptions<BlogElement, BlogLink>
+            {
+                Sort = sort
+            };
+
+            var result = await this.BlogCollection.FindAsync<BlogLink>(filter, options);
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            var list = await result.ToListAsync();
+            return list.Take(maxResult);
+        }
+
         public async Task<bool> InsertBlogElementAsync(string blogElement)
         {
             string blogElementText = null;

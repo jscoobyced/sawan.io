@@ -41,6 +41,7 @@ export class ContentService implements IContentService {
     protected defaultMainContent(): MainContent {
         return {
             menuContent: {
+                title: '',
                 links: []
             },
             navigationMenuContent: {

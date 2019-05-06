@@ -7,11 +7,13 @@ namespace sawan.Services
 
     public class MainContentService : IMainContentService
     {
-        private readonly IDbMainContentRepository mongoDbMainContentRepository;
+        private readonly IDbMainContentRepository dbMainContentRepository;
+        private readonly IDbBlogRepository dbBlogRepository;
 
-        public MainContentService(IDbMainContentRepository mongoDbMainContentRepository, IDbBlogRepository dbBlogRepository)
+        public MainContentService(IDbMainContentRepository dbMainContentRepository, IDbBlogRepository dbBlogRepository)
         {
-            this.mongoDbMainContentRepository = mongoDbMainContentRepository;
+            this.dbMainContentRepository = dbMainContentRepository;
+            this.dbBlogRepository = dbBlogRepository;
         }
 
         public async Task<MainContent> GetMainContentAsync(Language language)
@@ -21,7 +23,10 @@ namespace sawan.Services
                 language = Language.English;
             }
 
-            return await this.mongoDbMainContentRepository.GetMainContentAsync(language);
+            var mainContent = await this.dbMainContentRepository.GetMainContentAsync(language);
+            mainContent.MenuContent.Links = new List<Link>();
+
+            return mainContent;
         }
     }
 }
