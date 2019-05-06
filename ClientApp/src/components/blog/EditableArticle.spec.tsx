@@ -18,8 +18,8 @@ const blogElement: BlogElement = {
     article: 'test',
     articleTitle: 'blablabla',
     id: '123',
-    blogDate: DateUtil.defaultDate(),
-    updateDate: DateUtil.defaultDate()
+    blogDate: DateUtil.defaultDate(false),
+    updateDate: DateUtil.defaultDate(false)
 };
 
 test('Render EditableArticle', () => {

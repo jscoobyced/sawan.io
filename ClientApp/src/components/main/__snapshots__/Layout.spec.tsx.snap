@@ -30,6 +30,7 @@ exports[`Layout component with content is unchanged. 1`] = `
         },
         "menuContent": Object {
           "links": Array [],
+          "title": "",
         },
         "navigationMenuContent": Object {
           "about": "",

@@ -6,6 +6,7 @@ exports[`Layout component with content is unchanged. 1`] = `
     menu={
       Object {
         "links": Array [],
+        "title": "",
       }
     }
   />

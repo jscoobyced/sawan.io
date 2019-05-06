@@ -14,6 +14,7 @@ exports[`Page content is preserved 1`] = `
         },
         "menuContent": Object {
           "links": Array [],
+          "title": "",
         },
         "navigationMenuContent": Object {
           "about": "",
