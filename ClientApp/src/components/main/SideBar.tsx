@@ -1,5 +1,6 @@
 import React from 'react';
 import { MainContent } from '../../services/Models';
+import BlogHistory from './BlogHistory';
 
 export interface SideBarProps {
     allContent: MainContent;
@@ -12,17 +13,9 @@ export class SideBar extends React.Component<SideBarProps> {
     }
 
     public render() {
-        const contentList = this.props.allContent.menuContent.links.map((link, key) => (
-            <li
-                key={key}
-            >
-                <a href={link.url} target={link.target} title={link.title} >{link.text}</a>
-            </li>));
-        const linkContent = <ul>{contentList}</ul>;
-
         return (
             <aside>
-                {linkContent}
+                <BlogHistory menu={this.props.allContent.menuContent} />
                 <article>
                     <h1>About C&eacute;dric</h1>
                     <div className='article-content'>

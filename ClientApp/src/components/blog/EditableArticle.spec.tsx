@@ -14,14 +14,16 @@ test('Render EditableArticle', () => {
     expect(editableArticle).toMatchSnapshot();
 });
 
+const blogElement: BlogElement = {
+    article: 'test',
+    articleTitle: 'blablabla',
+    id: '123',
+    blogDate: DateUtil.defaultDate(false),
+    updateDate: DateUtil.defaultDate(false)
+};
+
 test('Render EditableArticle', () => {
     const update = jest.fn().mockImplementation();
-    const blogElement: BlogElement = {
-        article: 'test',
-        articleTitle: 'blablabla',
-        id: '123',
-        blogDate: DateUtil.defaultDate()
-    };
     const editableArticle = shallow((
         <EditableArticle
             blogElement={blogElement}
@@ -34,12 +36,6 @@ test('Render EditableArticle', () => {
     const update = jest.fn().mockImplementation((): Promise<boolean> => {
         return Promise.resolve(true);
     });
-    const blogElement: BlogElement = {
-        article: 'test',
-        articleTitle: 'blablabla',
-        id: '123',
-        blogDate: DateUtil.defaultDate()
-    };
     const editableArticle = shallow((
         <EditableArticle
             blogElement={blogElement}

@@ -4,6 +4,8 @@ namespace sawan
 
     public class MenuContent
     {
+        public string Title { get; set; }
+
         public List<Link> Links { get; set; }
     }
 }

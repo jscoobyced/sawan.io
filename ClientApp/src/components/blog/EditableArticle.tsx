@@ -26,7 +26,7 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
                 article: '',
                 articleTitle: '',
                 id: '',
-                blogDate: DateUtil.defaultDate(true),
+                blogDate: DateUtil.defaultDate(),
                 updateDate: DateUtil.defaultDate()
             },
             saveText: this.SAVE,

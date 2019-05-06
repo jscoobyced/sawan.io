@@ -5,7 +5,7 @@ import { BlogElement, BlogPage, Language, MainContent } from './Models';
 export class ContentService implements IContentService {
 
     public async getMainContent(language: Language): Promise<MainContent> {
-        return this.updateMainContent(language);
+        return this.fetchMainContent(language);
     }
 
     public getDefaultMainContent(): MainContent {
@@ -34,13 +34,14 @@ export class ContentService implements IContentService {
         return ApiUtils.postData('/api/Data/blog/post/', blogElement);
     }
 
-    protected async updateMainContent(language: Language): Promise<MainContent> {
+    protected async fetchMainContent(language: Language): Promise<MainContent> {
         return ApiUtils.fetchData<MainContent>(`/api/Data/main/${language}`);
     }
 
     protected defaultMainContent(): MainContent {
         return {
             menuContent: {
+                title: '',
                 links: []
             },
             navigationMenuContent: {

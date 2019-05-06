@@ -58,9 +58,8 @@ aside ul {
   text-align: left;
 }
 
-aside ul:first-of-type {
-  padding-top: 100px;
-  padding-bottom: 20px;
+aside>h1 {
+  padding: 50px 0 0 40px;
 }
 
 aside ul:last-of-type {
@@ -80,6 +79,7 @@ article {
 a {
   text-decoration: none;
   color: $link;
+  cursor: pointer;
 }
 
 ul li a img {
@@ -118,7 +118,20 @@ button[disabled] {
   color: $on-primary;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.link {
+  @extend a;
+}
+
 @media screen and (max-width: $media-width-large) {
+
   aside,
   section {
     width: 100%;
@@ -127,7 +140,7 @@ button[disabled] {
     min-height: unset;
   }
 
-  aside ul:first-of-type {
+  aside>h1 {
     padding-top: 10px;
     padding-bottom: 0px;
   }
@@ -154,7 +167,7 @@ button[disabled] {
     padding-top: 5px;
   }
 
-  aside ul:first-of-type {
+  aside>h1 {
     padding-bottom: 0px;
   }
 

@@ -2,7 +2,14 @@
 
 exports[`Layout component with content is unchanged. 1`] = `
 <aside>
-  <ul />
+  <BlogHistory
+    menu={
+      Object {
+        "links": Array [],
+        "title": "",
+      }
+    }
+  />
   <article>
     <h1>
       About Cédric

@@ -22,6 +22,7 @@ export class MockContentService extends ContentService {
         {
             id: '1',
             blogDate: this.displayDate,
+            updateDate: this.displayDate,
             articleTitle: 'Starting again',
             article: 'A new begining this year for me. After 5 years at Agoda it is time for me to move on to'
                 + ' new challenges. I am going to do something I haven\'t done for a while: writing a '
@@ -38,6 +39,7 @@ export class MockContentService extends ContentService {
         {
             id: '2',
             blogDate: this.displayDate,
+            updateDate: this.displayDate,
             articleTitle: 'Grand opening of sawan.io',
             article: 'Grand opening of sawan.io.<br />This website is about my'
                 + ' personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP'
@@ -51,6 +53,7 @@ export class MockContentService extends ContentService {
         {
             id: '3',
             blogDate: this.displayDate,
+            updateDate: this.displayDate,
             articleTitle: 'Some other news',
             article: this.data
         }
@@ -70,10 +73,46 @@ export class MockContentService extends ContentService {
         });
     }
 
-    protected updateMainContent(language: Language): Promise<MainContent> {
+    protected fetchMainContent(language: Language): Promise<MainContent> {
+        const entries = [
+            {
+                text: 'Starting again',
+                url: '1'
+            },
+            {
+                text: 'Grand opening of sawan.io',
+                url: '2'
+            },
+            {
+                text: 'Some other news',
+                url: '3'
+            }
+        ];
         const content: MainContent = {
             menuContent: {
-                links: []
+                title: 'History',
+                links: [
+                    {
+                        name: 'April 2019',
+                        entries
+                    },
+                    {
+                        name: 'March 2019',
+                        entries
+                    },
+                    {
+                        name: 'February 2019',
+                        entries
+                    },
+                    {
+                        name: 'January 2019',
+                        entries
+                    },
+                    {
+                        name: 'December 2018',
+                        entries
+                    }
+                ]
             },
             navigationMenuContent: {
                 about: 'About',

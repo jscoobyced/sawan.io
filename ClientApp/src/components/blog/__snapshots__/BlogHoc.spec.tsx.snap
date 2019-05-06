@@ -7,7 +7,7 @@ exports[`Blog is rendered empty when no blogElement 1`] = `
     Object {
       "article": "",
       "articleTitle": "",
-      "blogDate": 2019-03-14T00:00:00.000Z,
+      "blogDate": 2019-01-01T00:00:00.000Z,
       "id": "0",
       "updateDate": 2019-01-01T00:00:00.000Z,
     }
@@ -23,7 +23,7 @@ exports[`Blog is rendered with blogElement 1`] = `
     Object {
       "article": "",
       "articleTitle": "",
-      "blogDate": 2019-03-14T00:00:00.000Z,
+      "blogDate": 2019-01-01T00:00:00.000Z,
       "id": "0",
       "updateDate": 2019-01-01T00:00:00.000Z,
     }
@@ -38,7 +38,7 @@ exports[`Blog is rendered writable 1`] = `
     Object {
       "article": "",
       "articleTitle": "",
-      "blogDate": 2019-03-14T00:00:00.000Z,
+      "blogDate": 2019-01-01T00:00:00.000Z,
       "id": "0",
       "updateDate": 2019-01-01T00:00:00.000Z,
     }
