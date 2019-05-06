@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker run --rm -d --name mariadb -p 3306:3306 mariadb:latest
+sudo docker run --rm -d --name mongo -p 27017:27017 mongo:latest
