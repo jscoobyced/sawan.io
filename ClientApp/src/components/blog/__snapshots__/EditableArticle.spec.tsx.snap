@@ -1,46 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render EditableArticle 1`] = `
-<div>
-  <article
-    className="blog-article"
-  >
-    <input
-      id="article-title"
-      onChange={[Function]}
-      type="text"
-      value=""
-    />
-    <textarea
-      id="article-text"
-      onChange={[Function]}
-      rows={24}
-      value=""
-    />
-    <button
-      className="btn-article"
-      disabled={false}
-      id="article-save"
-      onClick={[Function]}
-    >
-      Save
-    </button>
-  </article>
-  <Article
-    backLink={true}
-    blogElement={
-      Object {
-        "article": "",
-        "articleTitle": "",
-        "blogDate": 2019-01-01T00:00:00.000Z,
-        "id": "",
-        "updateDate": 2019-01-01T00:00:00.000Z,
-      }
-    }
-    ellipsis={false}
-  />
-</div>
-`;
+exports[`Render EditableArticle 1`] = `<Fragment />`;
 
 exports[`Render EditableArticle 2`] = `
 <div>
@@ -51,13 +11,13 @@ exports[`Render EditableArticle 2`] = `
       id="article-title"
       onChange={[Function]}
       type="text"
-      value=""
+      value="blablabla"
     />
     <textarea
       id="article-text"
       onChange={[Function]}
       rows={24}
-      value=""
+      value="test"
     />
     <button
       className="btn-article"
@@ -72,10 +32,10 @@ exports[`Render EditableArticle 2`] = `
     backLink={true}
     blogElement={
       Object {
-        "article": "",
-        "articleTitle": "",
+        "article": "test",
+        "articleTitle": "blablabla",
         "blogDate": 2019-01-01T00:00:00.000Z,
-        "id": "",
+        "id": "123",
         "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
@@ -117,7 +77,7 @@ exports[`Render EditableArticle 3`] = `
         "article": "bla-text",
         "articleTitle": "bla-title",
         "blogDate": 2019-01-01T00:00:00.000Z,
-        "id": "",
+        "id": "123",
         "updateDate": 2019-01-01T00:00:00.000Z,
       }
     }
