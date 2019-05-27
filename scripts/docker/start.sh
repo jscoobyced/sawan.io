@@ -30,7 +30,7 @@ fi
 
 chown $(logname):$(id -gn $(logname)) $BASEDIR
 
-docker run -d --name sawan \
+docker run -d --rm --name sawan \
     -e MYSQL_ROOT_PASSWORD=sawan \
     -e MYSQL_USER_PASSWORD=sawan \
     -e MYSQL_USER=sawan \

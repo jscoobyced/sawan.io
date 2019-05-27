@@ -15,8 +15,6 @@ namespace sawan.tests
     {
         private IPairingService pairingService;
 
-        private IGitHubService gitHubService;
-
         private IMainContentService mainContentService;
 
         private IBlogContentService blogContentService;
@@ -28,12 +26,6 @@ namespace sawan.tests
         public DataControllerBuilder WithPairingService(IPairingService pairingService)
         {
             this.pairingService = pairingService;
-            return this;
-        }
-
-        public DataControllerBuilder WithGitHubService(IGitHubService gitHubService)
-        {
-            this.gitHubService = gitHubService;
             return this;
         }
 
@@ -89,7 +81,6 @@ namespace sawan.tests
 
             return new DataController(
                 this.pairingService,
-                this.gitHubService,
                 this.mainContentService,
                 this.blogContentService)
             {

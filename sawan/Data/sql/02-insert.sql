@@ -1,28 +1,28 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 INSERT INTO lang VALUES
-(1, 'English'),
-(2, 'French');
+(0, 'English'),
+(1, 'French');
 
 INSERT INTO content VALUES
-(1, 1, 'About'),
+(1, 0, 'About'),
+(2, 0, 'Applications'),
+(3, 0, 'Crypto-Currency'),
+(4, 0, 'Health Monitor'),
+(5, 0, 'Home'),
+(6, 0, 'sawan.io'),
+(7, 0, 'Information'),
+(8, 0, 'Resume'),
+(9, 0, 'Copyright'),
+(10, 0, '2018 - '),
+(1, 1, 'À Propos'),
 (2, 1, 'Applications'),
-(3, 1, 'Crypto-Currency'),
-(4, 1, 'Health Monitor'),
-(5, 1, 'Home'),
+(3, 1, 'Crypto-Monnaie'),
+(4, 1, 'Santé'),
+(5, 1, 'Acceuil'),
 (6, 1, 'sawan.io'),
 (7, 1, 'Information'),
-(8, 1, 'Resume'),
-(9, 1, 'Copyright'),
-(10, 1, '2018 - '),
-(1, 2, 'À Propos'),
-(2, 2, 'Applications'),
-(3, 2, 'Crypto-Monnaie'),
-(4, 2, 'Santé'),
-(5, 2, 'Acceuil'),
-(6, 2, 'sawan.io'),
-(7, 2, 'Information'),
-(8, 2, 'Résumé'),
+(8, 1, 'Résumé'),
 (9, 1, 'Copyright'),
 (10, 1, '2018 - ');
 

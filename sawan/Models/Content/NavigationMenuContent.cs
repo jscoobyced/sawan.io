@@ -11,5 +11,16 @@ namespace sawan
         public string Information { get; set; }
         public string Resume { get; set; }
 
+        public enum Ids {
+            About = 1,
+            Applications = 2,
+            CryptoCurrency = 3,
+            HealthMonitor = 4,
+            Home = 5,
+            WebsiteName = 6,
+            Information = 7,
+            Resume = 8
+
+        }
     }
 }

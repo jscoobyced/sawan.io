@@ -1,0 +1,74 @@
+[
+    {
+        "_id": {
+            "$oid": "5c691a3fb27eda0023760be1"
+        },
+        "BlogDate": {
+            "$date": "2019-03-04T01:27:15.798Z"
+        },
+        "Article": "A new beginning this year for me. After 5 years at Agoda it is time for me to move on to new challenges.\n<br />I am going to do something I haven't done for a while: writing a resume. It needs to reflect my skills and experience without showing off. Or maybe a little bit, huh? <i class='far fa-smile'></i>\n<br />I'm going to take this opportunity to create it using good CSS3 and HTML5 practices. The first thing I have in mind is to limit the DOM depth. Resumes have simple structures, so we shouldn't need a long list of nested DIVs. It will render fast on the screen.\n<br />Second is to choosing a monospaced font so we can keep control of the format when printing. Let's throw in some <a target='_blank' href='https://fontawesome.com/'>font awesome</a> to have a nice touch on the contact details.\n<br />Next, and not the least, content. Look isn't everything. There are many ways you can write a resume. One of them is NOT to write more than 2 pages. I have reviewed a lot of resumes in my Hiring Manager role, and boy have I seen 15+ pages of company descriptions, their products, sometimes their clients. All of that without the actual role and responsibilities the candidate had.\n<br />So I had to get some up-to-date documentation. I read a few advises and recommended ways to write a resume <a href='https://novoresume.com/career-blog/how-to-write-a-resume-guide' target='_blank'>here</a> and <a href='https://social.hays.com/2019/02/21/questions-cv-must-answer/' target='_blank'>there</a>. There is no shortcut, you need to spend the time to write it, proof-edit it yourself, give it to your family or friends to review. Several times.\n<br /> You can see the current version <a href='/resume/?full' target='_blank'>here</a>.",
+        "ArticleTitle": "Starting again"
+    },
+    {
+        "_id": {
+            "$oid": "5c691a3fb27eda0023760be2"
+        },
+        "BlogDate": {
+            "$date": "2018-10-18T02:49:31.000Z"
+        },
+        "Article": "Grand opening of sawan.io.<br />This website is about my personal training on various web-technologies: TypeScript, webpack, ReactJS, Secure HTTP  headers... It includes a simple (and a bit naive) crypto-currency analyser: it can suggest you to sell or buy. Use at your own risk, it is amateur predictions, you have been warned.<br />There will be also an application to track health metrics (weight, % body fat, vascular fat ratio...). Or maybe not, this might be my next project.<br /> This project is open-sourced on <a target='_blank' href='https://github.com/jscoobyced/sawan.io'>Github</a>. Enjoy and have fun.",
+        "ArticleTitle": "Grand opening of sawan.io"
+    },
+    {
+        "_id": {
+            "$oid": "5c691a3fb27eda0023760be3"
+        },
+        "BlogDate": {
+            "$date": "2019-03-05T16:25:09.067Z"
+        },
+        "UpdateDate": {
+            "$date": "2019-03-27T01:43:31.679Z"
+        },
+        "Article": "So I have tried to bring some better support to the website in order editing/adding content. Here is what is new and so far well working:\n<ul>\n  <li>Can see the last 4 blog posts on homepage (need to <a href='https://github.com/jscoobyced/sawan.io/issues/27' target='_blank'>change to 3</a>), content limited to 1000 characters (issue with --sorting-- <a href='https://github.com/jscoobyced/sawan.io/issues/20' target='_blank'>fixed</a> <i class='far fa-smile'></i> )</li>\n  <li>Can go to the full article</li>\n  <li>Can go to editable mode:\n    <ul>\n      <li>Can edit the content with real-time preview\n      <li>Can save if you have the right permission\n    </ul>\n  </li>\n</ul>\nOne condition to allow saving was to specify via environment variable the Google UserId that has the permission to save. You can see in this <a href='https://github.com/jscoobyced/sawan.io/blob/master/sawan/Controllers/DataController.cs#L146' target='_blank'>code</a> the poor implementation. This is an initial stage so that I can post more regular update on the page (the MVP basically). So the next step is to implement a proper authentication via <a href='https://stackoverflow.com/questions/45805411/asp-net-core-2-0-authentication-middleware' target='_blank'>middle-ware</a>.\n<br />Then I need to improve the WYSIWYG editor to be much more friendly, if I want to post richer content. The final intention of the blog is to post useful tutorials on what I have learned. And there are a lot of topics I need to share (like <a href='https://certbot.eff.org/' target='_blank'>Certbot</a> and <a href='https://letsencrypt.org/' target='_blank'>Let's Encrypt</a> for HTTPS support using open certificate authority, how to build a multi-stage docker image to create reproducible, stable development and build system, and more...).",
+        "ArticleTitle": "First editable blog version is online!"
+    },
+    {
+        "_id": {
+            "$oid": "5c9ad41d4ee2100027191a1e"
+        },
+        "BlogDate": {
+            "$date": "2019-04-27T01:14:00.000Z"
+        },
+        "UpdateDate": {
+            "$date": "2019-04-27T02:33:35.787Z"
+        },
+        "Article": "This is something I have gathered through my few years as manager. More will be added or edited (or removed) as I capture/remember them.\n<ul>\n    <li>Consistency is key</li>\n    <li>Feedback</li>\n    <ul>\n        <li>Feedback is a powerful tool. Share feedback often, but not unnecessarily</li>\n        <li>Make sure you share positive feedback regularly, so when you have to deliver a negative one, the \"average\"\n            is balanced</li>\n        <li>Always bring facts and/or data when delivering any feedback. Otherwise you will lose credibility</li>\n    </ul>\n    <li>Your team</li>\n    <ul>\n        <li>Your team needs a common goal they are attracted to / interested in:\n            <ul>\n                <li>One way to do it is to motivate them via meaningful KPI(s)</li>\n                <li>Give your team an idea of what a perfect world (relative to the team/company objectives) would be.\n                    Better, have them define what it would be. Then create a road-map towards it and ensure time is\n                    allocated to any elements of this road-map that are aligned with team/company objectives. Make sure\n                    some time is allocated to lower priority elements but that will contribute to the team\n                    happiness/motivation</li>\n            </ul>\n        </li>\n        <li>Identify your team members individual personalities:\n            <ul>\n                <li>Starters vs Finishers</li>\n                <li>Introvert vs Extrovert</li>\n                <li>Skill level (relevant to the team purpose). Not to confuse with seniority.</li>\n                <li>Pro-active vs passive</li>\n                <li>Growth oriented vs complescent</li>\n                <li>Leader vs Follower</li>\n            </ul>\n        </li>\n        <li>One on one\n            <ul>\n                <li>Do 1-on-1 regularly, in a very constructive manner</li>\n                <li>Start with the outcome/agreement status from previous 1-on-1</li>\n                <li>Share any new feedback, accompanied with the relevant fact or data</li>\n                <li>Ask for feedback. If the person isn't comfortable giving feedback, ask for a specific question</li>\n                <li>End with a commitment, goal or objective to reach, with a date it will be reached or reviewed. The\n                    commitment can be for either or both of you</li>\n            </ul>\n        </li>\n        <li>Identify low performer. Inform the low performer (via facts and data) what he/she is not doing well enough.\n            <ul>\n                <li>That person might have not realized he/she wasn't performing and could transform to a good or even\n                    high performer</li>\n                <li>It will show the rest of the team you care about low performer that might be slowing their success\n                    down</li>\n                <li>No man/woman left behind</li>\n            </ul>\n        </li>\n        <li>Similarly, identify high performer and give them challenges according to their aspirations: technical\n            expertise or leadership role</li>\n        <li>Communicate regularly the company results to show they belong to a big thing, not just an silo</li>\n        <li>Have lunch with your team. Organize occasional outing</li>\n    </ul>\n    </li>\n    <li>Working with data</li>\n    <ul>\n        <li>Identify very early what kind of data will bring to your project/team/task a measure of success or failure\n        </li>\n        <li>Try to automate as much as possible the collecting of data</li>\n        <li>You can interest your subordinate(s) to collect the data or create an automated tool as part of their\n            learning/growth</li>\n        <li>Start a road-map. Now!</li>\n        <li>Share your road-map early with all stakeholders. It will help:\n            <ul>\n                <li>Confirming the requirements/scope</li>\n                <li>Explaining people or resource shortage</li>\n                <li>Providing a constructive support for project updates</li>\n                <li>Providing a form of burn-down / completion status report</li>\n            </ul>\n        </li>\n    </ul>\n    </li>\n</ul>",
+        "ArticleTitle": "Management random thoughts and quotes"
+    },
+    {
+        "_id": {
+            "$oid": "5ca98dff9b33170027154e79"
+        },
+        "BlogDate": {
+            "$date": "2019-05-07T05:14:00.000Z"
+        },
+        "UpdateDate": {
+            "$date": "2019-05-15T05:59:41.599Z"
+        },
+        "Article": "I got this list from social media. I Will update once I have tried them:\n<ul>\n<li><a href='https://iconfinder.com' target='_blank'>iconfinder.com</a>: Find all icons, many sizes</li>\n<li><a href='https://midomi.com' target='_blank'>midomi.com</a>: to find the name of a song by humming the melody</li>\n<li><a href='https://www.vpnbook.com/freevpn' target='_blank'>vpnbook.com</a>: free VPN (not for P2P like torrent) with openVPN</li>\n<li><a href='http://wolframalpha.com' target='_blank'>wolframalpha.com</a>: can solve almost any mathematical equation</li>\n<li><a href='https://justinguitar.com' target='_blank'>justinguitar.com</a>: learn play guitar for free</li>\n<li><a href='http://shelterpups.com' target='_blank'>shelterpups.com</a>: to create a soft toys from your pups picture</li>\n</ul>",
+        "ArticleTitle": "Useful links"
+    },
+    {
+        "_id": {
+            "$oid": "5cd7c1b9611dca002732124c"
+        },
+        "BlogDate": {
+            "$date": "2019-05-12T06:49:12.423Z"
+        },
+        "UpdateDate": {
+            "$date": "2019-05-12T06:49:12.423Z"
+        },
+        "Article": "If you're like me and want a minimal raspbian running on your pi but still with the desktop GUI, you have 2 alternatives:\n<ul>\n<li>Install the 'lite' version (~360MB) and do these minimal install steps:\n<br />Edit '/etc/wpa_supplicant/wpa_supplicant.conf'\n<br />and add at the bottom\n<br />network={\n<br />&amp;nbsp;&amp;nbsp;ssid=\"YOUR_SSID\"\n<br />&amp;nbsp;&amp;nbsp;psk=\"YOUR_PASSWORD\"\n<br />}\n<br />sudo apt update &amp;&amp; sudo apt -y upgrade\n<br />sudo reboot\n<br />After reboot continue with\n<br />sudo apt clean &amp;&amp; sudo apt -y autoremove\n<br />sudo apt install -y raspberrypi-ui-mods rpi-chromium-mods\n<br />sudo reboot\n</li>\n<li>Install the 'desktop' version (~1.2GB) and remove extra stuff:\n<br />sudo apt purge -y scratch2 minecraft-pi wolfram-engine sonic-pi dillo libreoffice* squeak* geany\n<br />sudo reboot\n<br />After reboot continue with\n<br />sudo apt clean &amp;&amp; sudo apt -y autoremove",
+        "ArticleTitle": "Clean-up raspbian packages"
+    }
+]

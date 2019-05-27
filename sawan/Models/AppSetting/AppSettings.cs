@@ -10,6 +10,8 @@ namespace sawan
 
         public Mongo Mongo { get; set; }
 
+        public MariaDB MariaDB { get; set; }
+
         public Authentication Authentication { get; set; }
     }
 }

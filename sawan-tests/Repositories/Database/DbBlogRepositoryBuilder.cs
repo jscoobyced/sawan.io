@@ -4,7 +4,7 @@ namespace sawan.tests
     using Moq;
     using sawan.Repositories;
 
-    public class MongoDbBlogRepositoryBuilder
+    public class DbBlogRepositoryBuilder
     {
         private List<BlogElement> blogElements;
 
@@ -12,19 +12,19 @@ namespace sawan.tests
 
         private bool isSavedStatus;
 
-        public MongoDbBlogRepositoryBuilder WithBlogElements(List<BlogElement> blogElements)
+        public DbBlogRepositoryBuilder WithBlogElements(List<BlogElement> blogElements)
         {
             this.blogElements = blogElements;
             return this;
         }
 
-        public MongoDbBlogRepositoryBuilder WithBlogElement(BlogElement blogElement)
+        public DbBlogRepositoryBuilder WithBlogElement(BlogElement blogElement)
         {
             this.blogElement = blogElement;
             return this;
         }
 
-        public MongoDbBlogRepositoryBuilder WithSaveStatus(bool isSavedStatus)
+        public DbBlogRepositoryBuilder WithSaveStatus(bool isSavedStatus)
         {
             this.isSavedStatus = isSavedStatus;
             return this;

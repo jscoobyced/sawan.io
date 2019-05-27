@@ -15,7 +15,7 @@ namespace sawan.tests
         {
 
             var mainContentService = new MainContentService(
-                new MongoDbMainContentRepositoryBuilder()
+                new DbMainContentRepositoryBuilder()
                 .WithMainContent(new MainContentBuilder().Build())
                 .WithLanguage(Language.English)
                 .Build(),
@@ -29,7 +29,7 @@ namespace sawan.tests
         public async Task GetMainContentWithLanguage()
         {
             var mainContentService = new MainContentService(
-                new MongoDbMainContentRepositoryBuilder()
+                new DbMainContentRepositoryBuilder()
                 .WithMainContent(new MainContentBuilder().Build())
                 .Build(),
                 null);
