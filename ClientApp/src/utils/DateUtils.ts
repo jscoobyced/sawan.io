@@ -14,7 +14,7 @@ export class DateUtil {
     public static defaultDate(now = false): Date {
         if (now) {
             const nowDate = new Date();
-            const month = DateUtil.toDigits(nowDate.getMonth(), 2);
+            const month = DateUtil.toDigits(nowDate.getMonth() + 1, 2);
             const day = DateUtil.toDigits(nowDate.getDate(), 2);
             return new Date(`${nowDate.getFullYear()}-${month}-${day}T00:00:00Z`);
         }

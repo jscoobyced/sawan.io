@@ -5,7 +5,7 @@ import { Article } from './Article';
 
 export interface EditableArticleProps {
     blogElement: BlogElement;
-    update: (article: string, articleTitle: string, id: string) => Promise<boolean>;
+    update: (article: string, articleTitle: string, articleBlogDate: Date, id: string) => Promise<boolean>;
 }
 
 export interface EditableArticleState {
@@ -19,16 +19,10 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
     private readonly SAVING = 'Saving';
     private readonly SAVED = 'Saved';
     private readonly FAILED = 'Failed';
-    public constructor(props: EditableArticleProps, state: EditableArticleState) {
-        super(props, state);
+    public constructor(props: EditableArticleProps) {
+        super(props);
         this.state = {
-            blogElement: {
-                article: '',
-                articleTitle: '',
-                id: '',
-                blogDate: DateUtil.defaultDate(),
-                updateDate: DateUtil.defaultDate()
-            },
+            blogElement: props.blogElement,
             saveText: this.SAVE,
             saveDisabled: false
         };
@@ -44,6 +38,10 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
     }
 
     public render() {
+        if (!this.state.blogElement) {
+            return <></>;
+        }
+
         const { article, articleTitle } = this.state.blogElement;
         return (
             <div>
@@ -81,8 +79,7 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
 
     private readonly onChangeArticle = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         event.preventDefault();
-        const blogElement = this.state.blogElement;
-        blogElement.article = event.target.value;
+        const blogElement = { ...this.state.blogElement, article: event.target.value };
         this.setState({
             blogElement,
             saveText: this.SAVE,
@@ -92,8 +89,7 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
 
     private readonly onChangeArticleTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
-        const blogElement = this.state.blogElement;
-        blogElement.articleTitle = event.target.value;
+        const blogElement = { ...this.state.blogElement, articleTitle: event.target.value };
         this.setState({
             blogElement,
             saveText: this.SAVE,
@@ -107,8 +103,8 @@ export class EditableArticle extends React.Component<EditableArticleProps, Edita
             saveText: this.SAVING,
             saveDisabled: true
         });
-        const { article, articleTitle, id } = this.state.blogElement;
-        this.props.update(article, articleTitle, id)
+        const { article, articleTitle, blogDate, id } = this.state.blogElement;
+        this.props.update(article, articleTitle, blogDate, id)
             .then(success => {
                 this.setState({
                     saveText: success ? this.SAVED : this.FAILED

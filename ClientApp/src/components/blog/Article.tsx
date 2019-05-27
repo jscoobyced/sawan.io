@@ -25,7 +25,7 @@ export class Article extends React.Component<ArticleProps> {
         if (this.props.ellipsis) {
             content = HtmlUtils.getEllipsis(content, 1000);
         }
-        const blogDate = DateUtil.dateToString(!article.blogDate ? DateUtil.defaultDate() : article.blogDate);
+        const blogDate = DateUtil.dateToString(article.blogDate);
         let editLink = null;
         let readMoreLink = null;
         let backLink = null;

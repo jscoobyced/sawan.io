@@ -27,8 +27,8 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
             blogElement: {
                 article: '',
                 articleTitle: '',
-                blogDate: DateUtil.defaultDate(),
-                updateDate: DateUtil.defaultDate(),
+                blogDate: DateUtil.defaultDate(true),
+                updateDate: DateUtil.defaultDate(true),
                 id: '0'
             }
         };
@@ -48,11 +48,11 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
             });
     }
 
-    public updateBlog = (article: string, articleTitle: string, id: string): Promise<boolean> => {
+    public updateBlog = (article: string, articleTitle: string, articleBlogDate: Date, id: string): Promise<boolean> => {
         const blogElement: BlogElement = {
             article,
             articleTitle,
-            blogDate: id === '' ? DateUtil.defaultDate(true) : this.state.blogElement.blogDate,
+            blogDate: articleBlogDate,
             updateDate: DateUtil.defaultDate(true),
             id
         };
