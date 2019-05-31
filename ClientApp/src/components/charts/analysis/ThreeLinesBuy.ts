@@ -15,6 +15,9 @@ export class ThreeLinesBuy implements IAnalyser {
 
         if (AnalysisHelper.IsDropping(three, two)
             && AnalysisHelper.IsDropping(two, one)
+            && AnalysisHelper.IsNegative(one)
+            && AnalysisHelper.IsNegative(two)
+            && AnalysisHelper.IsNegative(three)
             && AnalysisHelper.IsEngulfing(current, three, one)) {
             return {
                 decision: Decision.Buy,

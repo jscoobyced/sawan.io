@@ -15,6 +15,11 @@ export class TwoBlackGapping implements IAnalyser {
         const current = pairings[index];
 
         if (AnalysisHelper.IsRaising(four, three)
+            && AnalysisHelper.IsNegative(one)
+            && AnalysisHelper.IsNegative(two)
+            && AnalysisHelper.IsPositive(three)
+            && AnalysisHelper.IsPositive(four)
+            && AnalysisHelper.IsNegative(current)
             && AnalysisHelper.IsReversingDown(three, two)
             && AnalysisHelper.IsDropping(two, one)
             && AnalysisHelper.IsBigDrop(two.close, one.open)
