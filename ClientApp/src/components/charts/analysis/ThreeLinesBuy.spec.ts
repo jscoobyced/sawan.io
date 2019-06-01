@@ -37,7 +37,7 @@ const current: Pairing = {
 const buyPattern: Pattern = {
     decision: Decision.Buy,
     confidence: 84,
-    comment: "Three Lines Strike pattern recognized."
+    comment: "Three Lines Strike"
 };
 
 test('ThreeLinesBuy analysis is skipped because of parameters', () => {

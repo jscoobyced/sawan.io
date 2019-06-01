@@ -1,9 +1,9 @@
 import { Pairing } from "../Models";
-import { AnalyserHelperTestData } from "./AnalysisHelper.spec";
+import { AnalysisHelperTestData } from "./AnalysisHelperTestData";
 import { DefaultPattern } from "./Models";
 import { ThreeBlackCrows } from "./ThreeBlackCrows";
 
-const data = new AnalyserHelperTestData();
+const data = new AnalysisHelperTestData();
 
 test('ThreeBlackCrows analysis is skipped because of parameters', () => {
     const threeBlackCrows = new ThreeBlackCrows();
@@ -25,7 +25,7 @@ test('ThreeBlackCrows analysis is Sell', () => {
     const result = threeBlackCrows.analyse([data.four, data.three, data.two, data.one, data.current], 4, false);
     const expected = data.sellPattern;
     expected.confidence = 78;
-    expected.comment = "Three Black Crows pattern recognized.";
+    expected.comment = "Three Black Crows";
     expect(result).toEqual(expected);
 });
 

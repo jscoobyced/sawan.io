@@ -103,7 +103,8 @@ module.exports = (env, argv) => {
       compress: true,
       historyApiFallback: true,
       port: 9000,
-      disableHostCheck: true
+      disableHostCheck: true,
+      host: "0.0.0.0"
     };
     config.plugins.push(
       new HtmlWebpackPlugin({

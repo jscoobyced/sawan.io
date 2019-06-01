@@ -1,5 +1,6 @@
-import { Decision, Pairing, Pattern } from "../Models";
+import { Pairing } from "../Models";
 import { AnalysisHelper } from "./AnalysisHelper";
+import { AnalysisHelperTestData } from "./AnalysisHelperTestData";
 
 const highPairing1: Pairing = {
     high: 1500,
@@ -57,67 +58,13 @@ const negativePairing: Pairing = {
     timestamp: 123456789
 };
 
-export class AnalyserHelperTestData {
-    public readonly four: Pairing = {
-        timestamp: 1535252400000,
-        low: 217700.0,
-        high: 218900.0,
-        open: 217800.0,
-        close: 218250.0
-    };
-
-    public readonly three: Pairing = {
-        timestamp: 1535252700000,
-        low: 218200.0,
-        high: 219900.0,
-        open: 218200.0,
-        close: 218650.0
-    };
-
-    public readonly two: Pairing = {
-        timestamp: 1535253000000,
-        low: 218050.0,
-        high: 219901,
-        open: 219000.0,
-        close: 218100.0
-    };
-
-    public readonly one = {
-        timestamp: 1535253300000,
-        low: 216400.0,
-        high: 217650.99999,
-        open: 217600.0,
-        close: 216800.0
-    };
-
-    public readonly current: Pairing = {
-        timestamp: 1535253600000,
-        low: 215500.0,
-        high: 216801,
-        open: 216700.0,
-        close: 216100.0
-    };
-
-    public readonly sellPattern: Pattern = {
-        decision: Decision.Sell,
-        confidence: 74,
-        comment: "none"
-    };
-
-    public readonly buyPattern: Pattern = {
-        decision: Decision.Buy,
-        confidence: 84,
-        comment: "none"
-    };
-}
-
-test('AnalysisHelper check not IsDropping', () => {
-    let isNotDropping = AnalysisHelper.IsDropping(highPairing1, lowPairing2);
-    expect(isNotDropping).toBeFalsy();
-
-    isNotDropping = AnalysisHelper.IsDropping(highPairing2, lowPairing1);
-    expect(isNotDropping).toBeFalsy();
-});
+const distantPairing: Pairing = {
+    high: 100,
+    open: 150,
+    close: 150,
+    low: 150,
+    timestamp: 123456789
+};
 
 test('AnalysisHelper check IsDropping', () => {
     const isDropping = AnalysisHelper.IsDropping(highPairing1, lowPairing1);
@@ -174,3 +121,34 @@ test('AnalysisHelper check IsReversingDown', () => {
     const IsNotReversingDown = AnalysisHelper.IsReversingDown(negativePairing, positivePairing);
     expect(IsNotReversingDown).toBeFalsy();
 });
+
+test('AnalysisHelper Height', () => {
+    const height = AnalysisHelper.Height(largePairing);
+    expect(height).toBe(1300);
+});
+
+test('AnalysisHelper IsTall', () => {
+    const isTall = AnalysisHelper.IsTall(lowPairing2, largePairing, highPairing2, highPairing1);
+    expect(isTall).toBeTruthy();
+});
+
+test('AnalysisHelper IsShort', () => {
+    const isShort = AnalysisHelper.IsShort(largePairing, highPairing1, lowPairing1);
+    expect(isShort).toBeTruthy();
+});
+
+test('AnalysisHelper IsGap', () => {
+    const isGap = AnalysisHelper.IsGap(distantPairing, highPairing1);
+    expect(isGap).toBeTruthy();
+});
+
+test('AnalysisHelper no IsGap', () => {
+    const isGap = AnalysisHelper.IsGap(highPairing1, highPairing2);
+    expect(isGap).toBeFalsy();
+});
+
+test('AnalysisHelper ThreeDropping', () => {
+    const data = new AnalysisHelperTestData();
+    const isThreeDropping = AnalysisHelper.IsThreeDropping(data.four, data.three, data.two, data.one, data.current);
+});
+

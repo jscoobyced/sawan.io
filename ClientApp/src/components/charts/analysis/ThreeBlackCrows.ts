@@ -14,15 +14,12 @@ export class ThreeBlackCrows implements IAnalyser {
         const one = pairings[index - 1];
         const current = pairings[index];
 
-        if (AnalysisHelper.IsRaising(four, three)
-            && AnalysisHelper.IsReversingDown(three, two)
-            && AnalysisHelper.IsDropping(two, one)
-            && AnalysisHelper.IsDropping(one, current)
+        if (AnalysisHelper.IsThreeDropping(four, three, two, one, current)
             && two.high > three.high) {
             return {
                 decision: Decision.Sell,
                 confidence: 78,
-                comment: "Three Black Crows pattern recognized."
+                comment: "Three Black Crows"
             };
         }
 
