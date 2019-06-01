@@ -27,7 +27,7 @@ export class TwoBlackGapping implements IAnalyser {
             return {
                 decision: Decision.Sell,
                 confidence: 68,
-                comment: "Two Black Gapping pattern recognized."
+                comment: "Two Black Gapping"
             };
         }
 

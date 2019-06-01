@@ -27,7 +27,7 @@ export class ThreeBlackCrows implements IAnalyser {
             return {
                 decision: Decision.Sell,
                 confidence: 78,
-                comment: "Three Black Crows pattern recognized."
+                comment: "Three Black Crows"
             };
         }
 

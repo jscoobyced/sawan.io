@@ -4,7 +4,7 @@ import { DefaultPattern, IAnalyser } from './Models';
 
 export class EveningStar implements IAnalyser {
     public analyse(pairings: Pairing[], index: number, upper: boolean): Pattern {
-        if (!pairings || pairings.length < index || index < 4 || upper) {
+        if (!pairings || pairings.length < index || index < 3 || upper) {
             return DefaultPattern;
         }
 
@@ -25,7 +25,7 @@ export class EveningStar implements IAnalyser {
             return {
                 decision: Decision.Sell,
                 confidence: 72,
-                comment: "Evening Star pattern recognized."
+                comment: "Evening Star"
             };
         }
 

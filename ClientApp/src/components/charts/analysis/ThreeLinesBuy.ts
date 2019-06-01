@@ -22,7 +22,7 @@ export class ThreeLinesBuy implements IAnalyser {
             return {
                 decision: Decision.Buy,
                 confidence: 84,
-                comment: "Three Lines Strike pattern recognized."
+                comment: "Three Lines Strike"
             };
         }
 
