@@ -1,6 +1,6 @@
 import { Decision, Pairing, Pattern } from "../Models";
 
-export class AnalyserHelperTestData {
+export class AnalysisHelperTestData {
     public readonly four: Pairing = {
         timestamp: 1535252400000,
         low: 217700.0,

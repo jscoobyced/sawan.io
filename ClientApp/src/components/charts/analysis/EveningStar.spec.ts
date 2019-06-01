@@ -1,9 +1,9 @@
 import { Pairing } from "../Models";
-import { AnalyserHelperTestData } from "./AnalyserHelperTestData";
+import { AnalysisHelperTestData } from "./AnalysisHelperTestData";
 import { DefaultPattern } from "./Models";
 import { EveningStar } from "./EveningStar";
 
-const data = new AnalyserHelperTestData();
+const data = new AnalysisHelperTestData();
 
 test('EveningStar analysis is skipped because of parameters', () => {
     const eveningStar = new EveningStar();

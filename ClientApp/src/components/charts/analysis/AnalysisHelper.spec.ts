@@ -1,5 +1,6 @@
-import { Decision, Pairing, Pattern } from "../Models";
+import { Pairing } from "../Models";
 import { AnalysisHelper } from "./AnalysisHelper";
+import { AnalysisHelperTestData } from "./AnalysisHelperTestData";
 
 const highPairing1: Pairing = {
     high: 1500,
@@ -145,3 +146,9 @@ test('AnalysisHelper no IsGap', () => {
     const isGap = AnalysisHelper.IsGap(highPairing1, highPairing2);
     expect(isGap).toBeFalsy();
 });
+
+test('AnalysisHelper ThreeDropping', () => {
+    const data = new AnalysisHelperTestData();
+    const isThreeDropping = AnalysisHelper.IsThreeDropping(data.four, data.three, data.two, data.one, data.current);
+});
+

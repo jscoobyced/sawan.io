@@ -1,9 +1,9 @@
 import { Pairing } from "../Models";
-import { AnalyserHelperTestData } from "./AnalyserHelperTestData";
+import { AnalysisHelperTestData } from "./AnalysisHelperTestData";
 import { DefaultPattern } from "./Models";
 import { TwoBlackGapping } from "./TwoBlackGapping";
 
-const data = new AnalyserHelperTestData();
+const data = new AnalysisHelperTestData();
 
 test('TwoBlackGapping analysis is skipped because of parameters', () => {
     const twoBlackGapping = new TwoBlackGapping();

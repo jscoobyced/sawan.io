@@ -65,4 +65,16 @@ export class AnalysisHelper {
         return (minCurrent - maxPrevious) > 0
             || (minPrevious - maxCurrent) > 0;
     }
+
+    public static IsThreeDropping(four: Pairing, three: Pairing, two: Pairing, one: Pairing, current: Pairing): boolean {
+        return AnalysisHelper.IsRaising(four, three)
+            && AnalysisHelper.IsNegative(one)
+            && AnalysisHelper.IsNegative(two)
+            && AnalysisHelper.IsPositive(three)
+            && AnalysisHelper.IsPositive(four)
+            && AnalysisHelper.IsNegative(current)
+            && AnalysisHelper.IsReversingDown(three, two)
+            && AnalysisHelper.IsDropping(two, one)
+            && AnalysisHelper.IsDropping(one, current);
+    }
 }
