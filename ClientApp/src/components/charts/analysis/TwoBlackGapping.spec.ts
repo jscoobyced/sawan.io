@@ -1,9 +1,9 @@
 import { Pairing } from "../Models";
-import { AnalyserHelperTestData } from "./AnalysisHelper.spec";
+import { AnalysisHelperTestData } from "./AnalysisHelperTestData";
 import { DefaultPattern } from "./Models";
 import { TwoBlackGapping } from "./TwoBlackGapping";
 
-const data = new AnalyserHelperTestData();
+const data = new AnalysisHelperTestData();
 
 test('TwoBlackGapping analysis is skipped because of parameters', () => {
     const twoBlackGapping = new TwoBlackGapping();
@@ -25,7 +25,7 @@ test('TwoBlackGapping analysis is Sell', () => {
     const result = twoBlackGapping.analyse([data.four, data.three, data.two, data.one, data.current], 4, false);
     const expected = data.sellPattern;
     expected.confidence = 68;
-    expected.comment = "Two Black Gapping pattern recognized.";
+    expected.comment = "Two Black Gapping";
     expect(result).toEqual(expected);
 });
 

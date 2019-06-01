@@ -14,15 +14,12 @@ export class TwoBlackGapping implements IAnalyser {
         const one = pairings[index - 1];
         const current = pairings[index];
 
-        if (AnalysisHelper.IsRaising(four, three)
-            && AnalysisHelper.IsReversingDown(three, two)
-            && AnalysisHelper.IsDropping(two, one)
-            && AnalysisHelper.IsBigDrop(two.close, one.open)
-            && AnalysisHelper.IsDropping(one, current)) {
+        if (AnalysisHelper.IsThreeDropping(four, three, two, one, current)
+            && AnalysisHelper.IsBigDrop(two.close, one.open)) {
             return {
                 decision: Decision.Sell,
                 confidence: 68,
-                comment: "Two Black Gapping pattern recognized."
+                comment: "Two Black Gapping"
             };
         }
 
