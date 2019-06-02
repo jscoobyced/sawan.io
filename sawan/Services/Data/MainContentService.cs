@@ -8,12 +8,10 @@ namespace sawan.Services
     public class MainContentService : IMainContentService
     {
         private readonly IDbMainContentRepository dbMainContentRepository;
-        private readonly IDbBlogRepository dbBlogRepository;
 
-        public MainContentService(IDbMainContentRepository dbMainContentRepository, IDbBlogRepository dbBlogRepository)
+        public MainContentService(IDbMainContentRepository dbMainContentRepository)
         {
             this.dbMainContentRepository = dbMainContentRepository;
-            this.dbBlogRepository = dbBlogRepository;
         }
 
         public async Task<MainContent> GetMainContentAsync(Language language)
