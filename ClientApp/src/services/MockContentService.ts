@@ -20,7 +20,7 @@ export class MockContentService extends ContentService {
     private readonly displayDate = DateUtil.defaultDate();
     private readonly articles: BlogElement[] = [
         {
-            id: '1',
+            id: 1,
             blogDate: this.displayDate,
             updateDate: this.displayDate,
             articleTitle: 'Starting again',
@@ -37,7 +37,7 @@ export class MockContentService extends ContentService {
                 + 'here</a>.'
         },
         {
-            id: '2',
+            id: 2,
             blogDate: this.displayDate,
             updateDate: this.displayDate,
             articleTitle: 'Grand opening of sawan.io',
@@ -51,7 +51,7 @@ export class MockContentService extends ContentService {
                 + ' href=\'https://github.com/jscoobyced/sawan.io\'>Github</a>. Enjoy and have fun.'
         },
         {
-            id: '3',
+            id: 3,
             blogDate: this.displayDate,
             updateDate: this.displayDate,
             articleTitle: 'Some other news',
@@ -59,7 +59,7 @@ export class MockContentService extends ContentService {
         }
     ];
 
-    public async getBlogElement(id: string): Promise<BlogElement> {
+    public async getBlogElement(id: number): Promise<BlogElement> {
         return this.updateBlogPage(3).then(blogPage => {
             let article = null as unknown as BlogElement;
             for (const a of blogPage.articles) {

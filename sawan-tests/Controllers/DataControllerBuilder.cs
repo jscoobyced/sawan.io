@@ -15,25 +15,13 @@ namespace sawan.tests
     {
         private IPairingService pairingService;
 
-        private IGitHubService gitHubService;
-
         private IMainContentService mainContentService;
 
         private IBlogContentService blogContentService;
 
-        private readonly IDictionary<string, string> headers = new Dictionary<string, string>();
-
-        private string body = string.Empty;
-
         public DataControllerBuilder WithPairingService(IPairingService pairingService)
         {
             this.pairingService = pairingService;
-            return this;
-        }
-
-        public DataControllerBuilder WithGitHubService(IGitHubService gitHubService)
-        {
-            this.gitHubService = gitHubService;
             return this;
         }
 
@@ -49,52 +37,12 @@ namespace sawan.tests
             return this;
         }
 
-        public DataControllerBuilder WithRequestBody(string body)
-        {
-            this.body = body;
-            return this;
-        }
-
-        public DataControllerBuilder WithGitHubHeaders()
-        {
-            this.WithHttpHeader(GitHubHeader.XGitHubDelivery, "test");
-            this.WithHttpHeader(GitHubHeader.XGitHubEvent, "test");
-            this.WithHttpHeader(GitHubHeader.XHubSignature, "test");
-            return this;
-        }
-
-        public DataControllerBuilder WithHttpHeader(string key, string value)
-        {
-            this.headers.Add(key, value);
-            return this;
-        }
-
         public DataController Build()
         {
-            var httpContext = new DefaultHttpContext();
-            foreach (KeyValuePair<string, string> header in this.headers)
-            {
-                if (!string.IsNullOrWhiteSpace(header.Key))
-                {
-                    httpContext.Request.Headers[header.Key] = header.Value;
-                }
-            }
-
-            httpContext.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes("test"));
-
-            var controllerContext = new ControllerContext()
-            {
-                HttpContext = httpContext,
-            };
-
             return new DataController(
                 this.pairingService,
-                this.gitHubService,
                 this.mainContentService,
-                this.blogContentService)
-            {
-                ControllerContext = controllerContext
-            };
+                this.blogContentService);
         }
     }
 }

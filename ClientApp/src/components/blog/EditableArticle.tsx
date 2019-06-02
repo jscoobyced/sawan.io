@@ -5,7 +5,7 @@ import { Article } from './Article';
 
 export interface EditableArticleProps {
     blogElement: BlogElement;
-    update: (article: string, articleTitle: string, articleBlogDate: Date, id: string) => Promise<boolean>;
+    update: (article: string, articleTitle: string, articleBlogDate: Date, id: number) => Promise<boolean>;
 }
 
 export interface EditableArticleState {

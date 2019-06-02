@@ -49,7 +49,7 @@ namespace sawan.tests
                 .WithBlogContentService(contentService)
                 .Build();
 
-            var result = await controller.GetBlogContent("0");
+            var result = await controller.GetBlogContent(0);
 
             result.Should().NotBeNull();
             result.Should().Be(blogElement);
@@ -66,7 +66,7 @@ namespace sawan.tests
                 .WithBlogContentService(null)
                 .Build();
 
-            var result = await controller.GetBlogContent("0");
+            var result = await controller.GetBlogContent(0);
             result.Should().NotBeNull();
         }
 

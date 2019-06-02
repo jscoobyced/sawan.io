@@ -4,19 +4,19 @@ namespace sawan.tests
     using Moq;
     using sawan.Repositories;
 
-    public class MongoDbMainContentRepositoryBuilder
+    public class DbMainContentRepositoryBuilder
     {
 
         private MainContent mainContent;
         private Language language = Language.English;
 
-        public MongoDbMainContentRepositoryBuilder WithMainContent(MainContent mainContent)
+        public DbMainContentRepositoryBuilder WithMainContent(MainContent mainContent)
         {
             this.mainContent = mainContent;
             return this;
         }
 
-        public MongoDbMainContentRepositoryBuilder WithLanguage(Language language)
+        public DbMainContentRepositoryBuilder WithLanguage(Language language)
         {
             this.language = language;
             return this;

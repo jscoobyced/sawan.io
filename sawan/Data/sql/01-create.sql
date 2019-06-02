@@ -1,0 +1,35 @@
+CREATE DATABASE IF NOT EXISTS sawan CHARACTER SET utf8;
+
+USE sawan;
+
+CREATE TABLE blog (
+    id INT NOT NULL AUTO_INCREMENT,
+    created DATETIME,
+    updated DATETIME,
+    title VARCHAR(96) CHARACTER SET utf8,
+    content TEXT CHARACTER SET utf8,
+    CONSTRAINT blog_pk PRIMARY KEY (id)
+) CHARACTER SET utf8;
+
+CREATE TABLE lang (
+    id INT NOT NULL,
+    lang VARCHAR(32) CHARACTER SET utf8
+) CHARACTER SET utf8;
+
+ALTER TABLE lang
+ADD CONSTRAINT lang_idx UNIQUE KEY (id);
+
+CREATE TABLE content (
+    id INT NOT NULL,
+    lang_id INT,
+    content VARCHAR(128) CHARACTER SET utf8
+) CHARACTER SET utf8;
+
+ALTER TABLE content
+ADD CONSTRAINT content_idx UNIQUE KEY (id, lang_id);
+
+ALTER TABLE content
+ADD FOREIGN KEY fk_content_lang (id)
+REFERENCES lang (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;

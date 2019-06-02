@@ -6,7 +6,14 @@ namespace sawan.tests
 
     public class OptionBuilder
     {
-        private readonly AppSettings appSettings = new AppSettings() { Url = new Url(), GitHub = new GitHub() };
+        private readonly AppSettings appSettings = new AppSettings()
+        {
+            Url = new Url(),
+            MariaDB = new MariaDB()
+            {
+                ConnectionString = string.Empty
+            }
+        };
 
         public IOptions<AppSettings> Build()
         {
@@ -54,24 +61,6 @@ namespace sawan.tests
         public OptionBuilder WithPairingsUrl(string url)
         {
             this.appSettings.Url.Pairings = url;
-            return this;
-        }
-
-        public OptionBuilder WithGitHubWebHookToken(string token)
-        {
-            this.appSettings.GitHub.WebHookToken = token;
-            return this;
-        }
-
-        public OptionBuilder WithGitHubScript(string script)
-        {
-            this.appSettings.GitHub.UpdateScript = script;
-            return this;
-        }
-
-        public OptionBuilder WithMongo(Mongo mongo)
-        {
-            this.appSettings.Mongo = mongo;
             return this;
         }
 

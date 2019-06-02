@@ -18,18 +18,15 @@ namespace sawan.Controllers
     public class DataController : Controller
     {
         private readonly IPairingService pairingService;
-        private readonly IGitHubService gitHubService;
         private readonly IMainContentService mainContentService;
         private readonly IBlogContentService blogContentService;
 
         public DataController(
             IPairingService pairingService,
-            IGitHubService gitHubService,
             IMainContentService mainContentService,
             IBlogContentService blogContentService)
         {
             this.pairingService = pairingService;
-            this.gitHubService = gitHubService;
             this.mainContentService = mainContentService;
             this.blogContentService = blogContentService;
         }
@@ -60,31 +57,6 @@ namespace sawan.Controllers
             }
 
             return await this.pairingService.GetCurrenciesAsync();
-        }
-
-        [HttpPost("github")]
-        public async Task<IActionResult> Update()
-        {
-            if (this.gitHubService == null)
-            {
-                return NotFound();
-            }
-
-            Request?.Headers?.TryGetValue(GitHubHeader.XGitHubEvent, out StringValues eventName);
-            Request?.Headers?.TryGetValue(GitHubHeader.XHubSignature, out StringValues signature);
-            Request?.Headers?.TryGetValue(GitHubHeader.XGitHubDelivery, out StringValues delivery);
-
-            using (var reader = new StreamReader(Request?.Body))
-            {
-                var payload = await reader.ReadToEndAsync();
-
-                if (this.gitHubService.IsGithubPushAllowed(payload, eventName, signature))
-                {
-                    return Ok();
-                }
-            }
-
-            return Unauthorized();
         }
 
         [HttpPost]
@@ -120,7 +92,7 @@ namespace sawan.Controllers
         }
 
         [HttpGet("blog/{blogId}")]
-        public async Task<BlogElement> GetBlogContent(string blogId)
+        public async Task<BlogElement> GetBlogContent(int blogId)
         {
             if (this.blogContentService == null)
             {

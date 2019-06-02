@@ -30,12 +30,12 @@ test('Blog is rendered writable', () => {
 
 test('Blog is updated', async () => {
     const contentService = ContentServiceFactory.GetContentService();
-    const articleTitle = (await contentService.getBlogElement('1')).articleTitle;
+    const articleTitle = (await contentService.getBlogElement(1)).articleTitle;
     expect(articleTitle).toBe('Starting again');
     const matchParam: match<IdParam> = createMatch('1');
     const blog = new BlogHoc({ match: matchParam }, { blogElement: null as unknown as BlogElement });
-    blog.updateBlog('test', 'test', DateUtil.defaultDate(), '1');
-    const articleTitleAfter = (await contentService.getBlogElement('1')).article;
+    blog.updateBlog('test', 'test', DateUtil.defaultDate(), 1);
+    const articleTitleAfter = (await contentService.getBlogElement(1)).article;
     expect(articleTitleAfter).toBe('test');
 });
 

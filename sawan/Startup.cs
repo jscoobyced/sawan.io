@@ -71,7 +71,7 @@ namespace sawan
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMigrationService migrationService)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -124,8 +124,6 @@ namespace sawan
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
-
-            migrationService.CheckInitialData();
         }
     }
 }

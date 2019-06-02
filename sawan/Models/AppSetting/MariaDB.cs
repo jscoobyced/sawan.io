@@ -1,8 +1,7 @@
 namespace sawan
 {
-    public class Mongo
+    public class MariaDB
     {
         public string ConnectionString { get; set; }
-        public string Database { get; set; }
     }
 }

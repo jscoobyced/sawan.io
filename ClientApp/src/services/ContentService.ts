@@ -16,7 +16,7 @@ export class ContentService implements IContentService {
         return this.updateBlogPage(maxResult);
     }
 
-    public async getBlogElement(id: string): Promise<BlogElement> {
+    public async getBlogElement(id: number): Promise<BlogElement> {
         return ApiUtils.fetchData<BlogElement>(`/api/Data/blog/${id}`);
     }
 
@@ -31,6 +31,7 @@ export class ContentService implements IContentService {
     }
 
     protected async doSaveBlogElement(blogElement: BlogElement): Promise<boolean> {
+        console.log(blogElement);
         return ApiUtils.postData('/api/Data/blog/post/', blogElement);
     }
 

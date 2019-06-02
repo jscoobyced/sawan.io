@@ -12,15 +12,13 @@ namespace sawan
             services.AddTransient<IMainContentService, MainContentService>();
             services.AddTransient<IBlogContentService, BlogContentService>();
             services.AddTransient<IPairingService, PairingService>();
-            services.AddTransient<IGitHubService, GitHubService>();
-            services.AddTransient<IMigrationService, MigrationService>();
             services.AddTransient<IAuthentication, GoogleAuthentication>();
 
             // Repositories
             services.AddTransient<IRestConnector, RestConnector>();
-            services.AddTransient<IDbMainContentRepository, MongoDbMainContentRepository>();
-            services.AddTransient<IDbBlogRepository, MongoDbBlogRepository>();
-            services.AddTransient<IMDatabase, MDatabase>();
+            services.AddTransient<IDbMainContentRepository, MainContentRepository>();
+            services.AddTransient<IDbBlogRepository, BlogRepository>();
+            services.AddScoped<IDatabaseConnection, MariaDBDatabaseConnection>();
         }
     }
 }
