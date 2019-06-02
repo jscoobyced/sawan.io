@@ -18,8 +18,7 @@ namespace sawan.tests
                 new DbMainContentRepositoryBuilder()
                 .WithMainContent(new MainContentBuilder().Build())
                 .WithLanguage(Language.English)
-                .Build(),
-                null);
+                .Build());
             var reason = "because it should return english data when language is unknown.";
             var result = await mainContentService.GetMainContentAsync((Language)20);
             result.Should().NotBeNull(reason);
@@ -31,8 +30,7 @@ namespace sawan.tests
             var mainContentService = new MainContentService(
                 new DbMainContentRepositoryBuilder()
                 .WithMainContent(new MainContentBuilder().Build())
-                .Build(),
-                null);
+                .Build());
             var result = await mainContentService.GetMainContentAsync(Language.English);
             result.Should().NotBeNull();
         }
