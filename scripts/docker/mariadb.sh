@@ -159,4 +159,4 @@ if [ ! -d "$DATADIR/mysql" ]; then
 fi
 
 # Start MariaDB
-mysqld
+nohup mysqld &
