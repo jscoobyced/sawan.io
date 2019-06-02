@@ -19,8 +19,6 @@ namespace sawan.tests
 
         private IBlogContentService blogContentService;
 
-        private string body = string.Empty;
-
         public DataControllerBuilder WithPairingService(IPairingService pairingService)
         {
             this.pairingService = pairingService;
@@ -36,12 +34,6 @@ namespace sawan.tests
         public DataControllerBuilder WithBlogContentService(IBlogContentService contentService)
         {
             this.blogContentService = contentService;
-            return this;
-        }
-
-        public DataControllerBuilder WithRequestBody(string body)
-        {
-            this.body = body;
             return this;
         }
 
