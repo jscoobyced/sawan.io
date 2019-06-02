@@ -29,14 +29,14 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
                 articleTitle: '',
                 blogDate: DateUtil.defaultDate(true),
                 updateDate: DateUtil.defaultDate(true),
-                id: '0'
+                id: 0
             }
         };
     }
 
     public componentDidMount() {
-        const articleId = this.props.match.params.id;
-        if (articleId === '0') {
+        const articleId = +this.props.match.params.id;
+        if (articleId === 0) {
             return;
         }
 
@@ -48,7 +48,7 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
             });
     }
 
-    public updateBlog = (article: string, articleTitle: string, articleBlogDate: Date, id: string): Promise<boolean> => {
+    public updateBlog = (article: string, articleTitle: string, articleBlogDate: Date, id: number): Promise<boolean> => {
         const blogElement: BlogElement = {
             article,
             articleTitle,

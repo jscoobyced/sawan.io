@@ -7,7 +7,7 @@ namespace sawan.Services
     {
         Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult);
 
-        Task<BlogElement> GetBlogElementAsync(string blogId);
+        Task<BlogElement> GetBlogElementAsync(int blogId);
 
         Task<bool> SaveBlogElementAsync(BlogElement blogElement);
     }

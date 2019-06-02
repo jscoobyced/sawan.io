@@ -33,7 +33,7 @@ export interface NavigationMenuContent {
 }
 
 export interface BlogElement {
-    id: string;
+    id: number;
     updateDate: Date;
     blogDate: Date;
     article: string;

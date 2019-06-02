@@ -12,7 +12,7 @@ namespace sawan.tests
                 ArticleTitle = "",
                 BlogDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
-                Id = "1"
+                Id = 1
             };
 
         }

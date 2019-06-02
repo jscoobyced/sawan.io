@@ -92,7 +92,7 @@ namespace sawan.Controllers
         }
 
         [HttpGet("blog/{blogId}")]
-        public async Task<BlogElement> GetBlogContent(string blogId)
+        public async Task<BlogElement> GetBlogContent(int blogId)
         {
             if (this.blogContentService == null)
             {

@@ -19,9 +19,9 @@ namespace sawan.Services
             return await this.dbBlogRepository.GetBlogPageAsync(maxResult);
         }
 
-        public async Task<BlogElement> GetBlogElementAsync(string blogId)
+        public async Task<BlogElement> GetBlogElementAsync(int blogId)
         {
-            if (string.IsNullOrWhiteSpace(blogId))
+            if (blogId <= 0)
             {
                 return null;
             }
@@ -49,10 +49,9 @@ namespace sawan.Services
                 Id = blogElement.Id
             };
 
-            if (string.IsNullOrWhiteSpace(blogElement.Id))
+            if (blogElement.Id <= 0)
             {
-                var blogElements = new List<BlogElement>() { safeBlogElement };
-                return await this.dbBlogRepository.InsertBlogElementAsync(blogElements);
+                return await this.dbBlogRepository.InsertBlogElementAsync(safeBlogElement);
             }
 
             return await this.dbBlogRepository.UpdateBlogElementAsync(safeBlogElement);

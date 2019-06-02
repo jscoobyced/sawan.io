@@ -41,7 +41,7 @@ namespace sawan.tests
                 new DbBlogRepositoryBuilder()
                 .WithBlogElement(null)
                 .Build());
-            var result = await contentService.GetBlogElementAsync(string.Empty);
+            var result = await contentService.GetBlogElementAsync(0);
             result.Should().BeNull();
         }
 
@@ -53,7 +53,7 @@ namespace sawan.tests
                 new DbBlogRepositoryBuilder()
                 .WithBlogElement(blogElement)
                 .Build());
-            var result = await contentService.GetBlogElementAsync(string.Empty);
+            var result = await contentService.GetBlogElementAsync(0);
             result.Should().BeNull();
         }
 
@@ -65,7 +65,7 @@ namespace sawan.tests
                 new DbBlogRepositoryBuilder()
                 .WithBlogElement(blogElement)
                 .Build());
-            var result = await contentService.GetBlogElementAsync("123");
+            var result = await contentService.GetBlogElementAsync(123);
             result.Should().NotBeNull();
             result.Should().Equals(blogElement);
         }
@@ -104,7 +104,7 @@ namespace sawan.tests
         public async Task SaveNewBlogElementAsync()
         {
             var blogElement = new BlogElementBuilder().Build();
-            blogElement.Id = null;
+            blogElement.Id = -1;
             var contentService = new BlogContentService(
                 new DbBlogRepositoryBuilder()
                 .WithSaveStatus(true)

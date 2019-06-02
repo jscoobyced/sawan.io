@@ -1,38 +1,127 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 namespace sawan.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Common;
+    using System.Threading.Tasks;
+    using MySql.Data.MySqlClient;
+
     public class BlogRepository : IDbBlogRepository
     {
-        public Task<BlogElement> GetBlogElementAsync(string blogId)
+        private readonly IDatabaseConnection databaseConnection;
+
+        public BlogRepository(IDatabaseConnection databaseConnection)
         {
-            throw new System.NotImplementedException();
+            this.databaseConnection = databaseConnection;
         }
 
-        public Task<IEnumerable<BlogLink>> GetBlogListAsync(int maxResult)
+        public async Task<BlogElement> GetBlogElementAsync(int blogId)
         {
-            throw new System.NotImplementedException();
+            var blogElement = new BlogElement();
+            using (var connection = await this.databaseConnection.GetConnectionAsync())
+            {
+                using (var command = new MySqlCommand())
+                {
+                    command.CommandText = "SELECT id, created, updated, title, content"
+                        + " FROM blog WHERE id = ?id";
+                    command.Parameters.Add(new MySqlParameter("?id", blogId));
+                    command.Connection = connection;
+                    var reader = await command.ExecuteReaderAsync();
+                    if (reader != null)
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            blogElement = this.ReadBlogElement(reader);
+                        }
+                    }
+                }
+            }
+
+            return blogElement;
         }
 
-        public Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
+        public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
         {
-            throw new System.NotImplementedException();
+            var blogElements = new List<BlogElement>();
+            using (var connection = await this.databaseConnection.GetConnectionAsync())
+            {
+
+                using (var command = new MySqlCommand())
+                {
+                    command.CommandText = "SELECT id, created, updated, title, content"
+                        + " FROM blog ORDER BY created DESC LIMIT ?maxResult";
+                    command.Parameters.Add(new MySqlParameter("?maxResult", maxResult));
+                    command.Connection = connection;
+                    var reader = await command.ExecuteReaderAsync();
+                    if (reader != null)
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            var blogElement = this.ReadBlogElement(reader);
+                            blogElements.Add(blogElement);
+                        }
+                    }
+                }
+            }
+
+            return blogElements;
         }
 
-        public Task<bool> InsertBlogElementAsync(string blogElement)
+        public async Task<bool> InsertBlogElementAsync(BlogElement blogElement)
         {
-            throw new System.NotImplementedException();
+            var success = false;
+            using (var connection = await this.databaseConnection.GetConnectionAsync())
+            {
+
+                using (var command = new MySqlCommand())
+                {
+                    command.CommandText = "INSERT INTO blog (title, content, created, updated) VALUES"
+                    + "(?title, ?content, ?created, ?updated)";
+                    command.Parameters.Add(new MySqlParameter("?title", blogElement.ArticleTitle));
+                    command.Parameters.Add(new MySqlParameter("?content", blogElement.Article));
+                    command.Parameters.Add(new MySqlParameter("?created", DateTime.Now));
+                    command.Parameters.Add(new MySqlParameter("?updated", DateTime.Now));
+                    command.Connection = connection;
+                    var inserted = await command.ExecuteNonQueryAsync();
+                    success = inserted == 1;
+                }
+            }
+
+            return success;
         }
 
-        public Task<bool> InsertBlogElementAsync(IEnumerable<BlogElement> blogElements)
+        public async Task<bool> UpdateBlogElementAsync(BlogElement blogElement)
         {
-            throw new System.NotImplementedException();
+            var success = false;
+            using (var connection = await this.databaseConnection.GetConnectionAsync())
+            {
+
+                using (var command = new MySqlCommand())
+                {
+                    command.CommandText = "UPDATE blog set title = ?title, content = ?content,"
+                        + "updated = ?updated WHERE id = ?id";
+                    command.Parameters.Add(new MySqlParameter("?title", blogElement.ArticleTitle));
+                    command.Parameters.Add(new MySqlParameter("?content", blogElement.Article));
+                    command.Parameters.Add(new MySqlParameter("?updated", DateTime.Now));
+                    command.Parameters.Add(new MySqlParameter("?id", blogElement.Id));
+                    command.Connection = connection;
+                    var inserted = await command.ExecuteNonQueryAsync();
+                    success = inserted == 1;
+                }
+            }
+
+            return success;
         }
 
-        public Task<bool> UpdateBlogElementAsync(BlogElement blogElement)
+        private BlogElement ReadBlogElement(DbDataReader reader)
         {
-            throw new System.NotImplementedException();
+            var blogElement = new BlogElement();
+            blogElement.Id = reader.GetInt32(0);
+            blogElement.BlogDate = reader.GetDateTime(1);
+            blogElement.UpdateDate = reader.GetDateTime(2);
+            blogElement.ArticleTitle = reader.GetString(3);
+            blogElement.Article = reader.GetString(4);
+            return blogElement;
         }
     }
 }

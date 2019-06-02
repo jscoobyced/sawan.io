@@ -1,7 +1,7 @@
 import { Pairing } from "../Models";
 import { AnalysisHelperTestData } from "./AnalysisHelperTestData";
-import { DefaultPattern } from "./Models";
 import { EveningStar } from "./EveningStar";
+import { DefaultPattern } from "./Models";
 
 const data = new AnalysisHelperTestData();
 

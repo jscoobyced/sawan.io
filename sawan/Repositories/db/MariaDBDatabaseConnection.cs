@@ -7,10 +7,8 @@ namespace sawan.Repositories
     using Microsoft.Extensions.Options;
     using MySql.Data.MySqlClient;
 
-    public class MariaDBDatabaseConnection : IDatabaseConnection, IDisposable
+    public class MariaDBDatabaseConnection : IDatabaseConnection
     {
-        private MySqlConnection connection;
-
         private readonly IOptions<AppSettings> options;
 
         public MariaDBDatabaseConnection(IOptions<AppSettings> options)
@@ -20,23 +18,10 @@ namespace sawan.Repositories
 
         public async Task<MySqlConnection> GetConnectionAsync()
         {
-            if (this.connection == null)
-            {
-                this.connection = new MySqlConnection(this.options.Value.MariaDB.ConnectionString);
-                Debug.WriteLine("Opening database connection.");
-                await this.connection.OpenAsync();
-            }
-
-            return this.connection;
-        }
-
-        public void Dispose()
-        {
-            if (this.connection != null && this.connection.State == ConnectionState.Open)
-            {
-                this.connection.Close();
-                Debug.WriteLine("Closing database connection.");
-            }
+            var connection = new MySqlConnection(this.options.Value.MariaDB.ConnectionString);
+            Debug.WriteLine("Opening database connection.");
+            await connection.OpenAsync();
+            return connection;
         }
     }
 }
