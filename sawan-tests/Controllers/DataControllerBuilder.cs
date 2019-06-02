@@ -47,20 +47,6 @@ namespace sawan.tests
             return this;
         }
 
-        public DataControllerBuilder WithGitHubHeaders()
-        {
-            this.WithHttpHeader(GitHubHeader.XGitHubDelivery, "test");
-            this.WithHttpHeader(GitHubHeader.XGitHubEvent, "test");
-            this.WithHttpHeader(GitHubHeader.XHubSignature, "test");
-            return this;
-        }
-
-        public DataControllerBuilder WithHttpHeader(string key, string value)
-        {
-            this.headers.Add(key, value);
-            return this;
-        }
-
         public DataController Build()
         {
             var httpContext = new DefaultHttpContext();

@@ -57,24 +57,6 @@ namespace sawan.tests
             return this;
         }
 
-        public OptionBuilder WithGitHubWebHookToken(string token)
-        {
-            this.appSettings.GitHub.WebHookToken = token;
-            return this;
-        }
-
-        public OptionBuilder WithGitHubScript(string script)
-        {
-            this.appSettings.GitHub.UpdateScript = script;
-            return this;
-        }
-
-        public OptionBuilder WithMongo(Mongo mongo)
-        {
-            this.appSettings.Mongo = mongo;
-            return this;
-        }
-
         public OptionBuilder WithAuthentication(string googleKey, string jwtKey)
         {
             this.appSettings.Authentication = new Authentication()
