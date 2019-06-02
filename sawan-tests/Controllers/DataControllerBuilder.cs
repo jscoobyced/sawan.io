@@ -19,8 +19,6 @@ namespace sawan.tests
 
         private IBlogContentService blogContentService;
 
-        private readonly IDictionary<string, string> headers = new Dictionary<string, string>();
-
         private string body = string.Empty;
 
         public DataControllerBuilder WithPairingService(IPairingService pairingService)
@@ -49,29 +47,10 @@ namespace sawan.tests
 
         public DataController Build()
         {
-            var httpContext = new DefaultHttpContext();
-            foreach (KeyValuePair<string, string> header in this.headers)
-            {
-                if (!string.IsNullOrWhiteSpace(header.Key))
-                {
-                    httpContext.Request.Headers[header.Key] = header.Value;
-                }
-            }
-
-            httpContext.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes("test"));
-
-            var controllerContext = new ControllerContext()
-            {
-                HttpContext = httpContext,
-            };
-
             return new DataController(
                 this.pairingService,
                 this.mainContentService,
-                this.blogContentService)
-            {
-                ControllerContext = controllerContext
-            };
+                this.blogContentService);
         }
     }
 }

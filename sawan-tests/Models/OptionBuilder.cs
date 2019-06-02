@@ -6,7 +6,14 @@ namespace sawan.tests
 
     public class OptionBuilder
     {
-        private readonly AppSettings appSettings = new AppSettings() { Url = new Url(), GitHub = new GitHub() };
+        private readonly AppSettings appSettings = new AppSettings()
+        {
+            Url = new Url(),
+            MariaDB = new MariaDB()
+            {
+                ConnectionString = string.Empty
+            }
+        };
 
         public IOptions<AppSettings> Build()
         {

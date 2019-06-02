@@ -6,8 +6,6 @@ namespace sawan
 
         public Csp Csp { get; set; }
 
-        public GitHub GitHub { get; set; }
-
         public MariaDB MariaDB { get; set; }
 
         public Authentication Authentication { get; set; }
