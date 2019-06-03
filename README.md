@@ -60,14 +60,12 @@ dotnet test
 
 Moved to a docker environment. To run this website on production without downloading the whole repo:
 ```
-wget -O - https://raw.githubusercontent.com/jscoobyced/sawan.io/master/scripts/docker/start.sh | sudo sh
-```
-
-You can do it in several steps:
-```
 wget https://raw.githubusercontent.com/jscoobyced/sawan.io/master/scripts/docker/start.sh -O start.sh
 chmod u+x start.sh
-sudo ./start.sh
+GoogleSecret=123456789 JwtSecret="Your encryption key to secure JWT" ./start.sh
 ```
+
+Note you might need to run as sudo if you haven't added your user to the docker group.
+
 
 IMPORTANT NOTES: have a look at the above script and make sure you're happy with what it does.
