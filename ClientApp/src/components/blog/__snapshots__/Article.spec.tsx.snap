@@ -150,4 +150,41 @@ exports[`Article component with article. 4`] = `
 </div>
 `;
 
+exports[`Article component with article. 5`] = `
+<div>
+  <article
+    className="blog-article"
+  >
+    <header>
+      <h1>
+        Title
+      </h1>
+      <span>
+        2019-01-01
+      </span>
+    </header>
+    <div
+      className="article-content"
+    >
+      <span
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "bla bla bla",
+          }
+        }
+      />
+      <div
+        className="article-links"
+      >
+        <NavLink
+          to="/blog/edit/1"
+        >
+          Edit
+        </NavLink>
+      </div>
+    </div>
+  </article>
+</div>
+`;
+
 exports[`Article component with empty article. 1`] = `""`;

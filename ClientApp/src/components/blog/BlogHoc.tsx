@@ -61,7 +61,7 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
         const edit = this.props.match.params.edit === "edit";
         const isAdmin = AuthenticationFactory.getAuthentication() && AuthenticationFactory.getAuthentication().isAdmin();
 
-        if (edit) {
+        if (isAdmin && edit) {
             return (
                 <EditableArticle
                     blogElement={this.state.blogElement}
