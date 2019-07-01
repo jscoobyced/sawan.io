@@ -34,18 +34,16 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
         };
     }
 
-    public componentDidMount() {
+    public componentDidUpdate(prevProps: BlogHocProps) {
         const articleId = +this.props.match.params.id;
-        if (articleId === 0) {
-            return;
+        const prevArticleId = +prevProps.match.params.id;
+        if (articleId !== prevArticleId) {
+            this.doUpdate(articleId);
         }
+    }
 
-        this.contentService.getBlogElement(articleId)
-            .then(blogElement => {
-                if (blogElement) {
-                    this.setState({ blogElement });
-                }
-            });
+    public componentDidMount() {
+        this.doUpdate(+this.props.match.params.id);
     }
 
     public updateBlog = (article: string, articleTitle: string, articleBlogDate: Date, id: number): Promise<boolean> => {
@@ -78,5 +76,18 @@ export class BlogHoc extends React.Component<BlogHocProps, BlogState> {
                     ellipsis={false}
                 />);
         }
+    }
+
+    private doUpdate(articleId: number) {
+        if (articleId === 0) {
+            return;
+        }
+
+        this.contentService.getBlogElement(articleId)
+            .then(blogElement => {
+                if (blogElement) {
+                    this.setState({ blogElement });
+                }
+            });
     }
 }
