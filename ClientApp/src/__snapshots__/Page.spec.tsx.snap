@@ -13,7 +13,7 @@ exports[`Page content is preserved 1`] = `
           "year": "",
         },
         "menuContent": Object {
-          "links": Array [],
+          "historyMenus": Array [],
           "title": "",
         },
         "navigationMenuContent": Object {

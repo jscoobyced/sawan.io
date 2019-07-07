@@ -7,7 +7,7 @@ test('MockContentService can get default content', () => {
     const contentService = new MockContentService();
     expect(contentService.getDefaultMainContent()).not.toBeNull();
     expect(contentService.getDefaultMainContent().menuContent).not.toBeNull();
-    expect(contentService.getDefaultMainContent().menuContent.links).toEqual([]);
+    expect(contentService.getDefaultMainContent().menuContent.historyMenus).toEqual([]);
 });
 
 test('MockContentService can get english content', async () => {
@@ -40,8 +40,9 @@ test('ContentService can save blog content', async () => {
     const blogElement = {
         articleTitle: 'Article content bla bla',
         article: 'Title bla bla',
-        id: '1',
-        blogDate: DateUtil.defaultDate()
+        id: 1,
+        blogDate: DateUtil.defaultDate(),
+        updateDate: DateUtil.defaultDate()
     };
     const data = await contentService.saveBlogElement(blogElement);
     expect(data).not.toBeNull();

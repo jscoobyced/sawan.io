@@ -29,7 +29,7 @@ exports[`Layout component with content is unchanged. 1`] = `
           "year": "",
         },
         "menuContent": Object {
-          "links": Array [],
+          "historyMenus": Array [],
           "title": "",
         },
         "navigationMenuContent": Object {

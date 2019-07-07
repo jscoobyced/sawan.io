@@ -21,7 +21,7 @@ test('BlogHistory component is unchanged.', () => {
 
     const menuContent: MenuContent = {
         title: 'History',
-        links: [
+        historyMenus: [
             {
                 name: 'April',
                 entries
@@ -65,7 +65,7 @@ test('BlogHistory component is unchanged.', () => {
 test('BlogHistory component is unchanged.', () => {
     const menuContent: MenuContent = {
         title: 'test',
-        links: []
+        historyMenus: []
     };
     const blogHistory = shallow(<BlogHistory menu={menuContent} />);
     expect(blogHistory).toMatchSnapshot();

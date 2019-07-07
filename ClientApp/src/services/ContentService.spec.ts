@@ -9,12 +9,13 @@ test('ContentService can get default content', () => {
     const contentService = new ContentService();
     expect(contentService.getDefaultMainContent()).not.toBeNull();
     expect(contentService.getDefaultMainContent().menuContent).not.toBeNull();
-    expect(contentService.getDefaultMainContent().menuContent.links).toEqual([]);
+    expect(contentService.getDefaultMainContent().menuContent.historyMenus).toEqual([]);
 });
 
 const mainContent: MainContent = {
     menuContent: {
-        links: []
+        title: "",
+        historyMenus: []
     },
     navigationMenuContent: {
         about: 'About',
@@ -37,7 +38,7 @@ const blogElements: BlogElement[] = [
     {
         articleTitle: 'Article content',
         article: 'Title',
-        id: '1',
+        id: 1,
         blogDate: DateUtil.defaultDate(),
         updateDate: DateUtil.defaultDate()
     }
