@@ -38,8 +38,6 @@ namespace sawan.Services
 
             entries.ForEach(entry =>
             {
-                if (entry.Created == null) return;
-
                 var menuName = entry.Created.ToString("MMMM yyyy", CultureInfo.InvariantCulture);
                 var current = historyMenus.FirstOrDefault(menu => menu.Name == menuName);
                 if (current == null)
