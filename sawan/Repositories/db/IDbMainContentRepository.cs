@@ -6,6 +6,8 @@ namespace sawan.Repositories
 
     public interface IDbMainContentRepository
     {
-        Task<MainContent> GetMainContentAsync(Language language);
+        Task<MainContent> GetBaseMainContent(Language language);
+        Task<List<Link>> GetHistory();
+
     }
 }

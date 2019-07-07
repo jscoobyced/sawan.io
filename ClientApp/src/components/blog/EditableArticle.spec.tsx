@@ -17,7 +17,7 @@ test('Render EditableArticle', () => {
 const blogElement: BlogElement = {
     article: 'test',
     articleTitle: 'blablabla',
-    id: '123',
+    id: 123,
     blogDate: DateUtil.defaultDate(false),
     updateDate: DateUtil.defaultDate(false)
 };

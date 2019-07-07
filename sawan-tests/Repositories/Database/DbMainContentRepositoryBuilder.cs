@@ -8,11 +8,18 @@ namespace sawan.tests
     {
 
         private MainContent mainContent;
+        private List<Link> history;
         private Language language = Language.English;
 
         public DbMainContentRepositoryBuilder WithMainContent(MainContent mainContent)
         {
             this.mainContent = mainContent;
+            return this;
+        }
+
+        public DbMainContentRepositoryBuilder WithHistory(List<Link> history)
+        {
+            this.history = history;
             return this;
         }
 
@@ -25,7 +32,8 @@ namespace sawan.tests
         public IDbMainContentRepository Build()
         {
             var repository = new Mock<IDbMainContentRepository>();
-            repository.Setup(x => x.GetMainContentAsync(this.language)).ReturnsAsync(this.mainContent);
+            repository.Setup(x => x.GetBaseMainContent(this.language)).ReturnsAsync(this.mainContent);
+            repository.Setup(x => x.GetHistory()).ReturnsAsync(this.history);
             return repository.Object;
         }
     }

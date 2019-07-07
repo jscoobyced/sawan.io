@@ -31,7 +31,6 @@ export class ContentService implements IContentService {
     }
 
     protected async doSaveBlogElement(blogElement: BlogElement): Promise<boolean> {
-        console.log(blogElement);
         return ApiUtils.postData('/api/Data/blog/post/', blogElement);
     }
 
@@ -43,7 +42,7 @@ export class ContentService implements IContentService {
         return {
             menuContent: {
                 title: '',
-                links: []
+                historyMenus: []
             },
             navigationMenuContent: {
                 about: '',

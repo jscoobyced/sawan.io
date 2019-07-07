@@ -21,14 +21,21 @@ namespace sawan.tests
                 },
                 MenuContent = new MenuContent()
                 {
-                    Links = new List<Link>()
+                    HistoryMenus = new List<HistoryMenu>()
                     {
-                        new Link()
+                        new HistoryMenu()
                         {
-                            Text = "Name",
-                            Target = "_blank",
-                            Title = "Name",
-                            Url = "/"
+                            Entries = new List<Link>()
+                            {
+                                new Link()
+                                {
+                                    Text = "Name",
+                                    Target = "_blank",
+                                    Title = "Name",
+                                    Url = "/"
+                                }
+                            },
+                            Name = "Menu 1"
                         }
                     },
                     Title = "History"

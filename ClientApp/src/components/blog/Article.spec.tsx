@@ -14,13 +14,14 @@ const blogElement: BlogElement = {
     articleTitle: 'Title',
     blogDate: DateUtil.defaultDate(),
     updateDate: DateUtil.defaultDate(),
-    id: '1'
+    id: 1
 };
 const data: ArticleProps[] = [
     { blogElement, ellipsis: true, backLink: true },
     { blogElement, ellipsis: false, backLink: true },
     { blogElement, ellipsis: true, backLink: false },
     { blogElement, ellipsis: false, backLink: false },
+    { blogElement, ellipsis: false, backLink: false, editLink: true },
 ];
 
 test('Article component with article.', async () => {
@@ -30,6 +31,7 @@ test('Article component with article.', async () => {
                 blogElement={articleProps.blogElement}
                 ellipsis={articleProps.ellipsis}
                 backLink={articleProps.backLink}
+                editLink={articleProps.editLink}
             />));
         expect(article).toMatchSnapshot();
     });
