@@ -6,6 +6,6 @@ namespace sawan
     {
         public string Title { get; set; }
 
-        public List<Link> Links { get; set; }
+        public List<HistoryMenu> HistoryMenus { get; set; }
     }
 }

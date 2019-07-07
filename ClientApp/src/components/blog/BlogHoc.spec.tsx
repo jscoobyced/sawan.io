@@ -3,8 +3,8 @@ import React from 'react';
 import { match } from 'react-router-dom';
 import { ContentServiceFactory } from '../../services/ContentServiceFactory';
 import { BlogElement } from '../../services/Models';
-import { DateUtil } from '../../utils/DateUtils';
 import { AuthenticationFactory } from '../../utils/AuthenticationFactory';
+import { DateUtil } from '../../utils/DateUtils';
 import { MockAuthentication } from '../auth/MockAuthentication';
 import { IdParam } from '../Models';
 import { BlogHoc } from './BlogHoc';
@@ -34,7 +34,7 @@ test('Blog is rendered writable for admin', () => {
 test('Blog is rendered not writable for non-admin', () => {
     const mockAuthentication = new MockAuthentication();
     mockAuthentication.init = jest.fn().mockImplementation();
-    mockAuthentication.isAdmin = jest.fn().mockImplementation(() => { return false; })
+    mockAuthentication.isAdmin = jest.fn().mockImplementation(() => false);
     AuthenticationFactory.registerAuthentication(mockAuthentication, true);
     const matchParam: match<IdParam> = createMatch('1', 'edit');
     const blog = shallow(<BlogHoc match={matchParam} />);

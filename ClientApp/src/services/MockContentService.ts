@@ -91,7 +91,7 @@ export class MockContentService extends ContentService {
         const content: MainContent = {
             menuContent: {
                 title: 'History',
-                links: [
+                historyMenus: [
                     {
                         name: 'April 2019',
                         entries

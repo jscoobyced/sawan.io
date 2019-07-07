@@ -46,7 +46,7 @@ export interface BlogPage {
 
 export interface MenuContent {
     title: string;
-    links: HistoryMenu[];
+    historyMenus: HistoryMenu[];
 }
 
 export interface FooterContent {

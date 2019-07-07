@@ -8,7 +8,7 @@ export interface BlogHistoryProps {
 
 const BlogHistory: React.FC<BlogHistoryProps> = (props: BlogHistoryProps) => {
 
-    const historyLength = props.menu.links.length;
+    const historyLength = props.menu.historyMenus.length;
     const [elementIndex, setStartElement] = React.useState(0);
     const [showHistoryDetails, setShowHistoryDetails] = React.useState(-1);
 
@@ -43,7 +43,7 @@ const BlogHistory: React.FC<BlogHistoryProps> = (props: BlogHistoryProps) => {
     if (historyLength > 0) {
         const startElement = elementIndex;
         const endElement = Math.min(startElement + 3, historyLength);
-        const contentList = props.menu.links.slice(startElement, endElement).map((link, key) => {
+        const contentList = props.menu.historyMenus.slice(startElement, endElement).map((link, key) => {
             const lkey = key + startElement;
             const contentDetails = link.entries.map((entry, ekey) => (
                 <li key={ekey}>
