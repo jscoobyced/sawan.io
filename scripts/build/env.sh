@@ -1,4 +1,7 @@
 export ClientApp="ClientApp"
+export AppRootPath="."
+export AppPath="sawan"
+export AppTestPath="sawan-tests"
 export TsCoverage="coverage/coverage-final.json"
 export CsCoverage="coverage.xml"
-export CodecovToken="acbdef123-3344-1122-adda-123456789"
+export CodecovToken="c5163063-1963-4050-adda-e8a44018ecbc"
