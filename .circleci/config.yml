@@ -28,11 +28,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: restore
-          command: yarn install --silent --no-progress
+          name: install
+          command: yarn --cwd ClientApp install --silent --no-progress
       - run:
           name: build
-          command: yarn build --silent --no-progress
+          command: yarn --cwd ClientApp build --silent --no-progress
   typescript_test:
     working_directory: ~/sawan
     docker:
@@ -40,8 +40,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install
+          command: yarn --cwd ClientApp install --silent --no-progress
+      - run:
           name: test
-          command: yarn --silent run test:coverage
+          command: yarn --cwd ClientApp --silent run test:coverage
 workflows:
   version: 2
   do_it_all:
