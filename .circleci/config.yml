@@ -48,6 +48,10 @@ workflows:
     jobs:
       - typescript_test
       - csharp_test
+      - typescript
       - publish:
           requires:
             - typescript
+          filters:
+            branches:
+              only: master
