@@ -16,7 +16,7 @@ yarn --cwd ./$ClientApp --silent run test:coverage
 
 dotnet restore
 pushd $AppTestPath
-dotnet test /p:AltCover=true
+dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
 popd
 ./.codecov -t $CodecovToken -f ./$AppTestPath/$CsCoverage
 
