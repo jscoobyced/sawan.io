@@ -1,7 +1,7 @@
 version: 2
 jobs:
-  build:
-    working_directory: /go/src/github.com/jscoobyced/sawan.io
+  csharp_test:
+    working_directory: /usr/local/sawan
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:latest
     steps:
@@ -12,14 +12,45 @@ jobs:
       - run:
           name: build
           command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
-#  test:
-#    docker:
-#      - image: circleci/<language>:<version TAG>
-#    steps:
-#      - checkout
-#      - run: <command>
+  publish:
+    working_directory: /usr/local/sawan/sawan
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+    steps:
+      - checkout
+      - run:
+          name: publish
+          command: dotnet publish --output=/usr/local/sawan/publish
+  typescript:
+    working_directory: /usr/local/sawan/ClientApp
+    docker:
+      - image: circleci/node:11.15.0
+    steps:
+      - checkout
+      - run:
+          name: restore
+          command: yarn install --silent --no-progress
+      - run:
+          name: build
+          command: yarn build --silent --no-progress
+  typescript_test:
+    working_directory: /usr/local/sawan/ClientApp
+    docker:
+      - image: circleci/node:11.15.0
+    steps:
+      - checkout
+      - run:
+          name: test
+          command: yarn --silent run test:coverage
 workflows:
   version: 2
-  build_and_test:
+  do_it_all:
     jobs:
-      - build
+      - typescript_test
+      - csharp_test
+      - publish:
+          requires:
+            - typescript
+          filters:
+            branches:
+              only: master
