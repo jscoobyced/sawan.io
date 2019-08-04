@@ -51,6 +51,3 @@ workflows:
       - publish:
           requires:
             - typescript
-          filters:
-            branches:
-              only: master
