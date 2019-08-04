@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    working_directory: /go/src/github.com/jscoobyced/sawan.io
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+    steps:
+      - checkout
+      - run:
+          name: restore
+          command: dotnet restore
+      - run:
+          name: build
+          command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
+#  test:
+#    docker:
+#      - image: circleci/<language>:<version TAG>
+#    steps:
+#      - checkout
+#      - run: <command>
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
