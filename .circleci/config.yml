@@ -1,0 +1,76 @@
+version: 2
+jobs:
+  csharp_test:
+    working_directory: ~/sawan
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+    steps:
+      - checkout
+      - run:
+          name: restore
+          command: dotnet restore
+      - run:
+          name: build
+          command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
+      - run:
+          name: codecov_install
+          command: |
+            wget -qO- https://codecov.io/bash > .codecov
+            chmod u+x .codecov
+      - run:
+          name: codecov
+          command: ./.codecov -f ./sawan-tests/coverage.xml
+  publish:
+    working_directory: ~/sawan
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+    steps:
+      - checkout
+      - run:
+          name: publish
+          command: dotnet publish --output=~/sawan/publish
+  typescript:
+    working_directory: ~/sawan
+    docker:
+      - image: circleci/node:11.15.0
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: yarn --cwd ClientApp install --silent --no-progress
+      - run:
+          name: build
+          command: yarn --cwd ClientApp build --silent --no-progress
+  typescript_test:
+    working_directory: ~/sawan
+    docker:
+      - image: circleci/node:11.15.0
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: yarn --cwd ClientApp install --silent --no-progress
+      - run:
+          name: test
+          command: yarn --cwd ClientApp --silent run test:coverage
+      - run:
+          name: codecov_install
+          command: |
+            wget -qO- https://codecov.io/bash > .codecov
+            chmod u+x .codecov
+      - run:
+          name: codecov
+          command: ./.codecov -f ./ClientApp/coverage/coverage-final.json
+workflows:
+  version: 2
+  do_it_all:
+    jobs:
+      - typescript_test
+      - csharp_test
+      - typescript
+      - publish:
+          requires:
+            - typescript
+          filters:
+            branches:
+              only: master
