@@ -12,6 +12,14 @@ jobs:
       - run:
           name: build
           command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
+      - run:
+          name: codecov_install
+          command: |
+            wget -qO- https://codecov.io/bash > .codecov
+            chmod u+x .codecov
+      - run:
+          name: codecov
+          command: ./.codecov -t $CodecovKey -f ./coverage.xml
   publish:
     working_directory: ~/sawan
     docker:
@@ -45,6 +53,14 @@ jobs:
       - run:
           name: test
           command: yarn --cwd ClientApp --silent run test:coverage
+      - run:
+          name: codecov_install
+          command: |
+            wget -qO- https://codecov.io/bash > .codecov
+            chmod u+x .codecov
+      - run:
+          name: codecov
+          command: ./.codecov -t $CodecovKey -f ./ClientApp/coverage/coverage-final.json
 workflows:
   version: 2
   do_it_all:
