@@ -19,7 +19,7 @@ jobs:
             chmod u+x .codecov
       - run:
           name: codecov
-          command: ./.codecov -t $CodecovKey -f ./coverage.xml
+          command: ./.codecov -t $CodecovKey -f ./sawan-tests/coverage.xml > /dev/null
   publish:
     working_directory: ~/sawan
     docker:
@@ -60,7 +60,7 @@ jobs:
             chmod u+x .codecov
       - run:
           name: codecov
-          command: ./.codecov -t $CodecovKey -f ./ClientApp/coverage/coverage-final.json
+          command: ./.codecov -t $CodecovKey -f ./ClientApp/coverage/coverage-final.json > /dev/null
 workflows:
   version: 2
   do_it_all:
