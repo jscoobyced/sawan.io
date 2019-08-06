@@ -12,7 +12,7 @@
     "build": "webpack --mode production",
     "tslint": "tslint src/**/*.{ts,tsx} -p tsconfig.json",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage --runInBand"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",
