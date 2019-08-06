@@ -1,4 +1,4 @@
-AppVeyor build: [![Build status](https://ci.appveyor.com/api/projects/status/l1c7qjueue6rxulx?svg=true)](https://ci.appveyor.com/project/jscoobyced/sawan-io)  
+CircleCI build: [![CircleCI](https://circleci.com/gh/jscoobyced/sawan.io.svg?style=svg)](https://circleci.com/gh/jscoobyced/sawan.io)  
 Codecov C# code coverage: [![codecov](https://codecov.io/gh/jscoobyced/sawan.io/branch/master/graph/badge.svg)](https://codecov.io/gh/jscoobyced/sawan.io)  
 SonarCloud statuses: [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=sawan.io&metric=alert_status&v=11)](https://sonarcloud.io/dashboard?id=sawan.io)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sawan.io&metric=bugs&v=11)](https://sonarcloud.io/dashboard?id=sawan.io)
@@ -65,7 +65,10 @@ chmod u+x start.sh
 GoogleSecret=123456789 JwtSecret="Your encryption key to secure JWT" ./start.sh
 ```
 
-Note you might need to run as sudo if you haven't added your user to the docker group.
-
+Note you might need to run as sudo if you haven't added your user to the docker group.  
 
 IMPORTANT NOTES: have a look at the above script and make sure you're happy with what it does.
+
+## Update - 2019-08-06
+
+Moved CI to [CircleCI](https://circleci.com). It's faster, using docker. I also needed to change the C# code coverage to [AltCover](https://github.com/SteveGilham/altcover) because it supports linux. I will probably test [Coverlet](https://github.com/tonerdo/coverlet) in some near future.
