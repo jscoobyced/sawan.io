@@ -10,6 +10,8 @@ apt-get update -qq
 apt-get install -qq openjdk-8-jre nodejs gcc g++ make yarn
 dotnet tool install --global dotnet-sonarscanner --version 4.6.2
 export PATH="${PATH}:/root/.dotnet/tools"
+yarn --cwd ClientApp install --silent --no-progress
+export NODE_PATH=ClientApp/node_modules
 
 echo Initializing tests
 
