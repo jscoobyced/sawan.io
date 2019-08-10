@@ -68,7 +68,7 @@ jobs:
           name: codecov
           command: ./.codecov -f ./ClientApp/coverage/coverage-final.json
   release:
-    working_directory: ~/
+    working_directory: ~/sawan
     docker:
       - image: ubuntu:latest
     steps:
