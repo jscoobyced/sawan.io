@@ -3,7 +3,7 @@
 echo Installing dependencies
 
 apt-get update
-apt-get install -y openjdk-11-jre
+apt-get install -y openjdk-8-jre
 dotnet tool install --global dotnet-sonarscanner --version 4.6.2
 export PATH="${PATH}:/root/.dotnet/tools"
 
@@ -14,7 +14,7 @@ dotnet sonarscanner begin \
     /v:${VERSION} \
     /o:${ORG} \
     /d:sonar.host.url=${SONARURL} \
-    /d:sonar.login=${SonarKey} \
+    /d:sonar.login=${SonarToken} \
     /d:sonar.cs.opencover.reportsPaths=${CSCOVERAGE} \
     /d:sonar.typescript.lcov.reportPaths=${LCOVINFO} \
     /d:sonar.testExecutionReportPaths=./${CLIENTPATH}/${TSCOVERAGE} \
@@ -29,7 +29,7 @@ dotnet sonarscanner begin \
 
 dotnet build
 
-dotnet sonarscanner end /d:sonar.login=${SonarKey}
+dotnet sonarscanner end /d:sonar.login=${SonarToken}
 
 #      - typescript_test
 #      - csharp_test
