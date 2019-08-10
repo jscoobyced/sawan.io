@@ -11,7 +11,7 @@ jobs:
           command: dotnet restore
       - run:
           name: build
-          command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter='xunit|sawan.Views" /p:AltCoverFileFilter='Program.cs|Startup.cs"
+          command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter='Program.cs|Startup.cs"
       - run:
           name: codecov_install
           command: |
