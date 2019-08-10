@@ -70,7 +70,7 @@ jobs:
   release:
     working_directory: ~/
     docker:
-      - image: bash:latest
+      - image: ubuntu:latest
     steps:
       - checkout
       - run:
