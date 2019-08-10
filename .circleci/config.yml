@@ -89,7 +89,7 @@ jobs:
             echo "export COVEXCLUSIONS='**/*.js,**/tests/*'" >> $BASH_ENV
             echo "export BRANCH='${CIRCLE_BRANCH}'" >> $BASH_ENV
             echo "export PRNUMBER=$(echo ${CIRCLE_PULL_REQUEST} | awk -F '/' '{print $NF}')" >> $BASH_ENV
-            echo "export REPONAME='${CIRCLE_PROJECT_REPONAME}'" >> $BASH_ENV
+            echo "export REPONAME='${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}'" >> $BASH_ENV
       - attach_workspace:
           at: ./workspace
       - run: cp -R ./workspace/ClientApp/* ./ClientApp/
@@ -126,7 +126,21 @@ workflows:
     jobs:
       - csharp_test
       - typescript_test
+      - typescript
+      - publish
       - codeanalysis:
           requires:
             - csharp_test
             - typescript_test
+      - publish:
+          requires:
+            - typescript
+          filters:
+            branches:
+              only: master
+      - release:
+          requires:
+            - publish
+          filters:
+            branches:
+              only: master
