@@ -21,14 +21,20 @@ jobs:
           name: codecov
           command: ./.codecov -f ./sawan-tests/coverage.xml
   publish:
-    working_directory: ~/sawan
+    working_directory: ~/
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:latest
     steps:
       - checkout
       - run:
+          name: install
+          command: yarn --cwd ClientApp install --silent --no-progress
+      - run:
+          name: build
+          command: yarn --cwd ClientApp build --silent --no-progress
+      - run:
           name: publish
-          command: dotnet publish --output=~/sawan/publish
+          command: pushd sawan && dotnet publish --output=~/sawan/publish && popd
   typescript:
     working_directory: ~/sawan
     docker:
@@ -61,6 +67,16 @@ jobs:
       - run:
           name: codecov
           command: ./.codecov -f ./ClientApp/coverage/coverage-final.json
+  release:
+    working_directory: ~/
+    docker:
+      - image: bash:latest
+    steps:
+      - checkout
+      - run:
+          name: git-release
+          command: |
+            /bin/bash ./scripts/docker/git-release.sh "This is a release."
 workflows:
   version: 2
   do_it_all:
@@ -74,3 +90,4 @@ workflows:
           filters:
             branches:
               only: master
+      - release
