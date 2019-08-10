@@ -11,7 +11,7 @@ jobs:
           command: dotnet restore
       - run:
           name: build
-          command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
+          command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter='xunit|sawan.Views" /p:AltCoverFileFilter='Program.cs|Startup.cs"
       - run:
           name: codecov_install
           command: |
@@ -35,6 +35,33 @@ jobs:
       - run:
           name: publish
           command: dotnet publish --output=~/sawan/publish
+  codeanalysis:
+    working_directory: ~/sawan
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+    steps:
+      - checkout
+      - run: 
+          name: "Environment variables"
+          command: |
+            echo "export PROJECTKEY='sonar.io'" >> $BASH_ENV
+            echo "export VERSION='1.1.${CIRCLE_BUILD_NUM}'" >> $BASH_ENV
+            echo "export ORG='jscoobyced-github'" >> $BASH_ENV
+            echo "export SONARURL='https://sonarcloud.io'" >> $BASH_ENV
+            echo "export CSCOVERAGE='coverage.xml'" >> $BASH_ENV
+            echo "export LCOVINFO='coverage\lcov.info'" >> $BASH_ENV
+            echo "export CLIENTPATH='CLientApp'" >> $BASH_ENV
+            echo "export TSCOVERAGE='test-report.xml'" >> $BASH_ENV
+            echo "export TSCONFIG='tsconfig.json'" >> $BASH_ENV
+            echo "export EXCLUSIONS='coverage/**/*,**/*.xml,**/*.spec.t*,**/Program.cs,**/Startup.cs,**/node_modules/**/*,**/wwwroot/dist/**/*,*.cshtml'" >> $BASH_ENV
+            echo "export COVEXCLUSIONS='**/*.js,**/tests/*'" >> $BASH_ENV
+            echo "export BRANCH='${CIRCLE_BRANCH}'" >> $BASH_ENV
+            echo "export PRNUMBER=$(echo ${CIRCLE_PULL_REQUEST} | awk -F '/' '{print $NF}')" >> $BASH_ENV
+            echo "export REPONAME='${CIRCLE_PROJECT_REPONAME}'" >> $BASH_ENV
+      - run:
+          name: sonar
+          command:  |
+            ./scripts/docker/sonar.sh
   typescript:
     working_directory: ~/sawan
     docker:
@@ -81,18 +108,4 @@ workflows:
   version: 2
   do_it_all:
     jobs:
-      - typescript_test
-      - csharp_test
-      - typescript
-      - publish:
-          requires:
-            - typescript
-          filters:
-            branches:
-              only: master
-      - release:
-          requires:
-            - publish
-          filters:
-            branches:
-              only: master
+      - codeanalysis
