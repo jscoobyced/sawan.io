@@ -21,7 +21,7 @@ jobs:
           name: codecov
           command: ./.codecov -f ./sawan-tests/coverage.xml
   publish:
-    working_directory: ~/
+    working_directory: ~/sawan
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:latest
     steps:
@@ -34,7 +34,7 @@ jobs:
           command: yarn --cwd ClientApp build --silent --no-progress
       - run:
           name: publish
-          command: pushd sawan && dotnet publish --output=~/sawan/publish && popd
+          command: dotnet publish --output=~/sawan/publish
   typescript:
     working_directory: ~/sawan
     docker:
@@ -81,13 +81,4 @@ workflows:
   version: 2
   do_it_all:
     jobs:
-      - typescript_test
-      - csharp_test
-      - typescript
-      - publish:
-          requires:
-            - typescript
-          filters:
-            branches:
-              only: master
       - release
