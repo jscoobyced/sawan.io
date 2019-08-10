@@ -6,7 +6,8 @@ apt-get update -qq
 curl -sL https://deb.nodesource.com/setup_11.x | bash -
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-apt-get install -qq --no-install-recommends openjdk-8-jre nodjs yarn
+apt-get update -qq
+apt-get install -qq openjdk-8-jre nodejs gcc g++ make yarn
 dotnet tool install --global dotnet-sonarscanner --version 4.6.2
 export PATH="${PATH}:/root/.dotnet/tools"
 
