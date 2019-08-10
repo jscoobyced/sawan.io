@@ -1,12 +1,12 @@
 #!/bin/bash
 
-TOKEN="ABCDEF123456"
-VERSION=${CIRCLE_BUILD_NUM}
+TOKEN="${GitHubReleaseToken}"
+VERSION=1.1.${CIRCLE_BUILD_NUM}
 REPONAME=${CIRCLE_PROJECT_REPONAME}
 USER=${CIRCLE_PROJECT_USERNAME}
 BRANCH=${CIRCLE_BRANCH}
 DESCRIPTION=$1
-REPOURL="https://github.com/${USER}/${REPONAME}/"
+REPOURL="https://github.com/${USER}/${REPONAME}"
 
 generate_post_data()
 {
@@ -22,6 +22,4 @@ generate_post_data()
 EOF
 }
 
-echo $(generate_post_data)
-echo "Create release ${VERSION} for branch: ${BRANCH}"
-echo ${REPOURL}/releases?access_token=${TOKEN}
+curl --data $(generate_post_data) ${REPOURL}/releases?access_token=${TOKEN}

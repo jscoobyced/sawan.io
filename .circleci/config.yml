@@ -81,4 +81,18 @@ workflows:
   version: 2
   do_it_all:
     jobs:
-      - release
+      - typescript_test
+      - csharp_test
+      - typescript
+      - publish:
+          requires:
+            - typescript
+          filters:
+            branches:
+              only: master
+      - release:
+          requires:
+            - publish
+          filters:
+            branches:
+              only: master
