@@ -5,10 +5,11 @@ echo Installing dependencies
 apt-get update
 apt-get install -y openjdk-11-jre
 dotnet tool install --global dotnet-sonarscanner --version 4.6.2
+export PATH="${PATH}:/root/.dotnet/tools"
 
 echo Initializing tests
 
-dotnet sonarscanner begin
+dotnet sonarscanner begin \
     /k:${PROJECTKEY} \
     /v:${VERSION} \
     /o:${ORG} \
