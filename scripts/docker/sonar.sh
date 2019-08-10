@@ -9,6 +9,20 @@ export PATH="${PATH}:/root/.dotnet/tools"
 
 echo Initializing tests
 
+echo ${PROJECTKEY}
+echo ${VERSION}
+echo ${ORG}
+echo ${SONARURL}
+echo ${CSCOVERAGE}
+echo ${LCOVINFO}
+echo ./${CLIENTPATH}/${TSCOVERAGE}
+echo ${TSCONFIG}
+echo ${EXCLUSIONS}
+echo ${COVEXCLUSIONS}
+echo ${BRANCH}
+echo ${PRNUMBER}
+echo ${REPONAME}
+
 dotnet sonarscanner begin \
     /k:${PROJECTKEY} \
     /v:${VERSION} \
@@ -17,7 +31,7 @@ dotnet sonarscanner begin \
     /d:sonar.login=${SonarToken} \
     /d:sonar.cs.opencover.reportsPaths=${CSCOVERAGE} \
     /d:sonar.typescript.lcov.reportPaths=${LCOVINFO} \
-    /d:sonar.testExecutionReportPaths=./${CLIENTPATH}/${TSCOVERAGE} \
+    /d:sonar.testExecutionReportPaths="./${CLIENTPATH}/${TSCOVERAGE}" \
     /d:sonar.typescript.tsconfigPath=${TSCONFIG} \
     /d:sonar.exclusions="${EXCLUSIONS}" \
     /d:sonar.coverage.exclusions="${COVEXCLUSIONS}" \
