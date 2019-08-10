@@ -9,20 +9,6 @@ export PATH="${PATH}:/root/.dotnet/tools"
 
 echo Initializing tests
 
-echo ${PROJECTKEY}
-echo ${VERSION}
-echo ${ORG}
-echo ${SONARURL}
-echo ${CSCOVERAGE}
-echo ${LCOVINFO}
-echo ./${CLIENTPATH}/${TSCOVERAGE}
-echo ${TSCONFIG}
-echo ${EXCLUSIONS}
-echo ${COVEXCLUSIONS}
-echo ${BRANCH}
-echo ${PRNUMBER}
-echo ${REPONAME}
-
 dotnet sonarscanner begin \
     /k:${PROJECTKEY} \
     /v:${VERSION} \
