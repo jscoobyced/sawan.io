@@ -20,6 +20,12 @@ jobs:
       - run:
           name: codecov
           command: ./.codecov -f ./sawan-tests/coverage.xml
+      - run: mkdir -p workspace/coverage
+      - run: cp ./sawan-tests/coverage.xml ./workspace/coverage/
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - coverage
   publish:
     working_directory: ~/sawan
     docker:
@@ -49,7 +55,7 @@ jobs:
             echo "export ORG='jscoobyced-github'" >> $BASH_ENV
             echo "export SONARURL='https://sonarcloud.io'" >> $BASH_ENV
             echo "export CSCOVERAGE='coverage.xml'" >> $BASH_ENV
-            echo "export LCOVINFO='coverage\lcov.info'" >> $BASH_ENV
+            echo "export LCOVINFO='lcov.info'" >> $BASH_ENV
             echo "export CLIENTPATH='ClientApp'" >> $BASH_ENV
             echo "export TSCOVERAGE='test-report.xml'" >> $BASH_ENV
             echo "export TSCONFIG='tsconfig.json'" >> $BASH_ENV
@@ -58,10 +64,17 @@ jobs:
             echo "export BRANCH='${CIRCLE_BRANCH}'" >> $BASH_ENV
             echo "export PRNUMBER=$(echo ${CIRCLE_PULL_REQUEST} | awk -F '/' '{print $NF}')" >> $BASH_ENV
             echo "export REPONAME='${CIRCLE_PROJECT_REPONAME}'" >> $BASH_ENV
+      - run: mkdir ./ClientApp/coverage
+      - run: cp ./workspace/coverage/lcov.info ClientApp/coverage/
+      - run: cp ./workspace/coverage/test-report.xml ClientApp/
+      - run: cp ./workspace/coverage/coverage.xml .
+      - run: ls -R
       - run:
           name: sonar
           command:  |
             ./scripts/docker/sonar.sh
+      - attach_workspace:
+          at: ./workspace
   typescript:
     working_directory: ~/sawan
     docker:
@@ -94,6 +107,13 @@ jobs:
       - run:
           name: codecov
           command: ./.codecov -f ./ClientApp/coverage/coverage-final.json
+      - run: mkdir -p workspace/coverage
+      - run: cp ./ClientApp/test-report.xml ./workspace/coverage/
+      - run: cp ./ClientApp/coverage/lcov.info ./workspace/coverage/
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - coverage
   release:
     working_directory: ~/sawan
     docker:
@@ -108,4 +128,9 @@ workflows:
   version: 2
   do_it_all:
     jobs:
-      - codeanalysis
+      - csharp_test
+      - typescript_test
+      - codeanalysis:
+          requires:
+            - csharp_test
+            - typescript_test
