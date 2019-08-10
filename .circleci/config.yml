@@ -76,7 +76,7 @@ jobs:
       - run:
           name: git-release
           command: |
-            /bin/bash ./scripts/docker/git-release.sh "This is a release."
+            ./scripts/docker/git-release.sh "This is a release."
 workflows:
   version: 2
   do_it_all:
