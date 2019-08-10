@@ -90,14 +90,14 @@ jobs:
             echo "export BRANCH='${CIRCLE_BRANCH}'" >> $BASH_ENV
             echo "export PRNUMBER=$(echo ${CIRCLE_PULL_REQUEST} | awk -F '/' '{print $NF}')" >> $BASH_ENV
             echo "export REPONAME='${CIRCLE_PROJECT_REPONAME}'" >> $BASH_ENV
+      - attach_workspace:
+          at: ./workspace
       - run: cp -R ./workspace/ClientApp/* ./ClientApp/
       - run: cp -R ./workspace/sawan-tests/* ./sawan-tests/
       - run:
           name: sonar
           command:  |
             ./scripts/docker/sonar.sh
-      - attach_workspace:
-          at: ./workspace
   typescript:
     working_directory: ~/sawan
     docker:
