@@ -50,7 +50,7 @@ jobs:
             echo "export SONARURL='https://sonarcloud.io'" >> $BASH_ENV
             echo "export CSCOVERAGE='coverage.xml'" >> $BASH_ENV
             echo "export LCOVINFO='coverage\lcov.info'" >> $BASH_ENV
-            echo "export CLIENTPATH='CLientApp'" >> $BASH_ENV
+            echo "export CLIENTPATH='ClientApp'" >> $BASH_ENV
             echo "export TSCOVERAGE='test-report.xml'" >> $BASH_ENV
             echo "export TSCONFIG='tsconfig.json'" >> $BASH_ENV
             echo "export EXCLUSIONS='coverage/**/*,**/*.xml,**/*.spec.t*,**/Program.cs,**/Startup.cs,**/node_modules/**/*,**/wwwroot/dist/**/*,*.cshtml'" >> $BASH_ENV
