@@ -13,6 +13,8 @@ export PATH="${PATH}:/root/.dotnet/tools"
 yarn --cwd ClientApp install --silent --no-progress
 export NODE_PATH=ClientApp/node_modules
 
+ls -R
+
 echo Initializing tests
 
 dotnet sonarscanner begin \
