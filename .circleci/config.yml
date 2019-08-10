@@ -21,6 +21,7 @@ jobs:
           name: codecov
           command: ./.codecov -f ./sawan-tests/coverage.xml
       - run: mkdir -p workspace
+      - run: cp -R sawan-tests workspace/
       - persist_to_workspace:
           root: workspace
           paths:
@@ -46,6 +47,7 @@ jobs:
           name: codecov
           command: ./.codecov -f ./ClientApp/coverage/coverage-final.json
       - run: mkdir -p workspace
+      - run: cp -R ClientApp ./workspace/
       - persist_to_workspace:
           root: workspace
           paths:
