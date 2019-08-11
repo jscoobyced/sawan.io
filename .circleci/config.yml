@@ -3,7 +3,7 @@ jobs:
   csharp_test:
     working_directory: ~/sawan
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+      - image: jscdroiddev/netcore-node-dev:latest
     steps:
       - checkout
       - run:
