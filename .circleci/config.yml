@@ -52,21 +52,6 @@ jobs:
           root: workspace
           paths:
             - ClientApp
-  publish:
-    working_directory: ~/sawan
-    docker:
-      - image: jscdroiddev/netcore-node-dev:latest
-    steps:
-      - checkout
-      - run:
-          name: install
-          command: yarn --cwd ClientApp install --silent --no-progress
-      - run:
-          name: build
-          command: yarn --cwd ClientApp build --silent --no-progress
-      - run:
-          name: publish
-          command: dotnet publish --output=~/sawan/publish
   codeanalysis:
     working_directory: ~/sawan
     docker:
@@ -113,7 +98,7 @@ jobs:
   release:
     working_directory: ~/sawan
     docker:
-      - image: ubuntu:latest
+      - image: jscdroiddev/netcore-node-dev:latest
     steps:
       - checkout
       - run:
@@ -127,20 +112,14 @@ workflows:
       - csharp_test
       - typescript_test
       - typescript
-      - publish
       - codeanalysis:
           requires:
             - csharp_test
             - typescript_test
-      - publish:
-          requires:
-            - typescript
-          filters:
-            branches:
-              only: master
       - release:
           requires:
-            - publish
+            - codeanalysis
+            - typescript
           filters:
             branches:
               only: master
