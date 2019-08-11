@@ -13,13 +13,8 @@ jobs:
           name: build
           command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
       - run:
-          name: codecov_install
-          command: |
-            wget -qO- https://codecov.io/bash > .codecov
-            chmod u+x .codecov
-      - run:
           name: codecov
-          command: ./.codecov -f ./sawan-tests/coverage.xml
+          command: codecov -f ./sawan-tests/coverage.xml
       - run: mkdir -p workspace
       - run: cp -R sawan-tests workspace/
       - persist_to_workspace:
@@ -39,13 +34,8 @@ jobs:
           name: test
           command: yarn --cwd ClientApp --silent run test:coverage
       - run:
-          name: codecov_install
-          command: |
-            wget -qO- https://codecov.io/bash > .codecov
-            chmod u+x .codecov
-      - run:
           name: codecov
-          command: ./.codecov -f ./ClientApp/coverage/coverage-final.json
+          command: codecov -f ./ClientApp/coverage/coverage-final.json
       - run: mkdir -p workspace
       - run: cp -R ClientApp ./workspace/
       - persist_to_workspace:
