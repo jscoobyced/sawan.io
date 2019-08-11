@@ -2,10 +2,6 @@
 
 echo Installing dependencies
 
-apt-get update -qq
-apt-get install -qq openjdk-8-jre
-dotnet tool install --global dotnet-sonarscanner --version 4.6.2
-export PATH="${PATH}:/root/.dotnet/tools"
 yarn --cwd ClientApp install --silent --no-progress
 export NODE_PATH=ClientApp/node_modules
 
