@@ -20,27 +20,12 @@ jobs:
       - run:
           name: codecov
           command: ./.codecov -f ./sawan-tests/coverage.xml
-  publish:
-    working_directory: ~/sawan
-    docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:latest
-    steps:
-      - checkout
-      - run:
-          name: publish
-          command: dotnet publish --output=~/sawan/publish
-  typescript:
-    working_directory: ~/sawan
-    docker:
-      - image: circleci/node:11.15.0
-    steps:
-      - checkout
-      - run:
-          name: install
-          command: yarn --cwd ClientApp install --silent --no-progress
-      - run:
-          name: build
-          command: yarn --cwd ClientApp build --silent --no-progress
+      - run: mkdir -p workspace
+      - run: cp -R sawan-tests workspace/
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - sawan-tests
   typescript_test:
     working_directory: ~/sawan
     docker:
@@ -61,16 +46,101 @@ jobs:
       - run:
           name: codecov
           command: ./.codecov -f ./ClientApp/coverage/coverage-final.json
+      - run: mkdir -p workspace
+      - run: cp -R ClientApp ./workspace/
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - ClientApp
+  publish:
+    working_directory: ~/sawan
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: yarn --cwd ClientApp install --silent --no-progress
+      - run:
+          name: build
+          command: yarn --cwd ClientApp build --silent --no-progress
+      - run:
+          name: publish
+          command: dotnet publish --output=~/sawan/publish
+  codeanalysis:
+    working_directory: ~/sawan
+    docker:
+      - image: mcr.microsoft.com/dotnet/core/sdk:latest
+    steps:
+      - checkout
+      - run: 
+          name: "Environment variables"
+          command: |
+            echo "export PROJECTKEY='sawan.io'" >> $BASH_ENV
+            echo "export VERSION='1.1.${CIRCLE_BUILD_NUM}'" >> $BASH_ENV
+            echo "export ORG='jscoobyced-github'" >> $BASH_ENV
+            echo "export SONARURL='https://sonarcloud.io'" >> $BASH_ENV
+            echo "export CSCOVERAGE='coverage.xml'" >> $BASH_ENV
+            echo "export LCOVINFO='coverage/lcov.info'" >> $BASH_ENV
+            echo "export CLIENTPATH='ClientApp'" >> $BASH_ENV
+            echo "export TSCOVERAGE='test-report.xml'" >> $BASH_ENV
+            echo "export TSCONFIG='tsconfig.json'" >> $BASH_ENV
+            echo "export EXCLUSIONS='coverage/**/*,**/*.xml,**/*.spec.t*,**/Program.cs,**/Startup.cs,**/node_modules/**/*,**/wwwroot/dist/**/*,*.cshtml'" >> $BASH_ENV
+            echo "export COVEXCLUSIONS='**/*.js,**/tests/*'" >> $BASH_ENV
+            echo "export BRANCH='${CIRCLE_BRANCH}'" >> $BASH_ENV
+            echo "export PRNUMBER=$(echo ${CIRCLE_PULL_REQUEST} | awk -F '/' '{print $NF}')" >> $BASH_ENV
+            echo "export REPONAME='${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}'" >> $BASH_ENV
+      - attach_workspace:
+          at: ./workspace
+      - run: cp -R ./workspace/ClientApp/* ./ClientApp/
+      - run: cp -R ./workspace/sawan-tests/* ./sawan-tests/
+      - run:
+          name: sonar
+          command:  |
+            ./scripts/docker/sonar.sh
+  typescript:
+    working_directory: ~/sawan
+    docker:
+      - image: circleci/node:11.15.0
+    steps:
+      - checkout
+      - run:
+          name: install
+          command: yarn --cwd ClientApp install --silent --no-progress
+      - run:
+          name: build
+          command: yarn --cwd ClientApp build --silent --no-progress
+  release:
+    working_directory: ~/sawan
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - checkout
+      - run:
+          name: git-release
+          command: |
+            ./scripts/docker/git-release.sh "This is a release."
 workflows:
   version: 2
   do_it_all:
     jobs:
-      - typescript_test
       - csharp_test
+      - typescript_test
       - typescript
+      - publish
+      - codeanalysis:
+          requires:
+            - csharp_test
+            - typescript_test
       - publish:
           requires:
             - typescript
+          filters:
+            branches:
+              only: master
+      - release:
+          requires:
+            - publish
           filters:
             branches:
               only: master
