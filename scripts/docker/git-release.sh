@@ -24,4 +24,4 @@ EOF
 
 echo $(generate_post_data)
 
-curl --data "$(generate_post_data)" ${REPOURL}/releases?access_token=${TOKEN}
+curl --silent --data "$(generate_post_data)" ${REPOURL}/releases?access_token=${TOKEN} -o release.json
