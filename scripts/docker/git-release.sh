@@ -22,4 +22,4 @@ generate_post_data()
 EOF
 }
 
-curl --data $(generate_post_data) ${REPOURL}/releases?access_token=${TOKEN}
+curl --data "$(generate_post_data)" ${REPOURL}/releases?access_token=${TOKEN}
