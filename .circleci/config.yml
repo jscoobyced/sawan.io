@@ -104,22 +104,9 @@ jobs:
       - run:
           name: git-release
           command: |
-            ./scripts/docker/git-release.sh "This is a release."
+            ./scripts/docker/git-release.sh "This is a test release."
 workflows:
   version: 2
   do_it_all:
     jobs:
-      - csharp_test
-      - typescript_test
-      - typescript
-      - codeanalysis:
-          requires:
-            - csharp_test
-            - typescript_test
-      - release:
-          requires:
-            - codeanalysis
-            - typescript
-          filters:
-            branches:
-              only: master
+      - release

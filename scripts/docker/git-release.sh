@@ -6,7 +6,7 @@ REPONAME=${CIRCLE_PROJECT_REPONAME}
 USER=${CIRCLE_PROJECT_USERNAME}
 BRANCH=${CIRCLE_BRANCH}
 DESCRIPTION=$1
-REPOURL="https://github.com/${USER}/${REPONAME}"
+REPOURL="https://api.github.com/repos/${USER}/${REPONAME}"
 
 generate_post_data()
 {
@@ -21,5 +21,7 @@ generate_post_data()
 }
 EOF
 }
+
+echo $(generate_post_data)
 
 curl --data "$(generate_post_data)" ${REPOURL}/releases?access_token=${TOKEN}
