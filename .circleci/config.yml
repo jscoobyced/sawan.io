@@ -104,9 +104,22 @@ jobs:
       - run:
           name: git-release
           command: |
-            ./scripts/docker/git-release.sh "This is a test release."
+            ./scripts/docker/git-release.sh "Latest release of https://sawan.io."
 workflows:
   version: 2
   do_it_all:
     jobs:
-      - release
+      - csharp_test
+      - typescript_test
+      - typescript
+      - codeanalysis:
+          requires:
+            - csharp_test
+            - typescript_test
+      - release:
+          requires:
+            - codeanalysis
+            - typescript
+          filters:
+            branches:
+              only: master
