@@ -24,7 +24,7 @@ jobs:
   typescript_test:
     working_directory: ~/sawan
     docker:
-      - image: circleci/node:11.15.0
+      - image: jscdroiddev/netcore-node-dev:latest
     steps:
       - checkout
       - run:
