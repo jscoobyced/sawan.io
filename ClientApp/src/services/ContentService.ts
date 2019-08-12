@@ -42,7 +42,7 @@ export class ContentService implements IContentService {
         return {
             menuContent: {
                 title: '',
-                historyMenus: []
+                links: []
             },
             navigationMenuContent: {
                 about: '',

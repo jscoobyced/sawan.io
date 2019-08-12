@@ -31,36 +31,25 @@ namespace sawan.Services
             return mainContent;
         }
 
-        private MainContent ComposeMainContent(MainContent baseMainContent, List<Link> entries)
+        private MainContent ComposeMainContent(MainContent baseMainContent, List<DateTime> entries)
         {
             var mainContent = baseMainContent.Clone();
-            var historyMenus = new List<HistoryMenu>();
+            var links = new HashSet<Link>();
 
             entries.ForEach(entry =>
             {
-                var menuName = entry.Created.ToString("MMMM yyyy", CultureInfo.InvariantCulture);
-                var current = historyMenus.FirstOrDefault(menu => menu.Name == menuName);
-                if (current == null)
+                var link = new Link()
                 {
-                    current = new HistoryMenu()
-                    {
-                        Name = menuName,
-                        Entries = new List<Link>()
-                    };
-                    historyMenus.Add(current);
-                }
-                current.Entries.Add(new Link()
-                {
-                    Created = entry.Created,
-                    Text = entry.Text,
-                    Title = entry.Text,
-                    Url = entry.Url
-                });
+                    Text = entry.ToString("MMMM yyyy", CultureInfo.InvariantCulture),
+                    Url = $"{entry.Year}{entry.Month.ToString("00")}"
+                };
+                links.Add(link);
             });
 
             mainContent.MenuContent = new MenuContent()
             {
-                HistoryMenus = historyMenus
+                Title = "History",
+                Links = links.OrderByDescending(_ => _.Url).ToList()
             };
             return mainContent;
         }

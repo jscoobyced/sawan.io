@@ -1,5 +1,6 @@
 namespace sawan.tests
 {
+    using System;
     using System.Collections.Generic;
     using Moq;
     using sawan.Repositories;
@@ -8,7 +9,7 @@ namespace sawan.tests
     {
 
         private MainContent mainContent;
-        private List<Link> history;
+        private List<DateTime> history;
         private Language language = Language.English;
 
         public DbMainContentRepositoryBuilder WithMainContent(MainContent mainContent)
@@ -17,7 +18,7 @@ namespace sawan.tests
             return this;
         }
 
-        public DbMainContentRepositoryBuilder WithHistory(List<Link> history)
+        public DbMainContentRepositoryBuilder WithHistory(List<DateTime> history)
         {
             this.history = history;
             return this;

@@ -7,7 +7,7 @@ test('MockContentService can get default content', () => {
     const contentService = new MockContentService();
     expect(contentService.getDefaultMainContent()).not.toBeNull();
     expect(contentService.getDefaultMainContent().menuContent).not.toBeNull();
-    expect(contentService.getDefaultMainContent().menuContent.historyMenus).toEqual([]);
+    expect(contentService.getDefaultMainContent().menuContent.links).toEqual([]);
 });
 
 test('MockContentService can get english content', async () => {

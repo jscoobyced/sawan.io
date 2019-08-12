@@ -1,7 +1,5 @@
 namespace sawan
 {
-    using System.Collections.Generic;
-
     public class MainContent
     {
         public Language Language { get; set; }

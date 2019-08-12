@@ -76,43 +76,22 @@ export class MockContentService extends ContentService {
     protected fetchMainContent(language: Language): Promise<MainContent> {
         const entries = [
             {
-                text: 'Starting again',
+                text: 'July 2019',
                 url: '1'
             },
             {
-                text: 'Grand opening of sawan.io',
+                text: 'May 2019',
                 url: '2'
             },
             {
-                text: 'Some other news',
+                text: 'January 2019',
                 url: '3'
             }
         ];
         const content: MainContent = {
             menuContent: {
                 title: 'History',
-                historyMenus: [
-                    {
-                        name: 'April 2019',
-                        entries
-                    },
-                    {
-                        name: 'March 2019',
-                        entries
-                    },
-                    {
-                        name: 'February 2019',
-                        entries
-                    },
-                    {
-                        name: 'January 2019',
-                        entries
-                    },
-                    {
-                        name: 'December 2018',
-                        entries
-                    }
-                ]
+                links: entries
             },
             navigationMenuContent: {
                 about: 'About',

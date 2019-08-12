@@ -12,3 +12,4 @@ tscoverage/
 test-report.xml
 sawan/Views/Home/Index.cshtml
 .codecov
+**/.vscode/

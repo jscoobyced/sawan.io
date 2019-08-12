@@ -72,7 +72,7 @@ jobs:
       - run:
           name: sonar
           command:  |
-            ./scripts/docker/sonar.sh
+            ./.circleci/sonar.sh
   typescript:
     working_directory: ~/sawan
     docker:
@@ -94,7 +94,7 @@ jobs:
       - run:
           name: git-release
           command: |
-            ./scripts/docker/git-release.sh "Latest release of https://sawan.io."
+            ./.circleci/git-release.sh "Latest release of https://sawan.io."
 workflows:
   version: 2
   do_it_all:

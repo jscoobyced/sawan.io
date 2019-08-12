@@ -21,12 +21,8 @@ namespace sawan.tests
                 },
                 MenuContent = new MenuContent()
                 {
-                    HistoryMenus = new List<HistoryMenu>()
+                    Links = new List<Link>()
                     {
-                        new HistoryMenu()
-                        {
-                            Entries = new List<Link>()
-                            {
                                 new Link()
                                 {
                                     Text = "Name",
@@ -34,9 +30,6 @@ namespace sawan.tests
                                     Title = "Name",
                                     Url = "/"
                                 }
-                            },
-                            Name = "Menu 1"
-                        }
                     },
                     Title = "History"
                 },
