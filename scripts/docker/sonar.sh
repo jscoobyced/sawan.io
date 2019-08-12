@@ -4,6 +4,10 @@ echo Installing dependencies
 
 yarn --cwd ClientApp install --silent --no-progress
 export NODE_PATH=ClientApp/node_modules
+ls -l /root/.dotnet/tools
+ls -l ~/.dotnet/tools
+
+export PATH="${PATH}:/root/.dotnet/tools"
 
 echo Initializing tests
 
