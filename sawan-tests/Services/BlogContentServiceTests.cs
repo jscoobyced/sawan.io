@@ -17,7 +17,7 @@ namespace sawan.tests
                 new DbBlogRepositoryBuilder()
                 .WithBlogElements(null)
                 .Build());
-            var result = await contentService.GetBlogPageAsync(1);
+            var result = await contentService.GetBlogPageAsync("201901", 1);
             result.Should().BeNull();
         }
 
@@ -29,7 +29,7 @@ namespace sawan.tests
                 new DbBlogRepositoryBuilder()
                 .WithBlogElements(blogElements)
                 .Build());
-            var result = await contentService.GetBlogPageAsync(1);
+            var result = await contentService.GetBlogPageAsync("201901", 1);
             result.Should().NotBeNull();
             result.Should().Equals(blogElements);
         }

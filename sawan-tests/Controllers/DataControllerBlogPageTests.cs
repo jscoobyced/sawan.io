@@ -17,7 +17,7 @@ namespace sawan.tests
                 .WithMainContentService(null)
                 .Build();
 
-            var result = await controller.GetBlogPage(1);
+            var result = await controller.GetBlogPage("201901", 1);
             result.Should().NotBeNull(ResultEmptyList);
         }
     }
