@@ -1,5 +1,6 @@
 namespace sawan.tests
 {
+    using System;
     using System.Collections.Generic;
     using Moq;
     using sawan.Repositories;
@@ -33,6 +34,7 @@ namespace sawan.tests
         public IDbBlogRepository Build()
         {
             var repository = new Mock<IDbBlogRepository>();
+            repository.Setup(x => x.GetLastBlogDate()).ReturnsAsync(DateTime.Now);
             repository.Setup(x => x.GetBlogElementAsync(It.IsAny<int>())).ReturnsAsync(this.blogElement);
             repository.Setup(x => x.GetBlogPageAsync(It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(this.blogElements);
             repository.Setup(x => x.InsertBlogElementAsync(It.IsAny<BlogElement>())).ReturnsAsync(this.isSavedStatus);

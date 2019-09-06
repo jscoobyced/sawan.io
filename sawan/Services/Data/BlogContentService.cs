@@ -18,7 +18,7 @@ namespace sawan.Services
         public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(string yearMonth, int maxResult)
         {
             var result = await this.dbBlogRepository.GetBlogPageAsync(yearMonth, maxResult);
-            if (!result.Any())
+            if (result != null && !result.Any())
             {
                 var date = await this.dbBlogRepository.GetLastBlogDate();
                 result = await this.dbBlogRepository.GetBlogPageAsync(date.ToString("yyyyMM", CultureInfo.InvariantCulture), maxResult);
