@@ -5,7 +5,7 @@ namespace sawan.Services
 
     public interface IBlogContentService
     {
-        Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult);
+        Task<IEnumerable<BlogElement>> GetBlogPageAsync(string yearMonth, int maxResult);
 
         Task<BlogElement> GetBlogElementAsync(int blogId);
 

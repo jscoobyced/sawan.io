@@ -40,16 +40,30 @@ namespace sawan.Repositories
             return blogElement;
         }
 
-        public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
+        public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(string yearMonth, int maxResult)
         {
             var blogElements = new List<BlogElement>();
+            if (string.IsNullOrWhiteSpace(yearMonth)
+                || yearMonth.Length != 6
+                || !int.TryParse(yearMonth, out int whatever))
+            {
+                return blogElements;
+            }
+
+            var year = int.Parse(yearMonth.Substring(0, 4));
+            var month = int.Parse(yearMonth.Substring(4, 2));
+            var dateFrom = new DateTime(year, month, 1);
+            var dateTo = dateFrom.AddMonths(1);
             using (var connection = await this.databaseConnection.GetConnectionAsync())
             {
 
                 using (var command = new MySqlCommand())
                 {
                     command.CommandText = "SELECT id, created, updated, title, content"
-                        + " FROM blog ORDER BY created DESC LIMIT ?maxResult";
+                        + " FROM blog WHERE created BETWEEN ?dateFrom AND ?dateTo"
+                        + " ORDER BY created DESC LIMIT ?maxResult";
+                    command.Parameters.Add(new MySqlParameter("?dateFrom", dateFrom));
+                    command.Parameters.Add(new MySqlParameter("?dateTo", dateTo));
                     command.Parameters.Add(new MySqlParameter("?maxResult", maxResult));
                     command.Connection = connection;
                     var reader = await command.ExecuteReaderAsync();
@@ -65,6 +79,29 @@ namespace sawan.Repositories
             }
 
             return blogElements;
+        }
+
+        public async Task<DateTime> GetLastBlogDate()
+        {
+            DateTime date = DateTime.Now;
+            using (var connection = await this.databaseConnection.GetConnectionAsync())
+            {
+                using (var command = new MySqlCommand())
+                {
+                    command.CommandText = "SELECT MAX(created) FROM blog";
+                    command.Connection = connection;
+                    var reader = await command.ExecuteReaderAsync();
+                    if (reader != null)
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            date = reader.GetDateTime(0);
+                        }
+                    }
+                }
+            }
+
+            return date;
         }
 
         public async Task<bool> InsertBlogElementAsync(BlogElement blogElement)
