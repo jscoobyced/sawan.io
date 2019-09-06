@@ -60,7 +60,7 @@ export class MockContentService extends ContentService {
     ];
 
     public async getBlogElement(id: number): Promise<BlogElement> {
-        return this.updateBlogPage(3).then(blogPage => {
+        return this.updateBlogPage("201901", 3).then(blogPage => {
             let article = null as unknown as BlogElement;
             for (const a of blogPage.articles) {
                 if (a.id === id) {
@@ -122,7 +122,7 @@ export class MockContentService extends ContentService {
         return Promise.resolve(true);
     }
 
-    protected updateBlogPage = (maxResult: number): Promise<BlogPage> => {
+    protected updateBlogPage = (yearMonth: string, maxResult: number): Promise<BlogPage> => {
         const blog: BlogPage = {
             articles: this.articles
         };
