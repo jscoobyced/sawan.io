@@ -27,8 +27,24 @@ export class HomeHoc extends React.Component<HomeHocProps, HomeState> {
         };
     }
 
+    public componentDidUpdate(prevProps: HomeHocProps) {
+        const yearMonth = +this.props.match.params.id;
+        const previousYearMonth = +prevProps.match.params.id;
+        if (yearMonth !== previousYearMonth) {
+            this.doUpdate(`${yearMonth}`);
+        }
+    }
+
     public componentDidMount() {
         const yearMonth = this.props.match.params.id || DateUtil.dateToYyyyMmString(new Date());
+        this.doUpdate(yearMonth);
+    }
+
+    public render() {
+        return <Home blogPage={this.state.blogPage} />;
+    }
+
+    private doUpdate(yearMonth: string) {
         this.contentService.getBlogPage(yearMonth, this.numberOfElements)
             .then(blogPage => {
                 const articles = blogPage.articles.slice(0, this.numberOfElements);
@@ -38,9 +54,5 @@ export class HomeHoc extends React.Component<HomeHocProps, HomeState> {
                     }
                 });
             });
-    }
-
-    public render() {
-        return <Home blogPage={this.state.blogPage} />;
     }
 }
