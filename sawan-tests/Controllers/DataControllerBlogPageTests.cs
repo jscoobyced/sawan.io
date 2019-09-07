@@ -20,5 +20,20 @@ namespace sawan.tests
             var result = await controller.GetBlogPage("201901", 1);
             result.Should().NotBeNull(ResultEmptyList);
         }
+        [Fact]
+        public async Task WithMainContentService()
+        {
+            var controller = new DataControllerBuilder()
+                .WithMainContentService(
+                    new MainContentServiceBuilder()
+                    .WithLanguageMainContent(
+                        new MainContentBuilder().Build(),
+                        Language.English)
+                    .Build())
+                .Build();
+
+            var result = await controller.GetBlogPage("201901", 1);
+            result.Should().NotBeNull(ResultEmptyList);
+        }
     }
 }

@@ -17,7 +17,7 @@ export interface HomeState {
 
 export class HomeHoc extends React.Component<HomeHocProps, HomeState> {
     private readonly contentService: IContentService;
-    private readonly numberOfElements = 40;
+    private readonly numberOfElements = 10;
 
     public constructor(props: HomeHocProps) {
         super(props);

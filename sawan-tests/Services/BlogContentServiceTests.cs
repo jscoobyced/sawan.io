@@ -22,6 +22,17 @@ namespace sawan.tests
         }
 
         [Fact]
+        public async Task GetBlogPageAsyncEmptyTest()
+        {
+            var contentService = new BlogContentService(
+                new DbBlogRepositoryBuilder()
+                .WithBlogElements(new List<BlogElement>())
+                .Build());
+            var result = await contentService.GetBlogPageAsync("201902", 1);
+            result.Should().BeEmpty();
+        }
+
+        [Fact]
         public async Task GetBlogPageAsyncTest()
         {
             var blogElements = new List<BlogElement>() { new BlogElementBuilder().Build() };
