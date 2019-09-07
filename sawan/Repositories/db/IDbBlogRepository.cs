@@ -6,7 +6,8 @@ namespace sawan.Repositories
 
     public interface IDbBlogRepository
     {
-        Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult);
+        Task<IEnumerable<BlogElement>> GetBlogPageAsync(string yearMonth, int maxResult);
+        Task<DateTime> GetLastBlogDate();
         Task<BlogElement> GetBlogElementAsync(int blogId);
         Task<bool> InsertBlogElementAsync(BlogElement blogElement);
         Task<bool> UpdateBlogElementAsync(BlogElement blogElement);

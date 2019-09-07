@@ -1,9 +1,10 @@
 namespace sawan.Services
 {
-    using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using sawan.Repositories;
+    using System.Globalization;
 
     public class BlogContentService : IBlogContentService
     {
@@ -14,9 +15,16 @@ namespace sawan.Services
             this.dbBlogRepository = dbBlogRepository;
         }
 
-        public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(int maxResult)
+        public async Task<IEnumerable<BlogElement>> GetBlogPageAsync(string yearMonth, int maxResult)
         {
-            return await this.dbBlogRepository.GetBlogPageAsync(maxResult);
+            var result = await this.dbBlogRepository.GetBlogPageAsync(yearMonth, maxResult);
+            if (result != null && !result.Any())
+            {
+                var date = await this.dbBlogRepository.GetLastBlogDate();
+                result = await this.dbBlogRepository.GetBlogPageAsync(date.ToString("yyyyMM", CultureInfo.InvariantCulture), maxResult);
+            }
+
+            return result;
         }
 
         public async Task<BlogElement> GetBlogElementAsync(int blogId)

@@ -5,7 +5,7 @@ exports[`Layout component with content is unchanged. 1`] = `
   <BlogHistory
     menu={
       Object {
-        "historyMenus": Array [],
+        "links": Array [],
         "title": "",
       }
     }

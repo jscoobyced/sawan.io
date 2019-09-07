@@ -12,8 +12,8 @@ export class ContentService implements IContentService {
         return this.defaultMainContent();
     }
 
-    public async getBlogPage(maxResult: number): Promise<BlogPage> {
-        return this.updateBlogPage(maxResult);
+    public async getBlogPage(yearMonth: string, maxResult: number): Promise<BlogPage> {
+        return this.updateBlogPage(yearMonth, maxResult);
     }
 
     public async getBlogElement(id: number): Promise<BlogElement> {
@@ -42,7 +42,7 @@ export class ContentService implements IContentService {
         return {
             menuContent: {
                 title: '',
-                historyMenus: []
+                links: []
             },
             navigationMenuContent: {
                 about: '',
@@ -62,14 +62,14 @@ export class ContentService implements IContentService {
         };
     }
 
-    protected async updateBlogPage(maxResult: number): Promise<BlogPage> {
+    protected async updateBlogPage(yearMonth: string, maxResult: number): Promise<BlogPage> {
         const empty = {
             articles: []
         };
         if (maxResult <= 0) {
             return empty;
         }
-        const data = await ApiUtils.fetchData<BlogElement[]>(`/api/Data/blogpage/${maxResult}`);
+        const data = await ApiUtils.fetchData<BlogElement[]>(`/api/Data/blogpage/${yearMonth}/${maxResult}`);
         if (!data || data.length === 0) {
             return empty;
         }

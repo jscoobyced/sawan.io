@@ -37,9 +37,8 @@ namespace sawan.tests
                 .Build());
             var result = await mainContentService.GetMainContentAsync(Language.English);
             result.Should().NotBeNull();
-            result.MenuContent.HistoryMenus.Should().NotBeNullOrEmpty();
-            result.MenuContent.HistoryMenus.First().Entries.Should().NotBeNullOrEmpty();
-            result.MenuContent.HistoryMenus.First().Entries.First().Text.Should().BeEquivalentTo(expected);
+            result.MenuContent.Links.Should().NotBeNullOrEmpty();
+            result.MenuContent.Links.First().Should().NotBeNull();
         }
     }
 }

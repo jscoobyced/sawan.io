@@ -16,7 +16,7 @@ namespace sawan.tests
         {
             var controller = new DataControllerBuilder().Build();
 
-            var blogElements = await controller.GetBlogPage(maxResults);
+            var blogElements = await controller.GetBlogPage("201901", maxResults);
 
             blogElements.Should().NotBeNull();
         }
@@ -32,7 +32,7 @@ namespace sawan.tests
                 .WithBlogContentService(contentService)
                 .Build();
 
-            var blogElements = await controller.GetBlogPage(0);
+            var blogElements = await controller.GetBlogPage("201901", 0);
 
             blogElements.Should().NotBeEmpty();
             blogElements.First().Should().Be(blogElement);

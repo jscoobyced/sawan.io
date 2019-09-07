@@ -1,4 +1,6 @@
+import { match } from "react-router-dom";
 import { IAnalyser } from "../src/components/charts/analysis/Models";
+import { IdParam } from "../src/components/Models";
 import { Decision, Pairing, Pattern } from "../src/components/charts/Models";
 
 export class TestUtils {
@@ -38,6 +40,18 @@ export class TestUtils {
                     comment
                 };
             })
+        };
+    }
+
+    public static createMatch(id: string, edit = '') {
+        return {
+            isExact: true,
+            params: {
+                id,
+                edit
+            },
+            path: '/',
+            url: ''
         };
     }
 }

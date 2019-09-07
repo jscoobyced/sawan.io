@@ -1,5 +1,6 @@
 namespace sawan.Repositories
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using MySql.Data.MySqlClient;
@@ -13,29 +14,22 @@ namespace sawan.Repositories
             this.databaseConnection = databaseConnection;
         }
 
-        public async Task<List<Link>> GetHistory()
+        public async Task<List<DateTime>> GetHistory()
         {
-            var entries = new List<Link>();
+            var entries = new List<DateTime>();
             using (var connection = await this.databaseConnection.GetConnectionAsync())
             {
                 using (var command = new MySqlCommand())
                 {
-                    command.CommandText = "SELECT id, title, created FROM blog ORDER BY created DESC";
+                    command.CommandText = "SELECT created FROM blog ORDER BY created ASC";
                     command.Connection = connection;
                     var reader = await command.ExecuteReaderAsync();
                     if (reader != null)
                     {
                         while (await reader.ReadAsync())
                         {
-                            var id = reader.GetInt32(0);
-                            var text = reader.GetString(1);
-                            var created = reader.GetDateTime(2);
-                            entries.Add(new Link()
-                            {
-                                Text = text,
-                                Created = created,
-                                Url = id.ToString()
-                            });
+                            var created = reader.GetDateTime(0);
+                            entries.Add(created);
                         }
                     }
                 }

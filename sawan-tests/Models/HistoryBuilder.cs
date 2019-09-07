@@ -5,26 +5,13 @@ namespace sawan.tests
 
     public class HistoryBuilder
     {
-        public List<Link> Build(string content)
+        public List<DateTime> Build(string content)
         {
-            return new List<Link>()
+            return new List<DateTime>()
             {
-                new Link()
-                {
-                    Url = "https://localhost/123",
-                    Text = content,
-                    Title = "Title 1 From History",
-                    Target = "_blank",
-                    Created = new DateTime(2019, 1, 1)
-                },
-                new Link()
-                {
-                    Url = "https://localhost/456",
-                    Text = content,
-                    Title = "Title 2 From History",
-                    Target = "_blank",
-                    Created = new DateTime(2019, 1, 1)
-                }
+                new DateTime(2019, 1, 7),
+                new DateTime(2019, 10, 22),
+                new DateTime(2019, 7, 14),
             };
         }
     }

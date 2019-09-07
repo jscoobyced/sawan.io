@@ -9,13 +9,13 @@ test('ContentService can get default content', () => {
     const contentService = new ContentService();
     expect(contentService.getDefaultMainContent()).not.toBeNull();
     expect(contentService.getDefaultMainContent().menuContent).not.toBeNull();
-    expect(contentService.getDefaultMainContent().menuContent.historyMenus).toEqual([]);
+    expect(contentService.getDefaultMainContent().menuContent.links).toEqual([]);
 });
 
 const mainContent: MainContent = {
     menuContent: {
         title: "",
-        historyMenus: []
+        links: []
     },
     navigationMenuContent: {
         about: 'About',
@@ -58,7 +58,7 @@ test('ContentService check maxResult for blog', async () => {
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch(blogElements);
     maxResults.map(async value => {
-        const data = await contentService.getBlogPage(value);
+        const data = await contentService.getBlogPage("201901", value);
         expect(data).not.toBeNull();
         expect(data.articles.length).toBe(0);
     });
@@ -67,7 +67,7 @@ test('ContentService check maxResult for blog', async () => {
 test('ContentService can get empty blog content', async () => {
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch([]);
-    const data = await contentService.getBlogPage(4);
+    const data = await contentService.getBlogPage("201901", 4);
     expect(data).not.toBeNull();
     expect(data.articles.length).toBe(0);
 });
@@ -75,7 +75,7 @@ test('ContentService can get empty blog content', async () => {
 test('ContentService can get null blog content', async () => {
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch(null);
-    const data = await contentService.getBlogPage(4);
+    const data = await contentService.getBlogPage("201901", 4);
     expect(data).not.toBeNull();
     expect(data.articles.length).toBe(0);
 });
@@ -83,7 +83,7 @@ test('ContentService can get null blog content', async () => {
 test('ContentService can get blog content', async () => {
     const contentService = new ContentService();
     window.fetch = TestUtils.mockFetch(blogElements);
-    const data = await contentService.getBlogPage(4);
+    const data = await contentService.getBlogPage("201901", 4);
     expect(data).not.toBeNull();
     expect(data.articles.length).toBe(1);
     expect(data.articles[0].articleTitle).toBe(blogElements[0].articleTitle);

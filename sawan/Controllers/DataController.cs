@@ -80,15 +80,15 @@ namespace sawan.Controllers
             return await this.mainContentService.GetMainContentAsync(language);
         }
 
-        [HttpGet("blogpage/{maxResult}")]
-        public async Task<IEnumerable<BlogElement>> GetBlogPage(int maxResult)
+        [HttpGet("blogpage/{yearMonth}/{maxResult}")]
+        public async Task<IEnumerable<BlogElement>> GetBlogPage(string yearMonth, int maxResult)
         {
             if (this.blogContentService == null)
             {
                 return new List<BlogElement>();
             }
 
-            return await this.blogContentService.GetBlogPageAsync(maxResult);
+            return await this.blogContentService.GetBlogPageAsync(yearMonth, maxResult);
         }
 
         [HttpGet("blog/{blogId}")]

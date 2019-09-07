@@ -1,15 +1,7 @@
 namespace sawan.tests
 {
-    using System.Linq;
-    using System.Collections;
-    using System.Collections.Generic;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using sawan;
     using sawan.Controllers;
     using sawan.Services;
-    using System.IO;
-    using System.Text;
 
     public class DataControllerBuilder
     {

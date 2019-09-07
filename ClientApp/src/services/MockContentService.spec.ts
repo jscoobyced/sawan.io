@@ -7,7 +7,7 @@ test('MockContentService can get default content', () => {
     const contentService = new MockContentService();
     expect(contentService.getDefaultMainContent()).not.toBeNull();
     expect(contentService.getDefaultMainContent().menuContent).not.toBeNull();
-    expect(contentService.getDefaultMainContent().menuContent.historyMenus).toEqual([]);
+    expect(contentService.getDefaultMainContent().menuContent.links).toEqual([]);
 });
 
 test('MockContentService can get english content', async () => {
@@ -26,7 +26,7 @@ test('MockContentService can get default blogpage', () => {
 
 test('MockContentService can get blogpage', async () => {
     const contentService = new MockContentService();
-    const blogPage = await contentService.getBlogPage(3);
+    const blogPage = await contentService.getBlogPage('201901', 3);
     expect(blogPage).not.toBeNull();
     expect(blogPage.articles).not.toBeNull();
     expect(blogPage.articles.length).toBeGreaterThan(0);

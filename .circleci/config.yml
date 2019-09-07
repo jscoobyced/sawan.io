@@ -14,7 +14,7 @@ jobs:
           command: dotnet test /p:AltCover=true /p:AltCoverAssemblyFilter="xunit|sawan.Views" /p:AltCoverFileFilter="Program.cs|Startup.cs"
       - run:
           name: codecov
-          command: codecov -f ./sawan-tests/coverage.xml
+          command: codecov -y ./codecov.yml -f ./sawan-tests/coverage.xml -F csharp
       - run: mkdir -p workspace
       - run: cp -R sawan-tests workspace/
       - persist_to_workspace:
@@ -35,7 +35,7 @@ jobs:
           command: yarn --cwd ClientApp --silent run test:coverage
       - run:
           name: codecov
-          command: codecov -f ./ClientApp/coverage/coverage-final.json
+          command: codecov -y ./codecov.yml -f ./ClientApp/coverage/coverage-final.json -F react
       - run: mkdir -p workspace
       - run: cp -R ClientApp ./workspace/
       - persist_to_workspace:
@@ -72,7 +72,7 @@ jobs:
       - run:
           name: sonar
           command:  |
-            ./scripts/docker/sonar.sh
+            ./.circleci/sonar.sh
   typescript:
     working_directory: ~/sawan
     docker:
@@ -94,7 +94,7 @@ jobs:
       - run:
           name: git-release
           command: |
-            ./scripts/docker/git-release.sh "Latest release of https://sawan.io."
+            ./.circleci/git-release.sh "Latest release of https://sawan.io."
 workflows:
   version: 2
   do_it_all:

@@ -11,6 +11,13 @@ export class DateUtil {
         return `${year}-${month}-${day}`;
     }
 
+    public static dateToYyyyMmString(date: Date): string {
+        const lDate = new Date(date);
+        const year = lDate.getFullYear();
+        const month = DateUtil.toDigits(lDate.getMonth() + 1, 2);
+        return `${year}${month}`;
+    }
+
     public static defaultDate(now = false): Date {
         if (now) {
             const nowDate = new Date();

@@ -57,6 +57,7 @@ export class Page extends React.Component<{}, PageState> {
                 <Route path='/candle' component={CandleChartPageHoc} />
                 <Route path='/health' component={About} />
                 <Route path='/blog/view/:id' component={BlogHoc} />
+                <Route path='/blog/month/:id' component={HomeHoc} />
                 <Route path='/blog/edit/:id' component={BlogEditHoc} />
                 <Route path='/about' component={About} />
                 <Route path='/resume' component={Resume} />
