@@ -44,7 +44,7 @@ export class TestUtils {
     }
 
     public static createMatch(id: string, edit = '') {
-        const matchParam: match<IdParam> = {
+        return {
             isExact: true,
             params: {
                 id,
@@ -53,8 +53,6 @@ export class TestUtils {
             path: '/',
             url: ''
         };
-
-        return matchParam;
     }
 }
 

@@ -13,7 +13,7 @@ namespace sawan
             if ((memberInfo != null && memberInfo.Length > 0))
             {
                 var attribute = memberInfo[0].GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
-                if ((attribute != null && attribute.Count() > 0))
+                if ((attribute != null && attribute.Any()))
                 {
                     return ((System.ComponentModel.DescriptionAttribute)attribute.ElementAt(0)).Description;
                 }

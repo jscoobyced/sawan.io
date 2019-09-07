@@ -29,10 +29,7 @@ namespace sawan.Repositories
                         while (await reader.ReadAsync())
                         {
                             var created = reader.GetDateTime(0);
-                            if (created != null)
-                            {
-                                entries.Add(created);
-                            }
+                            entries.Add(created);
                         }
                     }
                 }
