@@ -65,7 +65,9 @@ export class HtmlUtils {
             img: ['src', 'width', 'height', 'class'],
             ul: ['class'],
             ol: ['class'],
-            li: ['class']
+            li: ['class'],
+            code: ['class'],
+            pre: ['class']
         }
     };
 
