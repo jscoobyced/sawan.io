@@ -22,4 +22,4 @@ describe('HomeHoc', () => {
         const home = homeHoc.find('Home');
         expect(home).toBeDefined();
     });
-})
+});

@@ -1,0 +1,35 @@
+code, pre {
+	color: #ccc;
+	background: #2d2d2d;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1;
+	overflow: auto;
+
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+	tab-size: 2;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+	border-radius: 2px;
+	padding: 5px;
+}
+
+.bash {
+	color: #0F0;
+}
+
+.bash::before {
+	color: #CCC;
+	content: '$';
+	padding-right: 4px;
+}
