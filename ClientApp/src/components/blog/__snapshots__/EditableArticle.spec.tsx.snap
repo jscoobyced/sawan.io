@@ -24,11 +24,12 @@ exports[`Render EditableArticle 2`] = `
       disabled={false}
       id="article-save"
       onClick={[Function]}
+      type="button"
     >
       Save
     </button>
   </article>
-  <Article
+  <Component
     backLink={true}
     blogElement={
       Object {
@@ -66,11 +67,12 @@ exports[`Render EditableArticle 3`] = `
       disabled={true}
       id="article-save"
       onClick={[Function]}
+      type="button"
     >
       Saving
     </button>
   </article>
-  <Article
+  <Component
     backLink={true}
     blogElement={
       Object {

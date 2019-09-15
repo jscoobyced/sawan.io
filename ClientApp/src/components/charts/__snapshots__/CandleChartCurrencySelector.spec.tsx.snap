@@ -13,7 +13,7 @@ exports[`CandleChartCurrencySelector snapshot 2`] = `
   onChange={[Function]}
 >
   <option
-    key="0"
+    key="1"
     value={1}
   >
     THB/BTC

@@ -1,4 +1,6 @@
-import { BlogElement, BlogPage, Language, MainContent } from './Models';
+import {
+  BlogElement, BlogPage, Language, MainContent,
+} from './Models';
 
 export interface IContentService {
     getMainContent(language: Language): Promise<MainContent>;

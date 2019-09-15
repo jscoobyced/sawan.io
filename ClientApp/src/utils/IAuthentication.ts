@@ -8,6 +8,7 @@ export interface IAuthentication {
     isAdmin: () => boolean;
 }
 
+/* eslint-disable */
 export interface AuthenticatedUser {
     email: string;
     family_name: string;
@@ -20,3 +21,4 @@ export interface AuthenticatedUser {
     token: string;
     verified_email: boolean;
 }
+/* eslint-enable */

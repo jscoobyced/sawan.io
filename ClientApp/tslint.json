@@ -20,7 +20,8 @@
         "max-line-length": [true, 130],
         "ban-types": false,
         "no-debugger": false,
-        "jsx-no-lambda": false
+        "jsx-no-lambda": false,
+        "indent": [true, "spaces", 2]
     },
     "rulesDirectory": []
 }

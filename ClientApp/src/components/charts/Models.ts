@@ -1,5 +1,5 @@
-import { ChangeEvent } from "react";
-import { SelectOption } from "../Models";
+import { ChangeEvent } from 'react';
+import { SelectOption } from '../Models';
 
 export interface Pairing {
     timestamp: number;

@@ -1,4 +1,4 @@
-import { match } from "react-router-dom";
+import { match } from 'react-router-dom';
 
 export interface SelectOption {
     value: number;
