@@ -12,12 +12,7 @@ interface HeaderState {
   session: SessionState;
 }
 
-export const Header = (props: HeaderProps, state: HeaderState) => {
-  const [session] = useState({
-    isSignedIn: false,
-    username: '',
-  });
-
+export const Header = (props: HeaderProps) => {
   const {
     navigationMenuContent: {
       websiteName,
