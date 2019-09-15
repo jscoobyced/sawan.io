@@ -3,16 +3,14 @@ export interface SessionState {
     username: string;
 }
 
+export const ACTION_SIGNIN = 'ACTION_SIGNIN';
+
 export interface UpdateSessionAction {
     type: typeof ACTION_SIGNIN;
     session: SessionState;
 }
 
-export const ACTION_SIGNIN = 'ACTION_SIGNIN';
-
-export const doUpdateSession = (session: SessionState): UpdateSessionAction => {
-    return {
-        type: ACTION_SIGNIN,
-        session
-    };
-};
+export const doUpdateSession = (session: SessionState): UpdateSessionAction => ({
+  type: ACTION_SIGNIN,
+  session,
+});

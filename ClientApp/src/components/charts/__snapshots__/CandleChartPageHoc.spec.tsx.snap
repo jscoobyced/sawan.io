@@ -2,7 +2,7 @@
 
 exports[`CandleChartPageHoc snapshot. 1`] = `
 <div>
-  <CandleChartCurrencySelector
+  <Component
     currencyOptions={Array []}
     onChangeCurrency={[Function]}
   />

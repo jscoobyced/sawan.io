@@ -1,35 +1,29 @@
 import React from 'react';
-import { BlogElement, BlogPage } from '../../services/Models';
+import { BlogPage } from '../../services/Models';
 import { AuthenticationFactory } from '../../utils/AuthenticationFactory';
 import { Article } from '../blog/Article';
 
 export interface HomeProps {
-    blogPage: BlogPage;
+  blogPage: BlogPage;
 }
 
-export class Home extends React.Component<HomeProps> {
+export const Home = (props: HomeProps) => {
+  const { blogPage: { articles } } = props;
+  const isAdmin = AuthenticationFactory.getAuthentication() && AuthenticationFactory.getAuthentication().isAdmin();
 
-    public constructor(props: HomeProps) {
-        super(props);
-    }
+  if (!articles || articles.length === 0) {
+    return null;
+  }
 
-    public render() {
-        const articles: BlogElement[] = this.props.blogPage.articles;
-        const isAdmin = AuthenticationFactory.getAuthentication() && AuthenticationFactory.getAuthentication().isAdmin();
+  const result = articles.map(article => (
+    <Article
+      key={article.id}
+      blogElement={article}
+      backLink={false}
+      editLink={isAdmin}
+      ellipsis
+    />
+  ));
 
-        if (!articles || articles.length === 0) {
-            return null;
-        }
-
-        return articles.map((article, key) => {
-            return (
-                <Article
-                    key={key}
-                    blogElement={article}
-                    backLink={false}
-                    editLink={isAdmin}
-                    ellipsis={true}
-                />);
-        });
-    }
-}
+  return <>{result}</>;
+};

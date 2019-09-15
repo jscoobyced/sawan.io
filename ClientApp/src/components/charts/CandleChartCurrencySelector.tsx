@@ -1,22 +1,25 @@
 import React from 'react';
 import { CandleChartCurrencyProps } from './Models';
 
-export class CandleChartCurrencySelector extends React.Component<CandleChartCurrencyProps> {
+export const CandleChartCurrencySelector = (props: CandleChartCurrencyProps) => {
+  const { currencyOptions: propsCurrencyOptions } = props;
+  const currencyOptions = propsCurrencyOptions.map(selectOption => (
+    <option
+      key={selectOption.value}
+      value={selectOption.value}
+    >
+      {selectOption.text}
+    </option>
+  ));
 
-    public constructor(props: CandleChartCurrencyProps) {
-        super(props);
-    }
+  const { onChangeCurrency } = props;
 
-    public render() {
-        const currencyOptions = this.props.currencyOptions && this.props.currencyOptions.map((selectOption, key) => {
-            return <option key={key} value={selectOption.value}>{selectOption.text}</option>;
-        });
-        return (
-            <select
-                id='currencySelector'
-                onChange={this.props.onChangeCurrency}
-            >
-                {currencyOptions}
-            </select>);
-    }
-}
+  return (
+    <select
+      id="currencySelector"
+      onChange={onChangeCurrency}
+    >
+      {currencyOptions}
+    </select>
+  );
+};

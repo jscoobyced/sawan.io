@@ -1,40 +1,41 @@
-import { HtmlUtils } from "../../utils/HtmlUtils";
+import { HtmlUtils } from '../../utils/HtmlUtils';
 
 export class GoogleChartInitializer {
+  public static IsReady(): boolean {
+    (window as any).JSGoogleChart = (window as any).JSGoogleChart || false;
+    return (window as any).JSGoogleChart as boolean;
+  }
 
-    public static IsReady(): boolean {
-        (window as any).JSGoogleChart = (window as any).JSGoogleChart || false;
-        return (window as any).JSGoogleChart as boolean;
+  private static loaded = false;
+
+  public Init(render: () => void): boolean {
+    if (GoogleChartInitializer.loaded) {
+      return false;
     }
 
-    private static loaded = false;
-
-    public Init(render: () => void): boolean {
-        if (GoogleChartInitializer.loaded) {
-            return false;
-        }
-
-        GoogleChartInitializer.loaded = true;
-        (window as any).JSGoogleChart = false;
-        (window as any).JSGoogleChartFunction = render;
-        const body = HtmlUtils.getFirstElementsByTagName('body');
-        if (!body) {
-            return false;
-        }
-
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://www.gstatic.com/charts/loader.js';
-        script.onload = this.Load;
-        body.appendChild(script);
-        return true;
+    GoogleChartInitializer.loaded = true;
+    (window as any).JSGoogleChart = false;
+    (window as any).JSGoogleChartFunction = render;
+    const body = HtmlUtils.getFirstElementsByTagName('body');
+    if (!body) {
+      return false;
     }
 
-    private Load() {
-        google.charts.load('current', { packages: ['corechart'] });
-        google.charts.setOnLoadCallback(() => {
-            (window as any).JSGoogleChart = true;
-            (window as any).JSGoogleChartFunction();
-        });
-    }
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://www.gstatic.com/charts/loader.js';
+    script.onload = this.Load;
+    body.appendChild(script);
+    return true;
+  }
+
+  private Load() {
+    // eslint-disable-next-line no-undef
+    google.charts.load('current', { packages: ['corechart'] });
+    // eslint-disable-next-line no-undef
+    google.charts.setOnLoadCallback(() => {
+      (window as any).JSGoogleChart = true;
+      (window as any).JSGoogleChartFunction();
+    });
+  }
 }

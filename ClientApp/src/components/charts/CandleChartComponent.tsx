@@ -11,42 +11,49 @@ import { GoogleChartInitializer } from './GoogleChartInitializer';
 import { CandleChartComponentState } from './Models';
 
 export class CandleChartComponent extends React.Component<CandleChartComponentState> {
-    private static readonly ChartElement = "candle_div";
-    private candleChart: CandleChartDrawer = new CandleChartDrawer([], "");
-    private readonly bollingerSize = 20;
-    private readonly dataFormatter: DataFormatter = new DataFormatter();
-    private readonly analysers: IAnalyser[];
-    private readonly decisionMaker: DecisionMaker;
-    private chartData: any;
+  private static readonly ChartElement = 'candle_div';
 
-    constructor(props: CandleChartComponentState) {
-        super(props);
-        this.analysers = [new ThreeLinesBuy(), new TwoBlackGapping(), new ThreeBlackCrows(), new EveningStar()];
-        this.decisionMaker = new DecisionMaker(this.analysers);
-    }
+  private candleChart: CandleChartDrawer = new CandleChartDrawer([], '');
 
-    public componentDidUpdate() {
-        const { pairings } = this.props;
-        if (pairings !== []) {
-            this.chartData = this.dataFormatter.formatData(pairings, this.bollingerSize, this.decisionMaker);
-            if (!GoogleChartInitializer.IsReady()) {
-                new GoogleChartInitializer().Init(this.drawChart);
-            } else {
-                this.drawChart();
-            }
-        }
-    }
+  private readonly bollingerSize = 20;
 
-    public render(): JSX.Element {
-        return (
-            <div
-                id={CandleChartComponent.ChartElement}
-                className='chart-area'
-            />);
-    }
+  private readonly dataFormatter: DataFormatter = new DataFormatter();
 
-    private readonly drawChart = () => {
-        this.candleChart = new CandleChartDrawer(this.chartData, CandleChartComponent.ChartElement);
-        this.candleChart.drawChart();
+  private readonly analysers: IAnalyser[];
+
+  private readonly decisionMaker: DecisionMaker;
+
+  private chartData: any;
+
+  constructor(props: CandleChartComponentState) {
+    super(props);
+    this.analysers = [new ThreeLinesBuy(), new TwoBlackGapping(), new ThreeBlackCrows(), new EveningStar()];
+    this.decisionMaker = new DecisionMaker(this.analysers);
+  }
+
+  public componentDidUpdate() {
+    const { pairings } = this.props;
+    if (pairings !== []) {
+      this.chartData = this.dataFormatter.formatData(pairings, this.bollingerSize, this.decisionMaker);
+      if (!GoogleChartInitializer.IsReady()) {
+        new GoogleChartInitializer().Init(this.drawChart);
+      } else {
+        this.drawChart();
+      }
     }
+  }
+
+  private readonly drawChart = () => {
+    this.candleChart = new CandleChartDrawer(this.chartData, CandleChartComponent.ChartElement);
+    this.candleChart.drawChart();
+  }
+
+  public render(): JSX.Element {
+    return (
+      <div
+        id={CandleChartComponent.ChartElement}
+        className="chart-area"
+      />
+    );
+  }
 }

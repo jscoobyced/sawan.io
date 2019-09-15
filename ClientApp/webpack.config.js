@@ -1,10 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const TSLintPlugin = require('tslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GitRevisionWebpackPlugin = require('git-revision-webpack-plugin');
 
@@ -81,9 +80,6 @@ module.exports = (env, argv) => {
           'VERSION': JSON.stringify(gitRevisionWebpackPlugin.version()),
           'mode': JSON.stringify(argv.mode)
         }
-      }),
-      new TSLintPlugin({
-        files: ['./src/**/*.ts', './src/**/*.tsx']
       }),
       new CopyWebpackPlugin([{
         from: './src/assets',

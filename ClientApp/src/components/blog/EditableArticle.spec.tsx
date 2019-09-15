@@ -5,51 +5,49 @@ import { DateUtil } from '../../utils/DateUtils';
 import { EditableArticle } from './EditableArticle';
 
 test('Render EditableArticle', () => {
-    const update = jest.fn().mockImplementation();
-    const editableArticle = shallow((
-        <EditableArticle
-            blogElement={null as unknown as BlogElement}
-            update={update}
-        />));
-    expect(editableArticle).toMatchSnapshot();
+  const update = jest.fn().mockImplementation();
+  const editableArticle = shallow((
+    <EditableArticle
+      blogElement={null as unknown as BlogElement}
+      update={update}
+    />));
+  expect(editableArticle).toMatchSnapshot();
 });
 
 const blogElement: BlogElement = {
-    article: 'test',
-    articleTitle: 'blablabla',
-    id: 123,
-    blogDate: DateUtil.defaultDate(false),
-    updateDate: DateUtil.defaultDate(false)
+  article: 'test',
+  articleTitle: 'blablabla',
+  id: 123,
+  blogDate: DateUtil.defaultDate(false),
+  updateDate: DateUtil.defaultDate(false),
 };
 
 test('Render EditableArticle', () => {
-    const update = jest.fn().mockImplementation();
-    const editableArticle = shallow((
-        <EditableArticle
-            blogElement={blogElement}
-            update={update}
-        />));
-    expect(editableArticle).toMatchSnapshot();
+  const update = jest.fn().mockImplementation();
+  const editableArticle = shallow((
+    <EditableArticle
+      blogElement={blogElement}
+      update={update}
+    />));
+  expect(editableArticle).toMatchSnapshot();
 });
 
 test('Render EditableArticle', () => {
-    const update = jest.fn().mockImplementation((): Promise<boolean> => {
-        return Promise.resolve(true);
-    });
-    const editableArticle = shallow((
-        <EditableArticle
-            blogElement={blogElement}
-            update={update}
-        />));
-    editableArticle
-        .find('#article-title')
-        .simulate('change', { target: { value: 'bla-title' }, preventDefault: () => { return; } });
-    editableArticle
-        .find('#article-text')
-        .simulate('change', { target: { value: 'bla-text' }, preventDefault: () => { return; } });
-    editableArticle
-        .find('#article-save')
-        .simulate('click', { preventDefault: () => { return; } });
-    expect(editableArticle).toMatchSnapshot();
-    expect(update).toHaveBeenCalledTimes(1);
+  const update = jest.fn().mockImplementation((): Promise<boolean> => Promise.resolve(true));
+  const editableArticle = shallow((
+    <EditableArticle
+      blogElement={blogElement}
+      update={update}
+    />));
+  editableArticle
+    .find('#article-title')
+    .simulate('change', { target: { value: 'bla-title' }, preventDefault: () => { } });
+  editableArticle
+    .find('#article-text')
+    .simulate('change', { target: { value: 'bla-text' }, preventDefault: () => { } });
+  editableArticle
+    .find('#article-save')
+    .simulate('click', { preventDefault: () => { } });
+  expect(editableArticle).toMatchSnapshot();
+  expect(update).toHaveBeenCalledTimes(1);
 });

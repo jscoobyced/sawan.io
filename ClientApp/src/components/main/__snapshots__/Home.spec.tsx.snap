@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home component is unchanged. 1`] = `
-Array [
-  <Article
+<Fragment>
+  <Component
     backLink={false}
     blogElement={
       Object {
@@ -14,9 +14,9 @@ Array [
       }
     }
     ellipsis={true}
-    key="0"
-  />,
-  <Article
+    key="1"
+  />
+  <Component
     backLink={false}
     blogElement={
       Object {
@@ -28,9 +28,9 @@ Array [
       }
     }
     ellipsis={true}
-    key="1"
-  />,
-  <Article
+    key="2"
+  />
+  <Component
     backLink={false}
     blogElement={
       Object {
@@ -42,9 +42,9 @@ Array [
       }
     }
     ellipsis={true}
-    key="2"
-  />,
-]
+    key="3"
+  />
+</Fragment>
 `;
 
 exports[`Home component signed-in. 1`] = `""`;

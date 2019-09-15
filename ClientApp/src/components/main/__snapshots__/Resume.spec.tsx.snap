@@ -43,7 +43,7 @@ exports[`Resume component is unchanged. 1`] = `
       <span
         className="pt10 txtright"
       >
-        +66 (0)81 807 3420 
+        +66 (0)81 807 3420
         <i
           className="fas fa-mobile"
         />
@@ -53,6 +53,7 @@ exports[`Resume component is unchanged. 1`] = `
       >
         <a
           href="https://github.com/jscoobyced"
+          rel="noopener noreferrer"
           target="_blank"
         >
           https://github.com/jscoobyced
@@ -66,6 +67,7 @@ exports[`Resume component is unchanged. 1`] = `
       >
         <a
           href="https://www.linkedin.com/in/cedricrochefolle"
+          rel="noopener noreferrer"
           target="_blank"
         >
           https://www.linkedin.com/in/cedricrochefolle
@@ -106,7 +108,8 @@ exports[`Resume component is unchanged. 1`] = `
           >
             Managed a team
           </span>
-           of up to
+           
+          of up to
           <span
             className="highlight inline"
           >
@@ -120,13 +123,14 @@ exports[`Resume component is unchanged. 1`] = `
           Trained new joiners in on-boarding programs
         </li>
         <li>
-          Collected 
+          Collected
           <span
             className="highlight inline"
           >
             product/business data
           </span>
-           and utilized it to make strategic decisions
+           
+          and utilized it to make strategic decisions
         </li>
         <li>
           Collected scrum data to improve velocity
@@ -137,7 +141,7 @@ exports[`Resume component is unchanged. 1`] = `
       </span>
       <ul>
         <li>
-          Improved web-application 
+          Improved web-application
           <span
             className="highlight inline"
           >
@@ -149,7 +153,7 @@ exports[`Resume component is unchanged. 1`] = `
         </li>
         <ul>
           <li>
-            Migration to use the back-end 
+            Migration to use the back-end
             <span
               className="highlight inline"
             >
@@ -157,7 +161,7 @@ exports[`Resume component is unchanged. 1`] = `
             </span>
           </li>
           <li>
-            Migration from KnockoutJS to 
+            Migration from KnockoutJS to
             <span
               className="highlight inline"
             >
@@ -175,16 +179,20 @@ exports[`Resume component is unchanged. 1`] = `
             >
               Presenter of 2 Meetups
             </span>
-             in Bangkok:
+             
+            in Bangkok:
             <a
               href="https://www.youtube.com/watch?v=6NM-vMHVqeU&list=PLN6GB29N6NmHgVznqf-AUGUVsy8DLRo0v"
+              rel="noopener noreferrer"
               target="_blank"
             >
               TypeScript training
             </a>
-             and Full Open-Source 
+             
+            and Full Open-Source 
             <a
               href="https://www.youtube.com/watch?v=kvxb6qxWLpM"
+              rel="noopener noreferrer"
               target="_blank"
             >
               CI/CD for a netcore+reactjs application
@@ -225,7 +233,7 @@ exports[`Resume component is unchanged. 1`] = `
         </li>
         <ul>
           <li>
-            Benchmarked 
+            Benchmarked
             <span
               className="highlight inline"
             >
@@ -261,11 +269,13 @@ exports[`Resume component is unchanged. 1`] = `
           Designed and implemented 
           <a
             href="https://www.yesijoin.com"
+            rel="noopener noreferrer"
             target="_blank"
           >
             www.yesijoin.com
           </a>
-           from scratch using J2EE technology:
+           
+          from scratch using J2EE technology:
         </li>
         <ul>
           <li>
@@ -405,7 +415,8 @@ exports[`Resume component is unchanged. 1`] = `
           >
             sawan.io
           </a>
-           website as a medium to keep learning on software development (
+           
+          website as a medium to keep learning on software development (
           <span
             className="highlight inline"
           >
@@ -425,11 +436,13 @@ exports[`Resume component is unchanged. 1`] = `
           Various base 
           <a
             href="https://hub.docker.com/u/jscdroiddev"
+            rel="noopener noreferrer"
             target="_blank"
           >
             docker images
           </a>
-           to facilitate build and hosting of web-application
+           
+          to facilitate build and hosting of web-application
         </li>
       </ol>
       <span
