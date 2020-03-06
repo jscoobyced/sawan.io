@@ -55,8 +55,19 @@ export const Resume = () => {
       <div>
         <div className="left">
           <span className="title">WORK EXPERIENCE</span>
-          <span className="subtitle">Development Manager - Agoda Services Co., Ltd.</span>
-          <span className="period far fa-calendar">&nbsp;Jul 2015 - To date</span>
+          <span className="subtitle">Back-End Development Manager</span>
+          <span className="subtitle">Agoda Services Co., Ltd.</span>
+          <span className="period far fa-calendar">&nbsp;Apr 2019 - To date</span>
+          <span>Achievements:</span>
+          <ul>
+            <li>Mentored technical leads in the team to build a fully functional
+              customer support
+              <br />application for Agoda flight business (void/refund/amend tickets)</li>
+            <li>Similar duties as in Front-End Development Manager</li>
+          </ul>
+          <span className="subtitle">Front-End Development Manager</span>
+          <span className="subtitle">Agoda Services Co., Ltd.</span>
+          <span className="period far fa-calendar">&nbsp;Jul 2015 - Mar 2019</span>
           <span>Manager duties:</span>
           <ul>
             <li>
@@ -173,6 +184,9 @@ export const Resume = () => {
             <li>Created a flash-mob interactive device</li>
             <li>Created a web-crawler to collect condos/apartments for sale/rent information</li>
           </ul>
+        </div>
+        <div className="right">
+          <span className="title">EARLIER CAREER</span>
           <span className="subtitle">Technical Director - Entiera Co., Ltd.</span>
           <span className="period far fa-calendar">&nbsp;Jun 2008 - Mar 2011</span>
           <ul>
@@ -187,7 +201,6 @@ export const Resume = () => {
             <li>Performed demos and customized JasperServer Professional</li>
             <li>Recruited software engineers</li>
           </ul>
-          <span className="subtitle">And before that...</span>
           <span className="period far fa-calendar">&nbsp;2001 - May 2008</span>
           <span>Various software engineer positions in:</span>
           <ul>
@@ -196,8 +209,6 @@ export const Resume = () => {
             <li>Electronics and Jewelry ERP</li>
             <li>System engineer in telecommunication company</li>
           </ul>
-        </div>
-        <div className="right">
           <span className="title">TECHNICAL SKILLS</span>
           <span className="subtitle">Management</span>
           <span>Team Manager, Educator / Trainer, Scrum / Agile, Team Transformer</span>
@@ -215,12 +226,15 @@ export const Resume = () => {
               <a href="https://sawan.io">sawan.io</a>
               {' '}
               website as a medium to keep learning
-                                          on software development (
-              <span className="highlight inline">ReactJS, netcore 2.2, AppVeyor build, Codecov, SonarQube</span>
-              <span className="highlight inline">&nbsp;and docker</span>
+              <br />on software development (
+              <span className="highlight inline">ReactJS, netcore 2.2, AppVeyor</span>
+              <span className="highlight inline">&nbsp;build, Codecov, SonarQube and docker</span>
               )
             </li>
-            <li>Home CCTV connected to Raspberry Pi 3 and SSH tunnel to VPS for remote monitoring</li>
+            <li>Raspberry Pi playground:
+              <br /><a href='https://medium.com/@jscdroiddev' target='_blank'>Medium articles</a>
+              <br /><a href='https://github.com/jscoobyced/raspi-deadite'>Github C/C++ GPIO and opencv source</a>
+            </li>
             <li>
               Various base&nbsp;
               <a

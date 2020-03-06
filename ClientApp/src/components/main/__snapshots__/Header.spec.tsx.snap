@@ -34,24 +34,6 @@ exports[`Header component is unchanged. 1`] = `
         <ul>
           <li>
             <NavLink
-              to="/candle"
-            />
-          </li>
-          <li>
-            <NavLink
-              to="/health"
-            />
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a
-          className="dropdown"
-          href="#"
-        />
-        <ul>
-          <li>
-            <NavLink
               to="/about"
             />
           </li>
@@ -74,7 +56,7 @@ exports[`Header component is unchanged. 1`] = `
           <li>
             <NavLink
               target="_blank"
-              to="/Cedric Rochefolle - Resume 2019.pdf"
+              to="/Cedric Rochefolle - Resume 2020.pdf"
             >
                
               <i

@@ -46,21 +46,6 @@ export const Header = (props: HeaderProps) => {
             <a href="#" className="menu-space">&nbsp;</a>
           </li>
           <li>
-            <a href="#" className="dropdown">{applications}</a>
-            <ul>
-              <li>
-                <NavLink to="/candle">
-                  {cryptoCurrency}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/health">
-                  {healthMonitor}
-                </NavLink>
-              </li>
-            </ul>
-          </li>
-          <li>
             <a href="#" className="dropdown">{information}</a>
             <ul>
               <li>
@@ -81,7 +66,7 @@ export const Header = (props: HeaderProps) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Cedric Rochefolle - Resume 2019.pdf" target="_blank">
+                <NavLink to="/Cedric Rochefolle - Resume 2020.pdf" target="_blank">
                   {resume}
                   {' '}
                   <i className="fas fa-download" />

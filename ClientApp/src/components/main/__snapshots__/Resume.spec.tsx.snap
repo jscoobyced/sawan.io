@@ -91,12 +91,45 @@ exports[`Resume component is unchanged. 1`] = `
       <span
         className="subtitle"
       >
-        Development Manager - Agoda Services Co., Ltd.
+        Back-End Development Manager
+      </span>
+      <span
+        className="subtitle"
+      >
+        Agoda Services Co., Ltd.
       </span>
       <span
         className="period far fa-calendar"
       >
-         Jul 2015 - To date
+         Apr 2019 - To date
+      </span>
+      <span>
+        Achievements:
+      </span>
+      <ul>
+        <li>
+          Mentored technical leads in the team to build a fully functional customer support
+          <br />
+          application for Agoda flight business (void/refund/amend tickets)
+        </li>
+        <li>
+          Similar duties as in Front-End Development Manager
+        </li>
+      </ul>
+      <span
+        className="subtitle"
+      >
+        Front-End Development Manager
+      </span>
+      <span
+        className="subtitle"
+      >
+        Agoda Services Co., Ltd.
+      </span>
+      <span
+        className="period far fa-calendar"
+      >
+         Jul 2015 - Mar 2019
       </span>
       <span>
         Manager duties:
@@ -308,6 +341,15 @@ exports[`Resume component is unchanged. 1`] = `
           Created a web-crawler to collect condos/apartments for sale/rent information
         </li>
       </ul>
+    </div>
+    <div
+      className="right"
+    >
+      <span
+        className="title"
+      >
+        EARLIER CAREER
+      </span>
       <span
         className="subtitle"
       >
@@ -343,11 +385,6 @@ exports[`Resume component is unchanged. 1`] = `
         </li>
       </ul>
       <span
-        className="subtitle"
-      >
-        And before that...
-      </span>
-      <span
         className="period far fa-calendar"
       >
          2001 - May 2008
@@ -369,10 +406,6 @@ exports[`Resume component is unchanged. 1`] = `
           System engineer in telecommunication company
         </li>
       </ul>
-    </div>
-    <div
-      className="right"
-    >
       <span
         className="title"
       >
@@ -416,21 +449,36 @@ exports[`Resume component is unchanged. 1`] = `
             sawan.io
           </a>
            
-          website as a medium to keep learning on software development (
+          website as a medium to keep learning
+          <br />
+          on software development (
           <span
             className="highlight inline"
           >
-            ReactJS, netcore 2.2, AppVeyor build, Codecov, SonarQube
+            ReactJS, netcore 2.2, AppVeyor
           </span>
           <span
             className="highlight inline"
           >
-             and docker
+             build, Codecov, SonarQube and docker
           </span>
           )
         </li>
         <li>
-          Home CCTV connected to Raspberry Pi 3 and SSH tunnel to VPS for remote monitoring
+          Raspberry Pi playground:
+          <br />
+          <a
+            href="https://medium.com/@jscdroiddev"
+            target="_blank"
+          >
+            Medium articles
+          </a>
+          <br />
+          <a
+            href="https://github.com/jscoobyced/raspi-deadite"
+          >
+            Github C/C++ GPIO and opencv source
+          </a>
         </li>
         <li>
           Various base 

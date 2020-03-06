@@ -1,35 +1,37 @@
-code, pre {
-	color: #ccc;
-	background: #2d2d2d;
-	font-family: Monaco, monospace;
-	font-size: 1em;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1;
-	overflow: auto;
+code,
+pre {
+  color: #ccc;
+  background: #2d2d2d;
+  font-family: Monaco, monospace;
+  font: normal 0.9em/22px Monaco, monospace !important;
+  background-size: 12px 22px;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1;
+  overflow: auto;
 
-	-moz-tab-size: 2;
-	-o-tab-size: 2;
-	tab-size: 2;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
 
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 
-	border-radius: 2px;
-	padding: 5px;
+  border-radius: 2px;
+  padding: 2px;
 }
 
 .bash {
-	display: block;
-	font: normal .9em/22px Monaco, monospace !important;
-  color: #0F0;
+  display: block;
+  font: normal 0.9em/22px Monaco, monospace !important;
+  color: #0f0;
   background-color: #2d2d2d;
-  background-image: url('./images/dollar.png');
+  background-image: url("./images/dollar.png");
   background-size: 12px 22px;
   background-repeat: repeat-y;
   padding: 0 16px;
