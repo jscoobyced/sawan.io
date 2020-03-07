@@ -41,11 +41,11 @@ export const Resume = () => {
           </span>
           <span className="pt10 txtright">
             <a
-              href="https://www.linkedin.com/in/cedricrochefolle"
+              href="https://www.linkedin.com/in/crochefolle"
               target="_blank"
               rel="noopener noreferrer"
             >
-              https://www.linkedin.com/in/cedricrochefolle
+              https://www.linkedin.com/in/crochefolle
             </a>
             {' '}
             <i className="fab fa-linkedin" />
