@@ -66,11 +66,11 @@ exports[`Resume component is unchanged. 1`] = `
         className="pt10 txtright"
       >
         <a
-          href="https://www.linkedin.com/in/cedricrochefolle"
+          href="https://www.linkedin.com/in/crochefolle"
           rel="noopener noreferrer"
           target="_blank"
         >
-          https://www.linkedin.com/in/cedricrochefolle
+          https://www.linkedin.com/in/crochefolle
         </a>
          
         <i
