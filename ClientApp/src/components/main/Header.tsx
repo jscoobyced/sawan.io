@@ -66,7 +66,7 @@ export const Header = (props: HeaderProps) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/Cedric Rochefolle - Resume 2020.pdf" target="_blank">
+                <NavLink to="/Cedric Rochefolle - Resume 2021.pdf" target="_blank">
                   {resume}
                   {' '}
                   <i className="fas fa-download" />

@@ -56,7 +56,7 @@ exports[`Header component is unchanged. 1`] = `
           <li>
             <NavLink
               target="_blank"
-              to="/Cedric Rochefolle - Resume 2020.pdf"
+              to="/Cedric Rochefolle - Resume 2021.pdf"
             >
                
               <i

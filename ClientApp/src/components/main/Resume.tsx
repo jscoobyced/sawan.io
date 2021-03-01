@@ -50,60 +50,68 @@ export const Resume = () => {
             {' '}
             <i className="fab fa-linkedin" />
           </span>
+          <span className="pt10 txtright">
+            <a
+              href="https://narok.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://narok.io
+            </a>
+            {' '}
+            www
+          </span>
         </div>
       </div>
       <div>
         <div className="left">
           <span className="title">WORK EXPERIENCE</span>
+          <span className="company subtitle">Agoda Services Co., Ltd.</span>
+          <span className="period far fa-calendar">{' '}Dec 2013 - To date</span>
           <span className="subtitle">Back-End Development Manager</span>
-          <span className="subtitle">Agoda Services Co., Ltd.</span>
-          <span className="period far fa-calendar">&nbsp;Apr 2019 - To date</span>
           <span>Achievements:</span>
           <ul>
+            <li>Designed a Product Agnostic upgrade for the Customer Support CRM to{' '}
+            <span className="highlight inline">reduce time to market by 40%</span>{' '}for new products
+            </li>
             <li>Mentored technical leads in the team to build a fully functional
-              customer support
-              <br />application for Agoda flight business (void/refund/amend tickets)</li>
+              customer support application for Agoda flight business (void/refund/amend tickets)</li>
             <li>Similar duties as in Front-End Development Manager</li>
           </ul>
           <span className="subtitle">Front-End Development Manager</span>
-          <span className="subtitle">Agoda Services Co., Ltd.</span>
-          <span className="period far fa-calendar">&nbsp;Jul 2015 - Mar 2019</span>
           <span>Manager duties:</span>
           <ul>
             <li>
               <span className="highlight inline">Managed a team</span>
               {' '}
               of up to
-              <span className="highlight inline">&nbsp;13 software engineers</span>
+              <span className="highlight inline">{' '}13 software engineers</span>
             </li>
             <li>Recruited for Front-End department</li>
             <li>Trained new joiners in on-boarding programs</li>
             <li>
-              Collected
+              Collected{' '}
               <span className="highlight inline">product/business data</span>
-              {' '}
-              and utilized it
-                                        to make strategic decisions
+              {' '}and utilized it to make strategic decisions
             </li>
             <li>Collected scrum data to improve velocity</li>
           </ul>
           <span>Tech lead duties:</span>
           <ul>
             <li>
-              Improved web-application
+              Improved web-application{' '}
               <span className="highlight inline">
-                server-side
-                                        performance by 75%&nbsp;
+                server-side performance by 75%{' '}
               </span>
             </li>
             <li>Contributed to the constant evolution of the website:</li>
             <ul>
               <li>
-                Migration to use the back-end
+                Migration to use the back-end{' '}
                 <span className="highlight inline">micro-services</span>
               </li>
               <li>
-                Migration from KnockoutJS to
+                Migration from KnockoutJS to{' '}
                 <span className="highlight inline">ReactJS</span>
               </li>
             </ul>
@@ -121,7 +129,7 @@ export const Resume = () => {
                   TypeScript training
                 </a>
                 {' '}
-                and Full Open-Source&nbsp;
+                and Full Open-Source{' '}
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -133,8 +141,7 @@ export const Resume = () => {
               <li>Online training material</li>
             </ul>
           </ul>
-          <span className="subtitle">Senior Software Engineer - Agoda Services Co., Ltd.</span>
-          <span className="period far fa-calendar">&nbsp;Dec 2013 - Jun 2015</span>
+          <span className="subtitle">Senior Software Engineer</span>
           <ul>
             <li>Development of Agoda website, operation support: ASP.NET, JQuery</li>
             <li>Re-wrote a part of the main funnel of the website:</li>
@@ -145,22 +152,23 @@ export const Resume = () => {
             <li>Introduced better software development practices:</li>
             <ul>
               <li>
-                Benchmarked
-                <span className="highlight inline">Dependency Injection&nbsp;</span>
+                Benchmarked{' '}
+                <span className="highlight inline">Dependency Injection{' '}</span>
                 libraries and identified best fit
               </li>
               <li>Automated code coverage, with a maintained KPI &gt; 70%</li>
               <li>
-                Added static code analysis with
-                <span className="highlight inline">&nbsp;SonarQube</span>
+                Added static code analysis with{' '}
+                <span className="highlight inline">SonarQube</span>
               </li>
             </ul>
           </ul>
+          <span className="company subtitle">Yesijoin Co., Ltd.</span>
+          <span className="period inline far fa-calendar">{' '}Jul 2011 - Nov 2013</span>
           <span className="subtitle">Technical Director - Yesijoin Co., Ltd.</span>
-          <span className="period inline far fa-calendar">&nbsp;Jul 2011 - Nov 2013</span>
           <ul>
             <li>
-              Designed and implemented&nbsp;
+              Designed and implemented{' '}
               <a
                 href="https://www.yesijoin.com"
                 target="_blank"
@@ -187,27 +195,26 @@ export const Resume = () => {
         </div>
         <div className="right">
           <span className="title">EARLIER CAREER</span>
-          <span className="subtitle">Technical Director - Entiera Co., Ltd.</span>
-          <span className="period far fa-calendar">&nbsp;Jun 2008 - Mar 2011</span>
+          <span className="company subtitle">Entiera Co., Ltd.</span>
+          <span className="subtitle">Technical Director</span>
+          <span className="period far fa-calendar">{' '}Jun 2008 - Mar 2011</span>
           <ul>
             <li>Software architecture and design of a J2EE intranet:</li>
             <ul>
               <li>
                 Converted development environment from Windows to Ubuntu
-                <span className="highlight inline">&nbsp;increased team velocity by 15%</span>
+                <span className="highlight inline">{' '}increased team velocity by 15%</span>
               </li>
               <li>Customized data visualization tool for Verizon (NY office)</li>
             </ul>
             <li>Performed demos and customized JasperServer Professional</li>
             <li>Recruited software engineers</li>
           </ul>
-          <span className="period far fa-calendar">&nbsp;2001 - May 2008</span>
+          <span className="period far fa-calendar">{' '}2001 - May 2008</span>
           <span>Various software engineer positions in:</span>
           <ul>
             <li>Property Management Systems in hospitality industry</li>
             <li>Biometric and security industry</li>
-            <li>Electronics and Jewelry ERP</li>
-            <li>System engineer in telecommunication company</li>
           </ul>
           <span className="title">TECHNICAL SKILLS</span>
           <span className="subtitle">Management</span>
@@ -222,27 +229,23 @@ export const Resume = () => {
           <span className="title">PERSONAL PROJECTS</span>
           <ol>
             <li>
-              Develop&nbsp;
-              <a href="https://sawan.io">sawan.io</a>
+              Develop{' '}
+              <a href="https://sawan.io">https://sawan.io</a> and <a href="https://narok.io">https://narok.io</a>
               {' '}
-              website as a medium to keep learning
-              <br />on software development (
-              <span className="highlight inline">ReactJS, netcore 2.2, AppVeyor</span>
-              <span className="highlight inline">&nbsp;build, Codecov, SonarQube and docker</span>
-              )
+              website as a way to keep learning on software development (
+              <span className="highlight inline">ReactJS, dotnetcore, CircelCI, Codecov, SonarQube and docker</span>
             </li>
             <li>Raspberry Pi playground:
               <br /><a href='https://medium.com/@jscdroiddev' target='_blank'>Medium articles</a>
-              <br /><a href='https://github.com/jscoobyced/raspi-deadite'>Github C/C++ GPIO and opencv source</a>
+              {' '}and{' '}<a href='https://narok.io/raspi-deadite/'>Github C/C++ GPIO and opencv source</a>
             </li>
             <li>
-              Various base&nbsp;
               <a
                 href="https://hub.docker.com/u/jscdroiddev"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                docker images
+                Docker images
               </a>
               {' '}
               to facilitate build and hosting of web-application
@@ -260,9 +263,7 @@ export const Resume = () => {
           </ul>
           <span className="title">LANGUAGES</span>
           <ul>
-            <li>French (native)</li>
-            <li>English</li>
-            <li>Thai</li>
+            <li>French (native) - English - Thai</li>
           </ul>
         </div>
       </div>

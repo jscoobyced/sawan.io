@@ -1,4 +1,4 @@
-FROM jscdroiddev/netcore-node-dev:latest AS build-env
+FROM jscdroiddev/jsc-net-dev-tools:latest AS build-env
 WORKDIR /app
 
 # Build application
