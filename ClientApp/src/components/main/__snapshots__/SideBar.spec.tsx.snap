@@ -47,20 +47,6 @@ exports[`Layout component with content is unchanged. 1`] = `
       </a>
     </li>
     <li>
-      Website built with
-      <a
-        href="https://ci.appveyor.com/project/jscoobyced/sawan-io"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <img
-          alt="AppVeyor"
-          src="appveyor.png"
-          title="Webiste built with AppVeyor"
-        />
-      </a>
-    </li>
-    <li>
       Code quality by
       <a
         href="https://codecov.io/gh/jscoobyced/sawan.io"

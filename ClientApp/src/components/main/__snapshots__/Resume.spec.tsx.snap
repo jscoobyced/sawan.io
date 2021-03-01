@@ -77,6 +77,19 @@ exports[`Resume component is unchanged. 1`] = `
           className="fab fa-linkedin"
         />
       </span>
+      <span
+        className="pt10 txtright"
+      >
+        <a
+          href="https://narok.io"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          https://narok.io
+        </a>
+         
+        www
+      </span>
     </div>
   </div>
   <div>
@@ -89,28 +102,38 @@ exports[`Resume component is unchanged. 1`] = `
         WORK EXPERIENCE
       </span>
       <span
-        className="subtitle"
-      >
-        Back-End Development Manager
-      </span>
-      <span
-        className="subtitle"
+        className="company subtitle"
       >
         Agoda Services Co., Ltd.
       </span>
       <span
         className="period far fa-calendar"
       >
-         Apr 2019 - To date
+         
+        Dec 2013 - To date
+      </span>
+      <span
+        className="subtitle"
+      >
+        Back-End Development Manager
       </span>
       <span>
         Achievements:
       </span>
       <ul>
         <li>
-          Mentored technical leads in the team to build a fully functional customer support
-          <br />
-          application for Agoda flight business (void/refund/amend tickets)
+          Designed a Product Agnostic upgrade for the Customer Support CRM to
+           
+          <span
+            className="highlight inline"
+          >
+            reduce time to market by 40%
+          </span>
+           
+          for new products
+        </li>
+        <li>
+          Mentored technical leads in the team to build a fully functional customer support application for Agoda flight business (void/refund/amend tickets)
         </li>
         <li>
           Similar duties as in Front-End Development Manager
@@ -120,16 +143,6 @@ exports[`Resume component is unchanged. 1`] = `
         className="subtitle"
       >
         Front-End Development Manager
-      </span>
-      <span
-        className="subtitle"
-      >
-        Agoda Services Co., Ltd.
-      </span>
-      <span
-        className="period far fa-calendar"
-      >
-         Jul 2015 - Mar 2019
       </span>
       <span>
         Manager duties:
@@ -146,7 +159,8 @@ exports[`Resume component is unchanged. 1`] = `
           <span
             className="highlight inline"
           >
-             13 software engineers
+             
+            13 software engineers
           </span>
         </li>
         <li>
@@ -157,6 +171,7 @@ exports[`Resume component is unchanged. 1`] = `
         </li>
         <li>
           Collected
+           
           <span
             className="highlight inline"
           >
@@ -175,10 +190,12 @@ exports[`Resume component is unchanged. 1`] = `
       <ul>
         <li>
           Improved web-application
+           
           <span
             className="highlight inline"
           >
-            server-side performance by 75% 
+            server-side performance by 75%
+             
           </span>
         </li>
         <li>
@@ -187,6 +204,7 @@ exports[`Resume component is unchanged. 1`] = `
         <ul>
           <li>
             Migration to use the back-end
+             
             <span
               className="highlight inline"
             >
@@ -195,6 +213,7 @@ exports[`Resume component is unchanged. 1`] = `
           </li>
           <li>
             Migration from KnockoutJS to
+             
             <span
               className="highlight inline"
             >
@@ -222,7 +241,8 @@ exports[`Resume component is unchanged. 1`] = `
               TypeScript training
             </a>
              
-            and Full Open-Source 
+            and Full Open-Source
+             
             <a
               href="https://www.youtube.com/watch?v=kvxb6qxWLpM"
               rel="noopener noreferrer"
@@ -239,12 +259,7 @@ exports[`Resume component is unchanged. 1`] = `
       <span
         className="subtitle"
       >
-        Senior Software Engineer - Agoda Services Co., Ltd.
-      </span>
-      <span
-        className="period far fa-calendar"
-      >
-         Dec 2013 - Jun 2015
+        Senior Software Engineer
       </span>
       <ul>
         <li>
@@ -267,10 +282,12 @@ exports[`Resume component is unchanged. 1`] = `
         <ul>
           <li>
             Benchmarked
+             
             <span
               className="highlight inline"
             >
-              Dependency Injection 
+              Dependency Injection
+               
             </span>
             libraries and identified best fit
           </li>
@@ -279,27 +296,35 @@ exports[`Resume component is unchanged. 1`] = `
           </li>
           <li>
             Added static code analysis with
+             
             <span
               className="highlight inline"
             >
-               SonarQube
+              SonarQube
             </span>
           </li>
         </ul>
       </ul>
       <span
-        className="subtitle"
+        className="company subtitle"
       >
-        Technical Director - Yesijoin Co., Ltd.
+        Yesijoin Co., Ltd.
       </span>
       <span
         className="period inline far fa-calendar"
       >
-         Jul 2011 - Nov 2013
+         
+        Jul 2011 - Nov 2013
+      </span>
+      <span
+        className="subtitle"
+      >
+        Technical Director - Yesijoin Co., Ltd.
       </span>
       <ul>
         <li>
-          Designed and implemented 
+          Designed and implemented
+           
           <a
             href="https://www.yesijoin.com"
             rel="noopener noreferrer"
@@ -351,14 +376,20 @@ exports[`Resume component is unchanged. 1`] = `
         EARLIER CAREER
       </span>
       <span
+        className="company subtitle"
+      >
+        Entiera Co., Ltd.
+      </span>
+      <span
         className="subtitle"
       >
-        Technical Director - Entiera Co., Ltd.
+        Technical Director
       </span>
       <span
         className="period far fa-calendar"
       >
-         Jun 2008 - Mar 2011
+         
+        Jun 2008 - Mar 2011
       </span>
       <ul>
         <li>
@@ -370,7 +401,8 @@ exports[`Resume component is unchanged. 1`] = `
             <span
               className="highlight inline"
             >
-               increased team velocity by 15%
+               
+              increased team velocity by 15%
             </span>
           </li>
           <li>
@@ -387,7 +419,8 @@ exports[`Resume component is unchanged. 1`] = `
       <span
         className="period far fa-calendar"
       >
-         2001 - May 2008
+         
+        2001 - May 2008
       </span>
       <span>
         Various software engineer positions in:
@@ -398,12 +431,6 @@ exports[`Resume component is unchanged. 1`] = `
         </li>
         <li>
           Biometric and security industry
-        </li>
-        <li>
-          Electronics and Jewelry ERP
-        </li>
-        <li>
-          System engineer in telecommunication company
         </li>
       </ul>
       <span
@@ -442,27 +469,26 @@ exports[`Resume component is unchanged. 1`] = `
       </span>
       <ol>
         <li>
-          Develop 
+          Develop
+           
           <a
             href="https://sawan.io"
           >
-            sawan.io
+            https://sawan.io
+          </a>
+           and 
+          <a
+            href="https://narok.io"
+          >
+            https://narok.io
           </a>
            
-          website as a medium to keep learning
-          <br />
-          on software development (
+          website as a way to keep learning on software development (
           <span
             className="highlight inline"
           >
-            ReactJS, netcore 2.2, AppVeyor
+            ReactJS, dotnetcore, CircelCI, Codecov, SonarQube and docker
           </span>
-          <span
-            className="highlight inline"
-          >
-             build, Codecov, SonarQube and docker
-          </span>
-          )
         </li>
         <li>
           Raspberry Pi playground:
@@ -473,21 +499,22 @@ exports[`Resume component is unchanged. 1`] = `
           >
             Medium articles
           </a>
-          <br />
+           
+          and
+           
           <a
-            href="https://github.com/jscoobyced/raspi-deadite"
+            href="https://narok.io/raspi-deadite/"
           >
             Github C/C++ GPIO and opencv source
           </a>
         </li>
         <li>
-          Various base 
           <a
             href="https://hub.docker.com/u/jscdroiddev"
             rel="noopener noreferrer"
             target="_blank"
           >
-            docker images
+            Docker images
           </a>
            
           to facilitate build and hosting of web-application
@@ -521,13 +548,7 @@ exports[`Resume component is unchanged. 1`] = `
       </span>
       <ul>
         <li>
-          French (native)
-        </li>
-        <li>
-          English
-        </li>
-        <li>
-          Thai
+          French (native) - English - Thai
         </li>
       </ul>
     </div>

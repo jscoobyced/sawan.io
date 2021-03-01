@@ -37,16 +37,6 @@ export const SideBar = (props: SideBarProps) => {
           </a>
         </li>
         <li>
-          Website built with
-          <a
-            href="https://ci.appveyor.com/project/jscoobyced/sawan-io"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="appveyor.png" title="Webiste built with AppVeyor" alt="AppVeyor" />
-          </a>
-        </li>
-        <li>
           Code quality by
           <a
             href="https://codecov.io/gh/jscoobyced/sawan.io"
