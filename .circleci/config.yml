@@ -3,7 +3,7 @@ jobs:
   csharp_test:
     working_directory: ~/sawan
     docker:
-      - image: jscdroiddev/netcore-node-dev:latest
+      - image: jscdroiddev/jsc-net-dev-tools:latest
     steps:
       - checkout
       - run:
@@ -24,7 +24,7 @@ jobs:
   typescript_test:
     working_directory: ~/sawan
     docker:
-      - image: jscdroiddev/netcore-node-dev:latest
+      - image: jscdroiddev/jsc-net-dev-tools:latest
     steps:
       - checkout
       - run:
@@ -45,7 +45,7 @@ jobs:
   codeanalysis:
     working_directory: ~/sawan
     docker:
-      - image: jscdroiddev/netcore-node-dev:latest
+      - image: jscdroiddev/jsc-net-dev-tools:latest
     steps:
       - checkout
       - run: 
@@ -88,7 +88,7 @@ jobs:
   release:
     working_directory: ~/sawan
     docker:
-      - image: jscdroiddev/netcore-node-dev:latest
+      - image: jscdroiddev/jsc-net-dev-tools:latest
     steps:
       - checkout
       - run:
