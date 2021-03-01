@@ -1,4 +1,4 @@
-FROM jscdroiddev/jsc-net-dev-tools:latest AS build-env
+FROM jscdroiddev/jsc-net-dev-tools:2.2.207 AS build-env
 WORKDIR /app
 
 # Build application
